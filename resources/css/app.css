@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    html {
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance:textfield;
+}
+
+.inputStyle {
+    @apply mt-0 py-1 px-2 block w-full border rounded-md text-sm
+    focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent
+    focus-visible:outline-0
+    disabled:opacity-50 disabled:pointer-events-none
+    no-spin
+}
+
+.fileStyle{
+    @apply mt-0 p-1 block w-full border border-gray-400 rounded-sm text-sm no-spin
+    file:bg-default file:text-white file:border-0 file:rounded-lg file:px-2 file:py-1 file:mr-4 file:hover:cursor-pointer
+    focus:border-b-2 focus:border-mainGreen
+    focus-visible:outline-0
+}
+
+.selectBoxStyle{
+    @apply p-1 border rounded-md text-sm  focus:border-b-2 focus:border-mainGreen focus-visible:outline-0 block w-full
+}
+
+.textAreaStyle{
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-sm border focus:ring-mainGreen focus:ring-2 focus-visible:outline-0
+}
+
+.radioStyle{
+    @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:outline-0 focus-visible:outline-0 accent-mainGreen
+}
