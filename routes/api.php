@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProducersController;
 use Illuminate\Http\Request;
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::post('login', [LoginController::class, 'login']);
-//Route::post('logout', [LoginController::class, 'logout']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
 
-//Route::group(['middleware'=> 'auth.api'], function() {
+Route::group(['middleware'=> 'auth.api'], function() {
     //アイテム関連
     Route::group(['prefix' => 'items'], function () {
         Route::get('/getNewArrival', [ItemsController::class, 'getNewArrival'])->name('getNewArrival');//新着アイテムリスト
@@ -35,4 +36,4 @@ use Illuminate\Support\Facades\Route;
     });
 
 
-//});
+});

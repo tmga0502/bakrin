@@ -3,8 +3,8 @@ import Breadcrumb from "@/ts/appMain/components/_common/breadcrumb/Breadcrumb";
 import {MainLayout} from "@/ts/appMain/components/_common/layout/Layout";
 import ItemShowImages from "@/ts/appMain/components/_common/ItemDescription/ItemShowImages";
 import ItemShowDescription from "@/ts/appMain/components/_common/ItemDescription/ItemShowDescription";
-import {useGetItem} from "@/ts/hooks/items/item/getItem";
 import {useParams} from "react-router-dom";
+import {useGetItem} from "@/ts/_api/query/ItemQuery";
 
 
 const ItemShowFeatures = () => {

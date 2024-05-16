@@ -35,6 +35,7 @@ class Producer extends Authenticatable
         'email',
         'password',
         'paymentMethod',
+        'loginToken',
     ];
 
     /**

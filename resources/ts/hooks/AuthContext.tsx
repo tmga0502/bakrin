@@ -10,7 +10,7 @@ const AuthContext = createContext<AuthContextType>({
     setIsAuth: () => {}
 })
 
-const auth_check = sessionStorage.getItem('auth_token') !== null
+const auth_check = sessionStorage.getItem('bakrinAuthToken') !== null
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isAuth, setIsAuth] = useState<boolean>(auth_check)
 

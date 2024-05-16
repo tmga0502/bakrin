@@ -1,6 +1,8 @@
 import axios from "axios";
 import {ItemType} from "@/ts/types/ItemType";
+import {authParams} from "@/ts/_api/api/AuthParams";
 
+const params = authParams
 
 const getItem = async (itemId:string) => {
     const{ data } = await axios.get<ItemType>(`/api/items/getItem/${itemId}`);
@@ -8,22 +10,23 @@ const getItem = async (itemId:string) => {
 }
 
 const getFavoriteItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('api/items/getFavoriteItems');
+    console.log(params)
+    const{ data } = await axios.get<ItemType[]>(`api/items/getFavoriteItems${params}`);
     return data;
 }
 
 const getNewArrivalItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('api/items/getNewArrival');
+    const{ data } = await axios.get<ItemType[]>(`api/items/getNewArrival${params}`);
     return data;
 }
 
 const getSeasonItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('api/items/getSeasonItems');
+    const{ data } = await axios.get<ItemType[]>(`api/items/getSeasonItems${params}`);
     return data;
 }
 
 const getWantItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('api/items/getWantItems');
+    const{ data } = await axios.get<ItemType[]>(`api/items/getWantItems${params}`);
     return data;
 }
 

@@ -17,7 +17,7 @@ class ApiAuth
     public function handle(Request $request, Closure $next): Response
     {
         //トークンの認証
-        $auth_check = Producer::where('login_token', $request->auth_token)->whereNotNull('login_token')->exists();
+        $auth_check = Producer::where('loginToken', $request->auth_token)->exists();
         if(!$auth_check){
           return response()->json([], 401);
         }

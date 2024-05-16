@@ -4,11 +4,17 @@ import logo from "@/images/logo.png";
 import {FormGroup, FormLabel} from "@/ts/appMain/components/_ui/form/Form";
 import {MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {useForm} from "react-hook-form";
+import {useLogin} from "@/ts/_api/query/AuthQuery";
 
 const LoginFeatures = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const onSubmit = handleSubmit((data) => console.log(data))
+    const login = useLogin()
+    const onSubmit = handleSubmit((data) => {
+        console.log(data)
+        // setIsLoading(true)
+        login.mutate(data)
+    })
 
     return (
         <div className="flex justify-center items-center h-screen bg-darkGreen">
@@ -24,7 +30,7 @@ const LoginFeatures = () => {
                     <form onSubmit={onSubmit}>
                         <FormGroup>
                             <FormLabel label={'メールアドレス'} for={'email'}/>
-                            <input className={'inputStyle'} id={'email'} {...register('name', {required:true})}/>
+                            <input className={'inputStyle'} id={'email'} {...register('email', {required:true})}/>
                             {errors.name && (<p className="text-danger text-sm">入力必須です</p>)}
                         </FormGroup>
                         <FormGroup>
