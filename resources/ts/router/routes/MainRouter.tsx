@@ -6,7 +6,6 @@ import ItemList from "@/ts/appMain/components/pages/item/ItemList";
 import ItemShow from "@/ts/appMain/components/pages/item/ItemShow";
 import ProducerList from "@/ts/appMain/components/pages/poduct/ProducerList";
 import ProducerShow from "@/ts/appMain/components/pages/poduct/ProducerShow";
-import ItemRequest from "@/ts/appMain/components/pages/item/ItemRequest";
 import Contact from "@/ts/appMain/components/pages/Contact";
 import InfoShow from "@/ts/appMain/components/pages/info/InfoShow";
 import InfoList from "@/ts/appMain/components/pages/info/InfoList";
@@ -36,7 +35,6 @@ const MainRouter = () => {
             <Route path="/items">
                 <Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
                 <Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
-                <Route path=":itemUuid/request" element={ <GuardRoute component={<ItemRequest />}/> } />
             </Route>
 
             {/* 生産者関連 */}
