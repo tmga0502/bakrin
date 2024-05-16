@@ -1,2 +1,4 @@
+import {unstable_renderSubtreeIntoContainer} from "react-dom";
+
 const authToken = sessionStorage.getItem('bakrinAuthToken');
-export const authParams = '?auth_token=' + authToken
+export const authParams = (uri: string) => uri + '?auth_token=' + authToken

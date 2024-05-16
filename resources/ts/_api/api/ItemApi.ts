@@ -5,28 +5,32 @@ import {authParams} from "@/ts/_api/api/AuthParams";
 const params = authParams
 
 const getItem = async (itemId:string) => {
-    const{ data } = await axios.get<ItemType>(`/api/items/getItem/${itemId}`);
+    const uri = authParams(`/api/items/getItem/${itemId}`)
+    const{ data } = await axios.get<ItemType>(uri);
     return data;
 }
 
 const getFavoriteItems = async () => {
-    console.log(params)
-    const{ data } = await axios.get<ItemType[]>(`api/items/getFavoriteItems${params}`);
+    const uri = authParams('/api/items/getFavoriteItems/')
+    const{ data } = await axios.get<ItemType[]>(uri);
     return data;
 }
 
 const getNewArrivalItems = async () => {
-    const{ data } = await axios.get<ItemType[]>(`api/items/getNewArrival${params}`);
+    const uri = authParams('/api/items/getNewArrival/')
+    const{ data } = await axios.get<ItemType[]>(uri);
     return data;
 }
 
 const getSeasonItems = async () => {
-    const{ data } = await axios.get<ItemType[]>(`api/items/getSeasonItems${params}`);
+    const uri = authParams('/api/items/getSeasonItems/')
+    const{ data } = await axios.get<ItemType[]>(uri);
     return data;
 }
 
 const getWantItems = async () => {
-    const{ data } = await axios.get<ItemType[]>(`api/items/getWantItems${params}`);
+    const uri = authParams('/api/items/getWantItems/')
+    const{ data } = await axios.get<ItemType[]>(uri);
     return data;
 }
 
