@@ -18,10 +18,9 @@ class ItemsController extends Controller
         return response()->json($items);
     }
 
-    public function getWantItems(): JsonResponse
+    public function getWantItems(Request $req): JsonResponse
     {
-        //TODO: ユーザーのIDはログイン処理を完成させてから設定すること。
-        $user = Producer::inRandomOrder()->first();
+        $user = Producer::where('loginToken', $req->auth_token)->first();
         $userUuid = $user->uuid;
         $items = Item::with('wantItems')->whereHas('wantItems', function($q) use($userUuid){
             $q->where('myUuid', $userUuid);
@@ -44,10 +43,9 @@ class ItemsController extends Controller
         return response()->json($items);
     }
 
-    public function getFavoriteItems(): JsonResponse
+    public function getFavoriteItems(Request $req): JsonResponse
     {
-        //TODO: ユーザーのIDはログイン処理を完成させてから設定すること。
-        $user = Producer::inRandomOrder()->first();
+        $user = Producer::where('loginToken', $req->auth_token)->first();
         $userUuid = $user->uuid;
         $itemQuery = Item::with('favoriteItems')->whereHas('favoriteItems', function($q) use($userUuid){
             $q->where('producerUuid', $userUuid);
