@@ -4,12 +4,11 @@ import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import {ListItemType} from "@/ts/appMain/components/features/myItem/list/type/Types";
 import {GetPlanImage} from "@/ts/functions/GetPlanImage";
-import Bronze from "@/images/medal/bronze.png";
+
 import {useNavigate} from "react-router-dom";
 
 const ListItem = (props:ListItemType) => {
     const plan = GetPlanImage(props.planNumber)
-    const planImage = plan ? plan.img : Bronze;
     const planName = plan ? plan.name : 'お手軽プラン'
     const navigate = useNavigate()
 
@@ -25,7 +24,6 @@ const ListItem = (props:ListItemType) => {
             <div className="flex items-center justify-between w-[calc(100%_-_156px)]">
                 <p>{props.name}</p>
                 <div className="flex items-center justify-between">
-                    <img src={planImage} className="w-[24px]" alt={'medal'}/>
                     <p className="ml-2">【{planName}】</p>
                 </div>
             </div>

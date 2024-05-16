@@ -8,7 +8,6 @@ import {FavoriteButton} from "@/ts/appMain/components/_ui/button/Button";
 import {GetPlanImage} from "@/ts/functions/GetPlanImage";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { tv } from "tailwind-variants";
-import {PlanType} from "@/ts/types/PlanType";
 
 const planTv = tv({
     base:`

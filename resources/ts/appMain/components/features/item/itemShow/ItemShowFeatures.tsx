@@ -5,20 +5,17 @@ import ItemShowImages from "@/ts/appMain/components/_common/ItemDescription/Item
 import ItemShowDescription from "@/ts/appMain/components/_common/ItemDescription/ItemShowDescription";
 import {useGetItem} from "@/ts/hooks/items/item/getItem";
 import {useParams} from "react-router-dom";
-import {useCurrentGetItem} from "@/ts/hooks/items/item/useCurrentGetItem";
 
 
 const ItemShowFeatures = () => {
     const params = useParams()
-    const { isLoading } = useGetItem(params.itemId);
-    const item = useCurrentGetItem(params.itemId);
+    const { data: item, status} = useGetItem(params.itemId);
 
-    if (isLoading){
+    if (status === 'loading'){
         return('isLoading')
     }else if(!item){
         return('not found')
     } else{
-        console.log(item)
         return (
             <MainLayout>
                 <Breadcrumb/>
