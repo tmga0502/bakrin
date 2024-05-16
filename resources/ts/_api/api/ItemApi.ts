@@ -2,10 +2,8 @@ import axios from "axios";
 import {ItemType} from "@/ts/types/ItemType";
 import {authParams} from "@/ts/_api/api/AuthParams";
 
-const params = authParams
-
-const getItem = async (itemId:string) => {
-    const uri = authParams(`/api/items/getItem/${itemId}`)
+const getItem = async (itemUuid:string) => {
+    const uri = authParams(`/api/items/getItem/${itemUuid}`)
     const{ data } = await axios.get<ItemType>(uri);
     return data;
 }

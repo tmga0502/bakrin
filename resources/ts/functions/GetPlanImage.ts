@@ -5,9 +5,9 @@ const GetPlanImage = (planNumber: number) => {
     if (plan === undefined){
         plan = {
             number: -1,
-            name: 'デフォルトプラン',
-            displayName: 'デフォルト',
-            color: 'gray',
+            name: '',
+            displayName: '',
+            color: 'white',
         }
     }
     return plan

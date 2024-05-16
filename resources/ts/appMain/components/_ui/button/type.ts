@@ -30,8 +30,12 @@ type SubmitButtonType = {
 }
 
 type FavoriteButtonType = {
+    value: string,
     status: boolean,
-    setFavoriteStatus: any,
+    type : 'button' | 'submit',
+    size? : 'sm' | 'md' | 'lg' ,
+    width? : 'full' | 'half',
+    onClick?: any,
 }
 
 

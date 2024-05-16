@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FavoriteItemsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProducersController;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ Route::group(['middleware'=> 'auth.api'], function() {
         Route::get('/getWantItems', [ItemsController::class, 'getWantItems'])->name('getWantItems');//欲しいアイテムリスト
         Route::get('/getSeasonItems', [ItemsController::class, 'getSeasonItems'])->name('getSeasonItems');//旬のアイテムリスト
         Route::get('/getFavoriteItems', [ItemsController::class, 'getFavoriteItems'])->name('getFavoriteItems');//お気に入り登録済みアイテムリスト
-        Route::get('/getItem/{itemId}', [ItemsController::class, 'getItem'])->name('getItem');//アイテム詳細
+        Route::get('/getItem/{itemUuid}', [ItemsController::class, 'getItem'])->name('getItem');//アイテム詳細
     });
 
     //生産者関連
@@ -35,5 +36,11 @@ Route::group(['middleware'=> 'auth.api'], function() {
         Route::get('/getPopularProducers', [ProducersController::class, 'getPopularProducers'])->name('getPopularProducers');//人気の生産者
     });
 
+    //お気に入り【アイテム】
+    Route::group(['prefix' => 'favoriteItem'], function () {
+        Route::get('/getState/{itemUuid}', [FavoriteItemsController::class, 'getState']);
+        Route::post('/register', [FavoriteItemsController::class, 'register']);
+        Route::post('/deregister', [FavoriteItemsController::class, 'deregister']);
+    });
 
 });

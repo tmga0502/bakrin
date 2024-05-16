@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    AuthButtonType,
     FavoriteButtonType,
     IconButtonType,
     MainButtonType,
@@ -44,18 +43,6 @@ const button = tv({
     },
 });
 
-const AuthButton = (props: AuthButtonType) => {
-
-    return (
-        <button className={`
-            w-full bg-green-500 text-white rounded-md py-2 mt-4
-            hover:bg-green-600`
-        }>
-            {props.name}
-        </button>
-    );
-};
-
 const MoreButton = (props: MoreButtonType) => {
     return(
         <Link to={props.link} className="hover:opacity-80">
@@ -98,38 +85,50 @@ const SubmitButton = (props: SubmitButtonType) => {
     )
 }
 
-const FavoriteButton = (props: FavoriteButtonType) => {
-    let btnColor = 'bg-pink-500'
-    let btnBorderColor = 'border-pink-500'
-    let textColor = 'text-white'
-    let btnValue = 'お気に入りを解除'
-    let heartElement = <FaHeart style={{ color:'white', fontSize: '1.2rem' }}/>
 
-    if(!props.status){
-        btnColor = 'bg-transparent'
-        textColor = 'text-black'
-        btnValue = 'お気に入り登録'
-        heartElement = <FaRegHeart style={{ color:'rgb(236 72 153)', fontSize: '1.2rem' }}/>
-    }
+const favoriteButton = tv({
+    base: "w-1/2 border-pink-500 border-solid border-2 py-2 px-4 rounded-xl hover:opacity-8",
+    variants: {
+        status: {
+            true: "bg-pink-500 text-white",
+            false: "text-pink-500",
+        },
+        size: {
+            sm: "py-1 px-2 rounded-md",
+            md: "py-2 px-4 rounded-xl",
+            lg: "py-4 px-6 rounded-2xl",
+        },
+        width:{
+            full: "w-full",
+            half: "w-1/2",
+            none: "",
+        },
+        disable: {
+            true: "pointer-events-none opacity-20",
+        },
+        defaultVariants: {
+            status: 'true',
+            size: 'md',
+            width: 'none'
+        },
+    },
+});
 
-    const changeStatus = () => {
-        props.setFavoriteStatus(!props.status)
-    }
-
+const ItemFavoriteButton = (props: FavoriteButtonType) => {
+    const element = props.status ? <FaHeart style={{ color:'white', fontSize: '1.2rem' }}/> :<FaRegHeart style={{ color:'rgb(236 72 153)', fontSize: '1.2rem' }}/>
     return(
-        <button className={`w-1/2 ${btnColor} ${btnBorderColor} border-solid border-2 ${textColor} rounded-2xl py-2 hover:opacity-80`} onClick={changeStatus}>
+        <button className={favoriteButton({width: props.width, size: props.size, status: props.status})} onClick={props.onClick}>
             <div className={'flex items-center justify-center'}>
-                <span className={'mr-2'}>{btnValue}</span>{heartElement}
+                <span className={'mr-2'}>{props.value}</span>{element}
             </div>
         </button>
     )
 }
 
 export {
-    AuthButton,
     MoreButton,
     MainButton,
     IconButton,
     SubmitButton,
-    FavoriteButton,
+    ItemFavoriteButton
 };

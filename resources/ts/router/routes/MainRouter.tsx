@@ -35,8 +35,8 @@ const MainRouter = () => {
             {/* 商品関連 */}
             <Route path="/items">
                 <Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
-                <Route path=":itemId" element={  <GuardRoute component={<ItemShow />} /> } />
-                <Route path=":itemId/request" element={ <GuardRoute component={<ItemRequest />}/> } />
+                <Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
+                <Route path=":itemUuid/request" element={ <GuardRoute component={<ItemRequest />}/> } />
             </Route>
 
             {/* 生産者関連 */}

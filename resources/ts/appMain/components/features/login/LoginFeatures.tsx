@@ -6,12 +6,16 @@ import {MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {useForm} from "react-hook-form";
 import {useLogin} from "@/ts/_api/query/AuthQuery";
 
+type FormType = {
+    email: string,
+    password: string
+}
+
 const LoginFeatures = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm<FormType>()
     const login = useLogin()
     const onSubmit = handleSubmit((data) => {
-        console.log(data)
         // setIsLoading(true)
         login.mutate(data)
     })
@@ -31,7 +35,7 @@ const LoginFeatures = () => {
                         <FormGroup>
                             <FormLabel label={'メールアドレス'} for={'email'}/>
                             <input className={'inputStyle'} id={'email'} {...register('email', {required:true})}/>
-                            {errors.name && (<p className="text-danger text-sm">入力必須です</p>)}
+                            {errors.email && (<p className="text-danger text-sm">入力必須です</p>)}
                         </FormGroup>
                         <FormGroup>
                             <FormLabel label={'パスワード'} for={'password'}/>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class FavoriteItem extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'myUuid',
+        'itemUuid',
+    ];
 }

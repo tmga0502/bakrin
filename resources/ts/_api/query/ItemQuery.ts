@@ -2,8 +2,8 @@ import {useQuery} from "react-query";
 import * as api from "@/ts/_api/api/ItemApi";
 
 
-const useGetItem = (itemId: any) => {
-    return useQuery(['item', itemId], ()=>api.getItem(itemId))
+const useGetItem = (itemUuid: any) => {
+    return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid))
 }
 
 const useGetFavoriteItems = () => {

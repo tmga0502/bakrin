@@ -5,15 +5,17 @@ import ItemShowImages from "@/ts/appMain/components/_common/ItemDescription/Item
 import ItemShowDescription from "@/ts/appMain/components/_common/ItemDescription/ItemShowDescription";
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/ts/_api/query/ItemQuery";
+import {useGetFavoriteItemState} from "@/ts/_api/query/FavoriteItemQuery";
 
 
 const ItemShowFeatures = () => {
     const params = useParams()
-    const { data: item, status} = useGetItem(params.itemId);
+    const { data: item, status: itemStatus} = useGetItem(params.itemUuid);
+    const { data: favoriteItemState, status: favoriteItemStateStatus} = useGetFavoriteItemState(params.itemUuid)
 
-    if (status === 'loading'){
+    if (itemStatus === 'loading' || favoriteItemStateStatus === 'loading'){
         return('isLoading')
-    }else if(!item){
+    }else if(!item || favoriteItemState === undefined){
         return('not found')
     } else{
         return (
@@ -21,7 +23,7 @@ const ItemShowFeatures = () => {
                 <Breadcrumb/>
                 <div className="grid gap-4 lg:grid-cols-2">
                     <ItemShowImages thumbnail={item.thumbnail} images={item.images}/>
-                    <ItemShowDescription requestPageState={false} data={item}/>
+                    <ItemShowDescription requestPageState={false} data={item} favoriteItemState={favoriteItemState}/>
                 </div>
             </MainLayout>
         );

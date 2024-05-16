@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FavoriteItem;
 use App\Models\Item;
 use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
@@ -59,9 +61,9 @@ class ItemsController extends Controller
     }
 
 
-    public function getItem($itemID): JsonResponse
+    public function getItem($itemUuid): JsonResponse
     {
-        $item = Item::with(['producer', 'category', 'variety', 'unit', 'guideUnit', 'images'])->find($itemID);
+        $item = Item::with(['producer', 'category', 'variety', 'unit', 'guideUnit', 'images'])->where('uuid', $itemUuid)->first();
         return response()->json($item);
     }
 }

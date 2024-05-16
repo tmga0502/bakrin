@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     ProducerPanelProps,
     ProducerShowType,
 } from "@/ts/appMain/components/_common/imageListItem/type";
 import {Link} from "react-router-dom";
-import {FavoriteButton} from "@/ts/appMain/components/_ui/button/Button";
+import {ItemFavoriteButton} from "@/ts/appMain/components/_ui/button/Button";
 import {GetPlanImage} from "@/ts/functions/GetPlanImage";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { tv } from "tailwind-variants";
@@ -22,15 +22,18 @@ const planTv = tv({
             green: "bg-green-500 before:bg-green-500 after:bg-green-500",
             white: "bg-white before:bg-white-500 after:bg-white-500 text-black",
         },
+        defaultVariants: {
+            color: 'red'
+        },
     },
 });
 
 const ItemListPanel = ({data}: any) => {
     const plan = GetPlanImage(data.planId)
-    const color = plan !== undefined ? plan.color : 'red'
+    const color: any = plan !== undefined ? plan.color : 'red'
 
     return (
-        <Link to={'items/'+data.id}>
+        <Link to={'items/'+data.uuid}>
             <div className="relative w-full before:content-[''] before:block before:pt-[100%]">
                 <div
                     className={planTv({ color: color })}>
@@ -68,7 +71,6 @@ const ProducerPanel = ({data}:ProducerPanelProps) => {
 }
 
 const ProducerShowPanel = (props: ProducerShowType) => {
-    const [favoriteStatus, setFavoriteStatus] = useState(false)
     return (
         <div className="p-4 border-2 bg-white md:flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -82,7 +84,7 @@ const ProducerShowPanel = (props: ProducerShowType) => {
                 </div>
             </div>
             <div className="text-center mt-4 md:w-2/3 md:text-right md:mt-0">
-                <FavoriteButton status={favoriteStatus} setFavoriteStatus={setFavoriteStatus}/>
+                <ItemFavoriteButton value={'登録'} status={false} type={'button'}/>
             </div>
         </div>
     )
