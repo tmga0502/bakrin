@@ -12,7 +12,7 @@ import {
     useGetSeasonItems,
     useGetWantItems
 } from "@/ts/_api/query/ItemQuery";
-import {useGetPopularProducers} from "@/ts/hooks/producers/popular /getPopularProducers";
+import {useGetPopularProducers} from "@/ts/_api/query/ProducerQuery";
 
 const HomeFeatures = () => {
     //新着アイテム
