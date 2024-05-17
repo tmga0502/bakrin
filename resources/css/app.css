@@ -39,5 +39,9 @@
 }
 
 .radioStyle{
-    @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:outline-0 focus-visible:outline-0 accent-mainGreen
+    @apply w-4 h-4 bg-gray-100 border-gray-300 focus:ring-0 focus:outline-0 focus-visible:outline-0
+}
+
+.radioAccent{
+    accent-color: green
 }
