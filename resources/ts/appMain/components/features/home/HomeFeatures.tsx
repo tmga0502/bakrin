@@ -13,6 +13,7 @@ import {
     useGetWantItems
 } from "@/ts/_api/query/ItemQuery";
 import {useGetPopularProducers} from "@/ts/_api/query/ProducerQuery";
+import Loader from "@/ts/appMain/components/_common/loader/Loader";
 
 const HomeFeatures = () => {
     //新着アイテム
@@ -33,7 +34,7 @@ const HomeFeatures = () => {
         favoriteStatus === 'loading' ||
         popularStatus === 'loading'
     ) {
-        return 'Now Loading.......';
+        return <Loader/>;
     }else{
         return(
             <MainLayout>

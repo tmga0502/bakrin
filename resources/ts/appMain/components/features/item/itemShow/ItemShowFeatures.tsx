@@ -6,6 +6,7 @@ import ItemShowDescription from "@/ts/appMain/components/features/item/itemShow/
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/ts/_api/query/ItemQuery";
 import {ItemShowModeProvider} from "@/ts/appMain/components/features/item/itemShow/hooks/ItemContext";
+import Loader from "@/ts/appMain/components/_common/loader/Loader";
 
 
 const ItemShowFeatures = () => {
@@ -13,9 +14,9 @@ const ItemShowFeatures = () => {
     const { data: item, status: itemStatus} = useGetItem(params.itemUuid);
 
     if (itemStatus === 'loading'){
-        return('isLoading')
+        return <Loader/>;
     }else if(!item){
-        return('not found')
+        return <Loader/>;
     } else{
         return (
             <MainLayout>
