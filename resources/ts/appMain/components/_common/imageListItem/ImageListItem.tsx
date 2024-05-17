@@ -34,14 +34,14 @@ const ItemListPanel = ({data}: any) => {
 
     return (
         <Link to={'items/'+data.uuid}>
-            <div className="relative w-full before:content-[''] before:block before:pt-[100%]">
+            <div className="relative w-full before:content-[''] before:block before:pt-[100%] rounded-md">
                 <div
                     className={planTv({ color: color })}>
                     {plan && plan.displayName}
                 </div>
                 <LazyLoadImage
                     src={data.thumbnail}
-                    className="absolute w-full h-full top-0 left-0 object-cover object-center"
+                    className="absolute w-full h-full top-0 left-0 object-cover object-center rounded-md"
                     alt={data.name}
                 />
             </div>
@@ -57,7 +57,7 @@ const ProducerPanel = ({data}:ProducerPanelProps) => {
                 <div className="relative w-full before:content-[''] before:block before:pt-[100%]">
                     <LazyLoadImage
                         src={data.imgPath}
-                        className="absolute w-full h-full top-0 left-0 object-cover object-center"
+                        className="absolute w-full h-full top-0 left-0 object-cover object-center rounded-tl-md rounded-tr-md"
                         alt={data.organizationName}
                     />
                 </div>

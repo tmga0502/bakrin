@@ -5,19 +5,27 @@ import {MainLayout} from "@/ts/appMain/components/_common/layout/Layout";
 import Data from "@/ts/appMain/components/features/profile/components/Data";
 import Password from "@/ts/appMain/components/features/profile/components/Password";
 import PaymentMethod from "@/ts/appMain/components/features/profile/components/PaymentMethod";
+import {useGetUser} from "@/ts/_api/query/AuthQuery";
+import Loader from "@/ts/appMain/components/_common/loader/Loader";
 
 const ProfileFeature = () => {
-    return (
-        <MainLayout>
-            <PageTitle en={'PROFILE'} jp={'基本情報'}/>
-            <Breadcrumb/>
-            <div className="max-w-[500px] mx-auto">
-                <Data/>
-                <Password/>
-                <PaymentMethod/>
-            </div>
-        </MainLayout>
-    );
+
+    const { data, status} = useGetUser();
+    if(status === 'success'){
+        return (
+            <MainLayout>
+                <PageTitle en={'PROFILE'} jp={'基本情報'}/>
+                <Breadcrumb/>
+                <div className="max-w-[500px] mx-auto">
+                    <Data data={data}/>
+                    <Password/>
+                    <PaymentMethod/>
+                </div>
+            </MainLayout>
+        );
+    }else{
+        return <Loader/>
+    }
 };
 
 export default ProfileFeature;

@@ -15,6 +15,7 @@ type MainButtonType = {
     size? : 'sm' | 'md' | 'lg' ,
     width? : 'full' | 'half',
     onClick?: any,
+    disabled? : boolean,
 }
 
 type IconButtonType = {

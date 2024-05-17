@@ -34,7 +34,7 @@ const button = tv({
             none: "",
         },
         disable: {
-            true: "pointer-events-none opacity-20",
+            true: "bg-darkGreen opacity-50 hover:opacity-50",
         },
         defaultVariants: {
             size: 'md',
@@ -56,7 +56,7 @@ const MoreButton = (props: MoreButtonType) => {
 
 const MainButton = (props: MainButtonType) => {
     return(
-        <button type={props.type} className={button({width: props.width, size: props.size, color: props.color})} onClick={props.onClick}>
+        <button type={props.type} className={button({width: props.width, size: props.size, color: props.color, disable:props.disabled })} onClick={props.onClick} disabled={props.disabled}>
             {props.value}
         </button>
     )

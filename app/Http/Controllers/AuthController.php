@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
+    public function getUser(Request $req): JsonResponse
+    {
+        $user = Producer::where('loginToken', $req->auth_token)->first();
+        return response()->json($user);
+    }
+
     public function login(Request $req): JsonResponse
     {
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])) {

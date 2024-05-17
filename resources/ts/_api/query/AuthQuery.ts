@@ -2,7 +2,7 @@ import {SetStateAction} from "react";
 import {useAuth} from "@/ts/hooks/AuthContext";
 import {useIsLoading} from "@/ts/hooks/IsLoadingContext";
 import {useNavigate} from "react-router-dom";
-import {useMutation} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import * as api from "@/ts/_api/api/AuthApi";
 import {toast} from "react-toastify";
 import {AuthToken} from "@/ts/types/AuthTokenType";
@@ -19,6 +19,9 @@ const removeSession  = async (setIsAuth: { (value: SetStateAction<boolean>): voi
     setIsAuth(false)
 }
 
+const useGetUser = () => {
+    return useQuery('user', api.getUser)
+}
 
 const useLogin = () => {
     const { setIsAuth } = useAuth()
@@ -61,6 +64,7 @@ const useLogout = () => {
 }
 
 export {
+    useGetUser,
     useLogin,
     useLogout,
 }

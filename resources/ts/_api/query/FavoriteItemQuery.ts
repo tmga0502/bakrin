@@ -13,7 +13,7 @@ const useRegisterFavoriteItem = () => {
     return useMutation(api.register, {
         onSuccess: () => {
             // setIsLoading(false)
-            queryClient.invalidateQueries('art')
+            queryClient.invalidateQueries('favorite')
             toast.success('お気に入り登録しました。')
         },
         onError: () => {
