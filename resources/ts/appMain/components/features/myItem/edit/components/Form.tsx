@@ -7,28 +7,13 @@ import {Plan} from "@/ts/_constants/Plan";
 import {Month, MonthPart} from "@/ts/_constants/Date";
 import Status from "@/ts/appMain/components/_ui/radioPanel/Status";
 import {MdClose, MdOutlineCircle} from "react-icons/md";
+import {ItemType} from "@/ts/types/ItemType";
 
-const Form = () => {
-    const {register, watch, control, handleSubmit, formState:{errors}} = useForm({
-        defaultValues: {
-            category: '野菜',
-            name:'',
-            count: '',
-            unit: '',
-            guideCount: '',
-            guideUnit: '',
-            plan: 'お手軽プラン',
-            shippingStart: '1月',
-            shippingStartPart: '上旬',
-            shippingEnd: '1月',
-            shippingEndPart: '上旬',
-            status: '0',
-            img_paths: [{ img_pathValue: "" }]
-        }
-    })
+const Form = (props: {data:ItemType}) => {
+    const {register, watch, control, handleSubmit, formState:{errors}} = useForm({defaultValues:props.data})
     const { fields, append, remove } = useFieldArray({
         control,
-        name: "img_paths"
+        name: "images"
     });
     const [count, setCount] = useState(0);
     const countUp = () => setCount(count + 1);
@@ -43,13 +28,13 @@ const Form = () => {
     const onSubmit = handleSubmit((data)=> {
         console.log(data);
     })
-
+console.log(props.data)
     return (
         <form onSubmit={onSubmit}>
 
             <FormGroup>
                 <FormLabel label={'カテゴリー'} for={'category'}/>
-                <select id={'category'} className="selectBoxStyle" {...register('category', {required: true})}>
+                <select id={'category'} className="selectBoxStyle" defaultValue={props.data.category.name} {...register('category', {required: true})}>
                     {Category.map((category: string, index: number) => (
                         <option key={index}>{category}</option>
                     ))}
@@ -58,7 +43,7 @@ const Form = () => {
 
             <FormGroup>
                 <FormLabel label={'アイテム名'} for={'name'} required={true}/>
-                <input id={'name'} type={'text'} className={'inputStyle'} {...register('name', {required: true})}/>
+                <input id={'name'} type={'text'} className={'inputStyle'} defaultValue={props.data.name} {...register('name', {required: true})}/>
                 {errors.name && (
                     <p className="text-sm text-red-500">入力必須です</p>
                 )}
@@ -73,7 +58,7 @@ const Form = () => {
                     </div>
                     <div className="w-1/2">
                         <FormLabel label={'単位'} for={'unit'}/>
-                        <select id={'unit'} className="selectBoxStyle" {...register('unit', {required: true})}>
+                        <select id={'unit'} className="selectBoxStyle" defaultValue={props.data.unit.name} {...register('unit', {required: true})}>
                             {Unit.map((unit: string, index: number) => (
                                 <option key={index}>{unit}</option>
                             ))}

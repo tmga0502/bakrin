@@ -2,7 +2,7 @@ import React from 'react';
 import {AuthProvider} from "./hooks/AuthContext";
 import {IsLoadingProvider} from "./hooks/IsLoadingContext";
 import Router from "./router/Router";
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
 
@@ -10,8 +10,8 @@ const App: React.FC = () => {
 
     const queryClient = new QueryClient({
         defaultOptions: {
-            queries: {
-                retry: false,
+            queries  : {
+                retry               : false,
                 refetchOnWindowFocus: false,
             },
             mutations: {
@@ -21,14 +21,14 @@ const App: React.FC = () => {
     })
 
     return (
-        <IsLoadingProvider>
-            <AuthProvider>
-                <QueryClientProvider client={queryClient}>
-                    <Router />
+        <QueryClientProvider client={queryClient}>
+            <IsLoadingProvider>
+                <AuthProvider>
+                    <Router/>
                     <ToastContainer hideProgressBar={true}/>
-                </QueryClientProvider>
-            </AuthProvider>
-        </IsLoadingProvider>
+                </AuthProvider>
+            </IsLoadingProvider>
+        </QueryClientProvider>
     );
 }
 

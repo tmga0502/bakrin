@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
 class ItemsController extends Controller
 {
 
+    public function getMyItems(Request $req): JsonResponse
+    {
+        $token = $req->auth_token;
+        $user = Producer::where('loginToken', $token)->first();
+        $items = Item::where('producerUuid', $user->uuid)->get();
+        return response()->json($items);
+    }
+
     public function getNewArrival(): JsonResponse
     {
         $items = Item::orderBy('created_at', 'DESC')->take(50)->get();

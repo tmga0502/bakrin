@@ -1,5 +1,5 @@
 import React from 'react';
-import ProducerShowFeatures from "@/ts/appMain/components/features/product/producerShow/ProducerShowFeatures";
+import ProducerShowFeatures from "@/ts/appMain/components/features/producer/producerShow/ProducerShowFeatures";
 
 const ProducerShow = () => {
     return (

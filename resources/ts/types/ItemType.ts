@@ -23,9 +23,9 @@ export type ItemType = {
     status           : number,
     thumbnail        : string,
     plan             : PlanType[],
-    category         : ItemCategoryType[],
+    category         : ItemCategoryType,
     unit             : UnitType,
-    guide_unit       : UnitType,
+    guideUnit        : UnitType,
     images           : ItemImageType[],
     producer         : ProducerType,
 }

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 
-Route::group(['middleware'=> 'auth.api'], function() {
+Route::group(['middleware'=> 'auth:sanctum'], function() {
     //アイテム関連
     Route::group(['prefix' => 'items'], function () {
         Route::get('/getNewArrival', [ItemsController::class, 'getNewArrival']);//新着アイテムリスト
@@ -30,11 +30,14 @@ Route::group(['middleware'=> 'auth.api'], function() {
         Route::get('/getSeasonItems', [ItemsController::class, 'getSeasonItems']);//旬のアイテムリスト
         Route::get('/getFavoriteItems', [ItemsController::class, 'getFavoriteItems']);//お気に入り登録済みアイテムリスト
         Route::get('/getItem/{itemUuid}', [ItemsController::class, 'getItem']);//アイテム詳細
+        Route::get('/getMyItems', [ItemsController::class, 'getMyItems']);//自分のアイテム一覧
     });
 
     //生産者関連
     Route::group(['prefix' => 'producers'], function () {
+        Route::get('getProducer', [ProducersController::class, 'getProducer']);
         Route::get('/getPopularProducers', [ProducersController::class, 'getPopularProducers'])->name('getPopularProducers');//人気の生産者
+        Route::get('/getFavoriteProducers', [ProducersController::class, 'getFavoriteProducers'])->name('getFavoriteProducers');//お気に入り登録済みの生産者
     });
 
     //お気に入り【アイテム】

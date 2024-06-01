@@ -8,6 +8,13 @@ const getPopularProducers = async () => {
     return data;
 }
 
+const getFavoriteProducers = async () => {
+    const uri = authParams('/api/producers/getFavoriteProducers')
+    const{ data } = await axios.get<ProducerType[]>(uri);
+    return data;
+}
+
 export {
     getPopularProducers,
+    getFavoriteProducers,
 }

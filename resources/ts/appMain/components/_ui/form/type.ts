@@ -24,9 +24,11 @@ type InputType = {
 }
 
 type RadioType = {
-    label: string,
-    name: string,
-    id: string,
+    id              : string,
+    label           : string,
+    name            : string,
+    defaultChecked? : boolean,
+    value?          : string | number,
 }
 
 type TextareaType = {

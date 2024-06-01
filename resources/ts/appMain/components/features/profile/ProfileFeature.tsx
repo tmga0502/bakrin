@@ -19,7 +19,7 @@ const ProfileFeature = () => {
                 <div className="max-w-[500px] mx-auto">
                     <Data data={data}/>
                     <Password/>
-                    <PaymentMethod/>
+                    <PaymentMethod data={data}/>
                 </div>
             </MainLayout>
         );

@@ -19,14 +19,8 @@ class AuthController extends Controller
     public function login(Request $req): JsonResponse
     {
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
-            $token = Auth::user()->createToken(Auth::user()->email . '_Token')->plainTextToken;
-            //トークンをDBに保存
-            Auth::user()->fill(['loginToken'=>$token])->save();
-            //ログイン
-            return response()->json([
-                'organizationName' => Auth::user()->organizationName,
-                'token' => $token
-            ]);
+            $req->session()->regenerate();
+            return response()->json(Auth::user());
         }
 
         return response()->json([], 401);
@@ -35,8 +29,9 @@ class AuthController extends Controller
 
     public function logout(Request $req): JsonResponse
     {
-        $user = Producer::where('loginToken', $req->auth_token)->first();
-        $user->fill(['loginToken' => null])->save();
+        Auth::logout();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
 
         return response()->json(true);
     }

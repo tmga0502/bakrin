@@ -1,11 +1,11 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom";
+import React, {ReactElement} from 'react';
+import {Navigate, Route, Routes} from "react-router-dom";
 import Login from "@/ts/appMain/components/pages/Login";
 import Home from "@/ts/appMain/components/pages/Home";
 import ItemList from "@/ts/appMain/components/pages/item/ItemList";
 import ItemShow from "@/ts/appMain/components/pages/item/ItemShow";
-import ProducerList from "@/ts/appMain/components/pages/poduct/ProducerList";
-import ProducerShow from "@/ts/appMain/components/pages/poduct/ProducerShow";
+import ProducerList from "@/ts/appMain/components/pages/poducer/ProducerList";
+import ProducerShow from "@/ts/appMain/components/pages/poducer/ProducerShow";
 import Contact from "@/ts/appMain/components/pages/Contact";
 import InfoShow from "@/ts/appMain/components/pages/info/InfoShow";
 import InfoList from "@/ts/appMain/components/pages/info/InfoList";
@@ -21,9 +21,19 @@ import TradeShow from "@/ts/appMain/components/pages/trade/TradeShow";
 import MyItemList from "@/ts/appMain/components/pages/myitem/list/MyItemList";
 import MyItemNewFeatures from "@/ts/appMain/components/features/myItem/new/MyItemNewFeatures";
 import MyItemEditFeatures from "@/ts/appMain/components/features/myItem/edit/MyItemEditFeatures";
-import GuardRoute from "@/ts/router/components/guardRoute/GuardRoute";
+import {useAuth} from "@/ts/hooks/AuthContext";
+import Loader from "@/ts/appMain/components/_common/loader/Loader";
 
 const MainRouter = () => {
+
+    const { isAuth, isLoading } = useAuth();
+
+    const GuardRoute = (props : {component: ReactElement}) => {
+        if (isLoading) return <Loader/>; // 認証状態が確定するまでローディング表示
+        if(!isAuth) return<Navigate to="/login" />
+        return <>{ props.component }</>
+    }
+
     return (
         <Routes>
             <Route path="/login" element={  <Login /> } />
@@ -48,7 +58,7 @@ const MainRouter = () => {
             <Route path="/myitem">
                 <Route index={true} element={<GuardRoute component={<MyItemList />}/> } />
                 <Route path="new" element={<GuardRoute component={<MyItemNewFeatures />}/> } />
-                <Route path="edit/:itemId" element={<GuardRoute component={<MyItemEditFeatures />}/> } />
+                <Route path="edit/:itemUuid" element={<GuardRoute component={<MyItemEditFeatures />}/> } />
             </Route>
 
             {/*  マイページ  */}

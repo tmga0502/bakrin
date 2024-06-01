@@ -33,7 +33,7 @@ const ItemListPanel = ({data}: any) => {
     const color: any = plan !== undefined ? plan.color : 'red'
 
     return (
-        <Link to={'items/'+data.uuid}>
+        <Link to={'/items/'+data.uuid}>
             <div className="relative w-full before:content-[''] before:block before:pt-[100%] rounded-md">
                 <div
                     className={planTv({ color: color })}>
@@ -52,7 +52,7 @@ const ItemListPanel = ({data}: any) => {
 
 const ProducerPanel = ({data}:ProducerPanelProps) => {
     return(
-        <Link to={'producers/'+data.id}>
+        <Link to={'/producers/'+data.id}>
             <div className="border-2 rounded-md shadow-lg">
                 <div className="relative w-full before:content-[''] before:block before:pt-[100%]">
                     <LazyLoadImage

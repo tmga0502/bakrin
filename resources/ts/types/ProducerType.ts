@@ -13,5 +13,5 @@ export type ProducerType = {
     email            : string,
     login_id         : string,
     password         : string,
-    paymentMethod    : string,
+    paymentMethod    : number,
 }

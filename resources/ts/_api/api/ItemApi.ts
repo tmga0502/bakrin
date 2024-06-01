@@ -8,6 +8,12 @@ const getItem = async (itemUuid:string) => {
     return data;
 }
 
+const getMyItems = async () => {
+    const uri = authParams(`/api/items/getMyItems`)
+    const{ data } = await axios.get<ItemType[]>(uri);
+    return data;
+}
+
 const getFavoriteItems = async () => {
     const uri = authParams('/api/items/getFavoriteItems/')
     const{ data } = await axios.get<ItemType[]>(uri);
@@ -35,6 +41,7 @@ const getWantItems = async () => {
 
 export {
     getItem,
+    getMyItems,
     getFavoriteItems,
     getNewArrivalItems,
     getSeasonItems,

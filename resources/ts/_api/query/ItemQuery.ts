@@ -6,6 +6,10 @@ const useGetItem = (itemUuid: any) => {
     return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid))
 }
 
+const useGetMyItems = () => {
+    return useQuery(['myItems'], ()=>api.getMyItems())
+}
+
 const useGetFavoriteItems = () => {
     return useQuery('favoriteItems', api.getFavoriteItems)
 }
@@ -25,6 +29,7 @@ const useGetWantItems = () => {
 
 export {
     useGetItem,
+    useGetMyItems,
     useGetFavoriteItems,
     useGetNewArrivalItems,
     useGetSeasonItems,

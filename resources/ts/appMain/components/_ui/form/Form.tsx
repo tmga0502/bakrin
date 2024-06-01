@@ -41,7 +41,7 @@ const TextInput = (props: InputType) => {
 const RadioBox = (props: RadioType) => {
     return(
         <div className="flex items-center mb-4">
-            <input id={props.id} type="radio" value="" name="default-radio" className="radioStyle radioAccent"/>
+            <input id={props.id} type="radio" value={props.value} name="default-radio" className="radioStyle radioAccent" defaultChecked={props.defaultChecked}/>
             <label htmlFor={props.id} className="ms-2 text-sm font-medium">{props.label}</label>
         </div>
     )

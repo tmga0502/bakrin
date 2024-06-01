@@ -1,5 +1,5 @@
 import React from 'react';
-import ProducerListFeatures from "@/ts/appMain/components/features/product/producerList/ProducerListFeatures";
+import ProducerListFeatures from "@/ts/appMain/components/features/producer/producerList/ProducerListFeatures";
 
 const ProducerList = () => {
     return (
