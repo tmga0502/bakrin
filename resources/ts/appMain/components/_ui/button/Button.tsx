@@ -13,7 +13,7 @@ import { SizeMapping} from "@/ts/appMain/components/_ui/button/function";
 import { tv } from "tailwind-variants";
 
 const button = tv({
-    base: "block bg-mainGreen text-white py-2 px-4 rounded-xl hover:opacity-80",
+    base: "bg-mainGreen text-white py-2 px-4 rounded-xl hover:opacity-80",
     variants: {
         color: {
             mainGreen: "bg-mainGreen",

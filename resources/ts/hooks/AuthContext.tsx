@@ -30,7 +30,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         // 認証状態とユーザー情報を確認
         axios.get('/api/producers/getProducer')
             .then(response => {
-                console.log(response.data);
                 setIsAuth(true);
                 setUserData(response.data);
                 setIsLoading(false);
