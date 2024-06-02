@@ -134,10 +134,10 @@ console.log(props.data)
             <FormGroup>
                 <FormLabel label={'ステータス'} for={'status'} required={true}/>
                 <div className="flex gap-6">
-                    <input type="radio" id="statusPublic" className="hidden" value={0} defaultChecked={watch('status') === '0'} {...register('status')}/>
-                    <Status icon={<MdOutlineCircle className="w-full text-3xl font-bold"/>} name={'公開'} color={'mainGreen'} for={'statusPublic'} checked={watch('status') === '0'}/>
-                    <input type="radio" id="statusPrivate" className="hidden" value={1}  defaultChecked={watch('status') === '1'} {...register('status')}/>
-                    <Status icon={<MdClose className="w-full text-3xl font-bold"/>} name={'非公開'} color={'danger'} for={'statusPrivate'} checked={watch('status') === '1'}/>
+                    <input type="radio" id="statusPublic" className="hidden" value={0} defaultChecked={watch('status') === 0} {...register('status')}/>
+                    <Status icon={<MdOutlineCircle className="w-full text-3xl font-bold"/>} name={'公開'} color={'mainGreen'} for={'statusPublic'} checked={watch('status') === 0}/>
+                    <input type="radio" id="statusPrivate" className="hidden" value={1}  defaultChecked={watch('status') === 1} {...register('status')}/>
+                    <Status icon={<MdClose className="w-full text-3xl font-bold"/>} name={'非公開'} color={'danger'} for={'statusPrivate'} checked={watch('status') === 1}/>
                 </div>
             </FormGroup>
 

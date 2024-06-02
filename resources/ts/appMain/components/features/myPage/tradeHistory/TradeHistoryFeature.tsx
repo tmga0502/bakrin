@@ -2,7 +2,7 @@ import React from 'react';
 import {PageTitle} from "@/ts/appMain/components/_ui/title/Title";
 import Breadcrumb from "@/ts/appMain/components/_common/breadcrumb/Breadcrumb";
 import {MainLayout} from "@/ts/appMain/components/_common/layout/Layout";
-import List from "@/ts/appMain/components/features/tradeHistory/components/List";
+import List from "@/ts/appMain/components/features/myPage/tradeHistory/components/List";
 
 const historyData = [
     {

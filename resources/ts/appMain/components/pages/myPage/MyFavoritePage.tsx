@@ -1,5 +1,5 @@
 import React from 'react';
-import MyFavoriteFeatures from "@/ts/appMain/components/features/myFavorite/myFavoriteFeatures";
+import MyFavoriteFeatures from "@/ts/appMain/components/features/myPage/myFavorite/myFavoriteFeatures";
 
 const MyFavoritePage = () => {
     return (

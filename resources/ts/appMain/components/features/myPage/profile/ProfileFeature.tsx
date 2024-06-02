@@ -2,9 +2,9 @@ import React from 'react';
 import {PageTitle} from "@/ts/appMain/components/_ui/title/Title";
 import Breadcrumb from "@/ts/appMain/components/_common/breadcrumb/Breadcrumb";
 import {MainLayout} from "@/ts/appMain/components/_common/layout/Layout";
-import Data from "@/ts/appMain/components/features/profile/components/Data";
-import Password from "@/ts/appMain/components/features/profile/components/Password";
-import PaymentMethod from "@/ts/appMain/components/features/profile/components/PaymentMethod";
+import Data from "@/ts/appMain/components/features/myPage/profile/components/Data";
+import Password from "@/ts/appMain/components/features/myPage/profile/components/Password";
+import PaymentMethod from "@/ts/appMain/components/features/myPage/profile/components/PaymentMethod";
 import {useGetUser} from "@/ts/_api/query/AuthQuery";
 import Loader from "@/ts/appMain/components/_common/loader/Loader";
 

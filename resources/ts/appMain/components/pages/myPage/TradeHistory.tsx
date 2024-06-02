@@ -1,5 +1,5 @@
 import React from 'react';
-import TradeHistoryFeature from "@/ts/appMain/components/features/tradeHistory/TradeHistoryFeature";
+import TradeHistoryFeature from "@/ts/appMain/components/features/myPage/tradeHistory/TradeHistoryFeature";
 
 const TradeHistory = () => {
     return (
