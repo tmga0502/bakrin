@@ -8,14 +8,14 @@ use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
 
-    public function getMyItems(Request $req): JsonResponse
+    public function getMyItems(): JsonResponse
     {
-        $token = $req->auth_token;
-        $user = Producer::where('loginToken', $token)->first();
+        $user = Auth::user();
         $items = Item::where('producerUuid', $user->uuid)->get();
         return response()->json($items);
     }
@@ -26,10 +26,9 @@ class ItemsController extends Controller
         return response()->json($items);
     }
 
-    public function getWantItems(Request $req): JsonResponse
+    public function getWantItems(): JsonResponse
     {
-        $user = Producer::where('loginToken', $req->auth_token)->first();
-        $userUuid = $user->uuid;
+        $userUuid = Auth::user()->uuid;
         $items = Item::with('wantItems')->whereHas('wantItems', function($q) use($userUuid){
             $q->where('myUuid', $userUuid);
         })->get();
@@ -53,8 +52,7 @@ class ItemsController extends Controller
 
     public function getFavoriteItems(Request $req): JsonResponse
     {
-        $user = Producer::where('loginToken', $req->auth_token)->first();
-        $userUuid = $user->uuid;
+        $userUuid = Auth::user()->uuid;
         $itemQuery = Item::with('favoriteItems')->whereHas('favoriteItems', function($q) use($userUuid){
             $q->where('producerUuid', $userUuid);
         });
