@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {FormGroup, FormLabel, TextInput} from "@/ts/appMain/components/_ui/form/Form";
-import {MainButton, SubmitButton} from "@/ts/appMain/components/_ui/button/Button";
+import {FormGroup, FormLabel} from "@/ts/appMain/components/_ui/form/Form";
+import {MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {useForm} from "react-hook-form";
 import {useChangePassword} from "@/ts/_api/query/UserQuery";
 
