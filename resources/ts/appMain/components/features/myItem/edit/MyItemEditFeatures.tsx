@@ -8,7 +8,6 @@ import Loader from "@/ts/appMain/components/_common/loader/Loader";
 
 const MyItemEditFeatures = () => {
     const params = useParams()
-    console.log(params)
     const {data, status} = useGetItem(params.itemUuid)
 
     if (status === 'success'){

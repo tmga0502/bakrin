@@ -22,10 +22,10 @@ export type ItemType = {
     shippingEndPart  : string,
     status           : number,
     thumbnail        : string,
-    plan             : PlanType[],
+    plan             : PlanType,
     category         : ItemCategoryType,
     unit             : UnitType,
-    guideUnit        : UnitType,
+    guide_unit       : UnitType,
     images           : ItemImageType[],
     producer         : ProducerType,
 }

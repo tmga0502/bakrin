@@ -45,3 +45,7 @@
 .radioAccent{
     accent-color: green
 }
+
+.tdStyle{
+    @apply whitespace-nowrap px-4 py-2 border
+}

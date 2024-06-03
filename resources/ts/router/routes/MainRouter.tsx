@@ -23,6 +23,7 @@ import MyItemNewFeatures from "@/ts/appMain/components/features/myItem/new/MyIte
 import MyItemEditFeatures from "@/ts/appMain/components/features/myItem/edit/MyItemEditFeatures";
 import {useAuth} from "@/ts/hooks/AuthContext";
 import Loader from "@/ts/appMain/components/_common/loader/Loader";
+import MyItemShowFeatures from "@/ts/appMain/components/features/myItem/show/MyItemShowFeatures";
 
 const MainRouter = () => {
 
@@ -58,7 +59,8 @@ const MainRouter = () => {
             <Route path="/myitem">
                 <Route index={true} element={<GuardRoute component={<MyItemList />}/> } />
                 <Route path="new" element={<GuardRoute component={<MyItemNewFeatures />}/> } />
-                <Route path="edit/:itemUuid" element={<GuardRoute component={<MyItemEditFeatures />}/> } />
+                <Route path=":itemUuid" element={<GuardRoute component={<MyItemShowFeatures />}/> } />
+                <Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEditFeatures />}/> } />
             </Route>
 
             {/*  マイページ  */}

@@ -1,10 +1,13 @@
 import React from 'react';
-import {FormGroupProps, FormLabelType, InputType, RadioType, TextareaType} from './type'
+import {FileFieldProps, FormGroupProps, FormLabelType, InputFieldProps, RadioType, SelectFieldProps, TextareaFieldProps, TextareaType} from './type'
 import Budge from "@/ts/appMain/components/_ui/budge/Budge";
+import {useFormContext} from "react-hook-form";
+import Status from "@/ts/appMain/components/_ui/radioPanel/Status";
+import {MdClose, MdOutlineCircle} from "react-icons/md";
 
 const FormGroup = (props:FormGroupProps) => {
     return(
-        <div className="mb-6">{props.children}</div>
+        <div className="mb-6 flex-1">{props.children}</div>
     )
 }
 
@@ -20,23 +23,52 @@ const FormLabel = (props: FormLabelType) => {
     )
 }
 
-const TextInput = (props: InputType) => {
+const InputField: React.FC<InputFieldProps> = ({label, id, type, defaultValue, required, disabled, onChange}) => {
+    const {register, formState: {errors}} = useFormContext();
     return (
-        <div className="mb-4">
-            <input
-                type={props.type}
-                name={props.name}
-                className={`
-                  !mt-0 py-1 px-2 block w-full border-2 rounded-md text-sm
-                  focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent
-                  focus-visible:outline-0
-                  disabled:opacity-50 disabled:pointer-events-none
-                `}
-               placeholder={props.placeholder}
-            />
-        </div>
-    );
-};
+        <FormGroup>
+            <FormLabel label={label} for={id} required={required}/>
+            <input type={type} className="inputStyle" id={id} defaultValue={defaultValue} {...register(id, {required: required ? '入力必須です' : false})} disabled={disabled} onChange={onChange}/>
+            {errors[id] && (
+                <p className="text-danger text-xs">入力必須です</p>
+            )}
+        </FormGroup>
+    )
+}
+
+const FileField: React.FC<FileFieldProps> = ({label, id, lists}) => {
+    const {register} = useFormContext();
+    return (
+        <FormGroup>
+            <FormLabel label={label} for={id}/>
+            <input type={'file'} className="fileStyle" id={id} {...register(id)}/>
+            {lists && (
+                <div className="flex items-center mt-2 mb-4 gap-4 flex-wrap">
+                    {lists.map((syorui: any, index: number) => (
+                        <div className="flex items-center" key={index}>
+                            <input id={`${syorui.id}${id}`} type="checkbox" value={syorui.value} className="radioStyle" {...register(id)} />
+                            <label htmlFor={`${syorui.id}${id}`} className="ms-2 text-xs font-medium whitespace-nowrap">{syorui.value}</label>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </FormGroup>
+    )
+}
+
+const SelectField: React.FC<SelectFieldProps> = ({label, id, optionObj, defaultValue}) => {
+    const {register} = useFormContext();
+    return (
+        <FormGroup>
+            <FormLabel label={label} for={id}/>
+            <select className="selectBoxStyle" id={id} defaultValue={defaultValue} {...register(id)}>
+                {optionObj.map((option: { id: string | number, name: string }, index: number) => (
+                    <option value={option.id} key={index}>{option.name}</option>
+                ))}
+            </select>
+        </FormGroup>
+    )
+}
 
 const RadioBox = (props: RadioType) => {
     return(
@@ -44,6 +76,19 @@ const RadioBox = (props: RadioType) => {
             <input id={props.id} type="radio" value={props.value} name="default-radio" className="radioStyle radioAccent" defaultChecked={props.defaultChecked}/>
             <label htmlFor={props.id} className="ms-2 text-sm font-medium">{props.label}</label>
         </div>
+    )
+}
+
+const TextAreaField: React.FC<TextareaFieldProps> = ({label, id, rows, defaultValue, required, disabled, onChange}) => {
+    const {register, formState: {errors}} = useFormContext();
+    return (
+        <FormGroup>
+            <FormLabel label={label} for={id} required={required}/>
+            <textarea className="inputStyle" id={id} rows={rows} {...register(id, {required: required ? '入力必須です' : false})} disabled={disabled} onChange={onChange} defaultValue={defaultValue}></textarea>
+            {errors[id] && (
+                <p className="text-danger text-xs">入力必須です</p>
+            )}
+        </FormGroup>
     )
 }
 
@@ -63,10 +108,29 @@ const TextAreaBox = (props: TextareaType) => {
     )
 }
 
+const StatusBox: React.FC<any> = ({defaultChecked}) => {
+    const {register, watch} = useFormContext();
+    return(
+        <FormGroup>
+            <FormLabel label={'ステータス'} for={'status'} required={true}/>
+            <div className="flex gap-6">
+                <input type="radio" id="statusPublic" className="hidden" value={0} defaultChecked={defaultChecked === 0} {...register('status')}/>
+                <Status icon={<MdOutlineCircle className="w-full text-3xl font-bold"/>} name={'公開'} color={'mainGreen'} for={'statusPublic'} checked={watch('status') === 0}/>
+                <input type="radio" id="statusPrivate" className="hidden" value={1}  defaultChecked={defaultChecked === 1} {...register('status')}/>
+                <Status icon={<MdClose className="w-full text-3xl font-bold"/>} name={'非公開'} color={'danger'} for={'statusPrivate'} checked={watch('status') === 1}/>
+            </div>
+        </FormGroup>
+    )
+}
+
 export {
     FormGroup,
     FormLabel,
-    TextInput,
+    InputField,
+    FileField,
+    SelectField,
     RadioBox,
+    TextAreaField,
     TextAreaBox,
+    StatusBox,
 };

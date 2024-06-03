@@ -55,6 +55,11 @@ class Item extends Model
         return $this->belongsTo(ItemCategory::class, 'categoryId', 'id');
     }
 
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(Plan::class, 'planId', 'id');
+    }
+
     public function producer(): BelongsTo
     {
         return $this->belongsTo(Producer::class, 'producerUuid', 'uuid');

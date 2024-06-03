@@ -13,8 +13,8 @@ const routes = [
 
     {path: '/myitem', breadcrumb: 'アイテム管理'},
     {path: '/myitem/new', breadcrumb: '新規登録'},
-    {path: '/myitem/:itemID', breadcrumb: '編集'},
-    {path: '/myitem/show/:itemID', breadcrumb: '詳細'},
+    {path: '/myitem/:itemID', breadcrumb: '詳細'},
+    {path: '/myitem/:itemID/edit', breadcrumb: '編集'},
 
     {path: '/receiveApplication', breadcrumb: '申請依頼'},
     {path: '/receiveApplication/:receiveId', breadcrumb: '申請確認'},

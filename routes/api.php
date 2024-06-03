@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ProducersController;
+use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +34,21 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::get('/getFavoriteItems', [ItemsController::class, 'getFavoriteItems']);//お気に入り登録済みアイテムリスト
         Route::get('/getItem/{itemUuid}', [ItemsController::class, 'getItem']);//アイテム詳細
         Route::get('/getMyItems', [ItemsController::class, 'getMyItems']);//自分のアイテム一覧
+    });
+
+    //カテゴリー関連
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/getCategories', [CategoriesController::class, 'getAllCategories']);//全カテゴリー取得
+    });
+
+    //単位関連
+    Route::group(['prefix' => 'units'], function () {
+        Route::get('/getUnits', [UnitsController::class, 'getAllUnits']);//全カテゴリー取得
+    });
+
+    //プラン関連
+    Route::group(['prefix' => 'plans'], function () {
+        Route::get('/getPlans', [PlansController::class, 'getAllPlans']);//全カテゴリー取得
     });
 
     //生産者関連

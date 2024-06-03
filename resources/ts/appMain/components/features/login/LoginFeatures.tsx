@@ -28,8 +28,8 @@ const LoginFeatures = () => {
                     <h1 className="text-xl  sm:text-2xl font-bold mb-8 text-center">ログイン</h1>
                     <FormProvider {...methods}>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <InputField label={'メールアドレス'} id={'email'} type={'text'} required={true}/>
-                            <InputField label={'パスワード'} id={'password'} type={'password'} required={true}/>
+                            <InputField label={'メールアドレス'} id={'email'} type={'text'}/>
+                            <InputField label={'パスワード'} id={'password'} type={'password'}/>
                             <div className="mt-8">
                                 <MainButton value={'ログイン'} color={'success'} type={'submit'} width={'full'}/>
                             </div>

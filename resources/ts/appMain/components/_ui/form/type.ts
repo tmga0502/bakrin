@@ -11,16 +11,29 @@ type FormLabelType = {
     message?: string,
 }
 
-type InputType = {
-    label: string,
-    type: string,
-    name: string,
-    required?: boolean,
-    message?: string,
-    value?: string,
-    placeholder?: string,
-    disabled?: boolean,
+type InputFieldProps = {
+    label: string;
+    id: string;
+    type: string;
+    defaultValue?: string;
+    required?: boolean;
+    unit?: string | ReactNode;
+    disabled?: boolean;
     onChange?: any,
+}
+
+type FileFieldProps = {
+    label: string,
+    id: string,
+    lists?: any,
+}
+
+type SelectFieldProps = {
+    label: string;
+    id: string;
+    optionObj: any,
+    defaultValue: string | number;
+    required?: boolean;
 }
 
 type RadioType = {
@@ -29,6 +42,16 @@ type RadioType = {
     name            : string,
     defaultChecked? : boolean,
     value?          : string | number,
+}
+
+type TextareaFieldProps = {
+    label: string;
+    id: string;
+    rows? : number,
+    defaultValue?: string;
+    required?: boolean;
+    disabled?: boolean;
+    onChange?: any,
 }
 
 type TextareaType = {
@@ -42,7 +65,10 @@ type TextareaType = {
 export{
     FormGroupProps,
     FormLabelType,
-    InputType,
+    InputFieldProps,
+    FileFieldProps,
+    SelectFieldProps,
     RadioType,
+    TextareaFieldProps,
     TextareaType,
 }
