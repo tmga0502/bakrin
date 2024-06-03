@@ -19,7 +19,7 @@ const Container = (props: ContainerType) => {
 
 const MainBox = (props: MainType) => {
     return (
-        <div className="w-full md:w-[calc(100% - 250px)] p-4">
+        <div className="w-full md:w-[calc(100% - 250px)] p-4 mb-24">
             {props.children}
         </div>
     );
