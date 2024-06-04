@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FormProvider, useFieldArray, useForm} from "react-hook-form";
+import React from 'react';
+import {FormProvider, useForm} from "react-hook-form";
 import {MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {FileField, FormGroup, FormLabel, InputField, SelectField, TextAreaField} from "@/ts/appMain/components/_ui/form/Form";
 import {ItemStatus, Month, MonthPart} from "@/ts/_constants/Date";
@@ -14,25 +14,12 @@ const Form = (props: {data:ItemType}) => {
     const {data: unitData, status:unitStatus} = useGetUnits();
     const {data: planData, status:planStatus} = useGetPlans();
     const methods = useForm({defaultValues:props.data});
-    const { handleSubmit, control} = methods;
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: "images"
-    });
-    const [count, setCount] = useState(0);
-    const countUp = () => setCount(count + 1);
-
-    const reduce = () => {
-        if (count > 0) {
-            remove(count);
-            setCount(count - 1);
-        }
-    };
+    const { handleSubmit} = methods;
 
     const onSubmit = (data:any) => {
         console.log(data);
     }
-    console.log(unitData)
+
     if(categoryStatus === 'success' && unitStatus === 'success' && planStatus === 'success'){
         console.log(categoryData)
         return (
@@ -72,18 +59,11 @@ const Form = (props: {data:ItemType}) => {
 
                     <SelectField label={'公開設定'} id={'status'} optionObj={ItemStatus} defaultValue={props.data.status}/>
 
-
-                    {fields.map((field, index) => (
-                        <FileField label={'アイテム画像'} id={`img_paths.${index}.img_pathValue`} key={index}/>
-                    ))}
-                    <div className="flex gap-4 justify-end">
-                        <MainButton value={'画像を追加'} color={'info'} type={'button'} size={'sm'} onClick={() => [append({ img_pathValue: "" }), countUp()]}/>
-                        <MainButton value={'画像を削除'} color={'info'} type={'button'} size={'sm'} onClick={reduce}/>
-                    </div>
+                    <FileField label={'サムネイル画像'} id={'thumbnail'} helper={'更新が不要な場合は、何も選択しないでください'}/>
 
                     <FormGroup>
                         <div className="mt-12 text-center">
-                            <MainButton value={'登録'} color={'info'} type={'submit'} size={'sm'} width={'half'}/>
+                            <MainButton value={'更新'} color={'info'} type={'submit'} size={'sm'} width={'half'}/>
                         </div>
                     </FormGroup>
                 </form>

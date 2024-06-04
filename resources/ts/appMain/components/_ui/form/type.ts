@@ -23,9 +23,9 @@ type InputFieldProps = {
 }
 
 type FileFieldProps = {
-    label: string,
-    id: string,
-    lists?: any,
+    label   : string,
+    id      : string,
+    helper? : string,
 }
 
 type SelectFieldProps = {

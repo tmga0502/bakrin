@@ -36,21 +36,14 @@ const InputField: React.FC<InputFieldProps> = ({label, id, type, defaultValue, r
     )
 }
 
-const FileField: React.FC<FileFieldProps> = ({label, id, lists}) => {
+const FileField: React.FC<FileFieldProps> = ({label, id, helper}) => {
     const {register} = useFormContext();
     return (
         <FormGroup>
             <FormLabel label={label} for={id}/>
             <input type={'file'} className="fileStyle" id={id} {...register(id)}/>
-            {lists && (
-                <div className="flex items-center mt-2 mb-4 gap-4 flex-wrap">
-                    {lists.map((syorui: any, index: number) => (
-                        <div className="flex items-center" key={index}>
-                            <input id={`${syorui.id}${id}`} type="checkbox" value={syorui.value} className="radioStyle" {...register(id)} />
-                            <label htmlFor={`${syorui.id}${id}`} className="ms-2 text-xs font-medium whitespace-nowrap">{syorui.value}</label>
-                        </div>
-                    ))}
-                </div>
+            {helper && (
+                <p className={'text-xs pt-2'}>{helper}</p>
             )}
         </FormGroup>
     )
