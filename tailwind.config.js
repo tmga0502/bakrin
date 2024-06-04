@@ -21,7 +21,7 @@ export default {
             danger:      '#dc2626',
             warning:     '#fbbf24',
             default:     '#737373',
-            dark:        '#757575',
+            bakDark:     '#757575',
             black:       '#000000',
         },
         fontSize: {

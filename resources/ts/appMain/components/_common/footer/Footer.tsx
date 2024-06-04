@@ -7,7 +7,7 @@ const Footer = () => {
     const nowYear = now.getFullYear();
 
     return (
-        <footer className="w-screen bg-dark py-4 z-30">
+        <footer className="w-screen bg-bakDark py-4 z-30">
             <ul className="text-center md:text-left md:flex justify-center text-white mb-4">
                 <li className="px-4 py-2 md:border-r-2 hover:opacity-80">
                     <Link  to={''}>
