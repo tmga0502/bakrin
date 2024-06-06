@@ -1,10 +1,8 @@
 import axios from "axios";
 import {AuthToken} from "@/ts/types/AuthTokenType";
-import {authParams} from "@/ts/_api/api/AuthParams";
 
 const getUser = async () => {
-    const uri = authParams(`/api/getUser`)
-    const { data } = await axios.get(uri);
+    const { data } = await axios.get('/api/getUser');
     return data
 }
 
@@ -14,8 +12,7 @@ const login =  async ({email, password }:{email: string, password: string }) => 
 }
 
 const logout =  async () => {
-    const authToken : string | null = sessionStorage.getItem('authToken')
-    const { data } = await axios.post<AuthToken>('/api/logout', {authToken} )
+    const { data } = await axios.post<AuthToken>('/api/logout' )
     return data
 }
 

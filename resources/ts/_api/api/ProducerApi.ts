@@ -1,16 +1,13 @@
 import axios from "axios";
 import {ProducerType} from "@/ts/types/ProducerType";
-import {authParams} from "@/ts/_api/api/AuthParams";
 
 const getPopularProducers = async () => {
-    const uri = authParams('/api/producers/getPopularProducers')
-    const{ data } = await axios.get<ProducerType[]>(uri);
+    const{ data } = await axios.get<ProducerType[]>('/api/producers/getPopularProducers');
     return data;
 }
 
 const getFavoriteProducers = async () => {
-    const uri = authParams('/api/producers/getFavoriteProducers')
-    const{ data } = await axios.get<ProducerType[]>(uri);
+    const{ data } = await axios.get<ProducerType[]>('/api/producers/getFavoriteProducers');
     return data;
 }
 
