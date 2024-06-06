@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {ItemFavoriteButton, MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {
     useDeregisterFavoriteItem,
-    useGetFavoriteItemState,
     useRegisterFavoriteItem
 } from "@/ts/_api/query/FavoriteItemQuery";
 import {ItemType} from "@/ts/types/ItemType";
 import {useItemShowMode} from "@/ts/appMain/components/features/item/itemShow/hooks/ItemContext";
+import {useAuth} from "@/ts/hooks/AuthContext";
 
 const ButtonGroup = (props:{data: ItemType}) => {
-    const params = useParams()
-    const { data: favoriteItemState} = useGetFavoriteItemState(params.itemUuid)
-    const [favoriteStatus, setFavoriteStatus] = useState(favoriteItemState)
+	const {userData} = useAuth();
+    const [favoriteStatus, setFavoriteStatus] = useState(
+		props.data.favorite_items.some((item:any) => item.myUuid === userData.uuid)
+	)
     const favoriteRegister = useRegisterFavoriteItem();
     const favoriteDeregister = useDeregisterFavoriteItem();
     const {setMode} = useItemShowMode()
