@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('email')->comment('メールアドレス');
             $table->string('password')->comment('パスワード');
             $table->integer('paymentMethod')->default(0)->comment('取引手数料の支払い方法');
-            $table->string('loginToken')->default('')->comment('ログイントークン');
+            $table->text('pr')->nullable()->default(null)->comment('自己PR');
             $table->timestamps();
         });
     }

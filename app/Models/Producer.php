@@ -36,7 +36,7 @@ class Producer extends Authenticatable
         'email',
         'password',
         'paymentMethod',
-        'loginToken',
+        'pr',
     ];
 
     /**
@@ -61,5 +61,10 @@ class Producer extends Authenticatable
     {
         return $this->hasMany(FavoriteProducer::class, 'producerUuid', 'uuid');
     }
+
+	public function items(): HasMany
+	{
+		return $this->hasMany(Item::class, 'producerUuid', 'uuid');
+	}
 
 }
