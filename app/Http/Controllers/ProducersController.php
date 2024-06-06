@@ -21,7 +21,7 @@ class ProducersController extends Controller
 
 	public function getProducer($producerUuid): JsonResponse
 	{
-		$producer = Producer::with('items')->where('uuid', $producerUuid)->first();
+		$producer = Producer::with(['favoriteProducers', 'items'])->where('uuid', $producerUuid)->first();
 		return response()->json($producer);
 	}
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
+use App\Http\Controllers\FavoriteProducersController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ProducersController;
@@ -67,6 +68,11 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::post('/register', [FavoriteItemsController::class, 'register']);
         Route::post('/deregister', [FavoriteItemsController::class, 'deregister']);
     });
+	//お気に入り【ユーザー】
+	Route::group(['prefix' => 'favoriteProducer'], function () {
+		Route::post('/register', [FavoriteProducersController::class, 'register']);
+		Route::post('/deregister', [FavoriteProducersController::class, 'deregister']);
+	});
 
     //ログインユーザー情報
     Route::get('/getUser', [AuthController::class, 'getUser']);

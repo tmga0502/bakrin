@@ -17,7 +17,7 @@ const ProducerShowFeatures = () => {
 		return (
 			<MainLayout>
 				<Breadcrumb/>
-				<ProducerShowPanel img={producerData.imgPath} name={producerData.organizationName} address={`${producerData.address1}${producerData.address2}`}/>
+				<ProducerShowPanel data={producerData}/>
 				<div className="my-8 p-4 border-t-2 border-b-2">
 					{producerData.pr}
 				</div>
