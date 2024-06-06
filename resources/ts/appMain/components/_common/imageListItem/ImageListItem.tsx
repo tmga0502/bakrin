@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     ProducerPanelProps,
-    ProducerShowType,
 } from "@/ts/appMain/components/_common/imageListItem/type";
 import {Link} from "react-router-dom";
 import {ItemFavoriteButton} from "@/ts/appMain/components/_ui/button/Button";
 import {GetPlanImage} from "@/ts/functions/GetPlanImage";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { tv } from "tailwind-variants";
+import {ProducerType} from "@/ts/types/ProducerType";
+import {useDeregisterFavoriteProducer, useRegisterFavoriteProducer} from "@/ts/_api/query/FavoriteProducerQuery";
+import {useAuth} from "@/ts/hooks/AuthContext";
 
 const planTv = tv({
     base:`
@@ -70,21 +72,41 @@ const ProducerPanel = ({data}:ProducerPanelProps) => {
     )
 }
 
-const ProducerShowPanel = (props: ProducerShowType) => {
+const ProducerShowPanel = (props: {data: ProducerType}) => {
+	const { userData } = useAuth()
+	const [favoriteStatus, setFavoriteStatus] = useState(
+		props.data.favorite_producers.some((producer:any) => producer.myUuid === userData.uuid)
+	)
+	const favoriteRegister = useRegisterFavoriteProducer();
+	const favoriteDeregister = useDeregisterFavoriteProducer();
+
+	const handleFavorite = () => {
+		if (favoriteStatus){
+			favoriteDeregister.mutate({producerUuid:props.data.uuid})//解除処理
+		}else{
+			favoriteRegister.mutate({producerUuid:props.data.uuid})//登録処理
+		}
+		setFavoriteStatus(!favoriteStatus)
+	}
+
     return (
         <div className="p-4 border-2 bg-white md:flex items-center justify-between">
             <div className="flex items-center gap-4">
                 <div className="w-[64px] h-[64px]">
-                    <img src={props.img} className="w-full h-full object-cover rounded-full"
+                    <img src={props.data.imgPath} className="w-full h-full object-cover rounded-full"
                          alt="farmerImg"/>
                 </div>
                 <div className="">
-                    <p className="tex-sm mb-2">{props.address}</p>
-                    <p className="text-lg">{props.name}</p>
+                    <p className="tex-sm mb-2">{`${props.data.address1}${props.data.address2}`}</p>
+                    <p className="text-lg">{props.data.organizationName}</p>
                 </div>
             </div>
             <div className="text-center mt-4 md:w-2/3 md:text-right md:mt-0">
-                <ItemFavoriteButton value={'登録'} status={false} type={'button'}/>
+				{favoriteStatus ? (
+					<ItemFavoriteButton value={'登録解除'} status={true} type={'button'} onClick={handleFavorite}/>
+				) : (
+					<ItemFavoriteButton value={'登録する'} status={false} type={'button'} onClick={handleFavorite}/>
+				)}
             </div>
         </div>
     )
