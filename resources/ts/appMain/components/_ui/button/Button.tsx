@@ -89,7 +89,7 @@ const SubmitButton = (props: SubmitButtonType) => {
 
 
 const favoriteButton = tv({
-    base: "w-1/2 border-pink-500 border-solid border-2 py-2 px-4 rounded-xl hover:opacity-8",
+    base: "border-pink-500 border-solid border-2 py-2 px-4 rounded-xl hover:opacity-8",
     variants: {
         status: {
             true: "bg-pink-500 text-white",

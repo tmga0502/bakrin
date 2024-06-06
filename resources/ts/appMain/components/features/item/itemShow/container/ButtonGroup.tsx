@@ -41,9 +41,9 @@ const ButtonGroup = (props:{data: ItemType}) => {
 
             <div className="block text-center mb-8">
                 {favoriteStatus ? (
-                    <ItemFavoriteButton value={'登録解除'} status={true} type={'button'} onClick={handleFavorite}/>
+                    <ItemFavoriteButton value={'登録解除'} status={true} type={'button'} width={'half'} onClick={handleFavorite}/>
                 ) : (
-                    <ItemFavoriteButton value={'登録する'} status={false} type={'button'} onClick={handleFavorite}/>
+                    <ItemFavoriteButton value={'登録する'} status={false} type={'button'} width={'half'} onClick={handleFavorite}/>
                 )}
             </div>
         </>
