@@ -11,7 +11,13 @@ const getFavoriteProducers = async () => {
     return data;
 }
 
+const getProducer = async (producerUuid: string) => {
+	const{ data } = await axios.get<ProducerType>(`/api/producers/getProducer/${producerUuid}`);
+	return data;
+}
+
 export {
     getPopularProducers,
     getFavoriteProducers,
+	getProducer,
 }

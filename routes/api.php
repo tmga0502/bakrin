@@ -55,7 +55,8 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 
     //生産者関連
     Route::group(['prefix' => 'producers'], function () {
-        Route::get('getProducer', [ProducersController::class, 'getProducer']);
+        Route::get('getProducer', [ProducersController::class, 'getOwn']);
+        Route::get('getProducer/{producerUuid}', [ProducersController::class, 'getProducer']);
         Route::get('/getPopularProducers', [ProducersController::class, 'getPopularProducers'])->name('getPopularProducers');//人気の生産者
         Route::get('/getFavoriteProducers', [ProducersController::class, 'getFavoriteProducers'])->name('getFavoriteProducers');//お気に入り登録済みの生産者
     });

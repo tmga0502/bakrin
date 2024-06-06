@@ -1,3 +1,5 @@
+import {ItemType} from "@/ts/types/ItemType";
+
 export type ProducerType = {
     id               : number,
     uuid             : string,
@@ -14,4 +16,6 @@ export type ProducerType = {
     login_id         : string,
     password         : string,
     paymentMethod    : number,
+	pr               : string,
+	items            : ItemType[],
 }
