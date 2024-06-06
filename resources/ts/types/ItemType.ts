@@ -5,6 +5,7 @@ import {UnitType} from "@/ts/types/UnitType";
 import {ProducerType} from "@/ts/types/ProducerType";
 
 export type ItemType = {
+    map(arg0: (item: any) => any): import("react").ReactNode;
     favorite_items   : any;
     some(arg0: (item: any) => boolean): any;
     id               : number,
