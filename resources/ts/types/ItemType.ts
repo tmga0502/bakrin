@@ -5,6 +5,8 @@ import {UnitType} from "@/ts/types/UnitType";
 import {ProducerType} from "@/ts/types/ProducerType";
 
 export type ItemType = {
+    favorite_items   : any;
+    some(arg0: (item: any) => boolean): any;
     id               : number,
     uuid             : string,
     producerUuid     : string,
