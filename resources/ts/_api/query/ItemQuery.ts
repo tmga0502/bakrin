@@ -1,5 +1,7 @@
-import {useQuery} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import * as api from "@/ts/_api/api/ItemApi";
+import {toast} from "react-toastify";
+import {useIsLoading} from "@/ts/hooks/IsLoadingContext";
 
 
 const useGetItem = (itemUuid: any) => {
@@ -26,6 +28,18 @@ const useGetWantItems = () => {
     return useQuery('wantItems', api.getWantItems)
 }
 
+const useUpdateItem = () => {
+	const { setIsLoading} = useIsLoading()
+	return useMutation(api.updateItem, {
+		onSuccess: () => {
+			toast.success('更新しました')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('更新できませんでした。')
+		}
+	})
+}
 
 export {
     useGetItem,
@@ -34,4 +48,5 @@ export {
     useGetNewArrivalItems,
     useGetSeasonItems,
     useGetWantItems,
+	useUpdateItem,
 }

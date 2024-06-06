@@ -34,6 +34,8 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::get('/getFavoriteItems', [ItemsController::class, 'getFavoriteItems']);//お気に入り登録済みアイテムリスト
         Route::get('/getItem/{itemUuid}', [ItemsController::class, 'getItem']);//アイテム詳細
         Route::get('/getMyItems', [ItemsController::class, 'getMyItems']);//自分のアイテム一覧
+
+        Route::patch('/update', [ItemsController::class, 'update']);//更新
     });
 
     //カテゴリー関連

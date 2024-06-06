@@ -38,6 +38,11 @@ const getWantItems = async () => {
     return data;
 }
 
+const updateItem = async (formData: ItemType) => {
+	const { data } = await axios.patch<ItemType>('/api/items/update', formData);
+	return data;
+}
+
 
 export {
     getItem,
@@ -46,4 +51,5 @@ export {
     getNewArrivalItems,
     getSeasonItems,
     getWantItems,
+	updateItem,
 }

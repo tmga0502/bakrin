@@ -70,4 +70,11 @@ class ItemsController extends Controller
         $item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images'])->where('uuid', $itemUuid)->first();
         return response()->json($item);
     }
+
+	public function update(Request $req): JsonResponse
+	{
+		$item = Item::find($req->id);
+		$item->fill($req->all())->save();
+		return response()->json($item, 200);
+	}
 }

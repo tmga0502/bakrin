@@ -9,7 +9,7 @@ type ContainerType = {
 }
 
 type MainType = {
-    children: React.ReactNode
+    children: React.ReactNode,
 }
 
 export {

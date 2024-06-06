@@ -8,6 +8,7 @@ import {useGetCategories} from "@/ts/_api/query/CategoryQuery";
 import Loader from "@/ts/appMain/components/_common/loader/Loader";
 import {useGetUnits} from "@/ts/_api/query/UnitQuery";
 import {useGetPlans} from "@/ts/_api/query/PlanQuery";
+import {useUpdateItem} from "@/ts/_api/query/ItemQuery";
 
 const Form = (props: {data:ItemType}) => {
     const {data: categoryData, status:categoryStatus} = useGetCategories();
@@ -15,13 +16,13 @@ const Form = (props: {data:ItemType}) => {
     const {data: planData, status:planStatus} = useGetPlans();
     const methods = useForm({defaultValues:props.data});
     const { handleSubmit} = methods;
+	const update = useUpdateItem();
 
     const onSubmit = (data:any) => {
-        console.log(data);
+        update.mutate(data);
     }
 
     if(categoryStatus === 'success' && unitStatus === 'success' && planStatus === 'success'){
-        console.log(categoryData)
         return (
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)}>
