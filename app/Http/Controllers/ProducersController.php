@@ -14,7 +14,7 @@ class ProducersController extends Controller
     public function getOwn(Request $req)
     {
         if(Auth::user()){
-            return Auth::user();
+            return Auth::user()->load(['items.plan', 'items.unit']);
         }
         return response()->json(false);
     }

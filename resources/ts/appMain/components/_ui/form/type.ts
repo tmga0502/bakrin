@@ -37,7 +37,7 @@ type SelectFieldProps = {
 }
 
 type RadioType = {
-    id              : string,
+    id              : string | number,
     label           : string,
     name            : string,
     defaultChecked? : boolean,

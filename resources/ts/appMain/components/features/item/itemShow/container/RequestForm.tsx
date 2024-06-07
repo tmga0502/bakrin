@@ -3,17 +3,20 @@ import {RadioBox} from "@/ts/appMain/components/_ui/form/Form";
 import {MainButton} from "@/ts/appMain/components/_ui/button/Button";
 import {Link} from "react-router-dom";
 import {useItemShowMode} from "@/ts/appMain/components/features/item/itemShow/hooks/ItemContext";
+import {useAuth} from "@/ts/hooks/AuthContext";
+import {ItemType} from "@/ts/types/ItemType";
 
 const RequestForm = () => {
     const {setMode} = useItemShowMode()
+	const { userData } = useAuth()
+	console.log(userData)
     return (
         <div className="mt-8">
             <p>【交換に出すアイテムを選択してください】</p>
             <div className="my-8">
-                <RadioBox id={'goldPlan'} label={'鮭(3匹)【満足プラン】'} name={'plan'}/>
-                <RadioBox id={'silverPlan'} label={'鮭(2匹)【おすすめプラン】'} name={'plan'}/>
-                <RadioBox id={'blondsPlan'} label={'鮭(1匹)【お手軽プラン】'} name={'plan'}/>
-                <RadioBox id={'blackPlan'} label={'鮭【無制限プラン】'} name={'plan'}/>
+				{userData.items.map((item:ItemType) => (
+                	<RadioBox id={item.id} label={`${item.name}(${item.count}${item.unit.name})【${item.plan.name}】`} name={'myPlan'} key={item.id}/>
+				))}
             </div>
 
             <div className="block text-center mt-8 mb-4">
