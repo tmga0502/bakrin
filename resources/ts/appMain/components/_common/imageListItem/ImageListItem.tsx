@@ -54,7 +54,7 @@ const ItemListPanel = ({data}: any) => {
 
 const ProducerPanel = ({data}:ProducerPanelProps) => {
     return(
-        <Link to={'/producers/'+data.id}>
+        <Link to={'/producers/'+data.uuid}>
             <div className="border-2 rounded-md shadow-lg">
                 <div className="relative w-full before:content-[''] before:block before:pt-[100%]">
                     <LazyLoadImage
