@@ -38,7 +38,7 @@ class ProducersController extends Controller
 
     public function getFavoriteProducers(Request $req): JsonResponse
     {
-        $user = Producer::where('loginToken', $req->auth_token)->first();
+        $user = Auth::user();
         $userUuid = $user->uuid;
         $producerQuery = Producer::with('favoriteProducers')->whereHas('favoriteProducers', function($q) use($userUuid){
             $q->where('producerUuid', $userUuid);

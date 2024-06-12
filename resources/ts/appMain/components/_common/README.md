@@ -1,1 +1,0 @@
-MainApp内で共通で使用するComponentを格納すること

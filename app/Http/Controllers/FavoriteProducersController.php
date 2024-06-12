@@ -11,7 +11,6 @@ class FavoriteProducersController extends Controller
 {
 	public function register(Request $req): JsonResponse
 	{
-//		dd($req->all());
 		$favoriteItem = new FavoriteProducer([
 			'producerUuid' => $req->producerUuid,
 			'myUuid' => Auth::user()->uuid,

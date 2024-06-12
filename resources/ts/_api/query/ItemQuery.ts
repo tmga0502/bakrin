@@ -31,7 +31,11 @@ const useGetWantItems = () => {
 const useUpdateItem = () => {
 	const { setIsLoading} = useIsLoading()
 	return useMutation(api.updateItem, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
 		onSuccess: () => {
+			setIsLoading(false)
 			toast.success('更新しました')
 		},
 		onError: () => {

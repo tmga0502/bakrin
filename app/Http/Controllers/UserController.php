@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producer;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function changePassword(Request $req)
-    {
-        $user = Producer::where('loginToken', $req->auth_token)->first();
+	/**
+	 * @param Request $req
+	 * @return JsonResponse
+	 */
+	public function changePassword(Request $req): \Illuminate\Http\JsonResponse
+	{
+        $user = Auth::user();
         $password =  Hash::make($req->newPassword);
         $user->fill(['password'=>$password])->save();
 
