@@ -4,7 +4,7 @@ import {IoSettingsOutline} from "react-icons/io5";
 import {FaRegUser} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import { SideMenuButton } from '../button';
-import MenuList from "@/ts/components/ui/MenuList/MenuList";
+import {MenuList} from "@/ts/components/ui/menu";
 
 const Sidebar = () => {
 	return (

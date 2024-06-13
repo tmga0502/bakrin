@@ -1,7 +1,6 @@
 import React from 'react';
-import {ItemImageType} from "@/ts/types/ItemImageType";
 import ImageGallery from "react-image-gallery";
-import {ItemShowImageType} from "@/ts/components/model/item/ItemShowImage/_type";
+import {ItemShowImageType} from "@/ts/components/model/item/ItemShowImage/ItemShowImage.type";
 
 const ItemShowImage: React.FC<ItemShowImageType> = ({thumbnail, images}) => {
 	const imgs = [

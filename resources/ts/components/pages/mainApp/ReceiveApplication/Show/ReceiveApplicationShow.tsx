@@ -1,5 +1,5 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import TradeImageBox from "@/ts/components/model/item/TradeImageBox/TradeImageBox";
 import {MainButton} from "@/ts/components/ui/button";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { ItemShowProducerPanelType } from './_type';
+import { ItemShowProducerPanelType } from './ItemShowProducerPanel.type';
 
 const ItemShowProducerPanel: React.FC<ItemShowProducerPanelType> = ({data}) => {
 	return (

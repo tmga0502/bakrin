@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { FooterMenu } from './_constants';
+import { FooterMenu } from './constants';
 
 const Footer = () => {
 

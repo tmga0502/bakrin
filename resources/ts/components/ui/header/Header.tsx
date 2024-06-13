@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import KvImage from '@/images/kv.png'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
-import MenuList from "@/ts/components/ui/MenuList/MenuList";
+import {MenuList} from "@/ts/components/ui/menu";
 
 const Header = () => {
 

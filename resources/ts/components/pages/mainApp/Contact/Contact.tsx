@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormProvider, useForm} from "react-hook-form";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import { MainButton } from '@/ts/components/ui/button';
 import {TextAreaField} from "@/ts/components/ui/form";
 import {MainAppLayout} from "@/ts/components/ui/layout";

@@ -1,9 +1,7 @@
 import React from 'react';
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import Data from "@/ts/components/pages/mainApp/MyPage/Profile/features/Data";
-import Password from "@/ts/components/pages/mainApp/MyPage/Profile/features/Password";
-import PaymentMethod from "@/ts/components/pages/mainApp/MyPage/Profile/features/PaymentMethod";
+import {Data, Password, PaymentMethod} from "@/ts/components/pages/mainApp/MyPage/Profile/features";
 
 const MyPageProfile = () => {
 	return (

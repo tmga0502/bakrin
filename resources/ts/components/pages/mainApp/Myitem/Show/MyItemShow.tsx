@@ -1,13 +1,11 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {Link, useParams} from "react-router-dom";
 import {useGetItem} from "@/ts/_api/query/ItemQuery";
 import Loader from "@/ts/components/ui/loader/Loader";
-import {ShowTd} from "@/ts/components/ui/table/ShowTable";
+import {ShowTd} from "@/ts/components/ui/table";
 import {MainButton} from "@/ts/components/ui/button";
-import ImageDeleteModal from "@/ts/components/pages/mainApp/Myitem/Show/features/ImageDeleteModal";
-import AddImageModal from "@/ts/components/pages/mainApp/Myitem/Show/features/AddImageModal";
-import DataDeleteModal from "@/ts/components/pages/mainApp/Myitem/Show/features/DataDeleteModal";
+import {AddImageModal, DataDeleteModal, ImageDeleteModal} from "@/ts/components/pages/mainApp/Myitem/Show/features";
 
 const MyItemShowPage = () => {
 	const params = useParams()

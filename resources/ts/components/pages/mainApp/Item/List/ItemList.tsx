@@ -1,6 +1,6 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
 import {useGetNewArrivalItems} from "@/ts/_api/query/ItemQuery";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import React from "react";
 import Loader from "@/ts/components/ui/loader/Loader";
 import {ItemPanel} from "@/ts/components/model/item/ItemPanel/ItemPanel";

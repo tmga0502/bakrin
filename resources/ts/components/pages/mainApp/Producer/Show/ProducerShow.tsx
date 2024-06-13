@@ -1,5 +1,5 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {useParams} from "react-router-dom";
 import {useGetProducer} from "@/ts/_api/query/ProducerQuery";
 import Loader from "@/ts/components/ui/loader/Loader";

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useAuth} from "@/ts/hooks/AuthContext";
 import {useDeregisterFavoriteProducer, useRegisterFavoriteProducer} from "@/ts/_api/query/FavoriteProducerQuery";
-import { ProducerShowPanelType } from './_type';
+import { ProducerShowPanelType } from './ProducerShowPanel.type';
 import {ItemFavoriteButton} from "@/ts/components/ui/button";
 
 const ProducerShowPanel: React.FC<ProducerShowPanelType> = ({data}) => {

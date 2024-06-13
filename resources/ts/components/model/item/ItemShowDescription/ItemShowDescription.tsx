@@ -1,6 +1,6 @@
 import React from 'react';
 import {Plan} from "@/ts/_constants/Plan";
-import { ItemShowDescriptionType } from './_type';
+import { ItemShowDescriptionType } from './ItemShowDescription.type';
 
 const ItemShowDescription: React.FC<ItemShowDescriptionType> = ({data }) => {
 	const plan = Plan.find(plan => plan.number === data.planId)

@@ -1,9 +1,9 @@
 import React from 'react';
 import {useLogout} from "@/ts/_api/query/AuthQuery";
 import {Link} from "react-router-dom";
-import {PageTitle} from "@/ts/components/ui/title/Title";
-import { MyPageMenu } from './_constants';
-import Button from "@/ts/components/pages/mainApp/MyPage/Top/features/Button";
+import {PageTitle} from "@/ts/components/ui/title";
+import { MyPageMenu } from './constants';
+import {Button} from "@/ts/components/pages/mainApp/MyPage/Top/features";
 import {MainAppLayout} from "@/ts/components/ui/layout";
 
 const MyPageTop = () => {

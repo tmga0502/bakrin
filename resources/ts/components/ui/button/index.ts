@@ -1,6 +1,6 @@
-import MainButton from "./MainButton";
-import ItemFavoriteButton from "./ItemFavoriteButton";
-import SideMenuButton from "./SideMenuButton";
+import MainButton from "./MainButton/MainButton";
+import ItemFavoriteButton from "./ItemFavoriteButton/ItemFavoriteButton";
+import SideMenuButton from "./SideMenuButton/SideMenuButton";
 
 export {
 	MainButton,

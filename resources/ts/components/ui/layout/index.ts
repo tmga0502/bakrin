@@ -1,4 +1,4 @@
-import MainAppLayout from './MainAppLayout'
+import MainAppLayout from './MainLayout/MainAppLayout'
 
 export {
 	MainAppLayout,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {DateObject} from "@/ts/_dummyData/InvoiceData";
-import {PageTitle} from "@/ts/components/ui/title/Title";
-import MyPageInvoiceList from "@/ts/components/pages/mainApp/MyPage/Invoice/features/MyPageInvoice.list";
+import {PageTitle} from "@/ts/components/ui/title";
+import {MyPageInvoiceList} from "@/ts/components/pages/mainApp/MyPage/Invoice/features";
 import {MainAppLayout} from "@/ts/components/ui/layout";
 
 const MyPageInvoice = () => {

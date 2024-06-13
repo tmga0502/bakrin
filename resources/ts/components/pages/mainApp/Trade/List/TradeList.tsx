@@ -1,5 +1,5 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import React from "react";
 import {applicationList} from "@/ts/_dummyData/ApplicationList";
 import TradeItemPanel from "@/ts/components/model/item/TradeItemePanel/TradeItemPanel";

@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 import {useGetItem} from "@/ts/_api/query/ItemQuery";
 import Loader from "@/ts/components/ui/loader/Loader";
 import ItemShowDescription from "@/ts/components/model/item/ItemShowDescription/ItemShowDescription";
-import ShowModeToggler from "@/ts/components/pages/mainApp/Item/Show/features/ShowModeToggler";
+import {ShowModeToggler} from "@/ts/components/pages/mainApp/Item/Show/features";
 
 const ItemShow = () => {
 	const params = useParams()

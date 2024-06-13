@@ -1,6 +1,6 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
 import React from "react";
-import Form from "@/ts/components/pages/mainApp/Myitem/New/features/Form";
+import Form from "@/ts/components/pages/mainApp/Myitem/New/features/Form/Form";
 
 const MyItemNewPage = () => {
 	return (

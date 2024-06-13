@@ -1,6 +1,6 @@
 import { applicationList } from "@/ts/_dummyData/ApplicationList";
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import TradeItemPanel from "@/ts/components/model/item/TradeItemePanel/TradeItemPanel";
 
 const ReceiveApplicationListPage = () => {

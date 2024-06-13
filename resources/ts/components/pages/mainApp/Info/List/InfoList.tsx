@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {IoMdArrowDropright} from "react-icons/io";
 import {InfoData} from "@/ts/_dummyData/InfoData";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {MainAppLayout} from "@/ts/components/ui/layout";
 
 const InfoList = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {MainAppLayout} from "@/ts/components/ui/layout";
 
 const InfoShow = () => {

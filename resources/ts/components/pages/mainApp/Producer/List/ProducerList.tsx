@@ -1,5 +1,5 @@
 import {MainAppLayout} from "@/ts/components/ui/layout";
-import {PageTitle} from "@/ts/components/ui/title/Title";
+import {PageTitle} from "@/ts/components/ui/title";
 import {useGetPopularProducers} from "@/ts/_api/query/ProducerQuery";
 import Loader from "@/ts/components/ui/loader/Loader";
 import React from "react";
