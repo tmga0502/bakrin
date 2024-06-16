@@ -18,7 +18,7 @@ const SearchProducer = () => {
 	const onSubmit = async (data: any) => {
 		setSearchProducerName(data.producer)
 		setSearchPrefectureName(data.address)
-		const response = await 	axios.post<ProducerType[]>(`/api/producers/searchProducer`, data);
+		const response = await axios.post<ProducerType[]>(`/api/producers/searchProducer`, data);
 		setSearchProducerResults(response.data)
 	}
 

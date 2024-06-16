@@ -26,6 +26,7 @@ import MyItemEdit from "@/ts/components/pages/mainApp/Myitem/Edit/MyItemEdit";
 import MyItemNew from "@/ts/components/pages/mainApp/Myitem/New/MyItemNew";
 import SearchItemCategory from '@/ts/components/pages/mainApp/Search/ItemCategory/SearchItemCategory';
 import SearchProducer from "@/ts/components/pages/mainApp/Search/Producer/SearchProducer";
+import SearchPlan from "@/ts/components/pages/mainApp/Search/Plan/SearchPlan";
 
 const MainRouter = () => {
 
@@ -47,6 +48,7 @@ const MainRouter = () => {
 			{/*/!* 検索関連 *!/*/}
 			<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategory />} /> } />
 			<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducer />} /> } />
+			<Route path='/searchPlan' element={ <GuardRoute component={<SearchPlan />} /> } />
 
             {/*/!* 商品関連 *!/*/}
             <Route path="/items">

@@ -12,7 +12,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaSearch />,
 		title: 'プランから探す',
-		link: '',
+		link: '/searchPlan',
 		bg: 'gray-200'
 	},
 	{

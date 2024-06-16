@@ -6,6 +6,7 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
 import {SearchProducerProvider} from "@/ts/hooks/SearchProducerContext/SearchProducerContext";
+import {SearchPlanProvider} from "@/ts/hooks/SearchPlanContext/SearchPlanContext";
 
 const App: React.FC = () => {
 
@@ -26,8 +27,10 @@ const App: React.FC = () => {
             <IsLoadingProvider>
                 <AuthProvider>
 					<SearchProducerProvider>
+					<SearchPlanProvider>
 						<Router/>
 						<ToastContainer hideProgressBar={true}/>
+					</SearchPlanProvider>
 					</SearchProducerProvider>
                 </AuthProvider>
             </IsLoadingProvider>

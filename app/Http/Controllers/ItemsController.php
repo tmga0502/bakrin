@@ -77,4 +77,14 @@ class ItemsController extends Controller
 		$item->fill($req->all())->save();
 		return response()->json($item, 200);
 	}
+
+	public function searchPlan(Request $req): JsonResponse
+	{
+		if($req->plan !== false){
+			$items = Item::whereIn('planId', $req->plan)->get();
+		}else{
+			$items = [];
+		}
+		return response()->json($items, 200);
+	}
 }
