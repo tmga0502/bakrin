@@ -3,7 +3,7 @@ import { MainButtonType } from './MainButton.type';
 import {tv} from "tailwind-variants";
 
 const MainButtonTv = tv({
-	base: "bg-mainGreen text-white whitespace-nowrap hover:opacity-80",
+	base: "bg-mainGreen text-white whitespace-nowrap hover:opacity-80 ",
 	variants: {
 		color: {
 			mainGreen: "bg-mainGreen",
@@ -15,7 +15,7 @@ const MainButtonTv = tv({
 			default : 'bg-default'
 		},
 		size: {
-			sm: "py-1 px-2 rounded-md",
+			sm: "py-1 px-2 rounded-md text-sm",
 			md: "py-2 px-4 rounded-md",
 			lg: "py-4 px-6 rounded-lg",
 		},

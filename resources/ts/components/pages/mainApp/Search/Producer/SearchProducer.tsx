@@ -9,17 +9,22 @@ import {ProducerType} from "@/ts/types/ProducerType";
 import {ProducerPanel} from "@/ts/components/model/producer/ProducerPanel/ProducerPanel";
 import {GridBox} from "@/ts/components/ui/box";
 import {useSearchProducerContext} from "@/ts/hooks/SearchProducerContext/SearchProducerContext";
+import {useIsLoading} from "@/ts/hooks/IsLoadingContext";
+import Loader from "@/ts/components/ui/loader/Loader";
 
 const SearchProducer = () => {
+	const {isLoading, setIsLoading} = useIsLoading();
 	const methods = useForm();
 	const {handleSubmit, reset} = methods
 	const {searchProducerName, setSearchProducerName, searchPrefectureName, setSearchPrefectureName, searchProducerResults, setSearchProducerResults} = useSearchProducerContext()
 
 	const onSubmit = async (data: any) => {
+		setIsLoading(true)
 		setSearchProducerName(data.producer)
 		setSearchPrefectureName(data.address)
 		const response = await axios.post<ProducerType[]>(`/api/producers/searchProducer`, data);
 		setSearchProducerResults(response.data)
+		setIsLoading(false)
 	}
 
 	const handleReset = () => {
@@ -46,11 +51,13 @@ const SearchProducer = () => {
 				</FormProvider>
 			</div>
 
-			<GridBox>
-				{searchProducerResults.map((item) =>(
-					<ProducerPanel data={item} key={item.id}/>
-				))}
-			</GridBox>
+			{isLoading ? <Loader/> : (
+				<GridBox>
+					{searchProducerResults.map((item) =>(
+						<ProducerPanel data={item} key={item.id}/>
+					))}
+				</GridBox>
+			)}
 		</MainAppLayout>
 	);
 };
