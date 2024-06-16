@@ -1,5 +1,8 @@
 export const BreadcrumbRoutes = [
 	{path: '/', breadcrumb: 'TOP'},
+	{path: '/searchItemCategory', breadcrumb: 'カテゴリー検索'},
+	{path: '/searchProducer', breadcrumb: '生産者検索'},
+
 	{path: '/items', breadcrumb: 'アイテム一覧'},
 	{path: '/items/:itemId', breadcrumb: '詳細'},
 	{path: '/items/:itemId/request', breadcrumb: '申請'},

@@ -6,7 +6,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaSearch />,
 		title: 'カテゴリーから探す',
-		link: '',
+		link: '/searchItemCategory',
 		bg: 'gray-200'
 	},
 	{
@@ -18,7 +18,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaSearch />,
 		title: '生産者から探す',
-		link: '',
+		link: '/searchProducer',
 		bg: 'gray-200'
 	},
 	{

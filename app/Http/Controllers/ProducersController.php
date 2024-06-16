@@ -51,4 +51,19 @@ class ProducersController extends Controller
         return response()->json($producers);
     }
 
+	public function searchProducer(Request $req): JsonResponse
+	{
+		$producer = $req->producer;
+		$address = $req->address;
+		$query = Producer::query();
+		if (!is_null($producer)) {
+			$query->where('organizationName', 'like', '%' . $producer . '%');
+		}
+		if (!is_null($address)) {
+			$query->where('address1', $address);
+		}
+		$producers = $query->get();
+		return response()->json($producers);
+	}
+
 }

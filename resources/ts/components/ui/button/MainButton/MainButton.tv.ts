@@ -1,7 +1,7 @@
 import {tv} from "tailwind-variants";
 
 export const MainButtonTv = tv({
-	base: "bg-mainGreen text-white py-2 px-4 rounded-lg whitespace-nowrap hover:opacity-80",
+	base: "bg-mainGreen text-white whitespace-nowrap hover:opacity-80",
 	variants: {
 		color: {
 			mainGreen: "bg-mainGreen",
@@ -10,11 +10,12 @@ export const MainButtonTv = tv({
 			info: "bg-info",
 			success: "bg-success",
 			dark: "bg-bakDark",
+			default : 'bg-default'
 		},
 		size: {
 			sm: "py-1 px-2 rounded-md",
-			md: "py-2 px-4 rounded-xl",
-			lg: "py-4 px-6 rounded-2xl",
+			md: "py-2 px-4 rounded-md",
+			lg: "py-4 px-6 rounded-lg",
 		},
 		width:{
 			full: "w-full",
@@ -24,11 +25,11 @@ export const MainButtonTv = tv({
 		disable: {
 			true: "bg-darkGreen opacity-50 hover:opacity-50",
 		},
-		defaultVariants: {
-			size: 'md',
-			color: 'mainGreen',
-			align: 'left',
-			width: 'none'
-		},
 	},
+	defaultVariants: {
+		size: 'md',
+		color: 'mainGreen',
+		width: 'none'
+	},
+
 });
