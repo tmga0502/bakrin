@@ -13,5 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('{all}', fn () => view('index'))
+Route::any('{all}', fn () => view('mainApp'))
     ->where(['all' => '.*']);
+
+// Admin routes
+Route::get('/admin', function () {
+	return view('adminApp');
+});
+Route::get('/admin/{any}', function () {
+	return view('adminApp');
+})->where('any', '.*');
+
+// Producer routes
+Route::get('/{any}', function () {
+	return view('mainApp');
+})->where('any', '^(?!admin|agent).*$');
+
+// Fallback route for other paths
+Route::fallback(function () {
+	return view('mainApp');
+});
