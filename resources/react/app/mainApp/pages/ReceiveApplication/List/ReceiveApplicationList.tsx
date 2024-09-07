@@ -1,5 +1,5 @@
 import { applicationList } from "@/react/app/mainApp/_dummyData/ApplicationList";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import TradeItemPanel from "@/react/app/mainApp/features/item/TradeItemePanel/TradeItemPanel";
 

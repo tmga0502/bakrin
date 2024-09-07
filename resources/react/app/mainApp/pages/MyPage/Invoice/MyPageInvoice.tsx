@@ -2,7 +2,7 @@ import React from 'react';
 import {DateObject} from "@/react/app/mainApp/_dummyData/InvoiceData";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import {MyPageInvoiceList} from "@/react/app/mainApp/pages/MyPage/Invoice/features";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 
 const MyPageInvoice = () => {
 	return (

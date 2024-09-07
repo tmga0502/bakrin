@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {IoMdArrowDropright} from "react-icons/io";
 import {InfoData} from "@/react/app/mainApp/_dummyData/InfoData";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 
 const InfoList = () => {
     return (

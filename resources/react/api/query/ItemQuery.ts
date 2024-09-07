@@ -5,27 +5,39 @@ import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
 
 
 const useGetItem = (itemUuid: any) => {
-    return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid))
+    return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid),{
+		suspense: true,
+	})
 }
 
 const useGetMyItems = () => {
-    return useQuery(['myItems'], ()=>api.getMyItems())
+    return useQuery(['myItems'], ()=>api.getMyItems(),{
+		suspense: true,
+	})
 }
 
 const useGetFavoriteItems = () => {
-    return useQuery('favoriteItems', api.getFavoriteItems)
+    return useQuery('favoriteItems', ()=>api.getFavoriteItems(),{
+		suspense: true,
+	})
 }
 
 const useGetNewArrivalItems = () => {
-    return useQuery('newArrivalItems', api.getNewArrivalItems)
+    return useQuery('newArrivalItems', ()=>api.getNewArrivalItems(),{
+		suspense: true,
+	})
 }
 
 const useGetSeasonItems = () => {
-    return useQuery('seasonItems', api.getSeasonItems)
+    return useQuery('seasonItems', ()=>api.getSeasonItems(),{
+		suspense: true,
+	})
 }
 
 const useGetWantItems = () => {
-    return useQuery('wantItems', api.getWantItems)
+    return useQuery('wantItems', ()=>api.getWantItems(),{
+		suspense: true,
+	})
 }
 
 const useUpdateItem = () => {

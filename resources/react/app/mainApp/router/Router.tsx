@@ -1,8 +1,8 @@
 import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {useAuth} from "@/react/app/mainApp/hooks/AuthContext";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
-import Home from "@/react/app/mainApp/pages/Home/Home";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
+import Home from "@/react/app/mainApp/pages/home/Home";
 import Contact from "@/react/app/mainApp/pages/Contact/Contact";
 import Login from "@/react/app/mainApp/pages/Login/Login";
 import InfoList from "@/react/app/mainApp/pages/Info/List/InfoList";

@@ -1,11 +1,11 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import {useParams} from "react-router-dom";
 import {useGetProducer} from "@/react/api/query/ProducerQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 import React from "react";
 import ProducerShowPanel from "@/react/app/mainApp/features/producer/ProducerShowPanel/ProducerShowPanel";
-import {ItemPanel} from "@/react/app/mainApp/features/item/ItemPanel/ItemPanel";
+import {ItemPanel} from "@/react/app/mainApp/features/panel";
 
 const ProducerShowPage = () => {
 	const params = useParams()

@@ -1,10 +1,10 @@
-import {MainAppLayout} from "@/react/app/mainApp/components//layout";
+import {MainAppLayout} from "@/react/app/mainApp/features//layout";
 import ItemShowImage from "@/react/app/mainApp/features/item/ItemShowImage/ItemShowImage";
 import {ItemShowModeProvider} from "@/react/app/mainApp/pages/Item/Show/hooks/ItemContext";
 import React from "react";
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
-import Loader from "@/react/app/mainApp/components//loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 import ItemShowDescription from "@/react/app/mainApp/features/item/ItemShowDescription/ItemShowDescription";
 import {ShowModeToggler} from "@/react/app/mainApp/pages/Item/Show/features";
 

@@ -1,9 +1,9 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 import React from "react";
-import {ProducerPanel} from "@/react/app/mainApp/features/producer/ProducerPanel/ProducerPanel";
+import {ProducerPanel} from "@/react/app/mainApp/features/panel";
 
 const ProducerListPage = () => {
 	const { data: producersData } = useGetPopularProducers()

@@ -1,14 +1,10 @@
-import React, {useState} from 'react';
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
-import {ItemType} from "@/react/types/ItemType";
+import React from 'react';
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
-import {useForm} from "react-hook-form";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const SearchItemCategory = () => {
 	const {data: categoryData} = useGetCategories();
-	const [items, setItems] = useState<ItemType[]>([]);
-	const methods = useForm();
 
 	const onSubmit = (data: any) => {
 		console.log(data.target.value)

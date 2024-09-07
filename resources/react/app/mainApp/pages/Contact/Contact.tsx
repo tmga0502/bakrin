@@ -3,7 +3,7 @@ import {FormProvider, useForm} from "react-hook-form";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import { MainButton } from '@/react/app/mainApp/components/button';
 import {TextAreaField} from "@/react/app/mainApp/components/form";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 
 const Contact = () => {
 	const methods = useForm()

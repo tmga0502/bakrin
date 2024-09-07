@@ -1,8 +1,8 @@
-import {PlanType} from "@/ts/types/PlanType";
-import {ItemImageType} from "@/ts/types/ItemImageType";
-import {ItemCategoryType} from "@/ts/types/ItemCategoryType";
-import {UnitType} from "@/ts/types/UnitType";
-import {ProducerType} from "@/ts/types/ProducerType";
+import {PlanType} from "@/react/types/PlanType";
+import {ItemImageType} from "@/react/types/ItemImageType";
+import {ItemCategoryType} from "@/react/types/ItemCategoryType";
+import {UnitType} from "@/react/types/UnitType";
+import {ProducerType} from "@/react/types/ProducerType";
 
 export type ItemType = {
     map(arg0: (item: any) => any): import("react").ReactNode;

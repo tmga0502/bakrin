@@ -3,8 +3,8 @@ import Logo from '@/images/logo.png'
 import {IoSettingsOutline} from "react-icons/io5";
 import {FaRegUser} from "react-icons/fa";
 import {Link} from "react-router-dom";
-import { SideMenuButton } from '../button';
-import {MenuList} from "@/react/app/mainApp/components/menu";
+import { SideMenuButton } from '@/react/app/mainApp/components/button';
+import {MenuList} from "@/react/app/mainApp/features/menu";
 
 const Sidebar = () => {
 	return (

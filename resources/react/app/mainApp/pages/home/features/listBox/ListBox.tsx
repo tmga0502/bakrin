@@ -1,7 +1,7 @@
 import React from 'react';
-import {LIstBoxType} from "@/react/app/mainApp/pages/Home/features/ListBox/LIstBox.type";
-import HomeTitle from "@/react/app/mainApp/components/title/HomeTitle/HomeTitle";
-import {GridBox} from "@/react/app/mainApp/components/box";
+import {LIstBoxType} from "./ListBox.type";
+import HomeTitle from "../../../../components/title/HomeTitle/HomeTitle";
+import {GridBox} from "@/react/app/mainApp/features/layout";
 
 const ListBox: React.FC<LIstBoxType> = ({ title, moreLink, children }) => {
 	return (

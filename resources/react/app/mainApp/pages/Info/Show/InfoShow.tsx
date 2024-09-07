@@ -1,6 +1,6 @@
 import React from 'react';
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 
 const InfoShow = () => {
 	return (

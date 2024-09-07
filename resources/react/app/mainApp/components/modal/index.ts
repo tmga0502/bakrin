@@ -1,6 +1,6 @@
-import Modal from "./Modal/Modal";
-import ModalTitle from "./ModalTitle/ModalTitle";
-import ModalBody from "./ModalBody/ModalBody";
+import Modal from "@/react/app/mainApp/components/modal/modal/Modal";
+import ModalTitle from "@/react/app/mainApp/components/modal/modalTitle/ModalTitle";
+import ModalBody from "@/react/app/mainApp/components/modal/modalBody/ModalBody";
 
 export {
 	Modal,

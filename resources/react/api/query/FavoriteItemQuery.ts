@@ -4,7 +4,9 @@ import {toast} from "react-toastify";
 
 
 const useGetFavoriteItemState = (itemUuid: any) => {
-    return useQuery(['favoriteItemState', itemUuid], ()=>api.getFavoriteItemState(itemUuid))
+    return useQuery(['favoriteItemState', itemUuid], ()=>api.getFavoriteItemState(itemUuid),{
+		suspense: true,
+	})
 }
 
 const useRegisterFavoriteItem = () => {

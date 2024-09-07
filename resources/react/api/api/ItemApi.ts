@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ItemType} from "@/ts/types/ItemType";
+import {ItemType} from "@/react/types/ItemType";
 
 const getItem = async (itemUuid:string) => {
     const{ data } = await axios.get<ItemType>('/api/items/getItem/' + itemUuid);

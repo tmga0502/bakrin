@@ -1,16 +1,16 @@
 import React from 'react';
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {FormProvider, useForm} from "react-hook-form";
 import {InputField, SelectField} from "@/react/app/mainApp/components/form";
 import {MainButton} from "@/react/app/mainApp/components/button";
 import {Prefectures} from "@/react/_constants/Prefectures";
 import axios from "axios";
 import {ProducerType} from "@/react/types/ProducerType";
-import {ProducerPanel} from "@/react/app/mainApp/features/producer/ProducerPanel/ProducerPanel";
-import {GridBox} from "@/react/app/mainApp/components/box";
+import {ProducerPanel} from "@/react/app/mainApp/features/panel/index";
+import {GridBox} from "@/react/app/mainApp/features/layout/index";
 import {useSearchProducerContext} from "@/react/app/mainApp/hooks/SearchProducerContext/SearchProducerContext";
 import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const SearchProducer = () => {
 	const {isLoading, setIsLoading} = useIsLoading();

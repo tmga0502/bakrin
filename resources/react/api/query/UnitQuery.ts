@@ -3,7 +3,9 @@ import * as api from "@/react/api/api/UnitApi";
 
 
 const useGetUnits = () => {
-    return useQuery(['units'], ()=>api.getUnits())
+    return useQuery(['units'], ()=>api.getUnits(),{
+		suspense: true,
+	})
 }
 
 export {

@@ -1,8 +1,8 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import {Link, useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 import {ShowTd} from "@/react/app/mainApp/components/table";
 import {MainButton} from "@/react/app/mainApp/components/button";
 import {AddImageModal, DataDeleteModal, ImageDeleteModal} from "@/react/app/mainApp/pages/Myitem/Show/features";

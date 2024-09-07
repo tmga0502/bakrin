@@ -8,7 +8,7 @@ import {FileField, InputField, SelectField, TextAreaField} from "@/react/app/mai
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import {useGetUnits} from "@/react/api/query/UnitQuery";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const Form = () => {
 	const {data: categoryData} = useGetCategories();

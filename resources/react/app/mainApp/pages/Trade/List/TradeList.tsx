@@ -1,4 +1,4 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import React from "react";
 import {applicationList} from "@/react/app/mainApp/_dummyData/ApplicationList";

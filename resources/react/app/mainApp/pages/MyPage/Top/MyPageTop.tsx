@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import { MyPageMenu } from './constants';
 import {Button} from "@/react/app/mainApp/pages/MyPage/Top/features";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 
 const MyPageTop = () => {
 	const logout = useLogout()

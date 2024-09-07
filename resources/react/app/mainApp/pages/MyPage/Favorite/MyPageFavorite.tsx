@@ -3,10 +3,8 @@ import {useGetFavoriteItems} from "@/react/api/query/ItemQuery";
 import {useGetFavoriteProducers} from "@/react/api/query/ProducerQuery";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import {Tab} from "@/react/app/mainApp/components/tab";
-import {ItemPanel} from "@/react/app/mainApp/features/item/ItemPanel/ItemPanel";
-import {ProducerPanel} from "@/react/app/mainApp/features/producer/ProducerPanel/ProducerPanel";
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
-import {GridBox} from "@/react/app/mainApp/components/box";
+import {ItemPanel, ProducerPanel} from "@/react/app/mainApp/features/panel";
+import {MainAppLayout, GridBox} from "@/react/app/mainApp/features/layout";
 
 const MyPageFavorite = () => {
 	const { data: ItemData } = useGetFavoriteItems()

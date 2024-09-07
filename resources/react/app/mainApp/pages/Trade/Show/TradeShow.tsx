@@ -1,4 +1,4 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import TradeImageBox from "@/react/app/mainApp/features/item/TradeImageBox/TradeImageBox";
 import Chat from "@/react/app/mainApp/features/item/Trade/Chat";

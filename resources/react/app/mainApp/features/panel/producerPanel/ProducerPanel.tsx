@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import { producerPanelType } from "./ProducerPanel.type";
 
-export const ProducerPanel: FC<producerPanelType> = ({data}) => {
+const ProducerPanel: FC<producerPanelType> = ({data}) => {
 	return(
 		<Link to={'/producers/'+data.uuid}>
 			<div className="border-2 rounded-md shadow-lg">
@@ -22,3 +22,5 @@ export const ProducerPanel: FC<producerPanelType> = ({data}) => {
 		</Link>
 	)
 }
+
+export default ProducerPanel;

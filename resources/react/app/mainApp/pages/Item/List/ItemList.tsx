@@ -1,9 +1,9 @@
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {useGetNewArrivalItems} from "@/react/api/query/ItemQuery";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import React from "react";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
-import {ItemPanel} from "@/react/app/mainApp/features/item/ItemPanel/ItemPanel";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
+import {ItemPanel} from "@/react/app/mainApp/features/panel";
 
 const ItemListPage = () => {
 	const { data: itemLists } = useGetNewArrivalItems()

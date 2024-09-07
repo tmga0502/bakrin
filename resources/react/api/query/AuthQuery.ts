@@ -6,7 +6,9 @@ import * as api from "@/react/api/api/AuthApi";
 import {toast} from "react-toastify";
 
 const useGetUser = () => {
-    return useQuery('user', api.getUser)
+    return useQuery('user', ()=>api.getUser,{
+		suspense: true,
+	})
 }
 
 const useLogin = () => {

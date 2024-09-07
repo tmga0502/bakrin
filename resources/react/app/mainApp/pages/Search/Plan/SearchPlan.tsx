@@ -1,16 +1,16 @@
 import React from 'react';
-import {MainAppLayout} from "@/react/app/mainApp/components/layout";
+import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {FormProvider, useForm} from "react-hook-form";
 import {MainButton} from "@/react/app/mainApp/components/button";
 import axios from "axios";
-import {GridBox} from "@/react/app/mainApp/components/box";
+import {GridBox} from "@/react/app/mainApp/features/layout/index";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
-import Loader from "@/react/app/mainApp/components/loader/Loader";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 import {PlanType} from "@/react/types/PlanType";
 import CheckBox from "@/react/app/mainApp/components/form/CheckBox/CheckBox";
 import { useSearchPlanContext } from '@/react/app/mainApp/hooks/SearchPlanContext/SearchPlanContext';
 import { ItemType } from '@/react/types/ItemType';
-import {ItemPanel} from "@/react/app/mainApp/features/item/ItemPanel/ItemPanel";
+import {ItemPanel} from "@/react/app/mainApp/features/panel";
 import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
 
 const SearchPlan = () => {
