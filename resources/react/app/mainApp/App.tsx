@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Suspense} from 'react';
+import {RecoilRoot} from 'recoil';
 import {AuthProvider} from "./hooks/AuthContext";
 import {IsLoadingProvider} from "./hooks/IsLoadingContext";
 import Router from "./router/Router";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
-import {SearchProducerProvider} from "@/react/app/mainApp/hooks/SearchProducerContext/SearchProducerContext";
-import {SearchPlanProvider} from "@/react/app/mainApp/hooks/SearchPlanContext/SearchPlanContext";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const App: React.FC = () => {
 
@@ -24,16 +24,16 @@ const App: React.FC = () => {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <IsLoadingProvider>
-                <AuthProvider>
-					<SearchProducerProvider>
-					<SearchPlanProvider>
-						<Router/>
-						<ToastContainer hideProgressBar={true}/>
-					</SearchPlanProvider>
-					</SearchProducerProvider>
-                </AuthProvider>
-            </IsLoadingProvider>
+			<RecoilRoot>
+				<IsLoadingProvider>
+					<AuthProvider>
+						<Suspense fallback={<Loader/>}>
+							<Router/>
+							<ToastContainer hideProgressBar={true}/>
+						</Suspense>
+					</AuthProvider>
+				</IsLoadingProvider>
+			</RecoilRoot>
         </QueryClientProvider>
     );
 }

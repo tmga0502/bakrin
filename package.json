@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-		"scaffdog": "scaffdog"
+        "scaffdog": "scaffdog"
     },
     "devDependencies": {
         "@types/google-libphonenumber": "^7.4.30",
@@ -41,6 +41,7 @@
         "react-query": "^3.39.3",
         "react-router-dom": "^6.22.3",
         "react-toastify": "^10.0.5",
+        "recoil": "^0.7.7",
         "tailwind-variants": "^0.2.1",
         "use-react-router-breadcrumbs": "^4.0.1"
     }

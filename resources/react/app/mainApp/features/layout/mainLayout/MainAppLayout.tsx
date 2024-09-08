@@ -1,5 +1,4 @@
-import React, {FC, Suspense} from 'react';
-import Loader from "@/react/app/mainApp/features/loader/Loader";
+import React, {FC} from 'react';
 import Breadcrumb from "@/react/app/mainApp/features/breadcrumb/Breadcrumb/Breadcrumb";
 import {Container, MainBox, Wrapper} from "../index";
 import {MainAppLayoutType} from "./MainLayout.type";
@@ -14,10 +13,8 @@ const MainAppLayout: FC<MainAppLayoutType> = ({children}) => {
 			<Container>
 				<Sidebar/>
 				<MainBox>
-					<Suspense fallback={<Loader/>}>
-						<Breadcrumb/>
-						{children}
-					</Suspense>
+					<Breadcrumb/>
+					{children}
 				</MainBox>
 			</Container>
 			<Footer/>
