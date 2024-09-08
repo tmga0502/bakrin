@@ -41,7 +41,7 @@ class ProducersController extends Controller
         $user = Auth::user();
         $userUuid = $user->uuid;
         $producerQuery = Producer::with('favoriteProducers')->whereHas('favoriteProducers', function($q) use($userUuid){
-            $q->where('producerUuid', $userUuid);
+            $q->where('myUuid', $userUuid);
         });
         if($producerQuery->exists()){
             $producers = $producerQuery->get();

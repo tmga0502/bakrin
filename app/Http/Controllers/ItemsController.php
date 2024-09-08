@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FavoriteItem;
 use App\Models\Item;
-use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,8 +13,7 @@ class ItemsController extends Controller
 
     public function getMyItems(): JsonResponse
     {
-        $user = Auth::user();
-        $items = Item::with('plan')->where('producerUuid', $user->uuid)->get();
+		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->get();
         return response()->json($items);
     }
 
@@ -53,15 +50,15 @@ class ItemsController extends Controller
     public function getFavoriteItems(Request $req): JsonResponse
     {
         $userUuid = Auth::user()->uuid;
-        $itemQuery = Item::with('favoriteItems')->where('status', 0)->whereHas('favoriteItems', function($q) use($userUuid){
-            $q->where('producerUuid', $userUuid);
+        $itemQuery = Item::with('favoriteItems')->whereHas('favoriteItems', function($q) use($userUuid){
+            $q->where('myUuid', $userUuid);
         });
         if($itemQuery->exists()){
-            $items = $itemQuery->get();
+            $items = $itemQuery->where('status', 0)->get();
         }else{
             $items = [];
         }
-        return response()->json($items);
+        return response()->json($items, 200);
     }
 
 
