@@ -10,7 +10,9 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'myUuid',
-        'producerUuid',
+        'senderUuid',
+        'receiverUuid',
+		'message',
+		'read_at',
     ];
 }

@@ -25,10 +25,13 @@ class MessageFactory extends Factory
         $producerAccount = Producer::whereNotIn('uuid',[$myUuid])->inRandomOrder()->first();
         $producerUuid = $producerAccount->uuid;
         $now = Carbon::now();
-        return [
-            'myUuid' => $myUuid,
-            'producerUuid' => $producerUuid,
+		$readAt = random_int(0, 1) ? $now : null;
+
+		return [
+            'senderUuid' => $myUuid,
+            'receiverUuid' => $producerUuid,
             'message' => $this->faker->realText(100,5),
+			'read_at' => $readAt,
             'created_at' => $now,
             'updated_at' => $now,
         ];

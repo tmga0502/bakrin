@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('myUuid')->comment('自分のuuid')->index();
-            $table->string('producerUuid')->comment('相手のuuid')->index();
+            $table->string('senderUuid')->comment('送信者のuuid')->index();
+            $table->string('receiverUuid')->comment('受信者のuuid')->index();
             $table->text('message')->comment('メッセージ');
+            $table->datetime('read_at')->nullable()->default(null)->comment('開封日時');
             $table->timestamps();
         });
     }

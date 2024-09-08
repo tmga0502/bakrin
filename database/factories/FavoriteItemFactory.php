@@ -29,5 +29,6 @@ class FavoriteItemFactory extends Factory
                 'itemUuid' => $item->uuid,
             ];
         }
+		return [];
     }
 }

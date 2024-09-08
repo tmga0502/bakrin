@@ -29,5 +29,6 @@ class FavoriteProducerFactory extends Factory
                 'producerUuid' => $producer->uuid,
             ];
         }
+		return [];
     }
 }

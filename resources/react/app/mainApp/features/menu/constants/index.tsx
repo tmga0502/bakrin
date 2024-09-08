@@ -32,9 +32,16 @@ const Menu: MenuType[] = [
 		title: '申請依頼',
 		link: '/receiveApplication',
 		bg: 'white'
-	},{
+	},
+	{
 		icon: <FaRegCircle />,
 		title: '取引',
+		link: '/trade',
+		bg: 'white'
+	},
+	{
+		icon: <FaRegCircle />,
+		title: 'メッセージ',
 		link: '/trade',
 		bg: 'white'
 	},
