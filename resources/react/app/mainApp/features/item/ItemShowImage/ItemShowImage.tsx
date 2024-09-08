@@ -3,6 +3,7 @@ import ImageGallery from "react-image-gallery";
 import {ItemShowImageType} from "@/react/app/mainApp/features/item/ItemShowImage/ItemShowImage.type";
 
 const ItemShowImage: React.FC<ItemShowImageType> = ({thumbnail, images}) => {
+
 	const imgs = [
 		{
 			original: thumbnail,

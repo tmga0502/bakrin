@@ -54,19 +54,27 @@ button:focus-visible, a:focus-visible{
     @apply whitespace-nowrap px-4 py-2 border
 }
 
-.planBudge{
-	display: inline-block;
-	position: absolute;
-	left: 0;
-	top: 3%;
-	padding: 0 1rem;
-	margin: 0;
-	line-height: 1.25rem;
-	font-size: 0.75rem;
-	color: #fff;
-	z-index: 100;
-
-	@apply  box-border bg-orange-500 shadow-ribbon z-100 rounded-tr-[5px] rounded-br-[5px]
-	before:absolute before:content-[''] before:top-0 before:-left-[7px] before:border-0 before:h-6 before:w-[7px] before:bg-orange-500 before:rounded-tl-[5px] before:rounded-bl-[5px]
-	after:absolute after:content-[''] after:-bottom-[7px] after:-left-[5px] after:border-0 after:h-5 after:bg-orange-500 after:rounded-tl-[5px] after:rounded-bl-[5px]
+.image-gallery-slide, .image-gallery-thumbnail-inner{
+	position: relative;
+	overflow: hidden;
 }
+.image-gallery-slide::before,
+.image-gallery-thumbnail-inner::before{
+	content: "";
+	padding-top: 100%;
+	display: block;
+	background-color: #c5c5c5;
+}
+.image-gallery-image,
+.image-gallery-thumbnail-image{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+}
+.image-gallery.fullscreen-modal{
+	z-index: 20000 !important;
+}
+
