@@ -5,7 +5,6 @@ import {
     useRegisterFavoriteItem
 } from "@/react/api/query/FavoriteItemQuery";
 import {useAuth} from "@/react/app/mainApp//hooks/AuthContext";
-import { useItemShowMode } from '../../hooks/ItemContext';
 import {ItemFavoriteButton, MainButton} from "@/react/app/mainApp/components/button";
 import {ButtonGroupType} from "@/react/app/mainApp/pages/Item/Show/features/BttonGroup/ButtonGroup.type";
 
@@ -16,7 +15,6 @@ const ButtonGroup: React.FC<ButtonGroupType> = ({data}) => {
 	)
     const favoriteRegister = useRegisterFavoriteItem();
     const favoriteDeregister = useDeregisterFavoriteItem();
-    const {setMode} = useItemShowMode()
 
     const handleFavorite = () => {
         if (favoriteStatus){
@@ -30,12 +28,14 @@ const ButtonGroup: React.FC<ButtonGroupType> = ({data}) => {
     return (
         <>
             <div className="block text-center mt-8 mb-4">
-                <MainButton type={'button'} width={'half'} color={'mainGreen'} value={'申請する'} onClick={()=>setMode('request')}/>
+				<Link to={`/items/${data.uuid}/requestForm`}>
+                	<MainButton type={'button'} width={'half'} color={'mainGreen'} value={'申請する'}/>
+				</Link>
             </div>
 
             <div className="block text-center mb-4">
                 <Link to={'/'}>
-                    <MainButton type={'button'} width={'half'} color={'mainYellow'} value={'交渉する'}/>
+                    <MainButton type={'button'} width={'half'} color={'mainYellow'} value={'メッセージを送る'}/>
                 </Link>
             </div>
 

@@ -27,6 +27,7 @@ import MyItemNew from "@/react/app/mainApp/pages/Myitem/New/MyItemNew";
 import SearchItemCategory from '@/react/app/mainApp/pages/Search/ItemCategory/SearchItemCategory';
 import SearchProducer from "@/react/app/mainApp/pages/Search/Producer/SearchProducer";
 import SearchPlan from "@/react/app/mainApp/pages/Search/Plan/SearchPlan";
+import ItemRequestForm from "@/react/app/mainApp/pages/Item/RequestForm/ItemRequestForm";
 
 const Router = () => {
 
@@ -55,6 +56,7 @@ const Router = () => {
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
 					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
+					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />
 				</Route>
 
 				{/*/!* 生産者関連 *!/*/}
