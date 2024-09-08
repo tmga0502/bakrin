@@ -38,6 +38,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 
         Route::patch('/update', [ItemsController::class, 'update']);//更新
 		Route::post('/searchPlan', [ItemsController::class, 'searchPlan']);//プランから検索
+		Route::post('/searchCategory', [ItemsController::class, 'searchCategory']);//カテゴリーから検索
     });
 
     //カテゴリー関連
