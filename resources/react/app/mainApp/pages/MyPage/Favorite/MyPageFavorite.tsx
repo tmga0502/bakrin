@@ -11,7 +11,7 @@ const MyPageFavorite = () => {
 	const { data: ProducerData} = useGetFavoriteProducers()
 	const [viewMode, setViewMode] = useState('アイテム')
 	const tabMenu = ['アイテム', '生産者']
-	console.log(ItemData)
+
 	return (
 		<MainAppLayout>
 			<PageTitle en={'favorite'} jp={'お気に入り'}/>
