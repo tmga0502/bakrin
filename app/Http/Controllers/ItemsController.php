@@ -22,7 +22,7 @@ class ItemsController extends Controller
 
     public function getNewArrival(): JsonResponse
     {
-        $items = Item::orderBy('created_at', 'DESC')->take(50)->get();
+        $items = Item::where('status', 0)->orderBy('created_at', 'DESC')->take(50)->get();
         return response()->json($items);
     }
 
@@ -31,7 +31,7 @@ class ItemsController extends Controller
         $userUuid = Auth::user()->uuid;
         $items = Item::with('wantItems')->whereHas('wantItems', function($q) use($userUuid){
             $q->where('myUuid', $userUuid);
-        })->get();
+        })->where('status', 0)->get();
         return response()->json($items);
     }
 
@@ -46,14 +46,14 @@ class ItemsController extends Controller
                                 $query->where('shippingStart', '<=', $nowMonth)->orWhere('shippingEnd', '>=', $nowMonth);
                         });
                     });
-                })->get();
+                })->where('status', 0)->get();
         return response()->json($items);
     }
 
     public function getFavoriteItems(Request $req): JsonResponse
     {
         $userUuid = Auth::user()->uuid;
-        $itemQuery = Item::with('favoriteItems')->whereHas('favoriteItems', function($q) use($userUuid){
+        $itemQuery = Item::with('favoriteItems')->where('status', 0)->whereHas('favoriteItems', function($q) use($userUuid){
             $q->where('producerUuid', $userUuid);
         });
         if($itemQuery->exists()){
@@ -81,7 +81,7 @@ class ItemsController extends Controller
 	public function searchPlan(Request $req): JsonResponse
 	{
 		if($req->plan !== false){
-			$items = Item::whereIn('planId', $req->plan)->get();
+			$items = Item::whereIn('planId', $req->plan)->where('status', 0)->get();
 		}else{
 			$items = [];
 		}
