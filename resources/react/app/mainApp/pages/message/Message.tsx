@@ -24,7 +24,7 @@ const Message = () => {
 							</div>
 							<div className={'w-[calc(100%-60px-1rem)]'}>
 								<p className="mb-2">{messageGroup.partner.organizationName}</p>
-								<p className="text-sm truncate ">{messageGroup.lastMessage}</p>
+								<p className="text-sm text-gray-500 truncate">{messageGroup.lastMessage}</p>
 							</div>
 						</Card>
 					</Link>
