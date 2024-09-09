@@ -32,4 +32,18 @@ class MessageController extends Controller
 
 		return response()->json($result, 200);
 	}
+
+	public function getMessages(Request $req): JsonResponse
+	{
+		$myUuid = Auth()->user()->uuid;
+		$partnerUuid = $req->query('uuid');
+
+		$messages = Message::with(['sender', 'receiver'])->where(function($q) use($myUuid, $partnerUuid) {
+			$q->where('senderUuid', $myUuid)->where('receiverUuid', $partnerUuid);
+		})->orWhere(function($q) use($myUuid, $partnerUuid) {
+			$q->where('senderUuid', $partnerUuid)->where('receiverUuid', $myUuid);
+		})->orderBy('created_at', 'asc')->get();
+
+		return response()->json($messages, 200);
+	}
 }

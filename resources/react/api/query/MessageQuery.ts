@@ -8,6 +8,13 @@ const useGetMessageLists = () => {
 	})
 }
 
+const useGetMessages = (uuid: string) => {
+	return useQuery(['Messages', uuid], ()=>api.getMessages(uuid),{
+		suspense: true,
+	})
+}
+
 export {
     useGetMessageLists,
+	useGetMessages,
 }

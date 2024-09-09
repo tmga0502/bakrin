@@ -22,6 +22,7 @@ export const BreadcrumbRoutes = [
 	{path: '/trade/:tradeId', breadcrumb: '取引詳細'},
 
 	{path: '/message', breadcrumb: 'メッセージ一覧'},
+	{path: '/message/:producerUuid', breadcrumb: 'メッセージ'},
 
 	{path: '/mypage', breadcrumb: 'マイページ'},
 	{path: '/mypage/myfavorite', breadcrumb: 'お気に入り'},

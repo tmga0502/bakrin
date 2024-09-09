@@ -28,7 +28,8 @@ import SearchItemCategory from '@/react/app/mainApp/pages/search/itemCategory/Se
 import SearchProducer from "@/react/app/mainApp/pages/search/producer/SearchProducer";
 import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
 import ItemRequestForm from "@/react/app/mainApp/pages/item/requestForm/ItemRequestForm";
-import Message from "@/react/app/mainApp/pages/message/Message";
+import MessageList from "@/react/app/mainApp/pages/message/list/MessageList";
+import MessageShow from "@/react/app/mainApp/pages/message/show/MessageShow";
 
 const Router = () => {
 
@@ -98,7 +99,8 @@ const Router = () => {
 
 				{/*/!*  メッセージ  *!/*/}
 				<Route path="message">
-					<Route index={true} element={<GuardRoute component={<Message />} />}/>
+					<Route index={true} element={<GuardRoute component={<MessageList />} />}/>
+					<Route path=":producerUuid" element={<GuardRoute component={<MessageShow />} />}/>
 				</Route>
 
 				{/*/!*  その他  *!/*/}

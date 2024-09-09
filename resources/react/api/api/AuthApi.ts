@@ -1,5 +1,5 @@
 import axios from "axios";
-import {AuthToken} from "@/ts/types/AuthTokenType";
+import {AuthToken} from "@/react/types/AuthTokenType";
 
 const getUser = async () => {
     const { data } = await axios.get('/api/getUser');

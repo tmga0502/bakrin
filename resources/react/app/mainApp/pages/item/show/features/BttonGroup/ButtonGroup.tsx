@@ -34,7 +34,7 @@ const ButtonGroup: React.FC<ButtonGroupType> = ({data}) => {
             </div>
 
             <div className="block text-center mb-4">
-                <Link to={'/'}>
+                <Link to={`/message/${data.producer.uuid}`}>
                     <MainButton type={'button'} width={'half'} color={'mainYellow'} value={'メッセージを送る'}/>
                 </Link>
             </div>

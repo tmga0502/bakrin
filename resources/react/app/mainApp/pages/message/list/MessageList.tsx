@@ -6,10 +6,8 @@ import {Link} from "react-router-dom";
 import {Card} from "@/react/app/mainApp/features/card";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
 
-const Message = () => {
+const MessageList = () => {
 	const {data: messageLists} = useGetMessageLists()
-
-	console.log(messageLists)
 	if (messageLists === undefined) return <Loader/>
 
 	return (
@@ -17,7 +15,7 @@ const Message = () => {
 			<PageTitle en={'MESSAGE'} jp={'メッセージ一覧'}/>
 			<div className="max-w-2xl mx-auto mt-10">
 				{messageLists.map((messageGroup: any, index: number) => (
-					<Link to={'/'} key={index}>
+					<Link to={`${messageGroup.partner.uuid}`} key={index}>
 						<Card>
 							<div className="w-[60px] h-[60px]">
 								<img src={messageGroup.partner.imgPath} className="w-full h-full rounded-full object-cover" alt={messageGroup.partner.organizationName}/>
@@ -35,4 +33,4 @@ const Message = () => {
 	);
 };
 
-export default Message;
+export default MessageList;

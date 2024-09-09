@@ -15,7 +15,7 @@ export default defineConfig({
         }),
     ],
     server: {
-        hmr: false, // ホットモジュールリプレースメント（HMR）を無効化する
+        hmr: true, // ホットモジュールリプレースメント（HMR）を無効化する
     },
     resolve: {
         alias: {
