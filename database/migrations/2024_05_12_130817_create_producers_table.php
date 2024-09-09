@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address3')->comment('番地以下');
             $table->string('address4')->nullable()->default('')->comment('建物名等');
             $table->string('tel')->comment('電話番号');
-            $table->string('imgPath')->nullable()->default(null)->comment('電話番号');
+            $table->string('imgPath')->nullable()->default(null)->comment('画像パス');
             $table->string('email')->comment('メールアドレス');
             $table->string('password')->comment('パスワード');
             $table->integer('paymentMethod')->default(0)->comment('取引手数料の支払い方法');

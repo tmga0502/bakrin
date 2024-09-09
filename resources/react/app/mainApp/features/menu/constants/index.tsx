@@ -42,7 +42,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaRegCircle />,
 		title: 'メッセージ',
-		link: '/trade',
+		link: '/message',
 		bg: 'white'
 	},
 	{

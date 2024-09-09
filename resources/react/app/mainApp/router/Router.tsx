@@ -3,31 +3,32 @@ import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {useAuth} from "@/react/app/mainApp/hooks/AuthContext";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
 import Home from "@/react/app/mainApp/pages/home/Home";
-import Contact from "@/react/app/mainApp/pages/Contact/Contact";
-import Login from "@/react/app/mainApp/pages/Login/Login";
+import Contact from "@/react/app/mainApp/pages/contact/Contact";
+import Login from "@/react/app/mainApp/pages/login/Login";
 import InfoList from "@/react/app/mainApp/pages/Info/List/InfoList";
 import InfoShow from "@/react/app/mainApp/pages/Info/Show/InfoShow";
-import MyPageTop from "@/react/app/mainApp/pages/MyPage/Top/MyPageTop";
-import MyPageFavorite from "@/react/app/mainApp/pages/MyPage/Favorite/MyPageFavorite";
-import MyPageTradeHistory from "@/react/app/mainApp/pages/MyPage/TradeHistory/MyPageTradeHistory";
-import MyPageInvoice from "@/react/app/mainApp/pages/MyPage/Invoice/MyPageInvoice";
-import MyPageProfile from "@/react/app/mainApp/pages/MyPage/Profile/MyPageProfile";
-import ItemShow from "@/react/app/mainApp/pages/Item/Show/ItemShow";
-import ItemList from "@/react/app/mainApp/pages/Item/List/ItemList";
-import ProducerShow from "@/react/app/mainApp/pages/Producer/Show/ProducerShow";
-import ProducerList from "@/react/app/mainApp/pages/Producer/List/ProducerList";
-import TradeList from "@/react/app/mainApp/pages/Trade/List/TradeList";
-import TradeShow from "@/react/app/mainApp/pages/Trade/Show/TradeShow";
-import ReceiveApplicationList from "@/react/app/mainApp/pages/ReceiveApplication/List/ReceiveApplicationList";
-import ReceiveApplicationShow from "@/react/app/mainApp/pages/ReceiveApplication/Show/ReceiveApplicationShow";
-import MyItemShow from "@/react/app/mainApp/pages/Myitem/Show/MyItemShow";
-import MyItemList from "@/react/app/mainApp/pages/Myitem/List/MyItemList";
-import MyItemEdit from "@/react/app/mainApp/pages/Myitem/Edit/MyItemEdit";
-import MyItemNew from "@/react/app/mainApp/pages/Myitem/New/MyItemNew";
-import SearchItemCategory from '@/react/app/mainApp/pages/Search/ItemCategory/SearchItemCategory';
-import SearchProducer from "@/react/app/mainApp/pages/Search/Producer/SearchProducer";
-import SearchPlan from "@/react/app/mainApp/pages/Search/Plan/SearchPlan";
-import ItemRequestForm from "@/react/app/mainApp/pages/Item/RequestForm/ItemRequestForm";
+import MyPageTop from "@/react/app/mainApp/pages/myPage/top/MyPageTop";
+import MyPageFavorite from "@/react/app/mainApp/pages/myPage/favorite/MyPageFavorite";
+import MyPageTradeHistory from "@/react/app/mainApp/pages/myPage/tradeHistory/MyPageTradeHistory";
+import MyPageInvoice from "@/react/app/mainApp/pages/myPage/invoice/MyPageInvoice";
+import MyPageProfile from "@/react/app/mainApp/pages/myPage/profile/MyPageProfile";
+import ItemShow from "@/react/app/mainApp/pages/item/show/ItemShow";
+import ItemList from "@/react/app/mainApp/pages/item/list/ItemList";
+import ProducerShow from "@/react/app/mainApp/pages/producer/show/ProducerShow";
+import ProducerList from "@/react/app/mainApp/pages/producer/list/ProducerList";
+import TradeList from "@/react/app/mainApp/pages/trade/list/TradeList";
+import TradeShow from "@/react/app/mainApp/pages/trade/show/TradeShow";
+import ReceiveApplicationList from "@/react/app/mainApp/pages/receiveApplication/list/ReceiveApplicationList";
+import ReceiveApplicationShow from "@/react/app/mainApp/pages/receiveApplication/show/ReceiveApplicationShow";
+import MyItemShow from "@/react/app/mainApp/pages/myitem/show/MyItemShow";
+import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemList";
+import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEdit";
+import MyItemNew from "@/react/app/mainApp/pages/myitem/new/MyItemNew";
+import SearchItemCategory from '@/react/app/mainApp/pages/search/itemCategory/SearchItemCategory';
+import SearchProducer from "@/react/app/mainApp/pages/search/producer/SearchProducer";
+import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
+import ItemRequestForm from "@/react/app/mainApp/pages/item/requestForm/ItemRequestForm";
+import Message from "@/react/app/mainApp/pages/message/Message";
 
 const Router = () => {
 
@@ -93,6 +94,11 @@ const Router = () => {
 				<Route path="trade">
 					<Route index={true} element={<GuardRoute component={<TradeList />} />}/>
 					<Route path=":tradeId" element={<GuardRoute component={<TradeShow />}/>}/>
+				</Route>
+
+				{/*/!*  メッセージ  *!/*/}
+				<Route path="message">
+					<Route index={true} element={<GuardRoute component={<Message />} />}/>
 				</Route>
 
 				{/*/!*  その他  *!/*/}

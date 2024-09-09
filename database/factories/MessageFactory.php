@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Message;
+use App\Models\MessageGroup;
 use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,20 +21,61 @@ class MessageFactory extends Factory
      */
     public function definition(): array
     {
-        $myAccount = Producer::inRandomOrder()->first();
-        $myUuid = $myAccount->uuid;
-        $producerAccount = Producer::whereNotIn('uuid',[$myUuid])->inRandomOrder()->first();
-        $producerUuid = $producerAccount->uuid;
-        $now = Carbon::now();
-		$readAt = random_int(0, 1) ? $now : null;
-
+		$now = Carbon::now();
 		return [
-            'senderUuid' => $myUuid,
-            'receiverUuid' => $producerUuid,
-            'message' => $this->faker->realText(100,5),
-			'read_at' => $readAt,
-            'created_at' => $now,
-            'updated_at' => $now,
-        ];
+			'messageGroupId' => 0,
+			'senderUuid' => $this->faker->word,
+			'receiverUuid' => $this->faker->word,
+			'message' => $this->faker->realText(50,5),
+			'read_at' => $now,
+			'created_at' => $now,
+			'updated_at' => $now,
+		];
     }
+
+	public function withId($id): MessageFactory|Factory
+	{
+		return $this->state(function (array $attributes) use ($id) {
+			return [
+				'messageGroupId' => $id,
+			];
+		});
+	}
+
+	public function withSender($sender): MessageFactory|Factory
+	{
+		return $this->state(function (array $attributes) use ($sender) {
+			return [
+				'senderUuid' => $sender,
+			];
+		});
+	}
+
+	public function withReceiver($receiver): MessageFactory|Factory
+	{
+		return $this->state(function (array $attributes) use ($receiver) {
+			return [
+				'receiverUuid' => $receiver,
+			];
+		});
+	}
+
+	public function withReadAt($readAt): MessageFactory|Factory
+	{
+		return $this->state(function (array $attributes) use ($readAt) {
+			return [
+				'read_at' => $readAt,
+			];
+		});
+	}
+
+	public function withDate($date): MessageFactory|Factory
+	{
+		return $this->state(function (array $attributes) use ($date) {
+			return [
+				'created_at' => $date,
+				'updated_at' => $date,
+			];
+		});
+	}
 }
