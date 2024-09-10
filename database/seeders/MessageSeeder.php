@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Message;
-use App\Models\MessageGroup;
+use App\Models\MessageRoom;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MessageSeeder extends Seeder
 {
@@ -14,28 +15,21 @@ class MessageSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('messages')->truncate();
+        DB::table('messages')->truncate();
 
-		$messageGroup = MessageGroup::all();
-		foreach ($messageGroup as $group) {
+		$messageRoom = MessageRoom::all();
+		foreach ($messageRoom as $room) {
 			//メッセージを作成するかどうか
 			$flag = (bool)random_int(0, 1);
 			if ($flag) {
 				for($i = 0; $i < 100; $i++) {
 					$senderCheck = (bool)random_int(0, 1);
-					if($senderCheck){
-						$sender = $group->producerUuid1;
-						$receiver = $group->producerUuid2;
-					}else{
-						$sender = $group->producerUuid2;
-						$receiver = $group->producerUuid1;
-					}
+					$sender = $senderCheck ? $room->producerUuid1 : $room->producerUuid2;
 					$date = Carbon::now()->subDays(100 - $i);
 					$readAt = 100 - $i === 1  ? null : $date;
 					Message::factory()
-						->withId($group->id)
+						->withId($room->id)
 						->withSender($sender)
-						->withReceiver($receiver)
 						->withDate($date)
 						->withReadAt($readAt)
 						->create();

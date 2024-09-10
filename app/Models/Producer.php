@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static inRandomOrder()
  * @method static whereNotIn(string $string, array $array)
  * @method static where(string $string, mixed $auth_token)
+ * @method static find(int $int)
  */
 class Producer extends Authenticatable
 {

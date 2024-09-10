@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Message;
-use App\Models\MessageGroup;
-use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,9 +21,8 @@ class MessageFactory extends Factory
     {
 		$now = Carbon::now();
 		return [
-			'messageGroupId' => 0,
+			'messageRoomId' => 0,
 			'senderUuid' => $this->faker->word,
-			'receiverUuid' => $this->faker->word,
 			'message' => $this->faker->realText(50,5),
 			'read_at' => $now,
 			'created_at' => $now,
@@ -37,7 +34,7 @@ class MessageFactory extends Factory
 	{
 		return $this->state(function (array $attributes) use ($id) {
 			return [
-				'messageGroupId' => $id,
+				'messageRoomId' => $id,
 			];
 		});
 	}
@@ -47,15 +44,6 @@ class MessageFactory extends Factory
 		return $this->state(function (array $attributes) use ($sender) {
 			return [
 				'senderUuid' => $sender,
-			];
-		});
-	}
-
-	public function withReceiver($receiver): MessageFactory|Factory
-	{
-		return $this->state(function (array $attributes) use ($receiver) {
-			return [
-				'receiverUuid' => $receiver,
 			];
 		});
 	}

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message_groups', function (Blueprint $table) {
+        Schema::create('message_rooms', function (Blueprint $table) {
             $table->id();
-			$table->string('producerUuid1')->comment('生産者UUID1');
-			$table->string('producerUuid2')->comment('生産者UUID2');
+			$table->string('producerUuid1')->comment('producerのUUID1');
+			$table->string('producerUuid2')->comment('producerのUUID2');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('message_groups');
+        Schema::dropIfExists('message_rooms');
     }
 };

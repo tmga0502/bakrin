@@ -12,9 +12,14 @@ const getMessages = async (uuid: string) => {
 	return data;
 }
 
+const sendMessage = async (formData: any) => {
+	const{ data } = await axios.post('/api/message/sendMessage', formData);
+	return data;
+}
 
 
 export {
 	getMessageList,
 	getMessages,
+	sendMessage,
 }

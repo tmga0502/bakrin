@@ -14,15 +14,15 @@ const MessageList = () => {
 		<MainAppLayout>
 			<PageTitle en={'MESSAGE'} jp={'メッセージ一覧'}/>
 			<div className="max-w-2xl mx-auto mt-10">
-				{messageLists.map((messageGroup: any, index: number) => (
-					<Link to={`${messageGroup.partner.uuid}`} key={index}>
+				{messageLists.map((room: any, index: number) => (
+					<Link to={`${room.partner.uuid}`} key={index}>
 						<Card>
 							<div className="w-[60px] h-[60px]">
-								<img src={messageGroup.partner.imgPath} className="w-full h-full rounded-full object-cover" alt={messageGroup.partner.organizationName}/>
+								<img src={room.partner.imgPath} className="w-full h-full rounded-full object-cover" alt={room.partner.organizationName}/>
 							</div>
 							<div className={'w-[calc(100%-60px-1rem)]'}>
-								<p className="mb-2">{messageGroup.partner.organizationName}</p>
-								<p className="text-sm text-gray-500 truncate">{messageGroup.lastMessage}</p>
+								<p className="mb-2">{room.partner.organizationName}</p>
+								<p className="text-sm text-gray-500 truncate">{room.lastMessage}</p>
 							</div>
 						</Card>
 					</Link>

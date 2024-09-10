@@ -15,9 +15,8 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-		'messageGroupId',
+		'messageRoomId',
         'senderUuid',
-        'receiverUuid',
 		'message',
 		'read_at',
     ];
@@ -25,11 +24,5 @@ class Message extends Model
 	public function sender(): HasOne
 	{
 		return $this->hasOne(Producer::class, 'uuid', 'senderUuid');
-	}
-
-
-	public function receiver(): HasOne
-	{
-		return $this->hasOne(Producer::class, 'uuid', 'receiverUuid');
 	}
 }

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
-use App\Models\MessageGroup;
+use App\Models\MessageRoom;
 use App\Models\Producer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -15,7 +14,7 @@ class MessageController extends Controller
 	{
 		$result = [];
 		$user = Auth()->user();
-		$messageLists = MessageGroup::where('producerUuid1', $user->uuid)->orWhere('producerUuid2', $user->uuid)->get();
+		$messageLists = MessageRoom::where('producerUuid1', $user->uuid)->orWhere('producerUuid2', $user->uuid)->get();
 		$count = 0;
 		foreach ($messageLists as $messageList) {
 			$result[$count] = $messageList;
@@ -24,7 +23,7 @@ class MessageController extends Controller
 			$partner = Producer::where('uuid', $partnerUuid)->first();
 			$result[$count]['partner']= $partner;
 			//最終メッセージの取得
-			$lastMessage = Message::where('messageGroupId', $messageList->id)->orderBy('created_at', 'desc')->first();
+			$lastMessage = Message::where('messageRoomId', $messageList->id)->orderBy('created_at', 'desc')->first();
 			$result[$count]['lastMessage'] = $lastMessage->message;
 
 			$count++;
@@ -37,13 +36,57 @@ class MessageController extends Controller
 	{
 		$myUuid = Auth()->user()->uuid;
 		$partnerUuid = $req->query('uuid');
-
-		$messages = Message::with(['sender', 'receiver'])->where(function($q) use($myUuid, $partnerUuid) {
-			$q->where('senderUuid', $myUuid)->where('receiverUuid', $partnerUuid);
-		})->orWhere(function($q) use($myUuid, $partnerUuid) {
-			$q->where('senderUuid', $partnerUuid)->where('receiverUuid', $myUuid);
-		})->orderBy('created_at', 'asc')->get();
+		//MessageRoomの検索
+		$messageRoomQuery = $this->SearchMessageRoom($myUuid, $partnerUuid);
+		$messageRoomCheck = $messageRoomQuery->exists();
+		if($messageRoomCheck){
+			$messages = Message::with('sender')->where('senderUuid', $myUuid)->orWhere('senderUuid', $partnerUuid)->orderBy('created_at', 'asc')->get();
+		}else{
+			$messages = [];
+		}
 
 		return response()->json($messages, 200);
+	}
+
+	public function sendMessage(Request $req)
+	{
+		$myUuid = Auth()->user()->uuid;
+		$partnerUuid = $req->partnerUuid;
+		//MessageRoomの検索
+		$messageRoomQuery = $this->SearchMessageRoom($myUuid, $partnerUuid);
+
+		if($messageRoomQuery){
+			//MessageRoomの作成
+			$messageRoom = new MessageRoom([
+				'producerUuid1' => $myUuid,
+				'producerUuid2' => $partnerUuid,
+			]);
+			$messageRoom->save();
+		}else{
+			$messageRoom = $messageRoomQuery->first();
+		}
+
+		$insertArray = [
+			'messageRoomId' => $messageRoom->id,
+			'senderUuid' => $myUuid,
+			'message' => $req->message,
+			'read_at' => null,
+		];
+		$message = new Message($insertArray);
+		$message->save();
+
+		return response()->json($partnerUuid, 200);
+	}
+
+
+
+	//メッセージルーム検索クエリー
+	protected function SearchMessageRoom($myUuid, $partnerUuid)
+	{
+		return MessageRoom::where(function ($query) use ($partnerUuid, $myUuid) {
+			$query->where('producerUuid1', $myUuid)->where('producerUuid2', $partnerUuid);
+		})->orWhere(function ($query) use ($partnerUuid, $myUuid) {
+			$query->where('producerUuid1', $partnerUuid)->where('producerUuid2', $myUuid);
+		});
 	}
 }

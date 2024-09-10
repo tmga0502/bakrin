@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-			$table->integer('messageGroupId')->comment('MessageGroupのID');
-            $table->string('senderUuid')->comment('送信者のuuid')->index();
-            $table->string('receiverUuid')->comment('受信者のuuid')->index();
+			$table->integer('messageRoomId')->comment('MessageRoomのID');
+            $table->string('senderUuid')->comment('発信者のuuid')->index();
             $table->text('message')->comment('メッセージ');
             $table->datetime('read_at')->nullable()->default(null)->comment('開封日時');
             $table->timestamps();

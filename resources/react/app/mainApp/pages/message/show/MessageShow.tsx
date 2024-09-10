@@ -6,21 +6,17 @@ import {useParams} from "react-router-dom";
 import {useGetMessages} from "@/react/api/query/MessageQuery";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
 import {MessageType} from "@/react/types/MessageType";
+import {ScrollEndMessageBox} from "@/react/app/mainApp/functions/ScrollEnd";
 
 const MessageShow = () => {
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const params = useParams()
 	const {data: MessagesData, isLoading} = useGetMessages(params.producerUuid as string)
 	const messageDataCount = MessagesData ? MessagesData.length : 0
-	console.log(MessagesData)
-
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: 'instant' });
-	};
 
 	useEffect(() => {
-		scrollToBottom();
-	}, []);
+		ScrollEndMessageBox(messagesEndRef);
+	}, [MessagesData]);
 
 	if(isLoading) return <Loader/>
 

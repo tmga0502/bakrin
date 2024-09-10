@@ -1,7 +1,7 @@
 import {tv} from 'tailwind-variants'
 
 export const MessageBlockTv = tv({
-	base: 'w-[60%] p-4 shadow-md rounded-md mb-8',
+	base: 'w-3/4 p-4 shadow-md rounded-md mb-8',
 	variants: {
 		layout: {
 			sender: 'ml-auto bg-lightYellow',

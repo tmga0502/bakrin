@@ -3,17 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Message;
-use App\Models\MessageGroup;
+use App\Models\MessageRoom;
 use App\Models\Producer;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Message>
  */
-class MessageGroupFactory extends Factory
+class MessageRoomFactory extends Factory
 {
-	protected $model = MessageGroup::class;
+	protected $model = MessageRoom::class;
 	/**
 	 * Define the model's default state.
 	 *

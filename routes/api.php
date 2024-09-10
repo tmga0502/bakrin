@@ -83,6 +83,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 	Route::group(['prefix' => 'message'], function () {
 		Route::get('/getMessageList', [MessageController::class, 'getMessageList']);
 		Route::get('/getMessages', [MessageController::class, 'getMessages']);
+		Route::post('/sendMessage', [MessageController::class, 'sendMessage']);
 	});
 
     //ログインユーザー情報
