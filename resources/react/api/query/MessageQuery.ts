@@ -1,6 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import * as api from "../api/MessageApi";
-import {toast} from "react-toastify";
 
 
 const useGetMessageLists = () => {
@@ -20,6 +19,7 @@ const useSendMessage = () => {
 	const queryClient = useQueryClient()
 	return useMutation(api.sendMessage, {
 		onSuccess: (data) => {
+			console.log(data)
 			queryClient.invalidateQueries(['Messages', data])
 		},
 		onError: () => {

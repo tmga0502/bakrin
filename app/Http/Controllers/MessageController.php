@@ -24,7 +24,7 @@ class MessageController extends Controller
 			$result[$count]['partner']= $partner;
 			//最終メッセージの取得
 			$lastMessage = Message::where('messageRoomId', $messageList->id)->orderBy('created_at', 'desc')->first();
-			$result[$count]['lastMessage'] = $lastMessage->message;
+			$result[$count]['lastMessage'] = isset($lastMessage) ? $lastMessage->message : '';
 
 			$count++;
 		}
@@ -40,7 +40,13 @@ class MessageController extends Controller
 		$messageRoomQuery = $this->SearchMessageRoom($myUuid, $partnerUuid);
 		$messageRoomCheck = $messageRoomQuery->exists();
 		if($messageRoomCheck){
-			$messages = Message::with('sender')->where('senderUuid', $myUuid)->orWhere('senderUuid', $partnerUuid)->orderBy('created_at', 'asc')->get();
+			$messageRoom = $messageRoomQuery->first();
+			$messages = Message::with('sender')
+				->where('messageRoomId', $messageRoom->id)
+				->where(function($q) use($myUuid, $partnerUuid){
+					$q->where('senderUuid', $myUuid)->orWhere('senderUuid', $partnerUuid);
+				})
+				->orderBy('created_at', 'asc')->get();
 		}else{
 			$messages = [];
 		}
@@ -55,15 +61,15 @@ class MessageController extends Controller
 		//MessageRoomの検索
 		$messageRoomQuery = $this->SearchMessageRoom($myUuid, $partnerUuid);
 
-		if($messageRoomQuery){
+		if($messageRoomQuery->exists()){
+			$messageRoom = $messageRoomQuery->first();
+		}else{
 			//MessageRoomの作成
 			$messageRoom = new MessageRoom([
 				'producerUuid1' => $myUuid,
 				'producerUuid2' => $partnerUuid,
 			]);
 			$messageRoom->save();
-		}else{
-			$messageRoom = $messageRoomQuery->first();
 		}
 
 		$insertArray = [

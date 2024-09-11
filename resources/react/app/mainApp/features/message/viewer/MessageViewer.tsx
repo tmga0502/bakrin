@@ -6,7 +6,7 @@ type MessageViewerType = {
 
 const MessageViewer = ({children}:MessageViewerType) => {
 	return (
-		<div className="w-full max-h-full flex-1 bg-white border border-gray-200 rounded-t-md shadow-md overflow-y-scroll p-4">
+		<div className="w-full max-h-full flex-1 bg-white border border-gray-200 shadow-md overflow-y-scroll p-4">
 			{children}
 		</div>
 	);
