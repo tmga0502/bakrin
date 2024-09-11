@@ -9,7 +9,6 @@ const useGetMessageLists = () => {
 }
 
 const useGetMessages = (uuid: string) => {
-	console.log(uuid)
 	return useQuery(['Messages', uuid], ()=>api.getMessages(uuid),{
 		suspense: true,
 	})
@@ -19,7 +18,6 @@ const useSendMessage = () => {
 	const queryClient = useQueryClient()
 	return useMutation(api.sendMessage, {
 		onSuccess: (data) => {
-			console.log(data)
 			queryClient.invalidateQueries(['Messages', data])
 		},
 		onError: () => {
