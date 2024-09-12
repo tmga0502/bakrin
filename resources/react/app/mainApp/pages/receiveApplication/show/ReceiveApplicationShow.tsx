@@ -3,18 +3,20 @@ import {PageTitle} from "@/react/app/mainApp/components/title";
 import TradeImageBox from "@/react/app/mainApp/features/item/TradeImageBox/TradeImageBox";
 import {MainButton} from "@/react/app/mainApp/components/button";
 import {useParams} from "react-router-dom";
-import {useGetTradeRequest} from "@/react/api/query/TradeQuery";
+import {useGetTrade} from "@/react/api/query/TradeQuery";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const ReceiveApplicationShowPage = () => {
 	const params = useParams()
-	const {data: tradeRequestData, isLoading} = useGetTradeRequest(params.tradeUuid as string)
+	const {data: tradeRequestData, isLoading, error} = useGetTrade(params.tradeUuid as string)
 
 	const handleConfirm =() => {
 		console.log('確認')
 	}
 
 	if(isLoading) return <Loader/>
+	if (error) return <div>データの取得に失敗しました</div>;
+	if (!tradeRequestData) return <div>データがありません</div>;
 
 	console.log(tradeRequestData)
 

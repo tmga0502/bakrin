@@ -6,12 +6,18 @@ const getTradeRequests = async () => {
 	return data;
 }
 
-const getTradeRequest = async (uuid: string) => {
-	const{ data } = await axios.get<TradeType[]>(`/api/trade/getTradeRequest/${uuid}`);
+const getTrades = async () => {
+	const{ data } = await axios.get<TradeType[]>('/api/trade/getTrades');
+	return data;
+}
+
+const getTrade = async (uuid: string) => {
+	const{ data } = await axios.get<TradeType>(`/api/trade/getTrade/${uuid}`);
 	return data;
 }
 
 export{
 	getTradeRequests,
-	getTradeRequest,
+	getTrades,
+	getTrade
 }

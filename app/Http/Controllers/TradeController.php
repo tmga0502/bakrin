@@ -21,9 +21,21 @@ class TradeController extends Controller
 	}
 
 
-	public function getTradeRequest($tradeUuid): JsonResponse
+	public function getTrade($tradeUuid): JsonResponse
 	{
 		$trade = Trade::with(['tradeProducers.item.plan', 'tradeProducers.producer'])->where('uuid', $tradeUuid)->first();
 		return response()->json($trade, 200);
+	}
+
+	public function getTrades(): JsonResponse
+	{
+		$user = Auth()->user();
+		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+			->whereIn('status', [1, 2])
+			->whereHas('tradeProducers', function ($q) use ($user) {
+				$q->where('type', 'recipient')->where('producerUuid', $user->uuid);
+			})
+			->get();
+		return response()->json($trades, 200);
 	}
 }

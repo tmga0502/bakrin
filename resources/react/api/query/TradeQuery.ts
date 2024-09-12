@@ -7,13 +7,20 @@ const useGetTradeRequests = () => {
 	})
 }
 
-const useGetTradeRequest = (uuid: string) => {
-	return useQuery(['tradeRequest', uuid], ()=>api.getTradeRequest(uuid),{
+const useGetTrades = () => {
+	return useQuery('trades', ()=>api.getTrades(),{
+		suspense: true,
+	})
+}
+
+const useGetTrade = (uuid: string) => {
+	return useQuery(['trade', uuid], ()=>api.getTrade(uuid),{
 		suspense: true,
 	})
 }
 
 export {
 	useGetTradeRequests,
-	useGetTradeRequest,
+	useGetTrades,
+	useGetTrade,
 }
