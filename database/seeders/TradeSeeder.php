@@ -2,9 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Producer;
 use App\Models\Trade;
+use Carbon\Carbon;
+use Faker\Factory as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class TradeSeeder extends Seeder
 {
@@ -13,8 +19,26 @@ class TradeSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('trades')->truncate();
+        DB::table('trades')->truncate();
 
-        Trade::factory()->count(1000)->create();
+		$faker = Faker::create();
+
+		for($i = 0; $i < 1000; $i++) {
+			$randomId = Arr::random([1, 2, 3, 4]);
+			$producerAccount = Producer::find($randomId);
+			$producerUuid = $producerAccount->uuid;
+			$status = Arr::random([0, 1, 2, 3]);
+			$rejectReason = $status === 3 ? $faker->realText(100,5) : null;
+			$now = Carbon::now();
+			$trade = new Trade( [
+				'uuid' => (string) Str::uuid(),
+				'status' => $status,
+				'senderUuid' => $producerUuid,
+				'rejectReason' => $rejectReason,
+				'created_at'=> $now,
+				'updated_at'=> $now,
+			]);
+			$trade->save();
+		}
     }
 }

@@ -5,6 +5,7 @@ import {applicationList} from "@/react/app/mainApp/_dummyData/ApplicationList";
 import TradeItemPanel from "@/react/app/mainApp/features/item/TradeItemePanel/TradeItemPanel";
 
 const TradeListPage = () => {
+
 	return (
 	  <MainAppLayout>
 		  <PageTitle en={'TRADE'} jp={'取引一覧'}/>

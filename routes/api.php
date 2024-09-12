@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ProducersController;
+use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -84,6 +85,12 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::get('/getMessageList', [MessageController::class, 'getMessageList']);
 		Route::get('/getMessages', [MessageController::class, 'getMessages']);
 		Route::post('/sendMessage', [MessageController::class, 'sendMessage']);
+	});
+
+	//取引
+	Route::group(['prefix' => 'trade'], function () {
+		Route::get('/getTradeRequests', [TradeController::class, 'getTradeRequests']);//取引申請リスト
+		Route::get('/getTradeRequest/{tradeUuid}', [TradeController::class, 'getTradeRequest']);//取引申請リスト
 	});
 
     //ログインユーザー情報

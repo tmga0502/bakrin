@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\FavoriteProducer;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteProducerSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class FavoriteProducerSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('favorite_producers')->truncate();
+        DB::table('favorite_producers')->truncate();
 
         FavoriteProducer::factory()->count(300)->create();
     }

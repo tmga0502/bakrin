@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ItemVarietySeeder extends Seeder
 {
@@ -13,10 +14,10 @@ class ItemVarietySeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('item_varieties')->truncate();
+        DB::table('item_varieties')->truncate();
 
         $now = Carbon::now();
-        \DB::table('item_varieties')->insert([
+        DB::table('item_varieties')->insert([
             ['categoryId' => 1, 'name' => 'ナス', 'hiragana' => 'なす', 'katakana' => 'ナス', 'kanzi' => '茄子', 'created_at' => $now, 'updated_at' => $now],
             ['categoryId' => 1, 'name' => 'トマト', 'hiragana' => 'とまと', 'katakana' => 'トマト', 'kanzi' => 'null', 'created_at' => $now, 'updated_at' => $now],
             ['categoryId' => 1, 'name' => 'ピーマン', 'hiragana' => 'ぴーまん', 'katakana' => 'ピーマン', 'kanzi' => 'null', 'created_at' => $now, 'updated_at' => $now],

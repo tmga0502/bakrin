@@ -2,18 +2,28 @@ import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
 import TradeImageBox from "@/react/app/mainApp/features/item/TradeImageBox/TradeImageBox";
 import {MainButton} from "@/react/app/mainApp/components/button";
+import {useParams} from "react-router-dom";
+import {useGetTradeRequest} from "@/react/api/query/TradeQuery";
+import Loader from "@/react/app/mainApp/features/loader/Loader";
 
 const ReceiveApplicationShowPage = () => {
+	const params = useParams()
+	const {data: tradeRequestData, isLoading} = useGetTradeRequest(params.tradeUuid as string)
+
 	const handleConfirm =() => {
 		console.log('確認')
 	}
+
+	if(isLoading) return <Loader/>
+
+	console.log(tradeRequestData)
 
 	return (
 	  <MainAppLayout>
 		  <PageTitle en={'RECEIVE APPLICATION'} jp={'申請確認'}/>
 
 		  <p className="text-center mb-6">以下の交換申請が届いています</p>
-		  <TradeImageBox/>
+		  <TradeImageBox data={tradeRequestData}/>
 
 		  {/* TODO:以下のボタン押下時は両方ともmodalで最終確認を表示する */}
 		  <div className="flex items-center gap-12 justify-center max-w-80 mx-auto">

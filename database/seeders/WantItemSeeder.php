@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\WantItem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class WantItemSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class WantItemSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('want_items')->truncate();
+        DB::table('want_items')->truncate();
 
         WantItem::factory()->count(500)->create();
     }

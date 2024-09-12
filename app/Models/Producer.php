@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static whereNotIn(string $string, array $array)
  * @method static where(string $string, mixed $auth_token)
  * @method static find(int $int)
+ * @method static whereNot(string $string, $id)
  */
 class Producer extends Authenticatable
 {

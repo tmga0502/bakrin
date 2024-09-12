@@ -88,7 +88,7 @@ const Router = () => {
 				{/*/!*  申請依頼  *!/*/}
 				<Route path="receiveApplication">
 					<Route index={true} element={<GuardRoute component={<ReceiveApplicationList />}/>}/>
-					<Route path=":receiveId" element={<GuardRoute component={<ReceiveApplicationShow />}/>}/>
+					<Route path=":tradeUuid" element={<GuardRoute component={<ReceiveApplicationShow />}/>}/>
 				</Route>
 
 				{/*/!*  取引  *!/*/}

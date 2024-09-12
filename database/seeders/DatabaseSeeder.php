@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             ItemImageSeeder::class,
             TradeSeeder::class,
+			TradeProducerSeeder::class,
             MessageRoomSeeder::class,
             MessageSeeder::class,
             FavoriteItemSeeder::class,

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('message_rooms', function (Blueprint $table) {
             $table->id();
-			$table->string('producerUuid1')->comment('producerのUUID1');
-			$table->string('producerUuid2')->comment('producerのUUID2');
+			$table->string('producerUuid1')->comment('producerのUUID1')->index();
+			$table->string('producerUuid2')->comment('producerのUUID2')->index();
             $table->timestamps();
         });
     }

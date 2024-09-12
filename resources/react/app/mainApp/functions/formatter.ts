@@ -38,9 +38,20 @@ function withComma(number: string){
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//日付の計算
+function formatDate(date: string){
+	const dt = new Date(date);
+	const year = dt.getFullYear();
+	const month = dt.getMonth() + 1; // 月は0から始まるので +1 する
+	const day = dt.getDate();
+	const hour = dt.getHours();
+	const minute = dt.getMinutes();
+	return `${year}年${month}月${day}日 ${hour}:${minute}`;
+}
 
 export {
     createPhoneNumber,
     createPostalCode,
     withComma,
+	formatDate,
 }
