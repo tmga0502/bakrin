@@ -57,7 +57,7 @@ const Router = () => {
 				{/*/!* 商品関連 *!/*/}
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
-				{/*	<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />*/}
+					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
 				{/*	<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />*/}
 				</Route>
 

@@ -1,9 +1,9 @@
 import React from 'react';
+import {ItemImageSliderType} from "./ItemImageSlider.type";
+import {Wrapper} from './ItemImageSlider.css';
 import ImageGallery from "react-image-gallery";
-import {ItemShowImageType} from "./ItemShowImage.type";
 
-const ItemShowImage: React.FC<ItemShowImageType> = ({thumbnail, images}) => {
-
+const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => {
 	const imgs = [
 		{
 			original: thumbnail,
@@ -20,7 +20,7 @@ const ItemShowImage: React.FC<ItemShowImageType> = ({thumbnail, images}) => {
 	}
 
 	return (
-		<div className="min-w-full">
+		<div className={Wrapper}>
 			<ImageGallery
 				items={imgs}
 				showNav={false}
@@ -35,4 +35,4 @@ const ItemShowImage: React.FC<ItemShowImageType> = ({thumbnail, images}) => {
 	);
 };
 
-export default ItemShowImage;
+export default ItemImageSlider;

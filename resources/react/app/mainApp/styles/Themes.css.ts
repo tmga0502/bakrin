@@ -14,6 +14,7 @@ export const vars = createGlobalTheme(':root', {
 		success:     '#22c55e',
 		info:        '#38bdf8',
 		danger:      '#dc2626',
+		pink:        '#EA599C',
 		warning:     '#fbbf24',
 		default:     '#737373',
 		dark   :     '#757575',
