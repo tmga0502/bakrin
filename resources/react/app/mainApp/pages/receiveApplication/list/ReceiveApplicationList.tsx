@@ -1,6 +1,6 @@
 import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import TradeItemPanel from "@/react/app/mainApp/features/item/TradeItemePanel/TradeItemPanel";
+import TradeItemPanel from "@/react/app/mainApp/features/itemList/TradeItemePanel/TradeItemPanel";
 import {useGetTradeRequests} from "@/react/api/query/TradeQuery";
 import React from "react";
 import Loader from "@/react/app/mainApp/features/loader/Loader";

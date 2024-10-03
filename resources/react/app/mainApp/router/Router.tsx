@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {useAuth} from "@/react/app/mainApp/hooks/AuthContext";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
+import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
 import Home from "@/react/app/mainApp/pages/home/Home";
 import Contact from "@/react/app/mainApp/pages/contact/Contact";
 import Login from "@/react/app/mainApp/pages/login/Login";
@@ -50,31 +50,31 @@ const Router = () => {
 				<Route path={'/'} element={  <GuardRoute component={<Home />} /> } />
 
 				{/*/!* 検索関連 *!/*/}
-				<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategory />} /> } />
-				<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducer />} /> } />
-				<Route path='/searchPlan' element={ <GuardRoute component={<SearchPlan />} /> } />
+				{/*<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategory />} /> } />*/}
+				{/*<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducer />} /> } />*/}
+				{/*<Route path='/searchPlan' element={ <GuardRoute component={<SearchPlan />} /> } />*/}
 
 				{/*/!* 商品関連 *!/*/}
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
-					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
-					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />
+				{/*	<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />*/}
+				{/*	<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />*/}
 				</Route>
 
 				{/*/!* 生産者関連 *!/*/}
-				<Route path="/producers">
-					<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />
-					<Route path=":producerId" element={  <GuardRoute component={<ProducerShow />} /> } />
-					{/*<Route path=":producerId/message" element={  <GuardRoute component={<ProducerShow />}/> } />*/}
-				</Route>
+				{/*<Route path="/producers">*/}
+				{/*	<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />*/}
+				{/*	<Route path=":producerId" element={  <GuardRoute component={<ProducerShow />} /> } />*/}
+				{/*	/!*<Route path=":producerId/message" element={  <GuardRoute component={<ProducerShow />}/> } />*!/*/}
+				{/*</Route>*/}
 
 				{/*/!* 商品管理 *!/*/}
-				<Route path="/myitem">
-					<Route index={true} element={<GuardRoute component={<MyItemList />}/> } />
-					<Route path="new" element={<GuardRoute component={<MyItemNew />}/> } />
-					<Route path=":itemUuid" element={<GuardRoute component={<MyItemShow />}/> } />
-					<Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEdit />}/> } />
-				</Route>
+				{/*<Route path="/myitem">*/}
+				{/*	<Route index={true} element={<GuardRoute component={<MyItemList />}/> } />*/}
+				{/*	<Route path="new" element={<GuardRoute component={<MyItemNew />}/> } />*/}
+				{/*	<Route path=":itemUuid" element={<GuardRoute component={<MyItemShow />}/> } />*/}
+				{/*	<Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEdit />}/> } />*/}
+				{/*</Route>*/}
 
 				{/*/!*  マイページ  *!/*/}
 				<Route path="/mypage">
@@ -86,22 +86,22 @@ const Router = () => {
 				</Route>
 
 				{/*/!*  申請依頼  *!/*/}
-				<Route path="receiveApplication">
-					<Route index={true} element={<GuardRoute component={<ReceiveApplicationList />}/>}/>
-					<Route path=":tradeUuid" element={<GuardRoute component={<ReceiveApplicationShow />}/>}/>
-				</Route>
+				{/*<Route path="receiveApplication">*/}
+				{/*	<Route index={true} element={<GuardRoute component={<ReceiveApplicationList />}/>}/>*/}
+				{/*	<Route path=":tradeUuid" element={<GuardRoute component={<ReceiveApplicationShow />}/>}/>*/}
+				{/*</Route>*/}
 
 				{/*/!*  取引  *!/*/}
-				<Route path="trade">
-					<Route index={true} element={<GuardRoute component={<TradeList />} />}/>
-					<Route path=":tradeUuid" element={<GuardRoute component={<TradeShow />}/>}/>
-				</Route>
+				{/*<Route path="trade">*/}
+				{/*	<Route index={true} element={<GuardRoute component={<TradeList />} />}/>*/}
+				{/*	<Route path=":tradeUuid" element={<GuardRoute component={<TradeShow />}/>}/>*/}
+				{/*</Route>*/}
 
 				{/*/!*  メッセージ  *!/*/}
-				<Route path="message">
-					<Route index={true} element={<GuardRoute component={<MessageList />} />}/>
-					<Route path=":producerUuid" element={<GuardRoute component={<MessageShow />} />}/>
-				</Route>
+				{/*<Route path="message">*/}
+				{/*	<Route index={true} element={<GuardRoute component={<MessageList />} />}/>*/}
+				{/*	<Route path=":producerUuid" element={<GuardRoute component={<MessageShow />} />}/>*/}
+				{/*</Route>*/}
 
 				{/*/!*  その他  *!/*/}
 				<Route path="/contact" element={<GuardRoute component={<Contact />} /> } />{/* お問い合わせ */}

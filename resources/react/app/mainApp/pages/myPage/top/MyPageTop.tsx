@@ -1,39 +1,22 @@
 import React from 'react';
-import {useLogout} from "@/react/api/query/AuthQuery";
-import {Link} from "react-router-dom";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import { MyPageMenu } from './constants';
-import {Button} from "@/react/app/mainApp/pages/myPage/top/features";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import {LinkButton, LogoutButton} from "@/react/app/mainApp/features/myPageTop/components";
+import ContainerSm from "@/react/app/mainApp/components/layout/container/ContainerSm/ContainerSm";
 
 const MyPageTop = () => {
-	const logout = useLogout()
-	const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		logout.mutate()
-	}
 	return (
-		<MainAppLayout>
+		<MainLayout>
 			<PageTitle en={'MY PAGE'} jp={'マイページ'}/>
-			<div className="max-w-[500px] mx-auto">
-				{MyPageMenu.map((menu:{name:string, link:string}, index:number) => {
-					if(menu.name === 'ログアウト'){
-						return (
-							<form onSubmit={handleLogout} key={index}>
-								<button type="submit" className={'w-full'}>
-									<Button name={menu.name}/>
-								</button>
-							</form>
-						)
-					}
-					return(
-						<Link to={menu.link} key={index}>
-							<Button name={menu.name}/>
-						</Link>
-					)
-				})}
-			</div>
-		</MainAppLayout>
+			<ContainerSm>
+				<LinkButton linkUrl={'/mypage/myfavorite'} name={'お気に入り'}/>
+				<LinkButton linkUrl={'/'} name={'欲しいもの'}/>
+				<LinkButton linkUrl={'/mypage/tradeHistory'} name={'交換履歴'}/>
+				<LinkButton linkUrl={'/mypage/invoice'} name={'請求書'}/>
+				<LinkButton linkUrl={'/mypage/profile'} name={'基本情報'}/>
+				<LogoutButton />
+			</ContainerSm>
+		</MainLayout>
 	);
 };
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import { PageTitleType } from './PageTitle.type';
+import {EnTitle, JpTitle, Wrapper} from './PageTitle.css'
 
 const PageTitle: React.FC<PageTitleType> = ({en, jp}) => {
     return(
-        <div className="border-b-2 border-dark mb-4">
-            <p className="text-mainGreen mb-1.5 uppercase">{en}</p>
-            <p className="text-2xl">{jp}</p>
+        <div className={Wrapper}>
+            <p className={EnTitle}>{en}</p>
+            <p className={JpTitle}>{jp}</p>
         </div>
     )
 }

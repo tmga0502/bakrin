@@ -6,7 +6,8 @@ import Router from "./router/Router";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
+import './styles/Global.css'
+import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
 
 const App: React.FC = () => {
 

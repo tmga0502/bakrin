@@ -1,7 +1,7 @@
 import {Plan} from "@/react/_constants/Plan";
 
-const GetPlanImage = (planNumber: number) => {
-    let plan =  Plan.find(plan => plan.number === planNumber)
+const GetPlanImage = (planId: number) => {
+    let plan =  Plan.find(plan => plan.number === planId)
     if (plan === undefined){
         plan = {
             number: -1,

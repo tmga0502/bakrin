@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
     plugins: [
@@ -13,6 +13,7 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        vanillaExtractPlugin(),
     ],
     server: {
         hmr: true, // ホットモジュールリプレースメント（HMR）を無効化する

@@ -1,24 +1,18 @@
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
+import React from "react";
 import {useGetNewArrivalItems} from "@/react/api/query/ItemQuery";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import React from "react";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
-import {ItemPanel} from "@/react/app/mainApp/features/panel";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import ItemList from "@/react/app/mainApp/features/itemList/components/ItemList/ItemList";
 
 const ItemListPage = () => {
-	const { data: itemLists } = useGetNewArrivalItems()
-	if(itemLists === undefined) return <Loader/>
+	const { data: itemList = [] } = useGetNewArrivalItems()
 
 
 	return (
-	  <MainAppLayout>
+	  <MainLayout>
 		  <PageTitle en={'ITEMS'} jp={'アイテム一覧'}/>
-		  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-			  {itemLists.map((item) => (
-				  <ItemPanel data={item} key={item.id}/>
-			  ))}
-		  </div>
-	  </MainAppLayout>
+		  <ItemList itemList={itemList}/>
+	  </MainLayout>
 	);
 };
 

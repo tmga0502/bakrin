@@ -1,10 +1,10 @@
 import {MainAppLayout} from "@/react/app/mainApp/features//layout";
-import ItemShowImage from "@/react/app/mainApp/features/item/ItemShowImage/ItemShowImage";
+import ItemShowImage from "@/react/app/mainApp/features/itemList/ItemShowImage/ItemShowImage";
 import React from "react";
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
-import ItemShowDescription from "@/react/app/mainApp/features/item/ItemShowDescription/ItemShowDescription";
+import ItemShowDescription from "@/react/app/mainApp/features/itemList/ItemShowDescription/ItemShowDescription";
 import ButtonGroup from "./features/BttonGroup/ButtonGroup";
 
 const ItemShow = () => {

@@ -1,16 +1,15 @@
 import React from 'react';
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import ShowBox from "@/react/app/mainApp/features/infoShow/components/ShowBox/ShowBox";
 
 const InfoShow = () => {
 	return (
-		<MainAppLayout>
+		<MainLayout>
 			<PageTitle en={'TOPICS'} jp={'〇〇についてのおしらせ'}/>
 
-			<div className="mt-10">
-				asdfasdfasd;'la'sdlf
-			</div>
-		</MainAppLayout>
+			<ShowBox/>
+		</MainLayout>
 	);
 };
 

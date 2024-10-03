@@ -1,6 +1,6 @@
 import {MainAppLayout} from "@/react/app/mainApp/features/layout";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import TradeImageBox from "@/react/app/mainApp/features/item/TradeImageBox/TradeImageBox";
+import TradeImageBox from "@/react/app/mainApp/features/itemList/TradeImageBox/TradeImageBox";
 import {MainButton} from "@/react/app/mainApp/components/button";
 import {useParams} from "react-router-dom";
 import {useGetTrade} from "@/react/api/query/TradeQuery";

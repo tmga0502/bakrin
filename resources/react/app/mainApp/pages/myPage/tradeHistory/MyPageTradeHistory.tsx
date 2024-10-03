@@ -1,17 +1,20 @@
 import React from 'react';
 import { HistoryData } from '@/react/app/mainApp/_dummyData/HistoryData';
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import {List} from "@/react/app/mainApp/pages/myPage/tradeHistory/features";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import {AccordionList} from "@/react/app/mainApp/features/myPageHistory/components";
+import ContainerSm from "@/react/app/mainApp/components/layout/container/ContainerSm/ContainerSm";
 
 const MyPageTradeHistory = () => {
 	return (
-		<MainAppLayout>
+		<MainLayout>
 			<PageTitle en={'trade history'} jp={'交換履歴'}/>
-			{HistoryData.map((data, index)=>(
-				<List data={data} key={index}/>
-			))}
-		</MainAppLayout>
+			<ContainerSm>
+				{HistoryData.map((data, index)=>(
+					<AccordionList historyData={data} key={index}/>
+				))}
+			</ContainerSm>
+		</MainLayout>
 	);
 };
 

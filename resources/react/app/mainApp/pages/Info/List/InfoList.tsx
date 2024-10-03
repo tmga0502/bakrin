@@ -3,25 +3,17 @@ import {Link} from "react-router-dom";
 import {IoMdArrowDropright} from "react-icons/io";
 import {InfoData} from "@/react/app/mainApp/_dummyData/InfoData";
 import {PageTitle} from "@/react/app/mainApp/components/title";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import InfoBox from "@/react/app/mainApp/features/infoList/components/InfoBox/InfoBox";
 
 const InfoList = () => {
     return (
-       <MainAppLayout>
+       <MainLayout>
 		   <PageTitle en={'TOPICS'} jp={'お知らせ'}/>
 		   {InfoData.map(info => (
-			   <Link to={'/info/' + info.id} key={info.id}>
-				   <div className="px-4 py-2 mb-4 border-b-2">
-					   <div className="flex justify-between items-center">
-						   <p>{info.title}</p>
-						   <p>
-							   <IoMdArrowDropright className="text-xl"/>
-						   </p>
-					   </div>
-				   </div>
-			   </Link>
+			   <InfoBox data={info} key={info.id}/>
 		   ))}
-	   </MainAppLayout>
+	   </MainLayout>
     );
 };
 

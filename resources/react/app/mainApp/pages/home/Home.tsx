@@ -1,11 +1,9 @@
 import React from 'react';
-import {ItemType} from "@/react/types/ItemType";
 import {useGetFavoriteItems, useGetNewArrivalItems, useGetSeasonItems, useGetWantItems} from "@/react/api/query/ItemQuery";
 import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
-import {ProducerType} from "@/react/types/ProducerType";
-import {ItemPanel, ProducerPanel} from "@/react/app/mainApp/features/panel";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import * as HomeFT from "./features/idnex";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import ItemsList from "@/react/app/mainApp/features/home/components/ItemsList/ItemsList";
+import ProducersList from "@/react/app/mainApp/features/home/components/ProducersList/ProducersList";
 
 const Home = () => {
 	//新着アイテム
@@ -20,42 +18,15 @@ const Home = () => {
 	const { data: popularProducers } = useGetPopularProducers();
 
     return (
-		<MainAppLayout>
-			<HomeFT.ListBox title={'新着'} moreLink={'/item'}>
-				{newArrivalItems?.slice(0, 6).map((item: ItemType) =>(
-					<ItemPanel data={item} key={item.id}/>
-				))}
-			</HomeFT.ListBox>
+		<MainLayout>
+			<ItemsList title={'新着'} moreLink={'/items'} data={newArrivalItems}/>
+			<ItemsList title={'欲しいものリスト'} moreLink={'/items'} data={wantItems}/>
+			<ItemsList title={'今が旬'} moreLink={'/items'} data={seasonItems}/>
+			<ItemsList title={'お気に入りリスト'} moreLink={'/items'} data={favoriteItems}/>
+			<ProducersList title={'注目ユーザー'} moreLink={'/items'} data={popularProducers}/>
+		</MainLayout>
 
-			<HomeFT.ListBox title={'欲しいものリスト'} moreLink={'/item'}>
-				{wantItems?.slice(0, 6).map((item: ItemType) =>(
-					<ItemPanel data={item} key={item.id}/>
-				))}
-			</HomeFT.ListBox>
-
-			<HomeFT.ListBox title={'今が旬'} moreLink={'/item'}>
-				{seasonItems?.slice(0, 6).map((item: ItemType) =>(
-					<ItemPanel data={item} key={item.id}/>
-				))}
-			</HomeFT.ListBox>
-
-			<HomeFT.ListBox title={'お気に入りリスト'} moreLink={'/item'}>
-				{favoriteItems?.slice(0, 6).map((item: ItemType) =>(
-					<ItemPanel data={item} key={item.id}/>
-				))}
-			</HomeFT.ListBox>
-
-			<HomeFT.ListBox title={'注目ユーザー'} moreLink={'/item'}>
-				{popularProducers?.slice(0, 6).map((item: ProducerType) =>(
-					<ProducerPanel data={item} key={item.id}/>
-				))}
-			</HomeFT.ListBox>
-
-		</MainAppLayout>
-
-
-    );
-
+	);
 };
 
 export default Home;

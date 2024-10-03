@@ -1,7 +1,7 @@
 import PageTitle from "./PageTitle/PageTitle";
-import HomeTitle from "./HomeTitle/HomeTitle";
+import SectionTitle from "./SectionTitle/SectionTitle";
 
 export {
 	PageTitle,
-	HomeTitle,
+	SectionTitle,
 }

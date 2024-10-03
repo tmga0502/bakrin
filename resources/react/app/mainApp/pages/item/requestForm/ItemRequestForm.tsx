@@ -1,7 +1,7 @@
 import React from 'react';
 import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import ItemShowImage from "@/react/app/mainApp/features/item/ItemShowImage/ItemShowImage";
-import ItemShowDescription from "@/react/app/mainApp/features/item/ItemShowDescription/ItemShowDescription";
+import ItemShowImage from "@/react/app/mainApp/features/itemList/ItemShowImage/ItemShowImage";
+import ItemShowDescription from "@/react/app/mainApp/features/itemList/ItemShowDescription/ItemShowDescription";
 import {Link, useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
 import Loader from "@/react/app/mainApp/features/loader/Loader";
