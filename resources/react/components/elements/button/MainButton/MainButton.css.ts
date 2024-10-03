@@ -8,6 +8,9 @@ const ButtonStyle = recipe({
 		backgroundColor: vars.color.mainGreen,
 		color: vars.color.white,
 		boxShadow: '0px 5px 15px 0px rgba(0, 0, 0, 0.35)',
+		':hover':{
+			opacity: '0.8',
+		}
 	},
 	variants: {
 		color:{

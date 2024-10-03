@@ -9,10 +9,14 @@ const Wrapper = style([
 	},
 	responsiveStyle({
 		lg:{
-			gridTemplateColumns: '50% 50%',
+			gridTemplateColumns: '1fr 50%',
 		}
 	})
 ])
+
+const ButtonGroup = style({
+	marginBottom: 48,
+})
 
 const ButtonBox = style({
 	marginBottom: 24,
@@ -20,5 +24,6 @@ const ButtonBox = style({
 
 export {
 	Wrapper,
+	ButtonGroup,
 	ButtonBox,
 }
