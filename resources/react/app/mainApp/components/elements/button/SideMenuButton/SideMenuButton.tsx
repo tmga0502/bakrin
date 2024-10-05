@@ -1,14 +1,14 @@
 import React from 'react';
 import {SideMenuButtonType} from "./SideMenuButton.type";
-import {Box, IconBox, TextBox} from "./SideMenuButton.css";
+import {Box, IconBox, TextBox} from "./SideMenuButton.styles";
 
 const SideMenuButton: React.FC<SideMenuButtonType> = ({icon, title}) => {
 	return (
-		<div className={Box}>
-			<div className={IconBox}>
+		<div css={Box}>
+			<div css={IconBox}>
 				{icon}
 			</div>
-			<div className={TextBox}>
+			<div css={TextBox}>
 				{title}
 			</div>
 		</div>

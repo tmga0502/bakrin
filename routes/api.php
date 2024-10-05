@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
 use App\Http\Controllers\FavoriteProducersController;
@@ -25,8 +25,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout']);
+Route::post('producerLogin', [AuthProducerController::class, 'login']);
+Route::post('producerLogout', [AuthProducerController::class, 'logout']);
+Route::get('authProducerCheck', [AuthProducerController::class, 'authCheck']);
 
 Route::group(['middleware'=> 'auth:sanctum'], function() {
     //アイテム関連
@@ -95,7 +96,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 	});
 
     //ログインユーザー情報
-    Route::get('/getUser', [AuthController::class, 'getUser']);
+    Route::get('/getUser', [AuthProducerController::class, 'getUser']);
     Route::post('user/changePassword', [UserController::class, 'changePassword']);
 
 });

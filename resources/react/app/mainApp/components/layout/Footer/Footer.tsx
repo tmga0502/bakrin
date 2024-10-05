@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import { FooterMenu } from './constants';
-import {CopyWrite, ListStyle, UlStyle, Wrapper} from './Footer.css'
+import {CopyWrite, ListStyle, UlStyle, Wrapper} from './Footer.styles'
 
 const Footer = () => {
 
@@ -9,17 +9,17 @@ const Footer = () => {
 	const nowYear = now.getFullYear();
 
 	return (
-		<footer className={Wrapper}>
-			<ul className={UlStyle}>
+		<footer css={Wrapper}>
+			<ul css={UlStyle}>
 				{FooterMenu.map((menu, index) => (
 					<Link to={menu.link} key={index}>
-						<li className={ListStyle}>
+						<li css={ListStyle}>
 								{menu.title}
 						</li>
 					</Link>
 				))}
 			</ul>
-			<p className={CopyWrite}>
+			<p css={CopyWrite}>
 				Copyright {nowYear} 農援株式会社
 			</p>
         </footer>

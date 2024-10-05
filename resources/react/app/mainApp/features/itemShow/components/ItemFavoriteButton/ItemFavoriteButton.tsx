@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {ItemFavoriteButtonType} from "./ItemFavoriteButton.type";
-import {useAuth} from "@/react/app/mainApp/hooks/AuthContext";
+import {ItemFavoriteButtonType} from "./ItemFavoriteButton.type";``
 import {useDeregisterFavoriteItem, useRegisterFavoriteItem} from "@/react/api/query/FavoriteItemQuery";
 import FavoriteButton from "@/react/app/mainApp/components/elements/button/FavoriteButton/FavoriteButton";
+import {useRecoilValue} from "recoil";
+import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
 
 
 const ItemFavoriteButton: React.FC<ItemFavoriteButtonType> = ({data}) => {
-	const {userData} = useAuth();
+	const userData = useRecoilValue(IsAuthProducerDataStates);
 	const [favoriteStatus, setFavoriteStatus] = useState(
 		data.favorite_items.some((item:any) => item.myUuid === userData.uuid)
 	)

@@ -2,10 +2,10 @@ import React from 'react';
 import {PaymentMethodType} from "./PaymentMethod.type";
 import {WrapperStyle, TitleStyle} from "../../styles/common.css";
 import {RadioWrapper} from './PaymentMethod.css'
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
-import Radio from "@/react/components/elements/form/Radio/Radio";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
+import Radio from "@/react/app/mainApp/components/elements/form/Radio/Radio";
 
-const PaymentMethod: React.FC<PaymentMethodType> = ({userData}) => {
+const PaymentMethod: React.FC<PaymentMethodType> = () => {
 	return (
 		<div className={WrapperStyle}>
 			<p className={TitleStyle}>支払い方法変更</p>

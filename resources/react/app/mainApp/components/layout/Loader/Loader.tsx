@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactLoading from "react-loading";
-import {Wrapper, Text} from './Loader.css'
+import {Wrapper, Text} from './Loader.styles'
 
 const Loader = () => {
     return (
-		<div className={Wrapper}>
+		<div css={Wrapper}>
 			<div>
 				<ReactLoading
 					type="spin"
@@ -12,7 +12,7 @@ const Loader = () => {
 					height="100px"
 					width="100px"
 				/>
-				<p className={Text}>読込中</p>
+				<p css={Text}>読込中</p>
 			</div>
 		</div>
     );

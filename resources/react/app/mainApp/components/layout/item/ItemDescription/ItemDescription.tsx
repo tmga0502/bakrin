@@ -1,6 +1,6 @@
 import React from 'react';
 import {ItemDescriptionType} from "./ItemDescription.type";
-import {ItemName, DescriptionWrapper, DescriptionItem, DescriptionItemRed} from './ItemDescription.css';
+import {ItemName, DescriptionWrapper, DescriptionItem, ColorRed} from './ItemDescription.styles';
 import {Plan} from "@/react/_constants/Plan";
 
 const ItemDescription: React.FC<ItemDescriptionType> = ({data}) => {
@@ -9,13 +9,13 @@ const ItemDescription: React.FC<ItemDescriptionType> = ({data}) => {
 
 	return (
 		<div>
-			<div className={ItemName}>{data.name}</div>
-			<div className={DescriptionWrapper}>
-				<p className={DescriptionItem}>{planName}</p>
-				<p className={DescriptionItem}>{`数量：${data.count}${data.unit.name}`}</p>
-				<p className={DescriptionItemRed}>{`数量目安：${data.guideCount}${data.guide_unit.name}`}</p>
+			<div css={ItemName}>{data.name}</div>
+			<div css={DescriptionWrapper}>
+				<p css={DescriptionItem}>{planName}</p>
+				<p css={DescriptionItem}>{`数量：${data.count}${data.unit.name}`}</p>
+				<p css={[DescriptionItem, ColorRed]}>{`数量目安：${data.guideCount}${data.guide_unit.name}`}</p>
 
-				<div className={DescriptionItem}>
+				<div css={DescriptionItem}>
 					{data.description}
 				</div>
 

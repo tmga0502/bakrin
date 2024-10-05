@@ -1,24 +1,21 @@
 import React from "react";
-import {GetPlanImage} from "@/react/app/mainApp/functions/GetPlanImage";
 import {Link} from "react-router-dom";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import {ListItemPanelType} from "./ListItemPanel.type";
-import {ImageStyle, Wrapper} from './ListItemPanel.css'
+import {ImageStyle, Wrapper} from './ListItemPanel.styles'
 import ItemPlanBudge from "@/react/app/mainApp/components/elements/budge/ItemPlanBudge/ItemPlanBudge";
 
 
 const ListItemPanel:React.FC<ListItemPanelType>= ({data}) => {
-	const {uuid, planId, thumbnail, name} = data;
-	const plan = GetPlanImage(planId)
-	const color:any = plan !== undefined ? plan.color : 'red'
+	const {uuid, thumbnail, name} = data;
 
 	return (
 		<Link to={'/items/'+uuid}>
-			<div className={Wrapper}>
-				<ItemPlanBudge color={color} plan={plan}/>
+			<div css={Wrapper}>
+				<ItemPlanBudge plan={data.plan}/>
 				<LazyLoadImage
 					src={thumbnail}
-					className={ImageStyle}
+					css={ImageStyle}
 					alt={name}
 				/>
 			</div>

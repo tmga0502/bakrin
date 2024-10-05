@@ -1,9 +1,9 @@
 import React from 'react';
 import { HistoryData } from '@/react/app/mainApp/_dummyData/HistoryData';
-import {PageTitle} from "@/react/app/mainApp/components/title";
 import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
 import {AccordionList} from "@/react/app/mainApp/features/myPageHistory/components";
 import ContainerSm from "@/react/app/mainApp/components/layout/container/ContainerSm/ContainerSm";
+import {PageTitle} from "@/react/app/mainApp/components/elements/title";
 
 const MyPageTradeHistory = () => {
 	return (

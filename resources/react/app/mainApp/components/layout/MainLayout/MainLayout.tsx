@@ -3,16 +3,16 @@ import Breadcrumb from "@/react/app/mainApp/components/layout/Breadcrumb/Breadcr
 import Header from "@/react/app/mainApp/components/layout/Header/Header";
 import Footer from "@/react/app/mainApp/components/layout/Footer/Footer";
 import {MainAppLayoutType} from "@/react/app/mainApp/components/layout/MainLayout/MainLayout.type";
-import {Wrapper, Container,MainBox} from "@/react/app/mainApp/components/layout/MainLayout/MainLayout.css";
+import {Wrapper, Container,MainBox} from "@/react/app/mainApp/components/layout/MainLayout/MainLayout.styles";
 import Sidebar from "@/react/app/mainApp/components/layout/Sidebar/Sidebar";
 
 const MainLayout: FC<MainAppLayoutType> = ({children}) => {
 	return (
-		<div className={Wrapper}>
+		<div css={Wrapper}>
 			<Header/>
-			<div className={Container}>
+			<div css={Container}>
 				<Sidebar/>
-				<div className={MainBox}>
+				<div css={MainBox}>
 					<Breadcrumb/>
 					{children}
 				</div>

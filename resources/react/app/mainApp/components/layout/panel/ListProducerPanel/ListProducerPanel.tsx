@@ -2,21 +2,21 @@ import React, {FC} from "react";
 import {Link} from "react-router-dom";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import { listProducerPanelType } from "./ListProducerPanel.type";
-import {AddressBox, ImageBox, ImageStyle, InfoBox, Wrapper} from './ListProducerPanel.css'
+import {AddressBox, ImageBox, ImageStyle, InfoBox, Wrapper} from './ListProducerPanel.styles'
 
 const ListProducerPanel: FC<listProducerPanelType> = ({data}) => {
 	return(
 		<Link to={'/producers/'+data.uuid}>
-			<div className={Wrapper}>
-				<div className={ImageBox}>
+			<div css={Wrapper}>
+				<div css={ImageBox}>
 					<LazyLoadImage
 						src={data.imgPath}
-						className={ImageStyle}
+						css={ImageStyle}
 						alt={data.organizationName}
 					/>
 				</div>
-				<div className={InfoBox}>
-					<p className={AddressBox}>{data.address1 + data.address2}</p>
+				<div css={InfoBox}>
+					<p css={AddressBox}>{data.address1 + data.address2}</p>
 					<p>{data.organizationName}</p>
 				</div>
 			</div>

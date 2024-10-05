@@ -9,7 +9,7 @@ const Wrapper = style([
 	},
 	responsiveStyle({
 		lg:{
-			gridTemplateColumns: '1fr 50%',
+			gridTemplateColumns: '50% 50%',
 		}
 	})
 ])

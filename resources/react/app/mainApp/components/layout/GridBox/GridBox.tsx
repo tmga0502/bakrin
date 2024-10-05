@@ -1,10 +1,10 @@
 import React from 'react';
 import {GridBoxType} from "./GridBox.type";
-import {GridStyle} from './GridBox.css'
+import {GridStyle} from './GridBox.styles'
 
 const GridBox: React.FC<GridBoxType> = ({children}) => {
 	return (
-		<div className={GridStyle}>{children}</div>
+		<div css={GridStyle}>{children}</div>
 	);
 };
 

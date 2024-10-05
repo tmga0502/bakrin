@@ -1,13 +1,12 @@
 import React from 'react';
-import {useLogin} from "@/react/api/query/AuthQuery";
+import {useLogin} from "@/react/api/query/AuthProducerQuery";
 import {useForm} from "react-hook-form";
 import loginImage from "@/images/loginImage.jpg";
 import logo from "@/images/logo.png";
 import {BackGround, BackGroundImage, ButtonWrapper, Container, FormSectionBox, ImageBox, ImageSectionBox, Logo, Title} from "@/react/app/mainApp/pages/login/Login.css";
-import FormGroup from "@/react/components/layouts/form/formGroup/FormGroup";
-import {FormLabel} from "@/react/components/layouts/form";
-import Input from "@/react/components/elements/form/Input/Input";
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
+import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
+import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
 
 const Login = () => {
 	const login = useLogin()

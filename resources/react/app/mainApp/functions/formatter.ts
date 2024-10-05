@@ -15,7 +15,7 @@ function createPhoneNumber(phoneNumber: string){
 
     // 電話番号の有効性チェック
     if (!util.isValidNumberForRegion(number, region)) {
-        return null;
+        return phoneNumber;
     }
 
     // ハイフン付きの形式で返却

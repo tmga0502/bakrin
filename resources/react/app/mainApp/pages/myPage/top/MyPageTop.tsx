@@ -1,8 +1,8 @@
 import React from 'react';
-import {PageTitle} from "@/react/app/mainApp/components/title";
 import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
 import {LinkButton, LogoutButton} from "@/react/app/mainApp/features/myPageTop/components";
 import ContainerSm from "@/react/app/mainApp/components/layout/container/ContainerSm/ContainerSm";
+import {PageTitle} from "@/react/app/mainApp/components/elements/title";
 
 const MyPageTop = () => {
 	return (

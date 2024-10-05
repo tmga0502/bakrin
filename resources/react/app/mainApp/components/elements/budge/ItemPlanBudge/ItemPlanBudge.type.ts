@@ -1,6 +1,5 @@
-import {PlanBudgeType} from "@/react/types/PlanBudgeType";
+import {PlanType} from "@/react/types/PlanType";
 
 export type ItemPlanBudgeType = {
-	color: 'success' | 'danger' | 'info' | 'dark',
-	plan: PlanBudgeType,
+	plan: PlanType,
 }

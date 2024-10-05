@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProducersController extends Controller
 {
-    public function getOwn(Request $req)
-    {
-        if(Auth::user()){
-            return Auth::user()->load(['items.plan', 'items.unit']);
+    public function getOwn(Request $req): JsonResponse
+	{
+        if(Auth::guard('producers')->user()){
+			return response()->json(Auth::guard('producers')->user()->load(['items.plan', 'items.unit']));
         }
-        return response()->json(false);
+        return response()->json([]);
     }
 
 	public function getProducer($producerUuid): JsonResponse

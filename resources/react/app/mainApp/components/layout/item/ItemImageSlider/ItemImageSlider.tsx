@@ -1,6 +1,6 @@
 import React from 'react';
 import {ItemImageSliderType} from "./ItemImageSlider.type";
-import {Wrapper} from './ItemImageSlider.css';
+import {Wrapper} from './ItemImageSlider.styles';
 import ImageGallery from "react-image-gallery";
 
 const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => {
@@ -20,7 +20,7 @@ const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => 
 	}
 
 	return (
-		<div className={Wrapper}>
+		<div css={Wrapper}>
 			<ImageGallery
 				items={imgs}
 				showNav={false}

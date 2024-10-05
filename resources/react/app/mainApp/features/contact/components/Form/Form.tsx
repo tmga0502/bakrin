@@ -1,10 +1,10 @@
 import React from 'react';
 import {FormType} from "./Form.type";
 import {Caution} from './Form.css';
-import {FormGroup} from "@/react/components/layouts/form";
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
 import {useForm} from "react-hook-form";
-import TextArea from "@/react/components/elements/form/TextArea/TextArea";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
+import {FormGroup} from "@/react/app/mainApp/components/layout/form";
+import TextArea from "@/react/app/mainApp/components/elements/form/TextArea/TextArea";
 
 const Form: React.FC<FormType> = ({}) => {
 	const {register, handleSubmit} = useForm()

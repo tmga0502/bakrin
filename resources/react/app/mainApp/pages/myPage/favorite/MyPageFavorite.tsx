@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {useGetFavoriteItems} from "@/react/api/query/ItemQuery";
 import {useGetFavoriteProducers} from "@/react/api/query/ProducerQuery";
-import {PageTitle} from "@/react/app/mainApp/components/title";
 import Tab from "@/react/app/mainApp/components/layout/tab/Tab/Tab";
 import GridBox from "@/react/app/mainApp/components/layout/GridBox/GridBox";
 import {ListItemPanel, ListProducerPanel} from "@/react/app/mainApp/components/layout/panel";
 import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import {PageTitle} from "@/react/app/mainApp/components/elements/title";
 
 const MyPageFavorite = () => {
 	const { data: ItemData } = useGetFavoriteItems()

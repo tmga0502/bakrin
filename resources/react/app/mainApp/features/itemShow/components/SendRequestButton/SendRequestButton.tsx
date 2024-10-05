@@ -1,7 +1,7 @@
 import React from 'react';
 import {SendRequestButtonType} from "./SendRequestButton.type";
 import {Link} from "react-router-dom";
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 
 const SendRequestButton: React.FC<SendRequestButtonType> = ({data}) => {
 	return (

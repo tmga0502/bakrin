@@ -1,6 +1,5 @@
 import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import {useAuth} from "@/react/app/mainApp/hooks/AuthContext";
 import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
 import Home from "@/react/app/mainApp/pages/home/Home";
 import Contact from "@/react/app/mainApp/pages/contact/Contact";
@@ -30,13 +29,14 @@ import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
 import ItemRequestForm from "@/react/app/mainApp/pages/item/requestForm/ItemRequestForm";
 import MessageList from "@/react/app/mainApp/pages/message/list/MessageList";
 import MessageShow from "@/react/app/mainApp/pages/message/show/MessageShow";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {IsAuthProducerDataStates, IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
 
 const Router = () => {
 
-	const { isAuth, isLoading } = useAuth();
+	const isAuth = useRecoilValue(IsAuthProducerStates);
 
 	const GuardRoute = (props : {component: ReactElement}) => {
-		if (isLoading) return <Loader/>; // 認証状態が確定するまでローディング表示
 		if(!isAuth) return<Navigate to="/login" />
 		return <>{ props.component }</>
 	}
@@ -58,7 +58,7 @@ const Router = () => {
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
 					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
-				{/*	<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />*/}
+					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />
 				</Route>
 
 				{/*/!* 生産者関連 *!/*/}

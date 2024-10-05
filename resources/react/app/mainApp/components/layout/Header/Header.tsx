@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import KvImage from '@/images/kv.png'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
-import {BackgroundImage, HamburgerBox, HamburgerUl, MenuWrapper, Wrapper} from "./Header.css";
+import {BackgroundImage, HamburgerBox, HamburgerUl, MenuWrapper, Wrapper} from "./Header.styles";
 import MenuList from "@/react/app/mainApp/components/layout/MenuList/MenuList";
 
 const Header = () => {
@@ -16,16 +16,16 @@ const Header = () => {
 
     return (
         <>
-            <div className={Wrapper}>
-                <img src={KvImage} className={BackgroundImage} alt="header kv"/>
-                <div className={HamburgerBox} onClick={handleHamburger}>
+            <div css={Wrapper}>
+                <img src={KvImage} css={BackgroundImage} alt="header kv"/>
+                <div css={HamburgerBox} onClick={handleHamburger}>
                     {hamburgerMenuIcon}
                 </div>
             </div>
 
 			{hamburgerState && (
-				<div className={MenuWrapper}>
-					<ul className={HamburgerUl}>
+				<div css={MenuWrapper}>
+					<ul css={HamburgerUl}>
 						<MenuList/>
 					</ul>
 				</div>

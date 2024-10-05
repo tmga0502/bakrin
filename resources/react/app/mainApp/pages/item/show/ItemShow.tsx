@@ -7,7 +7,6 @@ import ItemShowBox from "@/react/app/mainApp/features/itemShow/components/ItemSh
 const ItemShow = () => {
 	const params = useParams()
 	const { data: itemData } = useGetItem(params.itemUuid);
-console.log(itemData)
 	return (
 	  <MainLayout>
 		  {itemData?.id !== undefined ? (

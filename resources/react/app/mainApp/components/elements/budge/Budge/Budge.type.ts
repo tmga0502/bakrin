@@ -1,6 +1,12 @@
 import {ReactNode} from "react";
 
-export type BudgeType = {
-	value: string | ReactNode | null,
+type Color = {
 	color: 'mainGreen' | 'mainYellow' | 'danger' | 'info' | 'success',
 }
+type Value = {
+	value: string | ReactNode | null,
+}
+
+export type BudgeType = Color & Value
+
+export type BudgeStylePropsType = Color

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {PasswordType} from "./Password.type";
 import { useForm} from "react-hook-form";
-import {FormLabel, FormGroup, ErrorMessage} from "@/react/components/layouts/form/index";
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import {useChangePassword} from "@/react/api/query/UserQuery";
-import Input from "@/react/components/elements/form/Input/Input";
-import {WrapperStyle, TitleStyle, ButtonWrapper } from "../../styles/common.css";
+import {WrapperStyle, TitleStyle } from "../../styles/common.css";
+import {ErrorMessage, FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
+import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
 
 const Password: React.FC<PasswordType> = ({}) => {
 	const {register, watch, handleSubmit, reset, formState:{errors}} = useForm()

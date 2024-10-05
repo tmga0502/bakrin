@@ -1,7 +1,7 @@
 import React from 'react';
 import {SendMessageButtonType} from "./SendMessageButton.type";
 import {Link} from "react-router-dom";
-import MainButton from "@/react/components/elements/button/MainButton/MainButton";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 
 const SendMessageButton: React.FC<SendMessageButtonType> = ({data}) => {
 	return (

@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
 import './styles/Global.css'
 import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
+import {ThemeProvider} from "@emotion/react";
+import {theme} from "@/react/app/mainApp/styles/Theme";
 
 const App: React.FC = () => {
 
@@ -26,14 +28,16 @@ const App: React.FC = () => {
     return (
         <QueryClientProvider client={queryClient}>
 			<RecoilRoot>
-				<IsLoadingProvider>
-					<AuthProvider>
-						<Suspense fallback={<Loader/>}>
-							<Router/>
-							<ToastContainer hideProgressBar={true}/>
-						</Suspense>
-					</AuthProvider>
-				</IsLoadingProvider>
+				<Suspense fallback={<Loader/>}>
+					<IsLoadingProvider>
+						<AuthProvider>
+							<ThemeProvider theme={theme}>
+								<Router/>
+								<ToastContainer hideProgressBar={true}/>
+							</ThemeProvider>
+						</AuthProvider>
+					</IsLoadingProvider>
+				</Suspense>
 			</RecoilRoot>
         </QueryClientProvider>
     );
