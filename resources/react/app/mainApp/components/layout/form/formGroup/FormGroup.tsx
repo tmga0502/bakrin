@@ -1,10 +1,10 @@
 import React from 'react';
-import {Container} from "./FormGroup.css";
 import {FormGroupType} from "./FormGroup.type";
+import {Container} from "./FormGroup.styles";
 
 const FormGroup = ({children}: FormGroupType) => {
 	return (
-		<div className={Container}>{children}</div>
+		<div css={Container}>{children}</div>
 	);
 };
 
