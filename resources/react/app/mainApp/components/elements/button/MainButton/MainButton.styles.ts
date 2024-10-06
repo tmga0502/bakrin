@@ -6,6 +6,7 @@ import {getSizeProps} from "@/react/app/mainApp/components/elements/button/MainB
 
 const ButtonStyle = (props: ButtonPropsType) => {
 	const {color, size , width, align, disabled} = props
+	console.log(width)
 	const Width = getWidthProps(width)
 	const BgColor = disabled ? theme.color.dark : theme.color[color]
 	const Padding = getSizeProps(size)

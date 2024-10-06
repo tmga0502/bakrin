@@ -18,7 +18,7 @@ import ProducerList from "@/react/app/mainApp/pages/producer/list/ProducerList";
 import TradeList from "@/react/app/mainApp/pages/trade/list/TradeList";
 import TradeShow from "@/react/app/mainApp/pages/trade/show/TradeShow";
 import ReceiveApplicationList from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestList";
-import ReceiveApplicationShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveApplicationShow";
+import ReceiveApplicationShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShow";
 import MyItemShow from "@/react/app/mainApp/pages/myitem/show/MyItemShow";
 import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemList";
 import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEdit";
@@ -29,9 +29,10 @@ import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
 import ItemRequestForm from "@/react/app/mainApp/pages/item/requestForm/ItemRequestForm";
 import MessageList from "@/react/app/mainApp/pages/message/list/MessageList";
 import MessageShow from "@/react/app/mainApp/pages/message/show/MessageShow";
-import {useRecoilState, useRecoilValue} from "recoil";
-import {IsAuthProducerDataStates, IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
+import {useRecoilValue} from "recoil";
+import {IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
 import ReceiveRequestListPage from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestList";
+import ReceiveRequestShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShow";
 
 const Router = () => {
 
@@ -89,7 +90,7 @@ const Router = () => {
 				{/*/!*  申請依頼  *!/*/}
 				<Route path="receiveRequest">
 					<Route index={true} element={<GuardRoute component={<ReceiveRequestListPage />}/>}/>
-				{/*	<Route path=":tradeUuid" element={<GuardRoute component={<ReceiveRequestShow />}/>}/>*/}
+					<Route path=":tradeUuid" element={<GuardRoute component={<ReceiveRequestShow />}/>}/>
 				</Route>
 
 				{/*/!*  取引  *!/*/}
