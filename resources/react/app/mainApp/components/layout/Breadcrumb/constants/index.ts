@@ -7,6 +7,7 @@ export const BreadcrumbRoutes = [
 	{path: '/items', breadcrumb: 'アイテム一覧'},
 	{path: '/items/:itemId', breadcrumb: '詳細'},
 	{path: '/items/:itemId/request', breadcrumb: '申請'},
+	{path: '/items/:itemId/requestForm', breadcrumb: '申請ページ'},
 	{path: '/producers', breadcrumb: '生産者一覧'},
 	{path: '/producers/:producerId', breadcrumb: '詳細'},
 

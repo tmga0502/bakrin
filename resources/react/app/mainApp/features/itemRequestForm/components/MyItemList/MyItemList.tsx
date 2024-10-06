@@ -5,6 +5,7 @@ import {ItemType} from "@/react/types/ItemType";
 import {useRecoilValue} from "recoil";
 import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
 import Radio from "@/react/app/mainApp/components/elements/form/Radio/Radio";
+import ItemPlanBadge from "@/react/app/mainApp/components/elements/budge/ItemPlanBadge/ItemPlanBadge";
 
 
 const MyItemList: React.FC<MyItemListType> = ({}) => {
@@ -16,8 +17,12 @@ const MyItemList: React.FC<MyItemListType> = ({}) => {
 			<div>
 				{userData?.items.map((item: ItemType) => (
 					<div css={RadioBox} key={item.id}>
-						<Radio text={item.name} name={'item'}/>
-						<label>{item.plan.name}</label>
+						<Radio text={
+							<>
+								<ItemPlanBadge plan={item.plan}/>
+								{item.name}
+							</>
+						} name={'item'}/>
 					</div>
 				))}
 			</div>

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import {ListItemPanelType} from "./ListItemPanel.type";
 import {ImageStyle, Wrapper} from './ListItemPanel.styles'
-import ItemPlanBudge from "@/react/app/mainApp/components/elements/budge/ItemPlanBudge/ItemPlanBudge";
+import ItemPlanRibbon from "@/react/app/mainApp/components/elements/budge/ItemPlanRibbon/ItemPlanRibbon";
 
 
 const ListItemPanel:React.FC<ListItemPanelType>= ({data}) => {
@@ -12,7 +12,7 @@ const ListItemPanel:React.FC<ListItemPanelType>= ({data}) => {
 	return (
 		<Link to={'/items/'+uuid}>
 			<div css={Wrapper}>
-				<ItemPlanBudge plan={data.plan}/>
+				<ItemPlanRibbon plan={data.plan}/>
 				<LazyLoadImage
 					src={thumbnail}
 					css={ImageStyle}

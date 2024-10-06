@@ -1,5 +1,5 @@
 import {PlanType} from "@/react/types/PlanType";
 
-export type ItemPlanBudgeType = {
-	plan: PlanType,
+export type ItemPlanBadgeType = {
+	plan: PlanType
 }
