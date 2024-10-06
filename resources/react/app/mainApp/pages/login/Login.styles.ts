@@ -13,7 +13,7 @@ export const Container = css`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: ${theme.color.white}
+	background-color: ${theme.color.white};
 	width: 75%;
 	max-width: 800px;
 	max-height: 75%;

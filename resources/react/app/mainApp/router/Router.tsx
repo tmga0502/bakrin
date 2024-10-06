@@ -71,12 +71,12 @@ const Router = () => {
 				</Route>
 
 				{/*/!* 商品管理 *!/*/}
-				{/*<Route path="/myitem">*/}
-				{/*	<Route index={true} element={<GuardRoute component={<MyItemList />}/> } />*/}
+				<Route path="/myitem">
+					<Route index={true} element={<GuardRoute component={<MyItemList />}/> } />
 				{/*	<Route path="new" element={<GuardRoute component={<MyItemNew />}/> } />*/}
 				{/*	<Route path=":itemUuid" element={<GuardRoute component={<MyItemShow />}/> } />*/}
 				{/*	<Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEdit />}/> } />*/}
-				{/*</Route>*/}
+				</Route>
 
 				{/*/!*  マイページ  *!/*/}
 				<Route path="/mypage">
