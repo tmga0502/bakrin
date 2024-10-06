@@ -62,11 +62,11 @@ const Router = () => {
 				</Route>
 
 				{/*/!* 生産者関連 *!/*/}
-				{/*<Route path="/producers">*/}
-				{/*	<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />*/}
+				<Route path="/producers">
+					<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />
 				{/*	<Route path=":producerId" element={  <GuardRoute component={<ProducerShow />} /> } />*/}
 				{/*	/!*<Route path=":producerId/message" element={  <GuardRoute component={<ProducerShow />}/> } />*!/*/}
-				{/*</Route>*/}
+				</Route>
 
 				{/*/!* 商品管理 *!/*/}
 				{/*<Route path="/myitem">*/}

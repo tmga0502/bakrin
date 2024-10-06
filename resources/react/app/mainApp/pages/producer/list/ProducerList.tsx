@@ -1,23 +1,19 @@
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import {PageTitle} from "@/react/app/mainApp/components/title";
 import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
 import React from "react";
-import {ProducerPanel} from "@/react/app/mainApp/features/panel";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import ProducerList from "@/react/app/mainApp/features/producerList";
+import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
 
 const ProducerListPage = () => {
 	const { data: producersData } = useGetPopularProducers()
-	if(producersData === undefined) return <Loader/>
-
 	return (
-		<MainAppLayout>
-			<PageTitle en={'producers'} jp={'生産者一覧'}/>
-			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-				{producersData.map((producer) => (
-					<ProducerPanel data={producer} key={producer.id}/>
-				))}
-			</div>
-		</MainAppLayout>
+		<MainLayout>
+			{producersData !== undefined ? (
+				<ProducerList data={producersData}/>
+			):(
+				<CanNotGetData/>
+			)}
+		</MainLayout>
 	);
 };
 
