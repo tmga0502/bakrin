@@ -16,8 +16,8 @@ export const BreadcrumbRoutes = [
 	{path: '/myitem/:itemID', breadcrumb: '詳細'},
 	{path: '/myitem/:itemID/edit', breadcrumb: '編集'},
 
-	{path: '/receiveApplication', breadcrumb: '申請依頼'},
-	{path: '/receiveApplication/:receiveId', breadcrumb: '申請確認'},
+	{path: '/receiveRequest', breadcrumb: '申請依頼'},
+	{path: '/receiveRequest/:receiveId', breadcrumb: '申請確認'},
 
 	{path: '/trade', breadcrumb: '取引一覧'},
 	{path: '/trade/:tradeId', breadcrumb: '取引詳細'},

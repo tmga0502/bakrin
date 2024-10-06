@@ -30,7 +30,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaRegCircle />,
 		title: '申請依頼',
-		link: '/receiveApplication',
+		link: '/receiveRequest',
 		bg: 'white'
 	},
 	{
