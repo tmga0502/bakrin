@@ -1,10 +1,10 @@
 import React from 'react';
 import {SectionType} from "./Section.type";
-import {SectionStyle} from './Section.css'
+import {SectionStyle} from './Section.styles'
 
 const Section: React.FC<SectionType> = ({children}) => {
 	return (
-		<section className={SectionStyle}>
+		<section css={SectionStyle}>
 			{children}
 		</section>
 	);

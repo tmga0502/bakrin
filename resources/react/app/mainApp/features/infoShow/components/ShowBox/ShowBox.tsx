@@ -1,10 +1,10 @@
 import React from 'react';
 import {ShowBoxType} from "./ShowBox.type";
-import {Box} from './ShowBox.css';
+import {Box} from './ShowBox.styles';
 
 const ShowBox: React.FC<ShowBoxType> = ({}) => {
 	return (
-		<div className={Box}>
+		<div css={Box}>
 			asdfasdfasd;'la'sdlf
 		</div>
 	);

@@ -6,10 +6,10 @@ import Router from "./router/Router";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
-import './styles/Global.css'
 import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
-import {ThemeProvider} from "@emotion/react";
+import {Global, ThemeProvider} from "@emotion/react";
 import {theme} from "@/react/app/mainApp/styles/Theme";
+import {globalStyle} from "@/react/app/mainApp/styles/Global";
 
 const App: React.FC = () => {
 
@@ -32,6 +32,7 @@ const App: React.FC = () => {
 					<IsLoadingProvider>
 						<AuthProvider>
 							<ThemeProvider theme={theme}>
+								<Global styles={globalStyle}/>
 								<Router/>
 								<ToastContainer hideProgressBar={true}/>
 							</ThemeProvider>

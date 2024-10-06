@@ -3,7 +3,7 @@ import {PasswordType} from "./Password.type";
 import { useForm} from "react-hook-form";
 import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import {useChangePassword} from "@/react/api/query/UserQuery";
-import {WrapperStyle, TitleStyle } from "../../styles/common.css";
+import {WrapperStyle, TitleStyle } from "../../styles/Common.styles";
 import {ErrorMessage, FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
 import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
 
@@ -33,8 +33,8 @@ const Password: React.FC<PasswordType> = ({}) => {
 
 
 	return (
-		<div className={WrapperStyle}>
-			<p className={TitleStyle}>パスワード変更</p>
+		<div css={WrapperStyle}>
+			<p css={TitleStyle}>パスワード変更</p>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup>
 					<FormLabel text={'現在のパスワード'} htmlFor={'nowPassword'}/>

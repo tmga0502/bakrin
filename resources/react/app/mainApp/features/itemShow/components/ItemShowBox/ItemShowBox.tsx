@@ -1,6 +1,6 @@
 import React from 'react';
 import {ItemShowBoxType} from "./ItemShowBox.type";
-import {ButtonBox, ButtonGroup, Wrapper} from './ItemShowBox.css';
+import {ButtonBox, ButtonGroup, Wrapper} from './ItemShowBox.styles';
 import {ItemImageSlider, ItemDescription} from "@/react/app/mainApp/components/layout/item";
 import SendRequestButton from "@/react/app/mainApp/features/itemShow/components/SendRequestButton/SendRequestButton";
 import SendMessageButton from "@/react/app/mainApp/features/itemShow/components/SendMessageButton/SendMessageButton";
@@ -9,18 +9,18 @@ import ProducerPanel from "@/react/app/mainApp/features/itemShow/components/Prod
 
 const ItemShowBox: React.FC<ItemShowBoxType> = ({data}) => {
 	return (
-		<div className={Wrapper}>
+		<div css={Wrapper}>
 			<ItemImageSlider thumbnail={data.thumbnail} images={data.images}/>
 			<div>
 				<ItemDescription data={data}/>
-				<div className={ButtonGroup}>
-					<div className={ButtonBox}>
+				<div css={ButtonGroup}>
+					<div css={ButtonBox}>
 						<SendRequestButton data={data}/>
 					</div>
-					<div className={ButtonBox}>
+					<div css={ButtonBox}>
 						<SendMessageButton data={data}/>
 					</div>
-					<div className={ButtonBox}>
+					<div css={ButtonBox}>
 						<ItemFavoriteButton data={data}/>
 					</div>
 				</div>

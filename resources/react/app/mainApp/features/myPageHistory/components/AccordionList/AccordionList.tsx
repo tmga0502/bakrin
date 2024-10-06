@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
 import {AccordionListType} from "./AccordionList.type";
 import {IoIosArrowDown, IoIosArrowForward} from "react-icons/io";
-import {AccordionBox, Body, ImageBox, ImageStyle, ItemNameStyle, ProducerNameStyle, Title} from "./AccordionList.css";
+import {AccordionBox, ArrowStyle, Body, ImageBox, ImageStyle, ItemNameStyle, ProducerNameStyle, Title} from "./AccordionList.styles";
 
 const AccordionList: React.FC<AccordionListType> = ({historyData}) => {
 	const [accordionStatus, setAccordionStatus] = useState(false);
 	return (
-		<div className={AccordionBox} onClick={() => {setAccordionStatus(!accordionStatus)}}>
-			<div className={Title}>
+		<div css={AccordionBox} onClick={() => {setAccordionStatus(!accordionStatus)}}>
+			<div css={Title}>
 				<p>{historyData.date}</p>
-				{accordionStatus ? (<IoIosArrowDown className="text-lg"/>) : (<IoIosArrowForward className="text-lg"/>)}
+				{accordionStatus ? (<IoIosArrowDown css={ArrowStyle}/>) : (<IoIosArrowForward css={ArrowStyle}/>)}
 			</div>
 
 			{accordionStatus ? historyData.histories.map((history: any, index: number) => (
-				<div className={Body} key={index}>
-					<div className={ImageBox}>
-						<img src={history.thumbnail} className={ImageStyle} alt={history.itemName}/>
+				<div css={Body} key={index}>
+					<div css={ImageBox}>
+						<img src={history.thumbnail} css={ImageStyle} alt={history.itemName}/>
 					</div>
-					<p className={ItemNameStyle}>{history.itemName}</p>
-					<p className={ProducerNameStyle}>{history.producerName}</p>
+					<p css={ItemNameStyle}>{history.itemName}</p>
+					<p css={ProducerNameStyle}>{history.producerName}</p>
 				</div>
 			)) : null}
 		</div>
