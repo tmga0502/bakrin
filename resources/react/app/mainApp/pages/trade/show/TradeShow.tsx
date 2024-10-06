@@ -1,32 +1,23 @@
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import {PageTitle} from "@/react/app/mainApp/components/title";
-import TradeImageBox from "@/react/app/mainApp/features/itemList/TradeImageBox/TradeImageBox";
-import Chat from "@/react/app/mainApp/features/itemList/Trade/Chat";
+import React from "react";
 import {useParams} from "react-router-dom";
 import {useGetTrade} from "@/react/api/query/TradeQuery";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
+import TradeShow from "@/react/app/mainApp/features/tradeShow";
 
 const TradeShowPage = () => {
 	const params = useParams()
-	const {data: tradeData, isLoading, error} = useGetTrade(params.tradeUuid as string)
-
-	if(isLoading) return <Loader/>
-	if (error) return <div>データの取得に失敗しました</div>;
-	if (!tradeData) return <div>データがありません</div>;
+	const {data: tradeData} = useGetTrade(params.tradeUuid as string)
 
 	return (
-	  <MainAppLayout>
-		  <PageTitle en={'Trade'} jp={'取引詳細'}/>
+	  <MainLayout>
+		  {tradeData !== undefined ? (
+			  <TradeShow data={tradeData}/>
+		  ):(
+			  <CanNotGetData/>
+		  )}
 
-		  <div className="grid xl:grid-cols-2">
-			  <div className="grid-item">
-				  <TradeImageBox data={tradeData}/>
-			  </div>
-			  <div className="grid-item">
-				  <Chat/>
-			  </div>
-		  </div>
-	  </MainAppLayout>
+	  </MainLayout>
 	);
 };
 

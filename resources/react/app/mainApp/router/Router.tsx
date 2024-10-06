@@ -96,7 +96,7 @@ const Router = () => {
 				{/*/!*  取引  *!/*/}
 				<Route path="trade">
 					<Route index={true} element={<GuardRoute component={<TradeList />} />}/>
-				{/*	<Route path=":tradeUuid" element={<GuardRoute component={<TradeShow />}/>}/>*/}
+					<Route path=":tradeUuid" element={<GuardRoute component={<TradeShow />}/>}/>
 				</Route>
 
 				{/*/!*  メッセージ  *!/*/}
