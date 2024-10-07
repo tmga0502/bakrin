@@ -1,14 +1,12 @@
 import React from "react";
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
-import Form from "@/react/app/mainApp/pages/myitem/new/features/Form/Form";
+import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
+import MyItemNew from "@/react/app/mainApp/features/myItemNew";
 
 const MyItemNewPage = () => {
 	return (
-		<MainAppLayout>
-			<div className="max-w-[500px] mx-auto mb-48">
-				<Form/>
-			</div>
-		</MainAppLayout>
+		<MainLayout>
+			<MyItemNew/>
+		</MainLayout>
 	);
 };
 

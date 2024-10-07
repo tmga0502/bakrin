@@ -4,7 +4,7 @@ const FormLabelStyle = css`
 	display: inline-block;
 	font-size: 12px;
 	font-weight: bold;
-	margin-bottom: "px;
+	margin-bottom: 4px;
 `
 
 export {

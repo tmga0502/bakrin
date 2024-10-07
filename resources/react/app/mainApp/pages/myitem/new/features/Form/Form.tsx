@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
 import {FormProvider, useFieldArray, useForm} from "react-hook-form";
 import {ItemStatus, Month, MonthPart} from "@/react/_constants/Date";
-import FormGroup from "@/react/app/mainApp/components/form/FormGroup/FormGroup";
-import FormLabel from "@/react/app/mainApp/components/form/FormLabel/FormLabel";
-import {MainButton} from "@/react/app/mainApp/components//button";
-import {FileField, InputField, SelectField, TextAreaField} from "@/react/app/mainApp/components//form";
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import {useGetUnits} from "@/react/api/query/UnitQuery";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
+import {FileField, InputField, SelectField, TextAreaField} from "@/react/app/mainApp/components/elements/form";
+import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
+import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 
 const Form = () => {
 	const {data: categoryData} = useGetCategories();
@@ -57,7 +55,7 @@ const Form = () => {
 				<SelectField label={'プラン'} id={'plan'} optionObj={planData}/>
 				<TextAreaField label={'商品説明'} id={'description'}/>
 
-				<FormLabel label={'発送可能日'} htmlFor={''}/>
+				<FormLabel text={'発送可能日'} htmlFor={''}/>
 				<div className={'flex items-center justify-self-auto gap-2'}>
 					<SelectField label={''} id={'shippingStart'} optionObj={Month}/>
 					<SelectField label={''} id={'shippingStartPart'} optionObj={MonthPart}/>
@@ -73,7 +71,7 @@ const Form = () => {
 
 				{fields.map((field, index) => (
 					<FormGroup key={field.id}>
-						<FormLabel label={'アイテム画像'} htmlFor={`img_paths.${index}.img_pathValue`}/>
+						<FormLabel text={'アイテム画像'} htmlFor={`img_paths.${index}.img_pathValue`}/>
 						<input type={'file'} className={'fileStyle'} {...register(`img_paths.${index}.img_pathValue`)} />
 					</FormGroup>
 				))}

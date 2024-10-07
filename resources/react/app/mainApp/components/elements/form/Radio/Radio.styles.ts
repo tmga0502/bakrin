@@ -4,31 +4,36 @@ import {theme} from "@/react/app/mainApp/styles/Theme";
 const Wrapper = css`
 	display: flex;
 	align-items: center;
-	column-gap: 4px;
-	width: fit-content;
-	line-height: 1;
+	gap: 8px;
+	position: relative;
 	cursor: pointer;
+	&::before, &::after{
+		border-radius: 50%;
+		content: '';
+	}
+	&::before{
+		width: 18px;
+		height: 18px;
+		border: 2px solid ${theme.color.gray};
+		box-sizing: border-box;
+	}
+	&::after{
+		position: absolute;
+		top: 50%;
+		left: 9px;
+		transform: translate(-50%, -50%);
+		width: 9px;
+		height: 9px;
+		background-color: ${theme.color.gray};
+	}
+	&:has(:checked)::after {
+		background-color: ${theme.color.mainGreen};
+		animation: anim-radio-2 .3s linear;
+	}
 `
 
 const RadioStyle = css`
-	appearance: none;
-	position: relative;
-	width: 20px;
-	height: 20px;
-	border: 1px solid ${theme.color.mainGreen};
-	border-radius: 9999px;
-	background-color: ${theme.color.gray};
-	cursor: pointer;
-	&:checked::after{
-		content: '';
-		position: absolute;
-		inset: 0;
-		width: 12px;
-		height: 12px;
-		margin: auto;
-		border-radius: 9999px;
-		background-color: ${theme.color.mainGreen};
-	}
+	display: none;
 `
 
 export {

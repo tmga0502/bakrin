@@ -6,11 +6,11 @@ const InputStyle = css`
 	margin-top: 0;
 	padding: 4px 8px;
 	width: 100%;
-	border: none;
-	border-bottom: 1px solid ${theme.color.black};
+	border: 1px solid ${theme.color.gray};
+	border-radius: 4px;
 	font-size: 14px;
 	&:focus{
-		border-bottom: 3px solid ${theme.color.mainGreen};
+		border: 1px solid ${theme.color.mainGreen};
 	}
 
 	&::-webkit-inner-spin-button{
