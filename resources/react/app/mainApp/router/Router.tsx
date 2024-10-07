@@ -21,7 +21,7 @@ import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemListPage";
 import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEditPage";
 import MyItemNew from "@/react/app/mainApp/pages/myitem/new/MyItemNewPage";
 import SearchItemCategoryPage from '@/react/app/mainApp/pages/search/itemCategory/SearchItemCategoryPage';
-import SearchProducer from "@/react/app/mainApp/pages/search/producer/SearchProducer";
+import SearchProducerPage from "@/react/app/mainApp/pages/search/producer/SearchProducerPage";
 import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
 import ItemRequestFormPage from "@/react/app/mainApp/pages/item/requestForm/ItemRequestFormPage";
 import MessageShowPage from "@/react/app/mainApp/pages/message/show/MessageShowPage";
@@ -50,7 +50,7 @@ const Router = () => {
 
 				{/*/!* 検索関連 *!/*/}
 				<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategoryPage />} /> } />
-				{/*<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducer />} /> } />*/}
+				<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducerPage />} /> } />
 				{/*<Route path='/searchPlan' element={ <GuardRoute component={<SearchPlan />} /> } />*/}
 
 				{/*/!* 商品関連 *!/*/}
