@@ -87,7 +87,7 @@ class ItemsController extends Controller
 
 	public function searchCategory(Request $req): JsonResponse
 	{
-		$items = Item::where('categoryId', $req->categoryId)->where('status', 0)->get();
+		$items = Item::with('plan')->where('categoryId', $req->categoryId)->where('status', 0)->get();
 		return response()->json($items, 200);
 	}
 }

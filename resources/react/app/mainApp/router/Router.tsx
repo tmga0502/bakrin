@@ -20,7 +20,7 @@ import MyItemShow from "@/react/app/mainApp/pages/myitem/show/MyItemShowPage";
 import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemListPage";
 import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEditPage";
 import MyItemNew from "@/react/app/mainApp/pages/myitem/new/MyItemNewPage";
-import SearchItemCategory from '@/react/app/mainApp/pages/search/itemCategory/SearchItemCategory';
+import SearchItemCategoryPage from '@/react/app/mainApp/pages/search/itemCategory/SearchItemCategoryPage';
 import SearchProducer from "@/react/app/mainApp/pages/search/producer/SearchProducer";
 import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
 import ItemRequestFormPage from "@/react/app/mainApp/pages/item/requestForm/ItemRequestFormPage";
@@ -49,7 +49,7 @@ const Router = () => {
 				<Route path={'/'} element={  <GuardRoute component={<Home />} /> } />
 
 				{/*/!* 検索関連 *!/*/}
-				{/*<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategory />} /> } />*/}
+				<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategoryPage />} /> } />
 				{/*<Route path='/searchProducer' element={ <GuardRoute component={<SearchProducer />} /> } />*/}
 				{/*<Route path='/searchPlan' element={ <GuardRoute component={<SearchPlan />} /> } />*/}
 
@@ -64,7 +64,6 @@ const Router = () => {
 				<Route path="/producers">
 					<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />
 					<Route path=":producerId" element={  <GuardRoute component={<ProducerShow />} /> } />
-				{/*	/!*<Route path=":producerId/message" element={  <GuardRoute component={<ProducerShow />}/> } />*!/*/}
 				</Route>
 
 				{/*/!* 商品管理 *!/*/}
