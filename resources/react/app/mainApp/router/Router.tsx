@@ -1,38 +1,35 @@
 import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
 import Home from "@/react/app/mainApp/pages/home/Home";
 import Contact from "@/react/app/mainApp/pages/contact/Contact";
 import Login from "@/react/app/mainApp/pages/login/Login";
-import InfoList from "@/react/app/mainApp/pages/Info/List/InfoList";
-import InfoShow from "@/react/app/mainApp/pages/Info/Show/InfoShow";
-import MyPageTop from "@/react/app/mainApp/pages/myPage/top/MyPageTop";
-import MyPageFavorite from "@/react/app/mainApp/pages/myPage/favorite/MyPageFavorite";
-import MyPageTradeHistory from "@/react/app/mainApp/pages/myPage/tradeHistory/MyPageTradeHistory";
-import MyPageInvoice from "@/react/app/mainApp/pages/myPage/invoice/MyPageInvoice";
-import MyPageProfile from "@/react/app/mainApp/pages/myPage/profile/MyPageProfile";
-import ItemShow from "@/react/app/mainApp/pages/item/show/ItemShow";
-import ItemList from "@/react/app/mainApp/pages/item/list/ItemList";
-import ProducerShow from "@/react/app/mainApp/pages/producer/show/ProducerShow";
-import ProducerList from "@/react/app/mainApp/pages/producer/list/ProducerList";
-import TradeList from "@/react/app/mainApp/pages/trade/list/TradeList";
-import TradeShow from "@/react/app/mainApp/pages/trade/show/TradeShow";
-import ReceiveApplicationList from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestList";
-import ReceiveApplicationShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShow";
-import MyItemShow from "@/react/app/mainApp/pages/myitem/show/MyItemShow";
-import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemList";
-import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEdit";
-import MyItemNew from "@/react/app/mainApp/pages/myitem/new/MyItemNew";
+import TopicsListPage from "@/react/app/mainApp/pages/topics/list/TopicsListPage";
+import TopicsShowPage from "@/react/app/mainApp/pages/topics/show/TopicsShowPage";
+import MyPageTop from "@/react/app/mainApp/pages/myPage/top/MyPageTopPage";
+import MyPageFavoritePage from "@/react/app/mainApp/pages/myPage/favorite/MyPageFavoritePage";
+import MyPageTradeHistoryPage from "@/react/app/mainApp/pages/myPage/tradeHistory/MyPageTradeHistoryPage";
+import MyPageInvoicePage from "@/react/app/mainApp/pages/myPage/invoice/MyPageInvoicePage";
+import MyPageProfilePage from "@/react/app/mainApp/pages/myPage/profile/MyPageProfilePage";
+import ItemShowPage from "@/react/app/mainApp/pages/item/show/ItemShowPage";
+import ItemList from "@/react/app/mainApp/pages/item/list/ItemListPage";
+import ProducerShow from "@/react/app/mainApp/pages/producer/show/ProducerShowPage";
+import ProducerList from "@/react/app/mainApp/pages/producer/list/ProducerListPage";
+import TradeList from "@/react/app/mainApp/pages/trade/list/TradeListPage";
+import TradeShow from "@/react/app/mainApp/pages/trade/show/TradeShowPage";
+import MyItemShow from "@/react/app/mainApp/pages/myitem/show/MyItemShowPage";
+import MyItemList from "@/react/app/mainApp/pages/myitem/list/MyItemListPage";
+import MyItemEdit from "@/react/app/mainApp/pages/myitem/edit/MyItemEditPage";
+import MyItemNew from "@/react/app/mainApp/pages/myitem/new/MyItemNewPage";
 import SearchItemCategory from '@/react/app/mainApp/pages/search/itemCategory/SearchItemCategory';
 import SearchProducer from "@/react/app/mainApp/pages/search/producer/SearchProducer";
 import SearchPlan from "@/react/app/mainApp/pages/search/plan/SearchPlan";
-import ItemRequestForm from "@/react/app/mainApp/pages/item/requestForm/ItemRequestForm";
-import MessageList from "@/react/app/mainApp/pages/message/list/MessageList";
-import MessageShow from "@/react/app/mainApp/pages/message/show/MessageShow";
+import ItemRequestFormPage from "@/react/app/mainApp/pages/item/requestForm/ItemRequestFormPage";
+import MessageShowPage from "@/react/app/mainApp/pages/message/show/MessageShowPage";
 import {useRecoilValue} from "recoil";
 import {IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
-import ReceiveRequestListPage from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestList";
-import ReceiveRequestShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShow";
+import ReceiveRequestListPage from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestListPage";
+import ReceiveRequestShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShowPage";
+import MessageListPage from "@/react/app/mainApp/pages/message/message-list/MessageListPage";
 
 const Router = () => {
 
@@ -59,8 +56,8 @@ const Router = () => {
 				{/*/!* 商品関連 *!/*/}
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
-					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShow />} /> } />
-					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestForm />} /> } />
+					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShowPage />} /> } />
+					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestFormPage />} /> } />
 				</Route>
 
 				{/*/!* 生産者関連 *!/*/}
@@ -81,10 +78,10 @@ const Router = () => {
 				{/*/!*  マイページ  *!/*/}
 				<Route path="/mypage">
 					<Route index={true} element={<GuardRoute component={<MyPageTop />}/> } />
-					<Route path="myfavorite" element={<GuardRoute component={<MyPageFavorite />}/> } />{/* お気に入り */}
-					<Route path="tradeHistory" element={<GuardRoute component={<MyPageTradeHistory />}/> } />{/* 交換履歴 */}
-					<Route path="invoice" element={<GuardRoute component={<MyPageInvoice />}/> } />{/* 請求書 */}
-					<Route path="profile" element={<GuardRoute component={<MyPageProfile />}/> } />{/* 基本情報 */}
+					<Route path="myfavorite" element={<GuardRoute component={<MyPageFavoritePage />}/> } />{/* お気に入り */}
+					<Route path="tradeHistory" element={<GuardRoute component={<MyPageTradeHistoryPage />}/> } />{/* 交換履歴 */}
+					<Route path="invoice" element={<GuardRoute component={<MyPageInvoicePage />}/> } />{/* 請求書 */}
+					<Route path="profile" element={<GuardRoute component={<MyPageProfilePage />}/> } />{/* 基本情報 */}
 				</Route>
 
 				{/*/!*  申請依頼  *!/*/}
@@ -100,15 +97,15 @@ const Router = () => {
 				</Route>
 
 				{/*/!*  メッセージ  *!/*/}
-				{/*<Route path="message">*/}
-				{/*	<Route index={true} element={<GuardRoute component={<MessageList />} />}/>*/}
-				{/*	<Route path=":producerUuid" element={<GuardRoute component={<MessageShow />} />}/>*/}
-				{/*</Route>*/}
+				<Route path="message">
+					<Route index={true} element={<GuardRoute component={<MessageListPage />} />}/>
+					<Route path=":producerUuid" element={<GuardRoute component={<MessageShowPage />} />}/>
+				</Route>
 
 				{/*/!*  その他  *!/*/}
 				<Route path="/contact" element={<GuardRoute component={<Contact />} /> } />{/* お問い合わせ */}
-				<Route path="/info" element={<GuardRoute component={<InfoList />} /> } />{/* お知らせ一覧 */}
-				<Route path="/info/:infoId" element={<GuardRoute component={<InfoShow />} />} />{/* お知らせ詳細 */}
+				<Route path="/info" element={<GuardRoute component={<TopicsListPage />} /> } />{/* お知らせ一覧 */}
+				<Route path="/info/:infoId" element={<GuardRoute component={<TopicsShowPage />} />} />{/* お知らせ詳細 */}
 			</Routes>
 		</BrowserRouter>
 	);

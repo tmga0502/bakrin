@@ -37,7 +37,6 @@ const Form = () => {
 		console.log(data);
 	}
 
-	if (categoryData === undefined || unitData === undefined || planData === undefined) return <Loader/>
 
 	return (
 		<FormProvider {...methods}>
@@ -76,13 +75,13 @@ const Form = () => {
 					</FormGroup>
 				))}
 				<div className="flex gap-4 justify-end">
-					<MainButton value={'画像を追加'} color={'info'} type={'button'} size={'sm'} onClick={() => [append({img_pathValue: ""}), countUp()]}/>
-					<MainButton value={'画像を削除'} color={'info'} type={'button'} size={'sm'} onClick={reduce}/>
+					<MainButton text={'画像を追加'} color={'info'} type={'button'} size={'sm'} onClick={() => [append({img_pathValue: ""}), countUp()]}/>
+					<MainButton text={'画像を削除'} color={'info'} type={'button'} size={'sm'} onClick={reduce}/>
 				</div>
 
 				<FormGroup>
 					<div className="mt-12">
-						<MainButton value={'登録'} color={'info'} type={'submit'} size={'md'} width={'full'}/>
+						<MainButton text={'登録'} color={'info'} type={'submit'} size={'md'} width={'full'}/>
 					</div>
 				</FormGroup>
 			</form>

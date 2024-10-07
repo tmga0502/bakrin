@@ -2,7 +2,7 @@ export const theme = {
 	color: {
 		mainGreen:   '#00BF63',
 		lightGreen:  '#05FF87',
-		darkGreen:   '#6AA98A',
+		darkGreen:   '#7ae4b3',
 		mainYellow:  '#FFC107',
 		lightYellow: '#fadd4e',
 		darkYellow:  '#dabd78',

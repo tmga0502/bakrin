@@ -8,7 +8,7 @@ const TextareaStyle = css`
 	border-radius: 4px;
 	resize: none;
 	&:focus{
-		border:2px solid ${theme.color.mainGreen};
+		border:1px solid ${theme.color.mainGreen};
 	}
 `
 
