@@ -15,7 +15,7 @@ const Index: React.FC<IndexType> = ({data}) => {
 			<PageTitle en={'MY ITEM SHOW'} jp={'アイテム詳細'}/>
 			<ContainerSm>
 				<DataTable data={data}/>
-				<ButtonBox data={data}/>
+				<ButtonBox/>
 			</ContainerSm>
 		</>
 	);

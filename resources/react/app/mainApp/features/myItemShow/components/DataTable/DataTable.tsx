@@ -4,7 +4,7 @@ import {ImageStyle, ImageWrapper} from './DataTable.styles';
 import {Table, Tbody, Td, Tr} from "@/react/app/mainApp/components/layout/table";
 import {Budge} from "@/react/app/mainApp/components/elements/budge";
 import ItemPlanBadge from "@/react/app/mainApp/components/elements/budge/ItemPlanBadge/ItemPlanBadge";
-import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
+import ImageDeleteModal from "@/react/app/mainApp/features/myItemShow/components/ImageDeleteModal/ImageDeleteModal";
 
 const DataTable: React.FC<DataTableType> = ({data}) => {
 	const status = data.status === 0 ? <Budge color={'success'} value={'公開'}/> : <Budge color={'danger'} value={'非公開'}/>;
@@ -56,8 +56,7 @@ const DataTable: React.FC<DataTableType> = ({data}) => {
 						<Td text={
 							<div css={ImageWrapper} >
 								<img src={image.path} css={ImageStyle} alt={`image${index + 1}`}/>
-								<MainButton text={'削除'} color={'danger'} size={'sm'} type={'button'}/>
-								{/*<ImageDeleteModal imageId={image.id}/>*/}
+								<ImageDeleteModal/>
 							</div>
 						} heading={false}/>
 					</Tr>
