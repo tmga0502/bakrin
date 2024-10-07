@@ -24,7 +24,7 @@ const HamburgerBox = css`
 	height: 36px;
 	top: 12px;
 	right: 12px;
-	z-index: 500;
+	z-index: 9901;
 	&:hover{
 		cursor: pointer;
 	}
