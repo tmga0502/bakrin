@@ -40,7 +40,7 @@ const MenuWrapper = css`
 	background-color: ${theme.color.white};
 	top: 0;
 	right: 0;
-	z-index: 100;
+	z-index: 9900;
 `
 
 const HamburgerUl = css`
