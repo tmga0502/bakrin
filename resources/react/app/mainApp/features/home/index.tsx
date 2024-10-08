@@ -13,11 +13,11 @@ const Index: React.FC<IndexType> = (props) => {
 	} = props
 	return (
 		<>
-			<ItemsList title={'新着'} moreLink={'/items'} data={newArrivalItemsData}/>
-			<ItemsList title={'欲しいものリスト'} moreLink={'/items'} data={wantItemsData}/>
-			<ItemsList title={'今が旬'} moreLink={'/items'} data={seasonItemsData}/>
-			<ItemsList title={'お気に入りリスト'} moreLink={'/items'} data={favoriteItemsData}/>
-			<ProducersList title={'注目ユーザー'} moreLink={'/producers'} data={popularProducersData}/>
+			<ItemsList title={'新着'} moreLink={'/items/newArrival'} data={newArrivalItemsData}/>
+			<ItemsList title={'欲しいものリスト'} moreLink={'/items/want'} data={wantItemsData}/>
+			<ItemsList title={'今が旬'} moreLink={'/items/season'} data={seasonItemsData}/>
+			<ItemsList title={'お気に入りリスト'} moreLink={'/items/favorite'} data={favoriteItemsData}/>
+			<ProducersList title={'注目の生産者'} moreLink={'/producers/featured'} data={popularProducersData}/>
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Home from "@/react/app/mainApp/pages/home/Home";
+import HomePage from "@/react/app/mainApp/pages/home/HomePage";
 import Contact from "@/react/app/mainApp/pages/contact/Contact";
 import Login from "@/react/app/mainApp/pages/login/Login";
 import TopicsListPage from "@/react/app/mainApp/pages/topics/list/TopicsListPage";
@@ -30,6 +30,11 @@ import {IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
 import ReceiveRequestListPage from "@/react/app/mainApp/pages/receiveRequest/list/ReceiveRequestListPage";
 import ReceiveRequestShow from "@/react/app/mainApp/pages/receiveRequest/show/ReceiveRequestShowPage";
 import MessageListPage from "@/react/app/mainApp/pages/message/message-list/MessageListPage";
+import ListNewArrivalPage from "@/react/app/mainApp/pages/item/listNewArrival/ListNewArrivalPage";
+import ListWantPage from "@/react/app/mainApp/pages/item/listWant/ListWantPage";
+import ListSeasonPage from "@/react/app/mainApp/pages/item/listSeason/ListSeasonPage";
+import ListFavoritePage from "@/react/app/mainApp/pages/item/listFavorite/ListFavoritePage";
+import ProducerListFeaturedPage from "@/react/app/mainApp/pages/producer/listFeatured/ProducerListFeaturedPage";
 
 const Router = () => {
 
@@ -46,7 +51,7 @@ const Router = () => {
 				<Route path="/login" element={  <Login /> } />
 
 				{/* TOPページ */}
-				<Route path={'/'} element={  <GuardRoute component={<Home />} /> } />
+				<Route path={'/'} element={  <GuardRoute component={<HomePage />} /> } />
 
 				{/*/!* 検索関連 *!/*/}
 				<Route path='/searchItemCategory' element={ <GuardRoute component={<SearchItemCategoryPage />} /> } />
@@ -56,6 +61,10 @@ const Router = () => {
 				{/*/!* 商品関連 *!/*/}
 				<Route path="/items">
 					<Route index={true} element={  <GuardRoute component={<ItemList />} /> } />
+					<Route path="newArrival" element={  <GuardRoute component={<ListNewArrivalPage />} /> } />
+					<Route path="want" element={  <GuardRoute component={<ListWantPage />} /> } />
+					<Route path="season" element={  <GuardRoute component={<ListSeasonPage />} /> } />
+					<Route path="favorite" element={  <GuardRoute component={<ListFavoritePage />} /> } />
 					<Route path=":itemUuid" element={  <GuardRoute component={<ItemShowPage />} /> } />
 					<Route path=":itemUuid/requestForm" element={  <GuardRoute component={<ItemRequestFormPage />} /> } />
 				</Route>
@@ -63,6 +72,7 @@ const Router = () => {
 				{/*/!* 生産者関連 *!/*/}
 				<Route path="/producers">
 					<Route index={true} element={  <GuardRoute component={<ProducerList />}/> } />
+					<Route path="featured" element={  <GuardRoute component={<ProducerListFeaturedPage />}/> } />
 					<Route path=":producerId" element={  <GuardRoute component={<ProducerShow />} /> } />
 				</Route>
 

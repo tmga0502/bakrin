@@ -10,7 +10,7 @@ type IndexType = {
 const Index: React.FC<IndexType>  = ({data}) => {
 	return (
 		<>
-			<PageTitle en={'producers'} jp={'生産者一覧'}/>
+			<PageTitle en={'producers'} jp={'注目の生産者一覧'}/>
 			<ProducerList data={data}/>
 		</>
 	);
