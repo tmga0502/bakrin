@@ -6,7 +6,7 @@ import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import {useGetUnits} from "@/react/api/query/UnitQuery";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
 import {useForm} from "react-hook-form";
-import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
+import {ErrorMessage, FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
 import SelectBox from "@/react/app/mainApp/components/elements/form/SelectBox/SelectBox";
 import Input from "@/react/app/mainApp/components/elements/form/InputField/Input";
 import Radio from "@/react/app/mainApp/components/elements/form/Radio/Radio";
@@ -17,7 +17,7 @@ const Form: React.FC<FormType> = () => {
 	const {data: categoryData} = useGetCategories();
 	const {data: unitData} = useGetUnits();
 	const {data: planData} = useGetPlans();
-	const {register, handleSubmit} = useForm()
+	const {register, handleSubmit, formState:{errors}} = useForm()
 
 	const onSubmit = (data: any) => {
 		console.log(data);
@@ -32,13 +32,19 @@ const Form: React.FC<FormType> = () => {
 
 			<FormGroup>
 				<FormLabel text={'アイテム名'} htmlFor={'name'}/>
-				<Input id={'name'} {...register('name')}/>
+				<Input id={'name'} {...register('name', {required: '入力してください'})}/>
+				{errors.name && (
+					<ErrorMessage msg={errors.name.message as string}/>
+				)}
 			</FormGroup>
 
 			<div css={Flex}>
 				<FormGroup>
 					<FormLabel text={'数量'} htmlFor={'count'}/>
-					<Input id={'count'} type={'number'} {...register('count')}/>
+					<Input id={'count'} type={'number'} {...register('count', {required: '入力してください'})}/>
+					{errors.count && (
+						<ErrorMessage msg={errors.count.message as string}/>
+					)}
 				</FormGroup>
 				<FormGroup>
 					<FormLabel text={'単位'} htmlFor={'unit'}/>
@@ -49,7 +55,10 @@ const Form: React.FC<FormType> = () => {
 			<div css={Flex}>
 				<FormGroup>
 					<FormLabel text={'目安数量'} htmlFor={'guideCount'}/>
-					<Input id={'guideCount'} type={'number'} {...register('guideCount')}/>
+					<Input id={'guideCount'} type={'number'} {...register('guideCount', {required: '入力してください'})}/>
+					{errors.guideCount && (
+						<ErrorMessage msg={errors.guideCount.message as string}/>
+					)}
 				</FormGroup>
 				<FormGroup>
 					<FormLabel text={'目安単位'} htmlFor={'guideUnit'}/>
