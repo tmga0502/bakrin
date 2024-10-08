@@ -1,9 +1,10 @@
 import {css} from "@emotion/react";
 
-const Style = css`
-
+const LinkStyle = css`
+	display: block;
+	width: 100%;
 `
 
 export {
-	Style,
+	LinkStyle,
 }

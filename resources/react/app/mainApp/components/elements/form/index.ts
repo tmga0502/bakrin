@@ -1,13 +1,13 @@
-import InputField from "./InputField/InputField";
+import Input from "@/react/app/mainApp/components/elements/form/InputField/Input";
 import FileField from "./FileField/FileField";
-import RadioBox from "./RadioBox/RadioBox";
-import SelectField from "./SelectField/SelectField";
-import TextAreaField from "./TextAreaField/TextAreaField";
+import Radio from "./Radio/Radio";
+import SelectBox from "@/react/app/mainApp/components/elements/form/SelectBox/SelectBox";
+import TextArea from "./TextArea/TextArea";
 
 export {
-	InputField,
+	Input,
 	FileField,
-	RadioBox,
-	SelectField,
-	TextAreaField,
+	Radio,
+	SelectBox,
+	TextArea,
 }

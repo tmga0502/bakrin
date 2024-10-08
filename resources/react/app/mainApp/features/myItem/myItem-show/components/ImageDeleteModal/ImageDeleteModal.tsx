@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {ImageDeleteModalType} from "./ImageDeleteModal.type";
+import {ButtonBox} from './ImageDeleteModal.styles'
 import {Modal, ModalBody, ModalTitle} from "@/react/app/mainApp/components/layout/Modal";
 import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import IconButton from "@/react/app/mainApp/components/elements/button/IconButton/IconButton";
+
 
 const ImageDeleteModal: React.FC<ImageDeleteModalType> = ({}) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +15,7 @@ const ImageDeleteModal: React.FC<ImageDeleteModalType> = ({}) => {
 				<Modal onClick={()=>setIsOpen(false)}>
 					<ModalTitle title={'この画像を削除しますか？'}/>
 					<ModalBody>
-						<div className={'flex justify-between items-center gap-6 py-6'}>
+						<div css={ButtonBox}>
 							<MainButton text={'キャンセル'} color={'dark'} type={'button'} width={'full'} size={'sm'} onClick={()=>{setIsOpen(false)}}/>
 							<MainButton text={'削除'} color={'danger'} type={'button'} width={'full'} size={'sm'}/>
 						</div>

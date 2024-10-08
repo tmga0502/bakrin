@@ -8,8 +8,8 @@ import {SearchProducerNameStates, SearchProducerPrefectureStates, SearchProducer
 import axios from "axios";
 import {ProducerType} from "@/react/types/ProducerType";
 import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
-import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
-import Select from "@/react/app/mainApp/components/elements/form/Select/Select";
+import Input from "@/react/app/mainApp/components/elements/form/InputField/Input";
+import SelectBox from "@/react/app/mainApp/components/elements/form/SelectBox/SelectBox";
 
 const Form: React.FC = () => {
 	const {register, handleSubmit, reset} = useForm()
@@ -41,7 +41,7 @@ const Form: React.FC = () => {
 					</FormGroup>
 					<FormGroup>
 						<FormLabel text={'都道府県'} htmlFor={'address'}/>
-						<Select optionObj={Prefectures} id={'address'} defaultValue={searchProducerPrefecture} {...register('address')}/>
+						<SelectBox optionObj={Prefectures} id={'address'} defaultValue={searchProducerPrefecture} {...register('address')}/>
 					</FormGroup>
 				</div>
 				<div css={ButtonBox}>

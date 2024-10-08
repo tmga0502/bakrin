@@ -6,7 +6,7 @@ import logo from "@/images/logo.png";
 import {BackGround, BackGroundImage, ButtonWrapper, Container, FormSectionBox, ImageBox, ImageSectionBox, Logo, Title} from "@/react/app/mainApp/pages/login/Login.styles";
 import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
-import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
+import Input from "@/react/app/mainApp/components/elements/form/InputField/Input";
 
 const Login = () => {
 	const login = useLogin()

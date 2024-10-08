@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {AddImageModalType} from "./AddImageModal.type";
+import {ButtonWrapper, Wrapper} from './AddImageModal.styles'
 import {useForm} from "react-hook-form";
 import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import {FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
-import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
 import {Modal, ModalBody, ModalTitle} from "@/react/app/mainApp/components/layout/Modal";
+import {FileField} from "@/react/app/mainApp/components/elements/form";
 
 const AddImageModal: React.FC<AddImageModalType> = () => {
 	const { register, handleSubmit} = useForm();
@@ -14,7 +15,7 @@ const AddImageModal: React.FC<AddImageModalType> = () => {
 	}
 	return (
 		<>
-			<div className={'block w-full mb-6'}>
+			<div css={Wrapper}>
 				<MainButton text={'画像追加'} width={'full'} color={'info'} type={'button'} onClick={() => {setIsOpen(!isOpen)}}/>
 			</div>
 			{isOpen && (
@@ -24,9 +25,9 @@ const AddImageModal: React.FC<AddImageModalType> = () => {
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<FormGroup>
 								<FormLabel text={'画像'} htmlFor={'image'}/>
-								<Input id={'image'} type={'file'} {...register('img')}/>
+								<FileField id={'image'} {...register('img')}/>
 							</FormGroup>
-							<div className="mt-8 text-center">
+							<div css={ButtonWrapper}>
 								<MainButton text={'追加'} color={'success'} type={'submit'} width={'half'}/>
 							</div>
 						</form>

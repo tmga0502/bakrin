@@ -5,7 +5,7 @@ import MainButton from "@/react/app/mainApp/components/elements/button/MainButto
 import {useChangePassword} from "@/react/api/query/UserQuery";
 import {WrapperStyle, TitleStyle } from "@/react/app/mainApp/features/myPage/myPage-profile/styles/Common.styles";
 import {ErrorMessage, FormGroup, FormLabel} from "@/react/app/mainApp/components/layout/form";
-import Input from "@/react/app/mainApp/components/elements/form/Input/Input";
+import Input from "@/react/app/mainApp/components/elements/form/InputField/Input";
 
 const Password: React.FC<PasswordType> = ({}) => {
 	const {register, watch, handleSubmit, reset, formState:{errors}} = useForm()

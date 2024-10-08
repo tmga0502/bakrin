@@ -1,5 +1,6 @@
 import {css} from "@emotion/react";
 import {mq} from "@/react/app/mainApp/styles/mediaQuery";
+import {theme} from "@/react/app/mainApp/styles/Theme";
 
 const Flex = css`
 	display: grid;
@@ -33,8 +34,23 @@ const RadioGroup = css`
 	}
 `
 
+const CautionStyle = css`
+	font-size: 12px;
+	font-weight: bold;
+	&>span{
+		color: ${theme.color.danger};
+	}
+`
+
+const ButtonBox = css`
+	text-align: center;
+	margin-top: 24px;
+`
+
 export {
 	Flex,
 	MonthFlex,
 	RadioGroup,
+	CautionStyle,
+	ButtonBox,
 }

@@ -1,8 +1,8 @@
 import React, {forwardRef} from 'react';
-import {SelectType} from "./Select.type";
-import {SelectStyle} from "./Select.styles";
+import {SelectBoxType} from "./SelectBox.type";
+import {SelectStyle} from "./SelectBox.styles";
 
-const Select = forwardRef<HTMLSelectElement, SelectType>(({ optionObj, ...props }, ref) => {
+const SelectBox = forwardRef<HTMLSelectElement, SelectBoxType>(({ optionObj, ...props }, ref) => {
 	return (
 		<div>
 			<label css={SelectStyle}>
@@ -17,4 +17,4 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(({ optionObj, ...props 
 	;
 });
 
-export default Select;
+export default SelectBox;

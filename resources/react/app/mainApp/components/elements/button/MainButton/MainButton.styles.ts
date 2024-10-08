@@ -26,6 +26,7 @@ const ButtonStyle = (props: ButtonPropsType) => {
 		padding: ${Padding};
 		margin-left: ${MarginLeft};
 		margin-right: ${MarginRight};
+		white-space: nowrap;
 		&:hover{
 			opacity: ${Opacity};
 		}
