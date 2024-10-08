@@ -1,8 +1,6 @@
-export type CheckBoxType = {
-	id              : string | number,
-	label           : string,
-	name            : string,
-	defaultChecked? : boolean,
-	defaultValue    : string | number,
-	value?          : string | number,
+import React, {ReactNode} from "react";
+
+export type CheckBoxType = React.InputHTMLAttributes<HTMLInputElement> & {
+	text: string | ReactNode,
 }
+

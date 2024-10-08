@@ -1,8 +1,8 @@
 import axios from "axios";
-import {PlanType} from "@/ts/types/PlanType";
+import {PlanType} from "@/react/types/PlanType";
 
 const getPlans = async () => {
-    const{ data } = await axios.get<PlanType>('/api/plans/getPlans');
+    const{ data } = await axios.get<PlanType[]>('/api/plans/getPlans');
     return data;
 }
 

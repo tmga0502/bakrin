@@ -78,7 +78,7 @@ class ItemsController extends Controller
 	public function searchPlan(Request $req): JsonResponse
 	{
 		if($req->plan !== false){
-			$items = Item::whereIn('planId', $req->plan)->where('status', 0)->get();
+			$items = Item::with('plan')->whereIn('planId', $req->plan)->where('status', 0)->get();
 		}else{
 			$items = [];
 		}
