@@ -1,7 +1,7 @@
 import {ProducerType} from "@/react/types/ProducerType";
 
-type listProducerPanelType = {
+type producerPanelForListType = {
 	data: ProducerType,
 }
 
-export {listProducerPanelType}
+export {producerPanelForListType}

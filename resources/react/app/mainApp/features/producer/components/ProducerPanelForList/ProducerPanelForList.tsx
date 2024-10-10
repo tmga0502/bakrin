@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import {Link} from "react-router-dom";
 import {LazyLoadImage} from "react-lazy-load-image-component";
-import { listProducerPanelType } from "./ListProducerPanel.type";
-import {AddressBox, ImageBox, ImageStyle, InfoBox, Wrapper} from './ListProducerPanel.styles'
+import { producerPanelForListType } from "./ProducerPanelForList.type";
+import {AddressBox, ImageBox, ImageStyle, InfoBox, Wrapper} from './ProducerPanelForList.styles'
 
-const ListProducerPanel: FC<listProducerPanelType> = ({data}) => {
+const ProducerPanelForList: FC<producerPanelForListType> = ({data}) => {
 	return(
 		<Link to={'/producers/'+data.uuid}>
 			<div css={Wrapper}>
@@ -24,4 +24,4 @@ const ListProducerPanel: FC<listProducerPanelType> = ({data}) => {
 	)
 }
 
-export default ListProducerPanel;
+export default ProducerPanelForList;
