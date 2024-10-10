@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {ItemPlanRibbonType} from "./ItemPlanRibbon.type";
 import {BudgeDefaultStyle} from './ItemPlanRibbon.styles'

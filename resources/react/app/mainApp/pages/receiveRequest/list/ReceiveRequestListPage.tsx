@@ -1,20 +1,30 @@
-import {useGetTradeRequests} from "@/react/api/query/TradeQuery";
 import React from "react";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import ReceiveRequestList from "../../../features/recieveRequest/receiveRequest-list";
+import {useGetTradeRequests} from "@/react/api/query/TradeQuery";
+import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+import {PageTitle} from "@mainElements/title";
+import {TradeType} from "@/react/types/TradeType";
+import {ListPanel} from "@mainFeatures/trade/components";
+import {formatDate} from "@/react/app/mainApp/functions/formatter";
 
 const ReceiveRequestListPage = () => {
-	const {data: tradeRequestsData} = useGetTradeRequests();
+	const {data: tradeRequestsData = []} = useGetTradeRequests();
 
 	return (
 	  <MainLayout>
-		  {tradeRequestsData !== undefined ? (
-			  <ReceiveRequestList data={tradeRequestsData}/>
-		  ):(
-			  <CanNotGetData/>
-		  )}
-
+		  <PageTitle en={'RECEIVE REQUEST'} jp={'申請依頼'}/>
+		  {tradeRequestsData.map((list:TradeType)=>{
+			  const partnerProducer = list.trade_producers.filter(producer=>producer.type === 'sender')[0]
+			  return(
+				  <ListPanel
+					  link={list.uuid}
+					  itemName={partnerProducer.item.name}
+					  producerName={partnerProducer.producer.organizationName}
+					  thumbnail={partnerProducer.item.thumbnail}
+					  date={formatDate(list.created_at)}
+					  key={list.id}
+				  />
+			  )
+		  })}
 	  </MainLayout>
 	);
 };

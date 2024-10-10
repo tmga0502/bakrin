@@ -1,21 +1,19 @@
 import {useParams} from "react-router-dom";
 import {useGetProducer} from "@/react/api/query/ProducerQuery";
 import React from "react";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import ProducerShow from "@/react/app/mainApp/features/producer/producer-show";
+import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
+import {ProducerType} from "@/react/types/ProducerType";
+import {Pr, ShowPanel, ItemList} from "@mainFeatures/producer/components";
 
 const ProducerShowPage = () => {
 	const params = useParams()
-	const { data: producerData } = useGetProducer(params.producerId)
+	const { data: producerData = {} as ProducerType } = useGetProducer(params.producerId)
 
 	return (
 	  <MainLayout>
-		  {producerData !== undefined ? (
-			  <ProducerShow data={producerData}/>
-		  ):(
-			  <CanNotGetData/>
-		  )}
+		  <ShowPanel data={producerData}/>
+		  <Pr data={producerData}/>
+		  <ItemList itemData={producerData.items}/>
 	  </MainLayout>
 	);
 };

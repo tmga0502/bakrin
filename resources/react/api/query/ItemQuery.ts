@@ -1,42 +1,49 @@
-import {useMutation, useQuery} from "react-query";
+import {useMutation, useQueryClient} from "react-query";
 import * as api from "@/react/api/api/ItemApi";
 import {toast} from "react-toastify";
 import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
-
+import {useQueryWrapper} from "@/react/api/function/useQueryWrapper";
 
 const useGetItem = (itemUuid: any) => {
-    return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid),{
-		suspense: true,
-	})
+    return useQueryWrapper(['item', itemUuid], ()=>api.getItem(itemUuid))
 }
 
 const useGetMyItems = () => {
-    return useQuery(['myItems'], ()=>api.getMyItems(),{
-		suspense: true,
-	})
+    return useQueryWrapper(['myItems'], ()=>api.getMyItems())
 }
 
 const useGetFavoriteItems = () => {
-    return useQuery('favoriteItems', ()=>api.getFavoriteItems(),{
-		suspense: true,
-	})
+    return useQueryWrapper('favoriteItems', ()=>api.getFavoriteItems())
 }
 
 const useGetNewArrivalItems = () => {
-    return useQuery('newArrivalItems', ()=>api.getNewArrivalItems(),{
-		suspense: true,
-	})
+    return useQueryWrapper('newArrivalItems', ()=>api.getNewArrivalItems())
 }
 
 const useGetSeasonItems = () => {
-    return useQuery('seasonItems', ()=>api.getSeasonItems(),{
-		suspense: true,
-	})
+    return useQueryWrapper('seasonItems', ()=>api.getSeasonItems())
 }
 
 const useGetWantItems = () => {
-    return useQuery('wantItems', ()=>api.getWantItems(),{
-		suspense: true,
+    return useQueryWrapper('wantItems', ()=>api.getWantItems())
+}
+
+const useCreateItem = () => {
+	const { setIsLoading} = useIsLoading()
+	const queryClient = useQueryClient()
+	return useMutation(api.CreateItem, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: () => {
+			setIsLoading(false)
+			queryClient.invalidateQueries('myItems')
+			toast.success('登録しました')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('登録できませんでした。')
+		}
 	})
 }
 
@@ -64,5 +71,6 @@ export {
     useGetNewArrivalItems,
     useGetSeasonItems,
     useGetWantItems,
+	useCreateItem,
 	useUpdateItem,
 }

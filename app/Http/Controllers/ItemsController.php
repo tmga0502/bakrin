@@ -7,6 +7,9 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ItemsController extends Controller
 {
@@ -23,6 +26,7 @@ class ItemsController extends Controller
         return response()->json($items);
     }
 
+
     public function getWantItems(): JsonResponse
     {
         $userUuid = Auth::user()->uuid;
@@ -32,7 +36,8 @@ class ItemsController extends Controller
         return response()->json($items);
     }
 
-    public function getSeasonItems(): JsonResponse
+
+	public function getSeasonItems(): JsonResponse
     {
         $nowMonth = (int)Carbon::now()->format('n');
         $items =Item::with('plan')->where(function ($query) use ($nowMonth) {
@@ -67,6 +72,29 @@ class ItemsController extends Controller
         $item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
         return response()->json($item);
     }
+
+	public function create(Request $req)
+	{
+		$result = DB::transaction(function () use ($req) {
+			$insertArray = $req->all();
+			$insertArray['producerUuid'] = Auth()->user()->uuid;
+
+			if(isset($req->thumbnail[0])){
+				$file = $req->thumbnail[0];
+				$extension = $file->getClientOriginalExtension();
+				$fileName = Carbon::now()->format('YmdHi') . '_' . Str::random(40) . '.' . $extension;
+				$store_file_path = 'public/items/' . $fileName;
+				//ファイル保存
+				Storage::put($store_file_path, $file);
+				$insertArray['thumbnail'] = 'storage/items/' . $fileName;
+			}
+			$item = new Item($insertArray);
+			$item->save();
+			return $item;
+		});
+
+		return response()->json($result, 200);
+	}
 
 	public function update(Request $req): JsonResponse
 	{

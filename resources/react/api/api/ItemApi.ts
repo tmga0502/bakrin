@@ -31,6 +31,16 @@ const getWantItems = async () => {
     return data;
 }
 
+const CreateItem = async (formData: ItemType) => {
+	const config = {
+		headers: {
+			'content-type': 'multipart/form-data'
+		}
+	}
+	const {data} =  await axios.post('/api/items/create', formData, config);
+	return data;
+}
+
 const updateItem = async (formData: ItemType) => {
 	const { data } = await axios.patch<ItemType>('/api/items/update', formData);
 	return data;
@@ -44,5 +54,6 @@ export {
     getNewArrivalItems,
     getSeasonItems,
     getWantItems,
+	CreateItem,
 	updateItem,
 }

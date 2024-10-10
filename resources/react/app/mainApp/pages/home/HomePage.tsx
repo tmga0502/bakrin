@@ -1,41 +1,45 @@
 import React from 'react';
-import {useGetFavoriteItems, useGetNewArrivalItems, useGetSeasonItems, useGetWantItems} from "@/react/api/query/ItemQuery";
+import {useGetNewArrivalItems, useGetWantItems , useGetFavoriteItems, useGetSeasonItems} from "@/react/api/query/ItemQuery";
 import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import Home from "@/react/app/mainApp/features/home";
+import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+import {SectionTitle} from "@mainElements/title";
+import {ItemList} from "@mainFeatures/item/components";
+import {ProducerList} from "@mainFeatures/producer/components";
+import {SectionStyle} from "@mainFeatures/home/styles";
 
 const HomePage = () => {
-	//新着アイテム
-	const { data: newArrivalItems } = useGetNewArrivalItems();
-	//欲しいものリスト
-	const { data: wantItems } = useGetWantItems();
-	//旬のアイテム
-	const { data: seasonItems } = useGetSeasonItems();
-	//マイリスト(お気に入り登録済みリスト)
-	const { data: favoriteItems } = useGetFavoriteItems();
-	// //人気のユーザー
-	const { data: popularProducers } = useGetPopularProducers();
+	const { data: newArrivalItems = [] } = useGetNewArrivalItems();//新着アイテム
+	const { data: wantItems = [] } = useGetWantItems();//欲しいものリスト
+	const { data: seasonItems = [] } = useGetSeasonItems();//旬のアイテム
+	const { data: favoriteItems = [] } = useGetFavoriteItems();//マイリスト(お気に入り登録済みリスト)
+	const { data: popularProducers = [] } = useGetPopularProducers();//人気のユーザー
 
     return (
 		<MainLayout>
-			{
-				newArrivalItems !== undefined &&
-				wantItems !== undefined &&
-				seasonItems !== undefined &&
-				favoriteItems !== undefined &&
-				popularProducers !== undefined ? (
-					<Home
-						newArrivalItemsData={newArrivalItems}
-						wantItemsData={wantItems}
-						seasonItemsData={seasonItems}
-						favoriteItemsData={favoriteItems}
-						popularProducersData={popularProducers}
-					/>
-				): (
-					<CanNotGetData/>
-				)
-			}
+			<div css={SectionStyle}>
+				<SectionTitle title={'新着'} moreLink={'/items/newArrival'}/>
+				<ItemList itemList={newArrivalItems} slice={6}/>
+			</div>
+
+			<div css={SectionStyle}>
+				<SectionTitle title={'欲しいものリスト'} moreLink={'/items/want'}/>
+				<ItemList itemList={wantItems} slice={6}/>
+			</div>
+
+			<div css={SectionStyle}>
+				<SectionTitle title={'今が旬'} moreLink={'/items/season'}/>
+				<ItemList itemList={seasonItems} slice={6}/>
+			</div>
+
+			<div css={SectionStyle}>
+				<SectionTitle title={'お気に入りリスト'} moreLink={'/items/favorite'}/>
+				<ItemList itemList={favoriteItems} slice={6}/>
+			</div>
+
+			<div css={SectionStyle}>
+				<SectionTitle title={'注目の生産者'} moreLink={'/producers/featured'}/>
+				<ProducerList producerList={popularProducers} slice={6}/>
+			</div>
 		</MainLayout>
 
 	);

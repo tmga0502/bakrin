@@ -21,6 +21,9 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': '/resources',
+	        '@mainElements': '/resources/react/app/mainApp/components/elements',
+	        '@mainLayouts': '/resources/react/app/mainApp/components/layouts',
+	        '@mainFeatures': '/resources/react/app/mainApp/features',
         },
     },
 });

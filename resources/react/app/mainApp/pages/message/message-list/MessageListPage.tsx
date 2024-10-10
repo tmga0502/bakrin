@@ -1,20 +1,22 @@
 import React from 'react';
 import {useGetMessageLists} from "@/react/api/query/MessageQuery";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import MessageList from "@/react/app/mainApp/features/message/message-list";
+import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
+import {PageTitle} from "@mainElements/title";
+import ContainerMd from "@/react/app/mainApp/components/layouts/container/ContainerMd/ContainerMd";
+import {MessageGroupType} from "@/react/types/MessageGroupType";
+import {ListCard} from "@mainFeatures/message/components";
 
 const MessageListPage = () => {
-	const {data: messageLists} = useGetMessageLists()
+	const {data: messageLists = []} = useGetMessageLists()
 
 	return (
 		<MainLayout>
-			{messageLists !== undefined ? (
-				<MessageList messageLists={messageLists}/>
-			):(
-				<CanNotGetData/>
-			)}
-
+			<PageTitle en={'MESSAGE'} jp={'メッセージ一覧'}/>
+			<ContainerMd>
+				{messageLists.map((room: MessageGroupType, index: number) => (
+					<ListCard room={room} key={index}/>
+				))}
+			</ContainerMd>
 		</MainLayout>
 	);
 };

@@ -1,19 +1,24 @@
 import React from 'react';
 import {useGetPlans} from "@/react/api/query/PlanQuery";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import SearchPlan from "@/react/app/mainApp/features/search/search-plan";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
+import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+import {PlanSearchForm} from "@mainFeatures/search/components";
+import GridBox from "@mainLayouts/GridBox/GridBox";
+import {ItemPanelForList} from "@mainFeatures/item/components";
+import {useRecoilValue} from "recoil";
+import {SearchPlanResultStates} from "@/react/app/mainApp/states/SearchPlanStates";
 
 const SearchPlanPage = () => {
-	const {data: planData} = useGetPlans();
+	const {data: planData = []} = useGetPlans();
+	const searchPlanResult = useRecoilValue(SearchPlanResultStates);
 
 	return (
 		<MainLayout>
-			{planData !== undefined ? (
-				<SearchPlan planData={planData}/>
-			):(
-				<CanNotGetData/>
-			)}
+			<PlanSearchForm planData={planData}/>
+			<GridBox>
+				{searchPlanResult.map((item: any) => (
+					<ItemPanelForList itemData={item} key={item.id}/>
+				))}
+			</GridBox>
 		</MainLayout>
 	);
 };

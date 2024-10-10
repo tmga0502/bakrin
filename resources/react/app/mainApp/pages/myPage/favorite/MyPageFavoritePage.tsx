@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useGetFavoriteItems} from "@/react/api/query/ItemQuery";
 import {useGetFavoriteProducers} from "@/react/api/query/ProducerQuery";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import MyPageFavorite from "@/react/app/mainApp/features/myPage/myPage-favorite";
+import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+import {PageTitle} from "@mainElements/title";
+import Tab from "@mainLayouts/tab/Tab/Tab";
+import {ItemList, ProducerList} from "@mainFeatures/myPage/components";
 
 const MyPageFavoritePage = () => {
-	const { data: ItemData } = useGetFavoriteItems()
-	const { data: ProducerData} = useGetFavoriteProducers()
+	const { data: ItemData = [] } = useGetFavoriteItems()
+	const { data: ProducerData = []} = useGetFavoriteProducers()
+
+	const [viewMode, setViewMode] = useState('アイテム')
+	const tabMenu = ['アイテム', '生産者']
+
 
 	return (
 		<MainLayout>
-			{ItemData !== undefined && ProducerData !== undefined ? (
-				<MyPageFavorite ItemData={ItemData} ProducerData={ProducerData}/>
+			<PageTitle en={'favorite'} jp={'お気に入り'}/>
+			<Tab mode={viewMode} setMode={setViewMode} tabMenu={tabMenu}/>
+			{viewMode === 'アイテム' ? (
+				<ItemList itemsData={ItemData}/>
 			):(
-				<CanNotGetData/>
+				<ProducerList producersData={ProducerData}/>
 			)}
 		</MainLayout>
 	);

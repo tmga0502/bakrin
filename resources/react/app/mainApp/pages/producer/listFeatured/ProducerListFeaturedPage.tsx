@@ -1,18 +1,15 @@
 import React from 'react';
 import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import ProducerListFeatured from "@/react/app/mainApp/features/producer/producer-list-featured";
+import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
+import {PageTitle} from "@mainElements/title";
+import {ProducerList} from "@mainFeatures/producer/components";
 
 const ProducerListFeaturedPage = () => {
-	const { data: producersData } = useGetPopularProducers();
+	const { data: producersData = [] } = useGetPopularProducers();
 	return (
 		<MainLayout>
-			{producersData !== undefined ? (
-				<ProducerListFeatured data={producersData}/>
-			):(
-				<CanNotGetData/>
-			)}
+			<PageTitle en={'producers'} jp={'注目の生産者一覧'}/>
+			<ProducerList producerList={producersData}/>
 		</MainLayout>
 	);
 };

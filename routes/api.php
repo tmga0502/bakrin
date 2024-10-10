@@ -11,6 +11,7 @@ use App\Http\Controllers\ProducersController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VarietiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,12 +34,15 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
     //アイテム関連
     Route::group(['prefix' => 'items'], function () {
         Route::get('/getNewArrival', [ItemsController::class, 'getNewArrival']);//新着アイテムリスト
+        Route::get('/getNewArrivalItemsForHome', [ItemsController::class, 'getNewArrivalItemsForHome']);//[TOP Page用]新着アイテムリスト
         Route::get('/getWantItems', [ItemsController::class, 'getWantItems']);//欲しいアイテムリスト
+        Route::get('/getWantItemsForHome', [ItemsController::class, 'getWantItemsForHome']);//欲しいアイテムリスト
         Route::get('/getSeasonItems', [ItemsController::class, 'getSeasonItems']);//旬のアイテムリスト
         Route::get('/getFavoriteItems', [ItemsController::class, 'getFavoriteItems']);//お気に入り登録済みアイテムリスト
         Route::get('/getItem/{itemUuid}', [ItemsController::class, 'getItem']);//アイテム詳細
         Route::get('/getMyItems', [ItemsController::class, 'getMyItems']);//自分のアイテム一覧
 
+		Route::post('/create', [ItemsController::class, 'create']);//登録
         Route::patch('/update', [ItemsController::class, 'update']);//更新
 		Route::post('/searchPlan', [ItemsController::class, 'searchPlan']);//プランから検索
 		Route::post('/searchCategory', [ItemsController::class, 'searchCategory']);//カテゴリーから検索
@@ -48,6 +52,11 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/getCategories', [CategoriesController::class, 'getAllCategories']);//全カテゴリー取得
     });
+
+	//アイテム種別関連
+	Route::group(['prefix' => 'varieties'], function () {
+		Route::get('/getVarieties', [VarietiesController::class, 'getAllVarieties']);//全カテゴリー取得
+	});
 
     //単位関連
     Route::group(['prefix' => 'units'], function () {

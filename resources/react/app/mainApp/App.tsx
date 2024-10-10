@@ -6,7 +6,7 @@ import Router from "./router/Router";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
-import Loader from "@/react/app/mainApp/components/layout/Loader/Loader";
+import Loader from "@/react/app/mainApp/components/layouts/Loader/Loader";
 import {Global, ThemeProvider} from "@emotion/react";
 import {theme} from "@/react/app/mainApp/styles/Theme";
 import {globalStyle} from "@/react/app/mainApp/styles/Global";

@@ -1,19 +1,18 @@
 import React from 'react';
-import MainLayout from "@/react/app/mainApp/components/layout/MainLayout/MainLayout";
-import {useRecoilValue} from "recoil";
-import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
-import MyPageProfile from "@/react/app/mainApp/features/myPage/myPage-profile";
-import CanNotGetData from "@/react/app/mainApp/components/layout/error/CanNotGetData/CanNotGetData";
+import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
+import {PageTitle} from "@mainElements/title";
+import ContainerSm from "@mainLayouts/container/ContainerSm/ContainerSm";
+import {ChangePasswordForm, ChangePaymentMethodForm, ProfileData} from "@mainFeatures/myPage/components";
 
 const MyPageProfilePage = () => {
-	const userData = useRecoilValue(IsAuthProducerDataStates);
 	return (
 		<MainLayout>
-			{userData !== undefined ?(
-				<MyPageProfile userData={userData}/>
-			):(
-				<CanNotGetData/>
-			)}
+			<PageTitle en={'profile'} jp={'プロフィール'}/>
+			<ContainerSm>
+				<ProfileData/>
+				<ChangePasswordForm/>
+				<ChangePaymentMethodForm/>
+			</ContainerSm>
 		</MainLayout>
 	);
 };
