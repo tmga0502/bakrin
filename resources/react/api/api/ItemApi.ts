@@ -11,6 +11,14 @@ const getMyItems = async () => {
     return data;
 }
 
+const getMyItem = async (itemUuid:string) => {
+	const{ data, status } = await axios.get<ItemType>(`/api/items/getMyItem/${itemUuid}`);
+	if (status >= 400){
+		throw new Error('err')
+	}
+	return data;
+}
+
 const getFavoriteItems = async () => {
     const{ data } = await axios.get<ItemType[]>('/api/items/getFavoriteItems');
     return data;
@@ -50,6 +58,7 @@ const updateItem = async (formData: ItemType) => {
 export {
     getItem,
     getMyItems,
+	getMyItem,
     getFavoriteItems,
     getNewArrivalItems,
     getSeasonItems,

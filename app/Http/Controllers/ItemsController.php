@@ -17,7 +17,7 @@ class ItemsController extends Controller
     public function getMyItems(): JsonResponse
     {
 		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->get();
-        return response()->json($items);
+		return response()->json($items);
     }
 
     public function getNewArrival(): JsonResponse
@@ -70,8 +70,19 @@ class ItemsController extends Controller
     public function getItem($itemUuid): JsonResponse
     {
         $item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
-        return response()->json($item);
-    }
+		return response()->json($item);
+	}
+
+	public function getMyItem($itemUuid): JsonResponse
+	{
+		$authUser = Auth::user();
+		$item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
+		if($item->producerUuid === $authUser->uuid){
+			return response()->json($item);
+		}
+
+		return response()->json([], 401);
+	}
 
 	public function create(Request $req)
 	{

@@ -2,13 +2,16 @@ import React from "react";
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
-import {ItemType} from "@/react/types/ItemType";
 import {ItemDescription, ItemFavoriteButton, ItemImageSlider, ProducerPanel, LinkToSendMessageButton, LinkToSendRequestButton} from "@mainFeatures/item/components";
 import {ShowButtonBox, ShowButtonGroup, ShowContentsBox, ShowWrapper} from "@mainFeatures/item/styles";
+import PageLoader from "@mainLayouts/Loader/PageLoader/PageLoader";
 
 const ItemShowPage = () => {
 	const params = useParams()
-	const { data: itemData = {} as ItemType } = useGetItem(params.itemUuid);
+	const { data: itemData} = useGetItem(params.itemUuid);
+
+	if(!itemData) return <PageLoader/>
+
 	return (
 		<MainLayout>
 			<div css={ShowWrapper}>

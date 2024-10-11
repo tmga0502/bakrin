@@ -1,19 +1,15 @@
 import React from 'react';
-import {ButtonBox, CautionStyle, Flex, MonthFlex, RadioGroup} from './Form.styles';
+import {ButtonBox, CautionStyle, Flex, MonthFlex, RadioGroup} from './CreateForm.styles';
+import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
+import {FileField, Input, Radio, SelectBox, TextArea} from "@mainElements/form";
 import {Month, MonthPart} from "@/react/_constants/Date";
+import MainButton from "@mainElements/button/MainButton/MainButton";
 import {useForm} from "react-hook-form";
-import {ErrorMessage, FormGroup, FormLabel} from "@/react/app/mainApp/components/layouts/form";
-import {SelectBox, Input, Radio, FileField, TextArea} from "@/react/app/mainApp/components/elements/form";
-import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 import {useCreateItem} from "@/react/api/query/ItemQuery";
-import {useRecoilValue} from "recoil";
-import {categoryDataState, planDataState, unitDataState, varietiesDataState} from "@/react/app/mainApp/pages/myItem/myItem-new/states/atom";
+import {NewPagePropsType} from "@mainFeatures/myItem/types";
 
-const Form = () => {
-	const categoryData = useRecoilValue(categoryDataState)
-	const varietiesData = useRecoilValue(varietiesDataState)
-	const unitData = useRecoilValue(unitDataState)
-	const planData = useRecoilValue(planDataState)
+const CreateForm: React.FC<NewPagePropsType> = (props) => {
+	const {categoriesData, varietiesData, unitData, planData} = props
 	const {register, handleSubmit, formState:{errors}} = useForm()
 	const create = useCreateItem()
 
@@ -25,7 +21,7 @@ const Form = () => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<FormGroup>
 				<FormLabel text={'カテゴリー'} htmlFor={'category'}/>
-				<SelectBox optionObj={categoryData} {...register('categoryId')}/>
+				<SelectBox optionObj={categoriesData} {...register('categoryId')}/>
 			</FormGroup>
 
 			<FormGroup>
@@ -116,4 +112,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default CreateForm;

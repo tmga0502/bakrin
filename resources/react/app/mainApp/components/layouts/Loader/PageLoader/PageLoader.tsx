@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactLoading from "react-loading";
-import {Wrapper, Text} from './Loader.styles'
+import {Wrapper, Text} from './PageLoader.styles'
 
-const Loader = () => {
+const PageLoader = () => {
     return (
 		<div css={Wrapper}>
 			<div>
@@ -18,4 +18,4 @@ const Loader = () => {
     );
 };
 
-export default Loader;
+export default PageLoader;
