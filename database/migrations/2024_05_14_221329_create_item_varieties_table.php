@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('hiragana')->comment('ひらがな');
             $table->string('katakana')->comment('カタカナ');
             $table->string('kanzi')->nullable()->default(null)->comment('漢字');
+			$table->softDeletes();
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ return new class extends Migration
 			$table->string('address3')->nullable()->default(null)->comment('送り先のその他');
 			$table->string('address4')->nullable()->default(null)->comment('送り先の建物名等');
 			$table->boolean('receiptCheck')->default(false)->comment('受取チェック');
+			$table->softDeletes();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('senderUuid')->comment('発信者のuuid')->index();
             $table->text('message')->comment('メッセージ');
             $table->datetime('read_at')->nullable()->default(null)->comment('開封日時');
+			$table->softDeletes();
             $table->timestamps();
         });
     }

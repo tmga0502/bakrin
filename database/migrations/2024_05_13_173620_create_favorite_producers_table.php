@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('myUuid')->comment('自分のuuid')->index();
             $table->string('producerUuid')->comment('相手のuuid')->index();
+			$table->softDeletes();
             $table->timestamps();
         });
     }

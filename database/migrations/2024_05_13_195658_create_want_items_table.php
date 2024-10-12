@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('myUuid')->comment('自分のuuid')->index();
             $table->string('itemVarietyId')->comment('種目のID')->index();
+			$table->softDeletes();
             $table->timestamps();
         });
     }

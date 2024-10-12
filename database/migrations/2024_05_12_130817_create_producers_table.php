@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('password')->comment('パスワード');
             $table->integer('paymentMethod')->default(0)->comment('取引手数料の支払い方法');
             $table->text('pr')->nullable()->default(null)->comment('自己PR');
+			$table->softDeletes();
             $table->timestamps();
         });
     }

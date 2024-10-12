@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('authority')->default(0)->comment('閲覧権限');
             $table->string('loginId')->comment('ログインID');
             $table->string('password')->comment('パスワード');
+			$table->softDeletes();
             $table->timestamps();
         });
     }
