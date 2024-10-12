@@ -16,7 +16,7 @@ class ItemsController extends Controller
 
     public function getMyItems(): JsonResponse
     {
-		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->get();
+		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->orderBy('created_at', 'DESC')->get();
 		return response()->json($items);
     }
 
@@ -89,14 +89,14 @@ class ItemsController extends Controller
 		$result = DB::transaction(function () use ($req) {
 			$insertArray = $req->all();
 			$insertArray['producerUuid'] = Auth()->user()->uuid;
+			$insertArray['uuid'] = (string) Str::uuid();
 
 			if(isset($req->thumbnail[0])){
 				$file = $req->thumbnail[0];
 				$extension = $file->getClientOriginalExtension();
 				$fileName = Carbon::now()->format('YmdHi') . '_' . Str::random(40) . '.' . $extension;
-				$store_file_path = 'public/items/' . $fileName;
 				//ファイル保存
-				Storage::put($store_file_path, $file);
+				Storage::disk('public')->putFileAs('items', $file, $fileName);
 				$insertArray['thumbnail'] = 'storage/items/' . $fileName;
 			}
 			$item = new Item($insertArray);

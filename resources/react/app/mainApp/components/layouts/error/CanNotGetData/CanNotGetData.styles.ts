@@ -3,15 +3,14 @@ import {theme} from "@/react/app/mainApp/styles/Theme";
 import {mq} from "@/react/app/mainApp/styles/mediaQuery";
 
 const Wrapper = css`
-	position: relative;
+	width: 100%;
 	height: 100%;
+	display: flex;
+	align-items: center;
 `
 
 const MessageBox = css`
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	margin: 0 auto;
 `
 
 const IconStyle = css`

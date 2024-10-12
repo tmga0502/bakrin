@@ -1,10 +1,10 @@
-import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
 import {useNavigate} from "react-router-dom";
 import {useMutation, useQuery} from "react-query";
 import * as api from "@/react/api/api/AuthProducerApi";
 import {toast} from "react-toastify";
 import {useResetRecoilState, useSetRecoilState} from "recoil";
 import {IsAuthProducerDataStates, IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
+import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
 const usAuthProducerCheck = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthProducerStates)
@@ -30,7 +30,7 @@ const usAuthProducerCheck = () => {
 
 const useLogin = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthProducerStates)
-    const { setIsLoading } = useIsLoading()
+    const setIsLoading  = useSetRecoilState(IsLoadingStates)
     const navigate = useNavigate()
     return useMutation(api.login, {
         onSuccess: () => {
@@ -46,7 +46,7 @@ const useLogin = () => {
 
 const useLogout = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthProducerStates)
-    const { setIsLoading } = useIsLoading()
+    const setIsLoading = useSetRecoilState(IsLoadingStates)
     const navigate = useNavigate()
     return useMutation(api.logout, {
         onSuccess: () => {

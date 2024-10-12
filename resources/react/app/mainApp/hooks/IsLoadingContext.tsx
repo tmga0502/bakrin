@@ -1,23 +1,18 @@
-import React, { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
-
-type IsLoadingContextType = {
-    isLoading: boolean,
-    setIsLoading: Dispatch<SetStateAction<boolean>>
-}
-
-const IsLoadingContext = createContext<IsLoadingContextType>({
-    isLoading: false,
-    setIsLoading: () => {}
-})
+import React, { ReactNode } from 'react'
+import {useRecoilValue} from "recoil";
+import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
+import PageLoader from "@mainLayouts/Loader/PageLoader/PageLoader";
 
 export const IsLoadingProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const isLoading = useRecoilValue(IsLoadingStates)
+	console.log(isLoading)
 
     return (
-        <IsLoadingContext.Provider value={{ isLoading, setIsLoading }}>
+		<>
             { children }
-        </IsLoadingContext.Provider>
+			{isLoading && (
+				<PageLoader/>
+			)}
+		</>
     )
 }
-
-export const useIsLoading = (): IsLoadingContextType => useContext(IsLoadingContext);

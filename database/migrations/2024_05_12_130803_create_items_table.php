@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('shippingStartPart')->comment('発送時期【ex:上旬】');
             $table->integer('shippingEnd')->comment('発送時期(いつまで)【ex:8月】');
             $table->string('shippingEndPart')->comment('発送時期【ex:上旬】');
-            $table->integer('status')->default(0)->comment('公開状態【0:公開, 1:非公開】');
-            $table->string('thumbnail')->comment('サムネイル画像パス');
+            $table->integer('status')->default(1)->comment('公開状態【0:公開, 1:非公開】');
+            $table->string('thumbnail')->nullable()->default(null)->comment('サムネイル画像パス');
             $table->timestamps();
         });
     }

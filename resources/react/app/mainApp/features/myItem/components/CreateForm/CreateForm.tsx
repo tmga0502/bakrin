@@ -7,26 +7,54 @@ import MainButton from "@mainElements/button/MainButton/MainButton";
 import {useForm} from "react-hook-form";
 import {useCreateItem} from "@/react/api/query/ItemQuery";
 import {NewPagePropsType} from "@mainFeatures/myItem/types";
+import {useRecoilState, useSetRecoilState} from "recoil";
+import {FormCategoryStates, FormVarietiesStates} from "@mainFeatures/myItem/states/formStates";
+import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
 const CreateForm: React.FC<NewPagePropsType> = (props) => {
 	const {categoriesData, varietiesData, unitData, planData} = props
-	const {register, handleSubmit, formState:{errors}} = useForm()
+	const {register, handleSubmit, formState:{errors}, setValue} = useForm()
+	const setFormCategoryStates = useSetRecoilState(FormCategoryStates)
+	const [formVarietiesStates, setFormVarietiesStates] = useRecoilState(FormVarietiesStates)
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	const create = useCreateItem()
 
+	const handleCategoryChange = (e: any) => {
+		const value = e.target.value
+		if(value === ''){
+			setFormVarietiesStates([])
+		}{
+			const varietyArray = varietiesData.filter(item => item.categoryId === value)
+			setFormVarietiesStates(varietyArray)
+			setValue('varietyId', '')
+		}
+		setFormCategoryStates(e.target.value)
+	}
+
 	const onSubmit = (data: any) => {
+		setIsLoading(true)
 		create.mutate(data);
 	}
+
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<FormGroup>
 				<FormLabel text={'カテゴリー'} htmlFor={'category'}/>
-				<SelectBox optionObj={categoriesData} {...register('categoryId')}/>
+				<SelectBox optionObj={categoriesData} addBlankOption={true} {...register('categoryId', {required: '選択してください'})} onChange={(e: any)=> {
+					handleCategoryChange(e)
+				}}/>
+				{errors.categoryId && (
+					<ErrorMessage msg={errors.categoryId.message as string}/>
+				)}
 			</FormGroup>
 
 			<FormGroup>
 				<FormLabel text={'種類'} htmlFor={'variety'}/>
-				<SelectBox optionObj={varietiesData} {...register('varietyId')}/>
+				<SelectBox optionObj={formVarietiesStates} addBlankOption={true} {...register('varietyId', {required: '選択してください'})}/>
+				{errors.varietyId && (
+					<ErrorMessage msg={errors.varietyId.message as string}/>
+				)}
 			</FormGroup>
 
 			<FormGroup>
@@ -67,7 +95,10 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 
 			<FormGroup>
 				<FormLabel text={'プラン'} htmlFor={'plan'}/>
-				<SelectBox optionObj={planData} {...register('planId')}/>
+				<SelectBox optionObj={planData} addBlankOption={true} {...register('planId', {required: '選択してください'})}/>
+				{errors.planId && (
+					<ErrorMessage msg={errors.planId.message as string}/>
+				)}
 			</FormGroup>
 
 			<FormGroup>

@@ -29,7 +29,7 @@ class Item extends Model
         'varietyId',
         'count',
         'unitId',
-        'guidCount',
+        'guideCount',
         'guideUnitId',
         'planId',
         'description',
@@ -38,6 +38,7 @@ class Item extends Model
         'shippingEnd',
         'shippingEndPart',
         'status',
+		'thumbnail',
     ];
 
     public function favoriteItems(): HasMany

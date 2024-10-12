@@ -1,10 +1,12 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import * as api from "@/react/api/api/ItemApi";
 import {toast} from "react-toastify";
-import {useIsLoading} from "@/react/app/mainApp/hooks/IsLoadingContext";
 import {useQueryWrapper} from "@/react/api/function/useQueryWrapper";
 import {useSetRecoilState} from "recoil";
 import {AuthorisedErrorState} from "@/react/app/mainApp/states/ErrorStates";
+import {IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
+import {useNavigate} from "react-router-dom";
+import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
 const useGetItem = (itemUuid: any) => {
     return useQuery(['item', itemUuid], ()=>api.getItem(itemUuid))
@@ -43,8 +45,9 @@ const useGetWantItems = () => {
 }
 
 const useCreateItem = () => {
-	const { setIsLoading} = useIsLoading()
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	const queryClient = useQueryClient()
+	const navigate = useNavigate()
 	return useMutation(api.CreateItem, {
 		onMutate: () => {
 			setIsLoading(true);
@@ -53,6 +56,7 @@ const useCreateItem = () => {
 			setIsLoading(false)
 			queryClient.invalidateQueries('myItems')
 			toast.success('登録しました')
+			navigate('/myitem')
 		},
 		onError: () => {
 			setIsLoading(false)
@@ -62,7 +66,7 @@ const useCreateItem = () => {
 }
 
 const useUpdateItem = () => {
-	const { setIsLoading} = useIsLoading()
+	const setIsLoading = useSetRecoilState(IsAuthProducerStates)
 	return useMutation(api.updateItem, {
 		onMutate: () => {
 			setIsLoading(true);
