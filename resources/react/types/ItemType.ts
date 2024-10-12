@@ -3,6 +3,7 @@ import {ItemImageType} from "@/react/types/ItemImageType";
 import {ItemCategoryType} from "@/react/types/ItemCategoryType";
 import {UnitType} from "@/react/types/UnitType";
 import {ProducerType} from "@/react/types/ProducerType";
+import {VarietyType} from "@/react/types/VarietyType";
 
 export type ItemType = {
     map(arg0: (item: any) => any): import("react").ReactNode;
@@ -27,6 +28,7 @@ export type ItemType = {
     thumbnail        : string,
     plan             : PlanType,
     category         : ItemCategoryType,
+	variety          : VarietyType,
     unit             : UnitType,
     guide_unit       : UnitType,
     images           : ItemImageType[],

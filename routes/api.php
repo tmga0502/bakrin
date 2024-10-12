@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
 use App\Http\Controllers\FavoriteProducersController;
+use App\Http\Controllers\ItemImageController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PlansController;
@@ -48,6 +49,9 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::delete('/delete', [ItemsController::class, 'delete']);//削除
 		Route::post('/searchPlan', [ItemsController::class, 'searchPlan']);//プランから検索
 		Route::post('/searchCategory', [ItemsController::class, 'searchCategory']);//カテゴリーから検索
+
+		Route::post('/image/create', [ItemImageController::class, 'create']);//画像登録
+		Route::delete('/image/delete', [ItemImageController::class, 'delete']);//画像削除
     });
 
     //カテゴリー関連

@@ -2,7 +2,6 @@
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
 import React from "react";
-import {Form} from "@/react/app/mainApp/pages/myItem/edit/features";
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import {useGetUnits} from "@/react/api/query/UnitQuery";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
@@ -27,7 +26,7 @@ const MyItemEditPage = () => {
 	return (
 	  <MainLayout>
 		  <div className="max-w-[500px] mx-auto mb-48">
-			  <Form itemData={itemData} categoryData={categoryData} unitData={unitData} planData={planData}/>
+			  {/*<Form itemData={itemData} categoryData={categoryData} unitData={unitData} planData={planData}/>*/}
 		  </div>
 	  </MainLayout>
 	);

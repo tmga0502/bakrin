@@ -17,7 +17,7 @@ const useGetMyItems = () => {
 
 const useGetMyItem = (itemUuid: any) => {
 	const setAuthError = useSetRecoilState(AuthorisedErrorState)
-	return useQuery(['myItem'], ()=>api.getMyItem(itemUuid),{
+	return useQuery(['myItem', itemUuid], ()=>api.getMyItem(itemUuid),{
 		onError: () => {
 			setAuthError(true)
 		},
@@ -51,9 +51,9 @@ const useCreateItem = () => {
 		onMutate: () => {
 			setIsLoading(true);
 		},
-		onSuccess: () => {
+		onSuccess: (data) => {
 			setIsLoading(false)
-			queryClient.invalidateQueries('myItems')
+			queryClient.invalidateQueries(['myItem', data.uuid])
 			toast.success('登録しました')
 			navigate('/myitem')
 		},

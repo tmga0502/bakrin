@@ -2,13 +2,13 @@ import axios from "axios";
 import {ItemType} from "@/react/types/ItemType";
 
 const getItem = async (itemUuid:string) => {
-    const{ data } = await axios.get<ItemType>('/api/items/getItem/' + itemUuid);
-    return data;
+	const{ data } = await axios.get<ItemType>('/api/items/getItem/' + itemUuid);
+	return data;
 }
 
 const getMyItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('/api/items/getMyItems');
-    return data;
+	const{ data } = await axios.get<ItemType[]>('/api/items/getMyItems');
+	return data;
 }
 
 const getMyItem = async (itemUuid:string) => {
@@ -20,23 +20,23 @@ const getMyItem = async (itemUuid:string) => {
 }
 
 const getFavoriteItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('/api/items/getFavoriteItems');
-    return data;
+	const{ data } = await axios.get<ItemType[]>('/api/items/getFavoriteItems');
+	return data;
 }
 
 const getNewArrivalItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('/api/items/getNewArrival');
-    return data;
+	const{ data } = await axios.get<ItemType[]>('/api/items/getNewArrival');
+	return data;
 }
 
 const getSeasonItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('/api/items/getSeasonItems');
-    return data;
+	const{ data } = await axios.get<ItemType[]>('/api/items/getSeasonItems');
+	return data;
 }
 
 const getWantItems = async () => {
-    const{ data } = await axios.get<ItemType[]>('/api/items/getWantItems');
-    return data;
+	const{ data } = await axios.get<ItemType[]>('/api/items/getWantItems');
+	return data;
 }
 
 const CreateItem = async (formData: ItemType) => {
@@ -54,20 +54,20 @@ const updateItem = async (formData: ItemType) => {
 	return data;
 }
 
-const deleteItem = async (formData:any) => {
+const deleteItem = async (formData: { uuid: string }) => {
 	const { data } = await axios.delete<ItemType>(`/api/items/delete`, {data: formData});
 	return data;
 }
 
 
 export {
-    getItem,
-    getMyItems,
+	getItem,
+	getMyItems,
 	getMyItem,
-    getFavoriteItems,
-    getNewArrivalItems,
-    getSeasonItems,
-    getWantItems,
+	getFavoriteItems,
+	getNewArrivalItems,
+	getSeasonItems,
+	getWantItems,
 	CreateItem,
 	updateItem,
 	deleteItem,

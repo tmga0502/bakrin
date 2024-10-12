@@ -3,16 +3,23 @@ import {AddImageModalType} from "./AddImageModal.type";
 import {ButtonWrapper, Wrapper} from './AddImageModal.styles'
 import {useForm} from "react-hook-form";
 import MainButton from "@mainElements/button/MainButton/MainButton";
-import {FormGroup, FormLabel} from "@mainLayouts/form";
+import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {FileField} from "@mainElements/form";
+import {useCreateImage} from "@/react/api/query/ItemIMageQuery";
 
-const AddImageModal: React.FC<AddImageModalType> = () => {
-	const { register, handleSubmit} = useForm();
+const AddImageModal: React.FC<AddImageModalType> = ({itemData}) => {
+	const { register, handleSubmit, formState:{errors}} = useForm({defaultValues:{
+			itemId: itemData.id,
+			img: []
+		}});
 	const [isOpen, setIsOpen] = useState(false);
+	const create = useCreateImage(setIsOpen)
+
 	const onSubmit = (data:any) => {
-		console.log(data)
+		create.mutate(data)
 	}
+
 	return (
 		<>
 			<div css={Wrapper}>
@@ -25,10 +32,13 @@ const AddImageModal: React.FC<AddImageModalType> = () => {
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<FormGroup>
 								<FormLabel text={'画像'} htmlFor={'image'}/>
-								<FileField id={'image'} {...register('img')}/>
+								<FileField id={'image'} {...register('img', {required: '選択してください'})}/>
+								{errors.img && (
+									<ErrorMessage msg={errors.img.message as string}/>
+								)}
 							</FormGroup>
 							<div css={ButtonWrapper}>
-								<MainButton text={'追加'} color={'success'} type={'submit'} width={'half'}/>
+								<MainButton text={'追加'} color={'info'} type={'submit'} width={'half'}/>
 							</div>
 						</form>
 					</ModalBody>

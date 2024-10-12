@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Service\ImageService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -92,12 +93,8 @@ class ItemsController extends Controller
 			$insertArray['uuid'] = (string) Str::uuid();
 
 			if(isset($req->thumbnail[0])){
-				$file = $req->thumbnail[0];
-				$extension = $file->getClientOriginalExtension();
-				$fileName = Carbon::now()->format('YmdHi') . '_' . Str::random(40) . '.' . $extension;
-				//ファイル保存
-				Storage::disk('public')->putFileAs('items', $file, $fileName);
-				$insertArray['thumbnail'] = 'storage/items/' . $fileName;
+				$imageService = new ImageService($req->thumbnail[0], 'itemsThumbnail');
+				$insertArray['thumbnail'] = $imageService->save();
 			}
 			$item = new Item($insertArray);
 			$item->save();

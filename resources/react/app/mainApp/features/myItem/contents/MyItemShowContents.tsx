@@ -10,7 +10,7 @@ const MyItemShowContents:React.FC<ItemDataType> = ({itemData}) => {
 			<div css={ShowButtonBoxStyle}>
 				<ItemDataDeleteModal uuid={itemData.uuid}/>
 				<div css={ShowButtonFlexStyle}>
-					<AddImageModal/>
+					<AddImageModal itemData={itemData}/>
 					<LinkToEditButton/>
 				</div>
 			</div>

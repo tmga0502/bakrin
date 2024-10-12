@@ -19,6 +19,11 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 				</Tr>
 
 				<Tr>
+					<Td text={'種類'} heading={true}/>
+					<Td text={itemData.variety.name} heading={false}/>
+				</Tr>
+
+				<Tr>
 					<Td text={'アイテム名'} heading={true}/>
 					<Td text={itemData.name} heading={false}/>
 				</Tr>
@@ -63,7 +68,7 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 						<Td text={`画像${index+1}`} heading={true}/>
 						<Td text={
 							<div css={ImageWrapper} >
-								<img src={image.path} css={ImageStyle} alt={`image${index + 1}`}/>
+								<img src={createImageUrl(image.path)} css={ImageStyle} alt={`image${index + 1}`}/>
 								<ImageDeleteModal/>
 							</div>
 						} heading={false}/>
