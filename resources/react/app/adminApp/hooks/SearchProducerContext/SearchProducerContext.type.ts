@@ -1,5 +1,5 @@
-import {ProducerType} from "@/ts/types/ProducerType";
 import React from "react";
+import {ProducerType} from "@/react/types/ProducerType";
 
 export type SearchProducerContextType = {
 	searchProducerName: string,

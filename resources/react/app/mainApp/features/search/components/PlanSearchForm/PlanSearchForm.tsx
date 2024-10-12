@@ -6,12 +6,12 @@ import {ItemType} from "@/react/types/ItemType";
 import {useForm} from "react-hook-form";
 import {useSetRecoilState} from "recoil";
 import {SearchPlanListStates, SearchPlanResultStates} from "@/react/app/mainApp/states/SearchPlanStates";
-import {SearchPlanType} from "@mainFeatures/search/search-plan/types/type";
 import {FormGroup} from "@mainLayouts/form";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import CheckBox from "@mainElements/form/CheckBox/CheckBox";
+import {PlanPropsType} from "@mainFeatures/search/types";
 
-const PlanSearchForm: React.FC<SearchPlanType> = ({planData}) => {
+const PlanSearchForm: React.FC<PlanPropsType> = ({planDatas}) => {
 	const {register, handleSubmit, reset} = useForm();
 	const setSearchPlanList = useSetRecoilState(SearchPlanListStates);
 	const setSearchPlanResult = useSetRecoilState(SearchPlanResultStates);
@@ -36,7 +36,7 @@ const PlanSearchForm: React.FC<SearchPlanType> = ({planData}) => {
 		<div css={Wrapper}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div css={CheckBoxWrapper}>
-					{planData.map((plan: PlanType) => (
+					{planDatas.map((plan: PlanType) => (
 						<FormGroup key={plan.id}>
 							<CheckBox text={plan.name} value={plan.id} {...register('plan')}/>
 						</FormGroup>

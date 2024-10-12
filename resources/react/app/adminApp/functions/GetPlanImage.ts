@@ -1,4 +1,4 @@
-import {Plan} from "@/ts/_constants/Plan";
+import {Plan} from "@/react/_constants/Plan";
 
 const GetPlanImage = (planNumber: number) => {
     let plan =  Plan.find(plan => plan.number === planNumber)

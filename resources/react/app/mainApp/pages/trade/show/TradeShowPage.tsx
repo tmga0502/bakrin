@@ -1,22 +1,27 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import {useParams} from "react-router-dom";
 import {useGetTrade} from "@/react/api/query/TradeQuery";
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
-import {PageTitle} from "@mainElements/title";
-import {ShowButtonBoxStyle} from "@mainFeatures/trade/styles";
-import {Chat, TradeImageBox} from "@mainFeatures/trade/components";
+import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
+import {CanNotGetData} from "@mainLayouts/error";
+import TradeShowContents from "@mainFeatures/trade/contents/TradeShowContents";
 
 const TradeShowPage = () => {
 	const params = useParams()
-	const {data: tradeData} = useGetTrade(params.tradeUuid as string)
+	const {data: tradeData, isLoading} = useGetTrade(params.tradeUuid as string)
+
+	let contents: ReactNode
+	if(isLoading){
+		contents = <ContentsLoader/>
+	}else if (!tradeData){
+		contents = <CanNotGetData/>
+	}else{
+		contents = 	<TradeShowContents tradeRequestData={tradeData}/>
+	}
 
 	return (
 	  <MainLayout>
-		  <PageTitle en={'TRADE'} jp={'取引詳細'}/>
-		  <TradeImageBox tradeRequestData={tradeData}/>
-		  <div css={ShowButtonBoxStyle}>
-			  <Chat/>
-		  </div>
+		  {contents}
 	  </MainLayout>
 	);
 };

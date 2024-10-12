@@ -1,8 +1,7 @@
 import React from 'react';
-import {RejectButtonType} from "./RejectButton.type";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 
-const RejectButton: React.FC<RejectButtonType> = ({}) => {
+const RejectButton: React.FC = () => {
 	const handleConfirm =() => {
 		console.log('確認')
 	}

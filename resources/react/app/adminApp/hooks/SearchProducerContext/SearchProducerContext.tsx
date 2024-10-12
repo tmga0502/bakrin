@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import {SearchProducerContextType} from "@/ts/hooks/SearchProducerContext/SearchProducerContext.type";
-import {ProducerType} from "@/ts/types/ProducerType";
+import {SearchProducerContextType} from "@/react/app/adminApp/hooks/SearchProducerContext/SearchProducerContext.type";
+import {ProducerType} from "@/react/types/ProducerType";
 
 const SearchProducerContext = createContext<SearchProducerContextType>({
 	searchProducerName: '',

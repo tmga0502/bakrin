@@ -1,27 +1,24 @@
 import React from 'react';
-import {useGetCategories} from "@/react/api/query/CategoryQuery";
-import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+import {ItemCateGoryPropsType} from "@mainFeatures/search/types";
 import {ItemCategorySearchForm} from "@mainFeatures/search/components";
 import GridBox from "@mainLayouts/GridBox/GridBox";
 import {ItemPanelForList} from "@mainFeatures/item/components";
 import {useRecoilValue} from "recoil";
 import {SearchCategoryResultStates} from "@/react/app/mainApp/states/SearchCategoryStates";
 
-const SearchItemCategoryPage = () => {
-	const {data: categoryData = []} = useGetCategories();
+const SearchItemCategoryContents:React.FC<ItemCateGoryPropsType> = ({categoryDatas}) => {
 	const searchCategoryResultStates = useRecoilValue(SearchCategoryResultStates)
-
 	return (
-		<MainLayout>
-			<ItemCategorySearchForm categoryData={categoryData}/>
+		<>
+			<ItemCategorySearchForm categoryDatas={categoryDatas}/>
 
 			<GridBox>
 				{searchCategoryResultStates.map((item: any) => (
 					<ItemPanelForList itemData={item} key={item.id}/>
 				))}
 			</GridBox>
-		</MainLayout>
+		</>
 	);
 };
 
-export default SearchItemCategoryPage;
+export default SearchItemCategoryContents;

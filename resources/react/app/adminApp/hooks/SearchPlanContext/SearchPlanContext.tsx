@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import {SearchPlanContextType} from "@/ts/hooks/SearchPlanContext/SearchPlanContext.type";
-import {PlanType} from "@/ts/types/PlanType";
-import { ItemType } from '@/ts/types/ItemType';
+import {SearchPlanContextType} from "@/react/app/adminApp/hooks/SearchPlanContext/SearchPlanContext.type";
+import {PlanType} from "@/react/types/PlanType";
+import {ItemType} from "@/react/types/ItemType";
 
 const SearchPlanContext = createContext<SearchPlanContextType>({
 	searchPlanList: [],

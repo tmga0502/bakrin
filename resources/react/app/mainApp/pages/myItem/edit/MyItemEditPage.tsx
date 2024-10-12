@@ -1,12 +1,16 @@
-import {MainAppLayout} from "@/react/app/mainApp/features/layout";
+
 import {useParams} from "react-router-dom";
 import {useGetItem} from "@/react/api/query/ItemQuery";
-import Loader from "@/react/app/mainApp/features/loader/Loader";
 import React from "react";
 import {Form} from "@/react/app/mainApp/pages/myItem/edit/features";
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import {useGetUnits} from "@/react/api/query/UnitQuery";
 import {useGetPlans} from "@/react/api/query/PlanQuery";
+import MainLayout from "@mainLayouts/MainLayout/MainLayout";
+
+function Loader() {
+	return null;
+}
 
 const MyItemEditPage = () => {
 	const params = useParams()
@@ -21,11 +25,11 @@ const MyItemEditPage = () => {
 	{return <Loader/>}
 
 	return (
-	  <MainAppLayout>
+	  <MainLayout>
 		  <div className="max-w-[500px] mx-auto mb-48">
 			  <Form itemData={itemData} categoryData={categoryData} unitData={unitData} planData={planData}/>
 		  </div>
-	  </MainAppLayout>
+	  </MainLayout>
 	);
 };
 

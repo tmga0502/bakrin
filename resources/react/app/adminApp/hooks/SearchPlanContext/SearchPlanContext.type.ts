@@ -1,5 +1,5 @@
-import { ItemType } from "@/ts/types/ItemType";
 import React from "react";
+import {ItemType} from "@/react/types/ItemType";
 
 export type SearchPlanContextType = {
 	searchPlanList: any,

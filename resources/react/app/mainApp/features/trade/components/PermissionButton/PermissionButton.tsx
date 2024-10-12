@@ -1,8 +1,7 @@
 import React from 'react';
-import {PermissionButtonType} from "./PermissionButton.type";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 
-const PermissionButton: React.FC<PermissionButtonType> = ({}) => {
+const PermissionButton: React.FC = () => {
 	const handleConfirm =() => {
 		console.log('確認')
 	}

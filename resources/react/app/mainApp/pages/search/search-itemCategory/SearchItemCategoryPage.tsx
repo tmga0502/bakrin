@@ -1,20 +1,20 @@
 import React, {ReactNode} from 'react';
-import {useGetPlans} from "@/react/api/query/PlanQuery";
+import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
 import {CanNotGetData} from "@mainLayouts/error";
-import SearchPlanContents from "@mainFeatures/search/contents/SearchPlanContents";
+import SearchItemCategoryContents from "@mainFeatures/search/contents/SearchItemCategoryContents";
 
-const SearchPlanPage = () => {
-	const {data: planData, isLoading} = useGetPlans();
+const SearchItemCategoryPage = () => {
+	const {data: categoryData, isLoading} = useGetCategories();
 
 	let contents: ReactNode
 	if(isLoading){
 		contents = <ContentsLoader/>
-	}else if (!planData){
+	}else if (!categoryData){
 		contents = <CanNotGetData/>
 	}else{
-		contents = 	<SearchPlanContents planDatas={planData}/>
+		contents = 	<SearchItemCategoryContents categoryDatas={categoryData}/>
 	}
 
 	return (
@@ -24,4 +24,4 @@ const SearchPlanPage = () => {
 	);
 };
 
-export default SearchPlanPage;
+export default SearchItemCategoryPage;
