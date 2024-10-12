@@ -3,6 +3,7 @@ import {ImageBox, ImageStyle, ItemBox, ItemName, LinkBox, TextBox, Wrapper} from
 import {Link} from "react-router-dom";
 import ItemPlanBadge from "@mainElements/budge/ItemPlanBadge/ItemPlanBadge";
 import {ItemDataType} from "@mainFeatures/myItem/types";
+import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const ListCard: React.FC<ItemDataType> = ({itemData}) => {
 	return (
@@ -10,7 +11,7 @@ const ListCard: React.FC<ItemDataType> = ({itemData}) => {
 			<div css={Wrapper}>
 				<div css={ItemBox}>
 					<div css={ImageBox}>
-						<img src={itemData.thumbnail} css={ImageStyle} alt={`${itemData.name} image`}/>
+						<img src={createImageUrl(itemData.thumbnail)} css={ImageStyle} alt={`${itemData.name} image`}/>
 					</div>
 					<div css={TextBox}>
 						<ItemPlanBadge plan={itemData.plan}/>

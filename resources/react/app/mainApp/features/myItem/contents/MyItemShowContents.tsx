@@ -8,7 +8,7 @@ const MyItemShowContents:React.FC<ItemDataType> = ({itemData}) => {
 		<>
 			<ShowDataTable itemData={itemData}/>
 			<div css={ShowButtonBoxStyle}>
-				<ItemDataDeleteModal/>
+				<ItemDataDeleteModal uuid={itemData.uuid}/>
 				<div css={ShowButtonFlexStyle}>
 					<AddImageModal/>
 					<LinkToEditButton/>

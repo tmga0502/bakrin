@@ -2,9 +2,20 @@ import React, {useState} from 'react';
 import {ButtonBox} from './ItemDataDeleteModal.styles';
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
+import {useForm} from "react-hook-form";
+import {useDeleteItem} from "@/react/api/query/ItemQuery";
 
-const ItemDataDeleteModal: React.FC = () => {
+const ItemDataDeleteModal: React.FC<{uuid: string}> = ({uuid}) => {
+	const {getValues} = useForm({defaultValues:{
+			itemUuid: uuid
+		}})
 	const [isOpen, setIsOpen] = useState(false);
+	const del = useDeleteItem(setIsOpen)
+
+	const onsubmit = () => {
+		del.mutate(getValues())
+	}
+
 	return (
 		<>
 			<div className={'block w-full mb-6'}>
@@ -18,7 +29,7 @@ const ItemDataDeleteModal: React.FC = () => {
 							<MainButton text={'キャンセル'} color={'dark'} type={'button'} width={'full'} size={'sm'} onClick={() => {
 								setIsOpen(false)
 							}}/>
-							<MainButton text={'削除'} color={'danger'} type={'button'} width={'full'} size={'sm'}/>
+							<MainButton text={'削除'} color={'danger'} type={'submit'} width={'full'} size={'sm'} onClick={onsubmit}/>
 						</div>
 					</ModalBody>
 				</Modal>

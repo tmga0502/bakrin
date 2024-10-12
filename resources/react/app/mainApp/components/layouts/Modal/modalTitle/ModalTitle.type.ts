@@ -1,3 +1,3 @@
 export type ModalTitleType = {
-	title: string,
+	title    : string,
 }

@@ -4,7 +4,6 @@ import {toast} from "react-toastify";
 import {useQueryWrapper} from "@/react/api/function/useQueryWrapper";
 import {useSetRecoilState} from "recoil";
 import {AuthorisedErrorState} from "@/react/app/mainApp/states/ErrorStates";
-import {IsAuthProducerStates} from "@/react/app/mainApp/states/AuthStates";
 import {useNavigate} from "react-router-dom";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
@@ -66,7 +65,7 @@ const useCreateItem = () => {
 }
 
 const useUpdateItem = () => {
-	const setIsLoading = useSetRecoilState(IsAuthProducerStates)
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	return useMutation(api.updateItem, {
 		onMutate: () => {
 			setIsLoading(true);
@@ -82,6 +81,27 @@ const useUpdateItem = () => {
 	})
 }
 
+const useDeleteItem = (setIsOpen: any) => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const navigate = useNavigate()
+	return useMutation(api.deleteItem, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: () => {
+			setIsLoading(false)
+			toast.success('削除しました')
+			navigate('/myitem')
+			setIsOpen(false)
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('削除できませんでした。')
+			setIsOpen(false)
+		}
+	})
+}
+
 export {
     useGetItem,
     useGetMyItems,
@@ -92,4 +112,5 @@ export {
     useGetWantItems,
 	useCreateItem,
 	useUpdateItem,
+	useDeleteItem,
 }

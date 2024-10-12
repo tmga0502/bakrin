@@ -4,7 +4,9 @@ import {Wrapper} from './ModalTitle.styles'
 
 const ModalTitle: React.FC<ModalTitleType> = ({title}) => {
 	return(
-		<div css={Wrapper}>{title}</div>
+		<div>
+			<div css={Wrapper}>{title}</div>
+		</div>
 	)
 }
 

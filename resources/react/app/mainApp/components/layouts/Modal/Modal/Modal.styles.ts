@@ -22,6 +22,7 @@ const Box = css`
 	max-height: 80%;
 	border-radius: 8px;
 	text-align: left;
+	z-index: 100000;
 `
 
 export {

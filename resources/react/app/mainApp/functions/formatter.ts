@@ -49,9 +49,18 @@ function formatDate(date: string){
 	return `${year}年${month}月${day}日 ${hour}:${minute}`;
 }
 
+function createImageUrl(filePath: string){
+	if (filePath.includes("http://") || filePath.includes("https://")) {
+		return filePath;
+	}
+	return `${window.location.origin}/${filePath}`
+}
+
+
 export {
     createPhoneNumber,
     createPostalCode,
     withComma,
 	formatDate,
+	createImageUrl,
 }

@@ -22,7 +22,7 @@ class ItemsController extends Controller
 
     public function getNewArrival(): JsonResponse
     {
-        $items = Item::with('plan')->where('status', 0)->orderBy('created_at', 'DESC')->take(50)->get();
+        $items = Item::with('plan')->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->orderBy('created_at', 'DESC')->take(50)->get();
         return response()->json($items);
     }
 
@@ -32,7 +32,7 @@ class ItemsController extends Controller
         $userUuid = Auth::user()->uuid;
         $items = Item::with(['wantItems', 'plan'])->whereHas('wantItems', function($q) use($userUuid){
             $q->where('myUuid', $userUuid);
-        })->where('status', 0)->get();
+        })->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
         return response()->json($items);
     }
 
@@ -48,7 +48,7 @@ class ItemsController extends Controller
                                 $query->where('shippingStart', '<=', $nowMonth)->orWhere('shippingEnd', '>=', $nowMonth);
                         });
                     });
-                })->where('status', 0)->get();
+                })->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
         return response()->json($items);
     }
 
@@ -59,7 +59,7 @@ class ItemsController extends Controller
             $q->where('myUuid', $userUuid);
         });
         if($itemQuery->exists()){
-            $items = $itemQuery->where('status', 0)->get();
+            $items = $itemQuery->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
         }else{
             $items = [];
         }
@@ -84,7 +84,7 @@ class ItemsController extends Controller
 		return response()->json([], 401);
 	}
 
-	public function create(Request $req)
+	public function create(Request $req): JsonResponse
 	{
 		$result = DB::transaction(function () use ($req) {
 			$insertArray = $req->all();
@@ -112,6 +112,19 @@ class ItemsController extends Controller
 		$item = Item::find($req->id);
 		$item->fill($req->all())->save();
 		return response()->json($item, 200);
+	}
+
+	public function delete(Request $req): JsonResponse
+	{
+		$uuid = $req->itemUuid;
+		$item = Item::where('uuid', $uuid)->first();
+		if($item->producerUuid === Auth()->user()->uuid){
+			$item->delete();
+			return response()->json(true, 200);
+		}
+
+		return response()->json(false, 400);
+
 	}
 
 	public function searchPlan(Request $req): JsonResponse

@@ -54,6 +54,11 @@ const updateItem = async (formData: ItemType) => {
 	return data;
 }
 
+const deleteItem = async (formData:any) => {
+	const { data } = await axios.delete<ItemType>(`/api/items/delete`, {data: formData});
+	return data;
+}
+
 
 export {
     getItem,
@@ -65,4 +70,5 @@ export {
     getWantItems,
 	CreateItem,
 	updateItem,
+	deleteItem,
 }

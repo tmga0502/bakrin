@@ -45,6 +45,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 
 		Route::post('/create', [ItemsController::class, 'create']);//登録
         Route::patch('/update', [ItemsController::class, 'update']);//更新
+        Route::delete('/delete', [ItemsController::class, 'delete']);//削除
 		Route::post('/searchPlan', [ItemsController::class, 'searchPlan']);//プランから検索
 		Route::post('/searchCategory', [ItemsController::class, 'searchCategory']);//カテゴリーから検索
     });
