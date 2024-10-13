@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\FavoriteProducer;
 use App\Models\Producer;
+use App\Service\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProducersController extends Controller
 {
@@ -80,7 +82,20 @@ class ProducersController extends Controller
 	public function update(Request $req): JsonResponse
 	{
 		$producer = Producer::find(Auth()->user()->id);
-		$producer->fill($req->all())->save();
+		$insertArray = $req->all();
+
+		if(isset($req->img[0])){
+			//既存ファイル削除
+			$pathName = str_replace('storage/', '', $producer->imgPath);
+			Storage::disk('public')->delete($pathName);
+			//新たに登録
+			$imageService = new ImageService($req->img[0], 'producerImage');
+			$insertArray['imgPath'] = $imageService->save();
+		}else{
+			$insertArray['imgPath'] = $producer->imgPath;
+		}
+
+		$producer->fill($insertArray)->save();
 
 		return response()->json($producer, 200);
 	}

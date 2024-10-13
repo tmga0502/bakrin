@@ -23,7 +23,7 @@ const useGetProducer = (producerUuid: any) => {
 	})
 }
 
-const useChangePassword = (reset: any) => {
+const useChangePassword = (setIsModalOpen: any, reset: any) => {
 	const queryClient = useQueryClient()
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	return useMutation(api.changePassword, {
@@ -31,6 +31,7 @@ const useChangePassword = (reset: any) => {
 			setIsLoading(false)
 			queryClient.invalidateQueries('password')
 			toast.success('パスワードを変更しました。')
+			setIsModalOpen(false)
 			reset()
 		},
 		onError: () => {
@@ -40,16 +41,17 @@ const useChangePassword = (reset: any) => {
 	})
 }
 
-const useProducerUpdate = () => {
+const useProducerUpdate = (setIsModalOpen:any) => {
 	const queryClient = useQueryClient()
 	const setProducerData = useSetRecoilState(IsAuthProducerDataStates)
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	return useMutation(api.producerUpdate, {
 		onSuccess: (data) => {
 			setIsLoading(false)
-			queryClient.invalidateQueries('password')
+			queryClient.invalidateQueries('authProducer')
 			toast.success('変更しました。')
 			setProducerData(data)
+			setIsModalOpen(false)
 		},
 		onError: () => {
 			setIsLoading(false)

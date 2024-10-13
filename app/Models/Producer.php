@@ -37,6 +37,7 @@ class Producer extends Authenticatable
         'address3',
         'address4',
         'tel',
+		'imgPath',
         'email',
         'password',
         'paymentMethod',

@@ -6,12 +6,25 @@ const Wrapper = css`
 `
 
 const TextStyle = css`
-	margin-top: 8px;
+	margin: 8px 0 24px 0;
 	font-size: 12px;
 `
 
 const DataBox = css`
 	margin-bottom: 16px;
+`
+
+const ImageBox = css`
+	width: 120px;
+	height: 120px;
+	margin: 0 auto 8px auto;
+`
+
+const ImageStyle = css`
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	object-fit: cover;
 `
 
 const DataTitle = css`
@@ -32,11 +45,18 @@ const DataBody = css`
 	padding: 0 0 4px 16px;
 `
 
+const Flex =css`
+	display: flex;
+	justify-content: space-between;
+`
 
 export {
 	Wrapper,
 	TextStyle,
 	DataBox,
+	ImageBox,
+	ImageStyle,
 	DataTitle,
-	DataBody
+	DataBody,
+	Flex,
 }
