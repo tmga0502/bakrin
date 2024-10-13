@@ -30,8 +30,10 @@ class ProducersController extends Controller
 
     public function getPopularProducers(): JsonResponse
 	{
+		$own = Auth()->user();
         $producers = Producer::select('producers.*', DB::raw('COUNT(favorite_producers.id) as favorite_count'))
             ->leftJoin('favorite_producers', 'producers.id', '=', 'favorite_producers.producerUuid')
+			->where('producers.id', '!=', $own->id)
             ->groupBy('producers.id')
             ->orderBy('favorite_count', 'desc')
             ->get()
@@ -65,7 +67,7 @@ class ProducersController extends Controller
 		if (!is_null($address)) {
 			$query->where('address1', $address);
 		}
-		$producers = $query->get();
+		$producers = $query->whereNotIn('id', [Auth()->user()->id])->get();
 		return response()->json($producers);
 	}
 
