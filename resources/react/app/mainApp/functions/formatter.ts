@@ -2,7 +2,7 @@ import {PhoneNumber, PhoneNumberFormat, PhoneNumberUtil} from "google-libphonenu
 
 //電話番号をハイフン付きに変換
 function createPhoneNumber(phoneNumber: string){
-    if(phoneNumber == null) {
+    if(phoneNumber == null || phoneNumber === '') {
         return ''
     }
     // 日本の国コード

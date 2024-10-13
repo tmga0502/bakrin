@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import { useForm} from "react-hook-form";
 import MainButton from "@mainElements/button/MainButton/MainButton";
-import {useChangePassword} from "@/react/api/query/UserQuery";
+import {useChangePassword} from "@/react/api/query/ProducerQuery";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import Input from "@mainElements/form/InputField/Input";
 import {TitleStyle, WrapperStyle} from "@mainFeatures/myPage/styles";
+import {useSetRecoilState} from "recoil";
+import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
 const ChangePasswordForm: React.FC = () => {
 	const {register, watch, handleSubmit, reset, formState:{errors}} = useForm()
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	const [btnState, setBtnState] = useState(true)
-	const changePassword = useChangePassword()
+	const changePassword = useChangePassword(reset)
 
 	useEffect(() => {
 		if (watch('newPassword') !== watch('newPasswordConfirm')) {
@@ -23,11 +26,8 @@ const ChangePasswordForm: React.FC = () => {
 
 
 	const onSubmit = (data: any) => {
-		changePassword.mutate(data, {
-			onSuccess: () => {
-				reset();
-			}
-		})
+		setIsLoading(true)
+		changePassword.mutate(data)
 	}
 
 

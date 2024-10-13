@@ -16,8 +16,25 @@ const getProducer = async (producerUuid: string) => {
 	return data;
 }
 
+const changePassword = async (formData: any) => {
+	const{ data } = await axios.post('/api/user/changePassword', formData);
+	return data;
+}
+
+const producerUpdate = async (formData: any) => {
+	const config = {
+		headers: {
+			'content-type': 'multipart/form-data'
+		}
+	}
+	const{ data } = await axios.post('/api/user/update', formData, config);
+	return data;
+}
+
 export {
     getPopularProducers,
     getFavoriteProducers,
 	getProducer,
+	changePassword,
+	producerUpdate,
 }

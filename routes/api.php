@@ -11,7 +11,6 @@ use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ProducersController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\VarietiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -112,6 +111,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 
     //ログインユーザー情報
     Route::get('/getUser', [AuthProducerController::class, 'getUser']);
-    Route::post('user/changePassword', [UserController::class, 'changePassword']);
+    Route::post('user/changePassword', [ProducersController::class, 'changePassword']);
+    Route::post('user/update', [ProducersController::class, 'update']);
 
 });

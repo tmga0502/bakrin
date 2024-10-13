@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProducersController extends Controller
 {
@@ -64,6 +65,24 @@ class ProducersController extends Controller
 		}
 		$producers = $query->get();
 		return response()->json($producers);
+	}
+
+
+	public function changePassword(Request $req): \Illuminate\Http\JsonResponse
+	{
+		$user = Auth::user();
+		$password =  Hash::make($req->newPassword);
+		$user->fill(['password'=>$password])->save();
+
+		return response()->json([], 200);
+	}
+
+	public function update(Request $req): JsonResponse
+	{
+		$producer = Producer::find(Auth()->user()->id);
+		$producer->fill($req->all())->save();
+
+		return response()->json($producer, 200);
 	}
 
 }
