@@ -106,8 +106,22 @@ class ItemsController extends Controller
 
 	public function update(Request $req): JsonResponse
 	{
-		$item = Item::find($req->id);
-		$item->fill($req->all())->save();
+		$item = DB::transaction(function () use ($req) {
+			$item = Item::find($req->id);
+			$insertArray = $req->all();
+			if(isset($req->thumbnail[0])){
+				//既存ファイル削除
+				$pathName = str_replace('storage/', '', $item->thumbnail);
+				Storage::disk('public')->delete($pathName);
+				//新たに登録
+				$imageService = new ImageService($req->thumbnail[0], 'itemsThumbnail');
+				$insertArray['thumbnail'] = $imageService->save();
+			}else{
+				$insertArray['thumbnail'] = $item->thumbnail;
+			}
+			$item->fill($insertArray)->save();
+			return $item;
+		});
 		return response()->json($item, 200);
 	}
 

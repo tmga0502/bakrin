@@ -66,13 +66,17 @@ const useCreateItem = () => {
 
 const useUpdateItem = () => {
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	const navigate = useNavigate()
 	return useMutation(api.updateItem, {
 		onMutate: () => {
 			setIsLoading(true);
 		},
-		onSuccess: () => {
+		onSuccess: (data) => {
 			setIsLoading(false)
+			queryClient.invalidateQueries(['myItem', data.uuid])
 			toast.success('更新しました')
+			navigate(`/myitem/${data.uuid}`)
 		},
 		onError: () => {
 			setIsLoading(false)

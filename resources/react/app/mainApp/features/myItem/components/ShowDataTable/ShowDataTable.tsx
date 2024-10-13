@@ -8,7 +8,7 @@ import {ImageDeleteModal} from "@mainFeatures/myItem/components";
 import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
-	const status = itemData.status === 0 ? <Budge color={'success'} value={'公開'}/> : <Budge color={'danger'} value={'非公開'}/>;
+	const status = itemData.status === 1 ? <Budge color={'success'} value={'公開'}/> : <Budge color={'danger'} value={'非公開'}/>;
 	const plan = <ItemPlanBadge plan={itemData.plan}/>
 	return (
 		<Table>

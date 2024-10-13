@@ -50,6 +50,9 @@ function formatDate(date: string){
 }
 
 function createImageUrl(filePath: string){
+	if (filePath === '' || filePath == null){
+		return filePath;
+	}
 	if (filePath.includes("http://") || filePath.includes("https://")) {
 		return filePath;
 	}

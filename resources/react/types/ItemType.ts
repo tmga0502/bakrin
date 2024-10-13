@@ -14,6 +14,7 @@ export type ItemType = {
     producerUuid     : string,
     name             : string,
     categoryId       : number,
+    varietyId        : number,
     count            : number,
     unitId           : string,
     guideCount       : number,

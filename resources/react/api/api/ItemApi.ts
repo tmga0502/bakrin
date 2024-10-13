@@ -50,7 +50,12 @@ const CreateItem = async (formData: ItemType) => {
 }
 
 const updateItem = async (formData: ItemType) => {
-	const { data } = await axios.patch<ItemType>('/api/items/update', formData);
+	const config = {
+		headers: {
+			'content-type': 'multipart/form-data'
+		}
+	}
+	const { data } = await axios.post<ItemType>('/api/items/update', formData, config);
 	return data;
 }
 

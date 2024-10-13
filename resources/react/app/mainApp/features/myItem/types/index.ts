@@ -22,3 +22,11 @@ export type NewPagePropsType = {
 	unitData     : UnitType[],
 	planData     : PlanType[],
 }
+
+export type EditPagePropsType = {
+	itemData       : ItemType,
+	categoriesData : ItemCategoryType[],
+	varietiesData  : VarietyType[],
+	unitData       : UnitType[],
+	planData       : PlanType[],
+}

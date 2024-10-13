@@ -13,8 +13,6 @@ import ProducerShow from "@/react/app/mainApp/pages/producer/show/ProducerShowPa
 import ProducerList from "@/react/app/mainApp/pages/producer/list/ProducerListPage";
 import TradeList from "@/react/app/mainApp/pages/trade/list/TradeListPage";
 import TradeShow from "@/react/app/mainApp/pages/trade/show/TradeShowPage";
-import MyItemShow from "@/react/app/mainApp/pages/myItem/myItem-show/MyItemShowPage";
-import MyItemEdit from "@/react/app/mainApp/pages/myItem/edit/MyItemEditPage";
 import SearchItemCategoryPage from '@/react/app/mainApp/pages/search/search-itemCategory/SearchItemCategoryPage';
 import SearchProducerPage from "@/react/app/mainApp/pages/search/search-producer/SearchProducerPage";
 import SearchPlanPage from "@/react/app/mainApp/pages/search/plan/SearchPlanPage";
@@ -35,6 +33,8 @@ import ItemShowPage from "@/react/app/mainApp/pages/item/item-show/ItemShowPage"
 import ItemRequestFormPage from "@/react/app/mainApp/pages/item/item-requestForm/ItemRequestFormPage";
 import MyItemListPage from "@/react/app/mainApp/pages/myItem/myItem-list/MyItemListPage";
 import MyItemNewPage from "@/react/app/mainApp/pages/myItem/myItem-new/MyItemNewPage";
+import MyItemEditPage from "@/react/app/mainApp/pages/myItem/myItem-edit/MyItemEditPage";
+import MyItemShowPage from "@/react/app/mainApp/pages/myItem/myItem-show/MyItemShowPage";
 
 const Router = () => {
 
@@ -80,8 +80,8 @@ const Router = () => {
 				<Route path="/myitem">
 					<Route index={true} element={<GuardRoute component={<MyItemListPage />}/> } />
 					<Route path="new" element={<GuardRoute component={<MyItemNewPage />}/> } />
-					<Route path=":itemUuid" element={<GuardRoute component={<MyItemShow />}/> } />
-				{/*	<Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEdit />}/> } />*/}
+					<Route path=":itemUuid" element={<GuardRoute component={<MyItemShowPage />}/> } />
+					<Route path=":itemUuid/edit" element={<GuardRoute component={<MyItemEditPage />}/> } />
 				</Route>
 
 				{/*/!*  マイページ  *!/*/}
