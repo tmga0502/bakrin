@@ -69,7 +69,7 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 						<Td text={
 							<div css={ImageWrapper} >
 								<img src={createImageUrl(image.path)} css={ImageStyle} alt={`image${index + 1}`}/>
-								<ImageDeleteModal/>
+								<ImageDeleteModal imageId={image.id}/>
 							</div>
 						} heading={false}/>
 					</Tr>

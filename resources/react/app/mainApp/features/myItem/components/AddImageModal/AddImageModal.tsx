@@ -6,7 +6,7 @@ import MainButton from "@mainElements/button/MainButton/MainButton";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {FileField} from "@mainElements/form";
-import {useCreateImage} from "@/react/api/query/ItemIMageQuery";
+import {useCreateImage} from "@/react/api/query/ItemImageQuery";
 
 const AddImageModal: React.FC<AddImageModalType> = ({itemData}) => {
 	const { register, handleSubmit, formState:{errors}} = useForm({defaultValues:{

@@ -54,8 +54,8 @@ const updateItem = async (formData: ItemType) => {
 	return data;
 }
 
-const deleteItem = async (formData: { uuid: string }) => {
-	const { data } = await axios.delete<ItemType>(`/api/items/delete`, {data: formData});
+const deleteItem = async (formData: any) => {
+	const { data } = await axios.post<ItemType>(`/api/items/delete`,  formData);
 	return data;
 }
 

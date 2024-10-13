@@ -12,7 +12,7 @@ const createImage = async (formData: ItemType) => {
 	return data;
 }
 
-const deleteImage = async (formData: { uuid: string }) => {
+const deleteImage = async (formData: any) => {
 	const { data } = await axios.post<ItemType>(`/api/items/image/delete`, formData);
 	return data;
 }

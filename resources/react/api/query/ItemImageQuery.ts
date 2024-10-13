@@ -26,12 +26,14 @@ const useCreateImage = (setIsOpen: any) => {
 
 const useDeleteImage = (setIsOpen: any) => {
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
 	return useMutation(api.deleteImage, {
 		onMutate: () => {
 			setIsLoading(true);
 		},
-		onSuccess: () => {
+		onSuccess: (data) => {
 			setIsLoading(false)
+			queryClient.invalidateQueries(['myItem', data.uuid])
 			toast.success('削除しました')
 			setIsOpen(false)
 		},

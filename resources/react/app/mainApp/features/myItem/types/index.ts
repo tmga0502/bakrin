@@ -12,6 +12,10 @@ export type ItemDatasType = {
 	itemDatas: ItemType[]
 }
 
+export type ImageDataType = {
+	imageId: string
+}
+
 export type NewPagePropsType = {
 	categoriesData : ItemCategoryType[],
 	varietiesData: VarietyType[],
