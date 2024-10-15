@@ -28,7 +28,7 @@ const LogoStyle = css`
 const ButtonBox = css`
 	display: flex;
 	gap: 4px;
-	margin-bottom: 8px;
+	margin: 16px 0 8px 0;
 `
 
 const LinkBox = css`

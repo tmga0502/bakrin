@@ -6,8 +6,13 @@ const getTradeRequests = async () => {
 	return data;
 }
 
-const getTrades = async () => {
-	const{ data } = await axios.get<TradeType[]>('/api/trade/getTrades');
+const getOngoingTrades = async () => {
+	const{ data } = await axios.get<TradeType[]>('/api/trade/getOngoingTrades');
+	return data;
+}
+
+const getPendingTrades = async () => {
+	const{ data } = await axios.get<TradeType[]>('/api/trade/getPendingTrades');
 	return data;
 }
 
@@ -16,8 +21,15 @@ const getTrade = async (uuid: string) => {
 	return data;
 }
 
+const requestTrade = async (formData: any) => {
+	const{ data } = await axios.post<TradeType>('/api/trade/requestTrade', formData);
+	return data;
+}
+
 export{
 	getTradeRequests,
-	getTrades,
-	getTrade
+	getOngoingTrades,
+	getPendingTrades,
+	getTrade,
+	requestTrade
 }

@@ -1,10 +1,14 @@
 import {css} from "@emotion/react";
 
+const Wrapper = css`
+	margin-bottom: 48px;
+`
+
 const Container = css`
 	padding: 0 32px;
 	margin-bottom: 48px;
 	&>div{
-		margin-top: 32px;
+		margin: 32px 0;
 	}
 `
 
@@ -21,6 +25,7 @@ const RadioBox = css`
 `
 
 export {
+	Wrapper,
 	Container,
 	Title,
 	RadioBox,

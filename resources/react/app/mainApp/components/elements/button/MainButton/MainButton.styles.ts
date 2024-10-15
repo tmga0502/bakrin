@@ -8,10 +8,11 @@ import {getFontSizeProps} from "@/react/app/mainApp/components/elements/button/M
 const ButtonStyle = (props: ButtonPropsType) => {
 	const {color, size , width, align, disabled} = props
 	const Width = getWidthProps(width)
-	const BgColor = disabled ? theme.color.dark : theme.color[color]
+	const BgColor = disabled ? theme.color.gray : theme.color[color]
 	const Padding = getSizeProps(size)
 	const FontSize = getFontSizeProps(size)
-	const Opacity = disabled ? 1 : 0.8;
+	const Opacity = disabled ? 0.8 : 1;
+	const Cursor = disabled ? 'not-allowed' : 'pointer'
 	const MarginLeft = align === 'left' ? '' : 'auto'
 	const MarginRight = align === 'right' ? '' : 'auto'
 
@@ -27,8 +28,10 @@ const ButtonStyle = (props: ButtonPropsType) => {
 		margin-left: ${MarginLeft};
 		margin-right: ${MarginRight};
 		white-space: nowrap;
+		opacity: ${Opacity};
 		&:hover{
-			opacity: ${Opacity};
+			cursor: ${Cursor};
+			opacity: 0.8;
 		}
 	`
 }

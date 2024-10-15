@@ -40,12 +40,15 @@ function withComma(number: string){
 
 //日付の計算
 function formatDate(date: string){
+	const padZero = (num: number) => {
+		return num < 10 ? `0${num}` : String(num);
+	};
 	const dt = new Date(date);
 	const year = dt.getFullYear();
 	const month = dt.getMonth() + 1; // 月は0から始まるので +1 する
 	const day = dt.getDate();
-	const hour = dt.getHours();
-	const minute = dt.getMinutes();
+	const hour = padZero(dt.getHours());
+	const minute = padZero(dt.getMinutes());
 	return `${year}年${month}月${day}日 ${hour}:${minute}`;
 }
 

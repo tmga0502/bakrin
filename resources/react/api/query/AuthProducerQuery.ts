@@ -31,10 +31,12 @@ const usAuthProducerCheck = () => {
 const useLogin = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthProducerStates)
     const setIsLoading  = useSetRecoilState(IsLoadingStates)
+	const setProducerData = useSetRecoilState(IsAuthProducerDataStates);
     const navigate = useNavigate()
     return useMutation(api.login, {
-        onSuccess: () => {
+        onSuccess: (data) => {
             setIsAuth(true)
+			setProducerData(data)
             navigate('/')
         },
         onError: () => {

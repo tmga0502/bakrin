@@ -21,7 +21,7 @@ class AuthProducerController extends Controller
     {
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
             $req->session()->regenerate();
-            return response()->json(Auth::user());
+            return response()->json(Auth::user()->load(['items.plan', 'items.unit']));
         }
 
         return response()->json([], 401);
