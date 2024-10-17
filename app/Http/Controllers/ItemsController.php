@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Log;
 use App\Service\ImageService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -98,6 +99,15 @@ class ItemsController extends Controller
 			}
 			$item = new Item($insertArray);
 			$item->save();
+
+			//ログ
+			$log = new Log([
+				'producerUuid' => Auth()->user()->uuid,
+				'action' => 'item create',
+				'description' =>  'id:' . $item->id . ' create'
+			]);
+			$log->save();
+
 			return $item;
 		});
 
@@ -120,6 +130,15 @@ class ItemsController extends Controller
 				$insertArray['thumbnail'] = $item->thumbnail;
 			}
 			$item->fill($insertArray)->save();
+
+			//ログ
+			$log = new Log([
+				'producerUuid' => Auth()->user()->uuid,
+				'action' => 'item update',
+				'description' => 'id:' . $item->id . ' update'
+			]);
+			$log->save();
+
 			return $item;
 		});
 		return response()->json($item, 200);

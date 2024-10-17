@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FavoriteProducer;
+use App\Models\Log;
 use App\Models\Producer;
 use App\Service\ImageService;
 use Illuminate\Http\JsonResponse;
@@ -74,30 +75,50 @@ class ProducersController extends Controller
 
 	public function changePassword(Request $req): \Illuminate\Http\JsonResponse
 	{
-		$user = Auth::user();
-		$password =  Hash::make($req->newPassword);
-		$user->fill(['password'=>$password])->save();
+		DB::transaction(function() use($req) {
+			$user = Auth::user();
+			$password =  Hash::make($req->newPassword);
+			$user->fill(['password'=>$password])->save();
+
+			//ログ
+			$log = new Log([
+				'producerUuid' => Auth()->user()->uuid,
+				'action' => 'change password',
+			]);
+			$log->save();
+		});
 
 		return response()->json([], 200);
 	}
 
 	public function update(Request $req): JsonResponse
 	{
-		$producer = Producer::find(Auth()->user()->id);
-		$insertArray = $req->all();
+		$producer = DB::transaction(function() use($req) {
+			$producer = Producer::find(Auth()->user()->id);
+			$insertArray = $req->all();
 
-		if(isset($req->img[0])){
-			//既存ファイル削除
-			$pathName = str_replace('storage/', '', $producer->imgPath);
-			Storage::disk('public')->delete($pathName);
-			//新たに登録
-			$imageService = new ImageService($req->img[0], 'producerImage');
-			$insertArray['imgPath'] = $imageService->save();
-		}else{
-			$insertArray['imgPath'] = $producer->imgPath;
-		}
+			if(isset($req->img[0])){
+				//既存ファイル削除
+				$pathName = str_replace('storage/', '', $producer->imgPath);
+				Storage::disk('public')->delete($pathName);
+				//新たに登録
+				$imageService = new ImageService($req->img[0], 'producerImage');
+				$insertArray['imgPath'] = $imageService->save();
+			}else{
+				$insertArray['imgPath'] = $producer->imgPath;
+			}
 
-		$producer->fill($insertArray)->save();
+			$producer->fill($insertArray)->save();
+
+			//ログ
+			$log = new Log([
+				'producerUuid' => Auth()->user()->uuid,
+				'action' => 'profile update'
+			]);
+			$log->save();
+
+			return $producer;
+		});
 
 		return response()->json($producer, 200);
 	}

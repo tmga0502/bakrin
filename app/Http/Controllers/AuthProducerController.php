@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,12 @@ class AuthProducerController extends Controller
     {
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
             $req->session()->regenerate();
+			//ログ
+			$log = new Log([
+				'producerUuid' => Auth()->user()->uuid,
+				'action' => 'Login'
+			]);
+			$log->save();
             return response()->json(Auth::user()->load(['items.plan', 'items.unit']));
         }
 
