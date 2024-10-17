@@ -24,7 +24,7 @@ const Menu: MenuType[] = [
 	{
 		icon: <FaSearch />,
 		title: '欲しいものから探す',
-		link: '',
+		link: '/items/want',
 		bg: 'gray'
 	},
 	{
