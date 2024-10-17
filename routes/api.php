@@ -109,6 +109,8 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::get('/getPendingTrades', [TradeController::class, 'getPendingTrades']);//申請中の取引リスト
 		Route::get('/getTrade/{tradeUuid}', [TradeController::class, 'getTrade']);//取引中リスト
 		Route::post('/requestTrade', [TradeController::class, 'requestTrade']);//取引申請
+		Route::post('/requestPermission', [TradeController::class, 'requestPermission']);//取引申請を承認
+		Route::post('/requestReject', [TradeController::class, 'requestReject']);//取引申請を拒否
 	});
 
     //ログインユーザー情報

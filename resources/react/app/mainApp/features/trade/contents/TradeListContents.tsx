@@ -12,9 +12,6 @@ const TradeListContents:React.FC<TradeListPageType> = ({ongoingTradesData, pendi
 	const [viewMode, setViewMode] = useState('進行中')
 	const tabMenu = ['進行中', '申請中']
 
-	console.log(ongoingTradesData)
-	console.log(authProducerData)
-
 	const  data = viewMode === '進行中' ? ongoingTradesData : pendingTradesData
 
 	return (

@@ -26,10 +26,22 @@ const requestTrade = async (formData: any) => {
 	return data;
 }
 
+const requestPermission = async (formData: any) => {
+	const{ data } = await axios.post<TradeType>('/api/trade/requestPermission', formData);
+	return data;
+}
+
+const requestReject = async (formData: any) => {
+	const{ data } = await axios.post<TradeType>('/api/trade/requestReject', formData);
+	return data;
+}
+
 export{
 	getTradeRequests,
 	getOngoingTrades,
 	getPendingTrades,
 	getTrade,
-	requestTrade
+	requestTrade,
+	requestPermission,
+	requestReject,
 }

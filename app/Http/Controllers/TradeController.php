@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RequestTrade;
+use App\Mail\TradePermission;
 use App\Models\Item;
 use App\Models\Trade;
 use App\Models\TradeProducer;
@@ -46,7 +47,7 @@ class TradeController extends Controller
 			->whereHas('tradeProducers', function ($q) use ($user) {
 				$q->where('producerUuid', $user->uuid);
 			})
-			->orderBy('created_at', 'DESC')->get();
+			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
 	}
 
@@ -59,7 +60,7 @@ class TradeController extends Controller
 			->whereHas('tradeProducers', function ($q) use ($user) {
 				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
 			})
-			->orderBy('created_at', 'DESC')->get();
+			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
 	}
 
@@ -101,5 +102,26 @@ class TradeController extends Controller
 
 		});
 		return response()->json(true);
+	}
+
+
+	public function requestPermission(Request $req): JsonResponse
+	{
+		$trade = DB::transaction(function() use($req) {
+			$trade = Trade::with(['senderProducer'])->find($req->tradeId);
+			$trade->fill(['status' => 1])->save();
+
+			//申請者にメール送信
+			$sender = $trade->senderProducer;
+			Mail::to(['email' => $sender->email])->send(new TradePermission($sender));
+
+			return $trade;
+		});
+		return response()->json($trade, 200);
+	}
+
+	public function requestReject(Request $req): JsonResponse
+	{
+		dd($req->all());
 	}
 }

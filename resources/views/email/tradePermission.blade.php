@@ -1,0 +1,2 @@
+{{$sender->presidentName}}様
+

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Trade extends Model
@@ -18,6 +19,11 @@ class Trade extends Model
         'senderUuid',
         'rejectReason',
     ];
+
+	public function senderProducer(): HasOne
+	{
+		return $this->hasOne(Producer::class, 'uuid', 'senderUuid');
+	}
 
 	public function tradeProducers(): HasMany
 	{

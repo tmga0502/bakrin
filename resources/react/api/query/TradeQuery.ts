@@ -54,10 +54,57 @@ const useRequestTrade = (setIsModalOpen:any) => {
 	})
 }
 
+const useRequestPermission = (setIsModalOpen:any) => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	const navigate = useNavigate()
+	return useMutation(api.requestPermission, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: () => {
+			setIsLoading(false)
+			queryClient.invalidateQueries(['trades'])
+			toast.success('承認しました')
+			navigate(`/trade`)
+			setIsModalOpen(false)
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('エラーが発生しました。')
+		}
+	})
+}
+
+
+const useRequestReject = (setIsModalOpen:any) => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	const navigate = useNavigate()
+	return useMutation(api.requestReject, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: () => {
+			setIsLoading(false)
+			queryClient.invalidateQueries(['trades'])
+			toast.success('送信しました')
+			navigate(`/trade`)
+			setIsModalOpen(false)
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('エラーが発生しました。')
+		}
+	})
+}
+
 export {
 	useGetTradeRequests,
 	useGetOngoingTrades,
 	useGetPendingTrades,
 	useGetTrade,
 	useRequestTrade,
+	useRequestPermission,
+	useRequestReject,
 }
