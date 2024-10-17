@@ -27,6 +27,7 @@ export const BreadcrumbRoutes = [
 
 	{path: '/mypage', breadcrumb: 'マイページ'},
 	{path: '/mypage/myfavorite', breadcrumb: 'お気に入り'},
+	{path: '/mypage/want', breadcrumb: '欲しいもの'},
 	{path: '/mypage/invoice', breadcrumb: '請求書'},
 	{path: '/mypage/tradeHistory', breadcrumb: '交換履歴'},
 	{path: '/mypage/profile', breadcrumb: '基本情報'},

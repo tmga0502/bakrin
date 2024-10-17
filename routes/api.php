@@ -12,6 +12,7 @@ use App\Http\Controllers\ProducersController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\VarietiesController;
+use App\Http\Controllers\WantItemsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -112,6 +113,13 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::post('/requestTrade', [TradeController::class, 'requestTrade']);//取引申請
 		Route::post('/requestPermission', [TradeController::class, 'requestPermission']);//取引申請を承認
 		Route::post('/requestReject', [TradeController::class, 'requestReject']);//取引申請を拒否
+	});
+
+	//欲しいもの
+	Route::group(['prefix' => 'wantItems'], function () {
+		Route::get('/getAll', [WantItemsController::class, 'getAll']);
+		Route::post('/create', [WantItemsController::class, 'create']);
+		Route::post('/remove', [WantItemsController::class, 'remove']);
 	});
 
     //ログインユーザー情報

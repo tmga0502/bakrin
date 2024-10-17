@@ -10,7 +10,7 @@ class CategoriesController extends Controller
 {
     public function getAllCategories(): JsonResponse
     {
-        $categories = ItemCategory::all();
+        $categories = ItemCategory::with('varieties')->get();
         return response()->json($categories);
     }
 }

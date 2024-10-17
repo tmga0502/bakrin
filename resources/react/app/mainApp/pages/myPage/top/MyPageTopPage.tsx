@@ -13,7 +13,7 @@ const MyPageTopPage = () => {
 				<Link to={'/mypage/myfavorite'}>
 					<TopListPanel title={'お気に入り'}/>
 				</Link>
-				<Link to={'/mypage'}>
+				<Link to={'/mypage/want'}>
 					<TopListPanel title={'欲しいもの'}/>
 				</Link>
 				<Link to={'/mypage/tradeHistory'}>

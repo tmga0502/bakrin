@@ -35,6 +35,7 @@ import MyItemListPage from "@/react/app/mainApp/pages/myItem/myItem-list/MyItemL
 import MyItemNewPage from "@/react/app/mainApp/pages/myItem/myItem-new/MyItemNewPage";
 import MyItemEditPage from "@/react/app/mainApp/pages/myItem/myItem-edit/MyItemEditPage";
 import MyItemShowPage from "@/react/app/mainApp/pages/myItem/myItem-show/MyItemShowPage";
+import MyPageWantPage from "@/react/app/mainApp/pages/myPage/want/MyPageWantPage";
 
 const Router = () => {
 
@@ -88,6 +89,7 @@ const Router = () => {
 				<Route path="/mypage">
 					<Route index={true} element={<GuardRoute component={<MyPageTop />}/> } />
 					<Route path="myfavorite" element={<GuardRoute component={<MyPageFavoritePage />}/> } />{/* お気に入り */}
+					<Route path="want" element={<GuardRoute component={<MyPageWantPage />}/> } />{/* 欲しいもの */}
 					<Route path="tradeHistory" element={<GuardRoute component={<MyPageTradeHistoryPage />}/> } />{/* 交換履歴 */}
 					<Route path="invoice" element={<GuardRoute component={<MyPageInvoicePage />}/> } />{/* 請求書 */}
 					<Route path="profile" element={<GuardRoute component={<MyPageProfilePage />}/> } />{/* 基本情報 */}

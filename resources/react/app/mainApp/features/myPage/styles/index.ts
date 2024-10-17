@@ -1,5 +1,6 @@
 import {css} from "@emotion/react";
 import {theme} from "@/react/app/mainApp/styles/Theme";
+import {mq} from "@/react/app/mainApp/styles/mediaQuery";
 
 const CardContainer = css`
 	width: 100%;
@@ -27,21 +28,34 @@ const CardIcon = css`
 	font-size: 20px;
 `
 
-const WrapperStyle = css`
-	padding: 16px;
-	margin-bottom: 48px;
+const CategoryContainer = css`
+	margin-bottom: 24px;
 `
 
-const TitleStyle = css`
-	border-bottom: 2px solid ${theme.color.gray};
-	padding-bottom: 8px;
-	margin-bottom: 16px;
+const CategoryTitle = css`
+	border: 1px solid ${theme.color.gray};
+	border-radius: 4px;
+	background-color: ${theme.color.gray};
+	padding: 4px;
+`
+
+const VarietyLists = css`
+	display: grid;
+	grid-template-columns: 1fr;
+	padding: 16px 0;
+	${mq('xs')}{
+		grid-template-columns: 50% 50%;
+	}
+	${mq('lg')}{
+		grid-template-columns: 33% 33% 1fr;
+	}
 `
 
 export {
 	CardContainer,
 	CardText,
 	CardIcon,
-	WrapperStyle,
-	TitleStyle,
+	CategoryContainer,
+	CategoryTitle,
+	VarietyLists,
 }

@@ -10,7 +10,7 @@ class VarietiesController extends Controller
 {
     public function getAllVarieties(): JsonResponse
 	{
-		$result = ItemVariety::all();
+		$result = ItemVariety::with('category')->get();
 		return response()->json($result, 200);
 	}
 }
