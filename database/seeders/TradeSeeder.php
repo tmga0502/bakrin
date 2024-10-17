@@ -29,14 +29,14 @@ class TradeSeeder extends Seeder
 			$producerUuid = $producerAccount->uuid;
 			$status = Arr::random([0, 1, 2, 3]);
 			$rejectReason = $status === 3 ? $faker->realText(100,5) : null;
-			$now = Carbon::now();
+			$date = $faker->dateTimeBetween('-3 month', '-1 day');
 			$trade = new Trade( [
 				'uuid' => (string) Str::uuid(),
 				'status' => $status,
 				'senderUuid' => $producerUuid,
 				'rejectReason' => $rejectReason,
-				'created_at'=> $now,
-				'updated_at'=> $now,
+				'created_at'=> $date,
+				'updated_at'=> $date,
 			]);
 			$trade->save();
 		}

@@ -37,32 +37,27 @@ class TradeController extends Controller
 		return response()->json($trade, 200);
 	}
 
+	//申請中の取引
+	public function getPendingTrades(): JsonResponse
+	{
+		$trades = $this->getQueryTradeByStatus(0);
+		return response()->json($trades, 200);
+	}
 
 	//進行中の取引
 	public function getOngoingTrades(): JsonResponse
 	{
-		$user = Auth()->user();
-		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
-			->where('status', 1)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('producerUuid', $user->uuid);
-			})
-			->orderBy('updated_at', 'DESC')->get();
+		$trades = $this->getQueryTradeByStatus(1);
 		return response()->json($trades, 200);
 	}
 
-	//申請中の取引
-	public function getPendingTrades(): JsonResponse
+	//取引完了した取引
+	public function getCompletedTrades(): JsonResponse
 	{
-		$user = Auth()->user();
-		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
-			->where('status', 0)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
-			})
-			->orderBy('updated_at', 'DESC')->get();
+		$trades = $this->getQueryTradeByStatus(2);
 		return response()->json($trades, 200);
 	}
+
 
 	public function requestTrade(request $req): JsonResponse
 	{
@@ -123,5 +118,18 @@ class TradeController extends Controller
 	public function requestReject(Request $req): JsonResponse
 	{
 		dd($req->all());
+	}
+
+
+
+	protected function getQueryTradeByStatus($status)
+	{
+		$user = Auth()->user();
+		return Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+			->where('status', $status)
+			->whereHas('tradeProducers', function ($q) use ($user) {
+				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
+			})
+			->orderBy('updated_at', 'DESC')->get();
 	}
 }

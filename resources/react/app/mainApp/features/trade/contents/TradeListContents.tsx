@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {PageTitle} from "@mainElements/title";
 import {ListPanel} from "@mainFeatures/trade/components";
-import {formatDate} from "@/react/app/mainApp/functions/formatter";
+import {createImageUrl, formatDate} from "@/react/app/mainApp/functions/formatter";
 import {TradeListPageType} from "@mainFeatures/trade/types";
 import Tab from "@mainLayouts/tab/Tab/Tab";
 import {useRecoilValue} from "recoil";
@@ -25,7 +25,7 @@ const TradeListContents:React.FC<TradeListPageType> = ({ongoingTradesData, pendi
 						link={list.uuid}
 						itemName={partnerProducer.item.name}
 						producerName={partnerProducer.producer.organizationName}
-						thumbnail={partnerProducer.item.thumbnail}
+						thumbnail={createImageUrl(partnerProducer.item.thumbnail)}
 						date={formatDate(list.created_at)}
 						key={list.id}
 					/>

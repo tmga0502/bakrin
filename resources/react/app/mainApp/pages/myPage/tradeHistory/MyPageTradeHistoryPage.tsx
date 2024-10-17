@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
-import {PageTitle} from "@mainElements/title";
-import ContainerSm from "@mainLayouts/container/ContainerSm/ContainerSm";
-import {HistoryData} from "@/react/app/mainApp/_dummyData/HistoryData";
-import {AccordionList} from "@mainFeatures/myPage/components";
+import {useGetCompletedTrades} from "@/react/api/query/TradeQuery";
+import TradeHistoryContents from "@mainFeatures/myPage/contents/TradeHistoryContents";
+import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
+import {CanNotGetData} from "@mainLayouts/error";
 
 const MyPageTradeHistoryPage = () => {
+	const {data, isLoading} = useGetCompletedTrades()
+
+	let contents: ReactNode
+	if (isLoading){
+		contents = <ContentsLoader/>
+	}else if(!data){
+		contents = <CanNotGetData/>
+	}else{
+		contents = <TradeHistoryContents tradeList={data}/>
+	}
+
 	return (
 		<MainLayout>
-			<PageTitle en={'trade history'} jp={'交換履歴'}/>
-			<ContainerSm>
-				{HistoryData.map((data, index)=>(
-					<AccordionList historyData={data} key={index}/>
-				))}
-			</ContainerSm>
+			{contents}
 		</MainLayout>
 	);
 };

@@ -15,7 +15,9 @@ const TradeListPage = () => {
 	}else if(!ongoingTradesData || !pendingTradesData){
 		contents = <CanNotGetData/>
 	}else{
-		contents = <TradeListContents ongoingTradesData={ongoingTradesData} pendingTradesData={pendingTradesData}/>
+		contents = <TradeListContents
+			ongoingTradesData={ongoingTradesData}
+			pendingTradesData={pendingTradesData}/>
 	}
 
 	return (

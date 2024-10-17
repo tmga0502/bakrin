@@ -12,16 +12,23 @@ const useGetTradeRequests = () => {
 	})
 }
 
-//進行中取引
-const useGetOngoingTrades = () => {
-	return useQuery('ongoingTrades', ()=>api.getOngoingTrades(),{
+//申請中取引
+const useGetPendingTrades = () => {
+	return useQuery('pendingTrades', ()=>api.getPendingTrades(),{
 		suspense: true,
 	})
 }
 
-//申請中取引
-const useGetPendingTrades = () => {
-	return useQuery('pendingTrades', ()=>api.getPendingTrades(),{
+//完了した取引
+const useGetCompletedTrades = () => {
+	return useQuery('ongoingTrades', ()=>api.getCompletedTrades(),{
+		suspense: true,
+	})
+}
+
+//完了した取引
+const useGetOngoingTrades = () => {
+	return useQuery('ongoingTrades', ()=>api.getOngoingTrades(),{
 		suspense: true,
 	})
 }
@@ -103,6 +110,7 @@ export {
 	useGetTradeRequests,
 	useGetOngoingTrades,
 	useGetPendingTrades,
+	useGetCompletedTrades,
 	useGetTrade,
 	useRequestTrade,
 	useRequestPermission,
