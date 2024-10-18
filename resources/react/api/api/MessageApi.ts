@@ -17,9 +17,15 @@ const sendMessage = async (formData: any) => {
 	return data;
 }
 
+const sendTradeMessage = async (formData: any) => {
+	const{ data } = await axios.post<string>('/api/message/sendTradeMessage', formData);
+	return data;
+}
+
 
 export {
 	getMessageList,
 	getMessages,
 	sendMessage,
+	sendTradeMessage,
 }

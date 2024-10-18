@@ -26,8 +26,21 @@ const useSendMessage = () => {
 	})
 }
 
+const useTradeMessage = () => {
+	const queryClient = useQueryClient()
+	return useMutation(api.sendTradeMessage, {
+		onSuccess: (data) => {
+			queryClient.invalidateQueries(['trade', data])
+		},
+		onError: () => {
+			console.error('error')
+		}
+	})
+}
+
 export {
     useGetMessageLists,
 	useGetMessages,
 	useSendMessage,
+	useTradeMessage
 }

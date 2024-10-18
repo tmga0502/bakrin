@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Models\MessageRoom;
 use App\Models\Producer;
+use App\Models\Trade;
+use App\Models\TradeMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -82,6 +84,22 @@ class MessageController extends Controller
 		$message->save();
 
 		return response()->json($partnerUuid, 200);
+	}
+
+	public function sendTradeMessage(Request $req): JsonResponse
+	{
+		$myUuid = Auth()->user()->uuid;
+		$trade = Trade::find($req->tradeId);
+		$insertArray = [
+			'tradeId' => $req->tradeId,
+			'senderUuid' => $myUuid,
+			'message' => $req->message,
+			'read_at' => null,
+		];
+		$message = new TradeMessage($insertArray);
+		$message->save();
+
+		return response()->json($trade->uuid, 200);
 	}
 
 

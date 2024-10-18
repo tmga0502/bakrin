@@ -7,6 +7,7 @@ import {MessageType} from "@/react/types/MessageType";
 import {ProducerType} from "@/react/types/ProducerType";
 import {ScrollEndMessageBox} from "@mainFeatures/message/functions/ScrollEnd";
 import {MessageBlock, MessageBoxWrapper, MessageContainer, MessageForm, MessageHeader, MessageViewer} from "@mainFeatures/message/components";
+import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const MessageShowPage = () => {
 	const params = useParams()
@@ -30,7 +31,7 @@ const MessageShowPage = () => {
 							const layout = params.producerUuid === message.senderUuid ? 'receiver' : 'sender';
 							const ref = index === messageDataCount - 1 ? messagesEndRef : null
 							return (
-								<MessageBlock imgPath={message.sender.imgPath} name={message.sender.organizationName} text={message.message} layout={layout} ref={ref} key={message.id}/>
+								<MessageBlock imgPath={createImageUrl(message.sender.imgPath)} name={message.sender.organizationName} text={message.message} layout={layout} ref={ref} key={message.id}/>
 							)
 						})}
 					</MessageViewer>

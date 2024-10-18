@@ -12,7 +12,13 @@ const MessageBlock =  forwardRef<HTMLDivElement | null, MessageBlockType>((props
 				</div>
 				<p css={NameStyle}>{name}</p>
 			</div>
-			<p css={MessageBox}>{text}</p>
+
+			{text.split('\n').map((line, index) => (
+				<p css={MessageBox} key={index}>
+					{line}
+					<br/>
+				</p>
+			))}
 		</div>
 	);
 });

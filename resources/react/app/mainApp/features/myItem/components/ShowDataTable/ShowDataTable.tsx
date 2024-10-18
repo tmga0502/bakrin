@@ -45,9 +45,9 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 					<Td text={
 						itemData.description.split('\n').map((line, index) => (
 							<React.Fragment key={index}>
-							{line}
-							<br />
-						</React.Fragment>
+								{line}
+								<br />
+							</React.Fragment>
 						))
 					} heading={false}/>
 				</Tr>

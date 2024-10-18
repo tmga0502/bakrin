@@ -31,9 +31,10 @@ class TradeController extends Controller
 	}
 
 
+	//取引詳細
 	public function getTrade($tradeUuid): JsonResponse
 	{
-		$trade = Trade::with(['tradeProducers.item.plan', 'tradeProducers.producer'])->where('uuid', $tradeUuid)->first();
+		$trade = Trade::with(['tradeProducers.item.plan', 'tradeProducers.producer', 'messages.sender'])->where('uuid', $tradeUuid)->first();
 		return response()->json($trade, 200);
 	}
 

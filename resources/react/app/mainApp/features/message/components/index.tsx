@@ -5,6 +5,7 @@ import MessageContainer from '@mainFeatures/message/components/MessageContainer/
 import MessageForm from '@mainFeatures/message/components/MessageForm/MessageForm'
 import MessageHeader from '@mainFeatures/message/components/MessageHeader/MessageHeader'
 import MessageViewer from '@mainFeatures/message/components/MessageViewer/MessageViewer'
+import TradeMessageForm from '@mainFeatures/message/components/TradeMessageForm/TradeMessageForm'
 
 export {
 	ListCard,
@@ -14,4 +15,5 @@ export {
 	MessageForm,
 	MessageHeader,
 	MessageViewer,
+	TradeMessageForm,
 }

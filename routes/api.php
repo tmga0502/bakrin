@@ -101,6 +101,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::get('/getMessageList', [MessageController::class, 'getMessageList']);
 		Route::get('/getMessages', [MessageController::class, 'getMessages']);
 		Route::post('/sendMessage', [MessageController::class, 'sendMessage']);
+		Route::post('/sendTradeMessage', [MessageController::class, 'sendTradeMessage']);
 	});
 
 	//取引

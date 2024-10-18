@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static find(mixed $tradeId)
+ */
 class Trade extends Model
 {
     use HasFactory;
@@ -28,5 +31,10 @@ class Trade extends Model
 	public function tradeProducers(): HasMany
 	{
 		return $this->hasMany(TradeProducer::class, 'tradeUuid', 'uuid');
+	}
+
+	public function messages(): HasMany
+	{
+		return $this->hasMany(TradeMessage::class, 'tradeId', 'id');
 	}
 }

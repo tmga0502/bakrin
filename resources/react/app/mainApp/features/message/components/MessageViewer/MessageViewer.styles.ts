@@ -3,6 +3,7 @@ import {theme} from "@/react/app/mainApp/styles/Theme";
 
 const Wrapper = css`
 	width: 100%;
+	min-height: 400px;
 	max-height: 100%;
 	flex: 1;
 	background-color: ${theme.color.white};
