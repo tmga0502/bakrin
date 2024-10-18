@@ -41,21 +41,39 @@ class TradeController extends Controller
 	//申請中の取引
 	public function getPendingTrades(): JsonResponse
 	{
-		$trades = $this->getQueryTradeByStatus(0);
+		$user = Auth()->user();
+		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+			->where('status', 0)
+			->whereHas('tradeProducers', function ($q) use ($user) {
+				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
+			})
+			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
 	}
 
 	//進行中の取引
 	public function getOngoingTrades(): JsonResponse
 	{
-		$trades = $this->getQueryTradeByStatus(1);
+		$user = Auth()->user();
+		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+			->where('status', 1)
+			->whereHas('tradeProducers', function ($q) use ($user) {
+				$q->where('producerUuid', $user->uuid);
+			})
+			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
 	}
 
 	//取引完了した取引
 	public function getCompletedTrades(): JsonResponse
 	{
-		$trades = $this->getQueryTradeByStatus(2);
+		$user = Auth()->user();
+		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+			->where('status', 2)
+			->whereHas('tradeProducers', function ($q) use ($user) {
+				$q->where('producerUuid', $user->uuid);
+			})
+			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
 	}
 
@@ -121,16 +139,4 @@ class TradeController extends Controller
 		dd($req->all());
 	}
 
-
-
-	protected function getQueryTradeByStatus($status)
-	{
-		$user = Auth()->user();
-		return Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
-			->where('status', $status)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
-			})
-			->orderBy('updated_at', 'DESC')->get();
-	}
 }
