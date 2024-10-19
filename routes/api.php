@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
@@ -7,6 +9,7 @@ use App\Http\Controllers\FavoriteProducersController;
 use App\Http\Controllers\ItemImageController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NoticesController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ProducersController;
 use App\Http\Controllers\TradeController;
@@ -128,4 +131,30 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
     Route::post('user/changePassword', [ProducersController::class, 'changePassword']);
     Route::post('user/update', [ProducersController::class, 'update']);
 
+	//お知らせ
+	Route::group(['prefix' => 'notice'], function () {
+		Route::get('/getAll', [NoticesController::class, 'getAll']);
+		Route::get('/getData/{uuid}', [NoticesController::class, 'getData']);
+		Route::post('/create', [NoticesController::class, 'create']);
+		Route::post('/delete', [NoticesController::class, 'delete']);
+	});
+
+
+
+
+	//管理者用
+	Route::group(['prefix' => 'admin'], function () {
+		Route::get('getAllUser', [AdminUserController::class, 'getAllUser']);
+		Route::get('getUser/{id}', [AdminUserController::class, 'getUser']);
+		Route::post('create', [AdminUserController::class, 'create']);
+		Route::post('update', [AdminUserController::class, 'update']);
+	});
+
+});
+
+//管理者用
+Route::group(['prefix' => 'admin'], function () {
+	Route::post('login', [AuthAdminController::class, 'login']);
+	Route::post('logout', [AuthAdminController::class, 'logout']);
+	Route::get('authCheck', [AuthAdminController::class, 'authCheck']);
 });

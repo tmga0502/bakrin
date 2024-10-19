@@ -57,7 +57,7 @@ const useLogout = () => {
         },
         onError: () => {
             setIsLoading(false)
-            toast.error('登録しました。')
+            toast.error('エラーです')
         }
     })
 }

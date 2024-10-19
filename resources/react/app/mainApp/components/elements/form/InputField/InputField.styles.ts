@@ -1,5 +1,6 @@
 import {css} from "@emotion/react";
 import {CommonInputStyle} from "@/react/app/mainApp/components/elements/form/_common/common.styled";
+import {theme} from "@/react/app/adminApp/styles/Theme";
 
 const InputStyle = css`
 	${CommonInputStyle};
@@ -18,6 +19,9 @@ const InputStyle = css`
 		-webkit-box-shadow: 0 0 0 1000px white inset;
 		box-shadow: 0 0 0 1000px white inset;
 		-webkit-text-fill-color: #000;
+	}
+	&[readonly]{
+		background-color: ${theme.color.gray};
 	}
 `
 

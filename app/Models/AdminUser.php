@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @method static find($id)
+ */
 class AdminUser extends Authenticatable
 {
     use HasApiTokens, Notifiable;
@@ -21,6 +24,7 @@ class AdminUser extends Authenticatable
         'name',
         'loginId',
         'password',
+		'authority',
     ];
 
     /**

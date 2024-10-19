@@ -24,6 +24,9 @@ export default defineConfig({
 	        '@mainElements': '/resources/react/app/mainApp/components/elements',
 	        '@mainLayouts': '/resources/react/app/mainApp/components/layouts',
 	        '@mainFeatures': '/resources/react/app/mainApp/features',
+	        '@adminElements': '/resources/react/app/adminApp/components/elements',
+	        '@adminLayouts': '/resources/react/app/adminApp/components/layouts',
+	        '@adminFeatures': '/resources/react/app/adminApp/features',
         },
     },
 });
