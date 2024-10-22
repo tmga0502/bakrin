@@ -1,3 +1,4 @@
+import React from "react";
 import {PhoneNumber, PhoneNumberFormat, PhoneNumberUtil} from "google-libphonenumber";
 
 //電話番号をハイフン付きに変換
@@ -62,6 +63,18 @@ function createImageUrl(filePath: string){
 	return `${window.location.origin}/${filePath}`
 }
 
+//改行付きに変換
+function formatBr(data: string) {
+	return (
+		data.split('\n').map((line: string, index: number) => (
+			<React.Fragment key={index}>
+				{line}
+				<br/>
+			</React.Fragment>
+		))
+	)
+}
+
 
 export {
     createPhoneNumber,
@@ -69,4 +82,5 @@ export {
     withComma,
 	formatDate,
 	createImageUrl,
+	formatBr,
 }

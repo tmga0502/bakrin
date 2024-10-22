@@ -1,11 +1,12 @@
 import React from 'react';
-import {ShowBoxType} from "./ShowBox.type";
 import {Box} from './ShowBox.styles';
+import {TopicType} from "@mainFeatures/topics/types/type";
+import {formatBr} from "@/react/app/mainApp/functions/formatter"
 
-const ShowBox: React.FC<ShowBoxType> = ({}) => {
+const ShowBox: React.FC<TopicType> = ({topicData}) => {
 	return (
 		<div css={Box}>
-			asdfasdfasd;'la'sdlf
+			{formatBr(topicData.body)}
 		</div>
 	);
 };

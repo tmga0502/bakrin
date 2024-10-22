@@ -1,7 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import * as api from "@/react/api/api/NoticeApi";
 import {useSetRecoilState} from "recoil";
-import {IsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 
@@ -19,7 +19,7 @@ const useGetData = (uuid: string) => {
 }
 
 const useCreateData = () => {
-	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
 	const queryClient = useQueryClient()
 	const navigate = useNavigate()
 	return useMutation(api.createNotice, {
@@ -40,7 +40,7 @@ const useCreateData = () => {
 }
 
 const useDeleteData = () => {
-	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
 	const queryClient = useQueryClient()
 	const navigate = useNavigate()
 	return useMutation(api.deleteNotice, {

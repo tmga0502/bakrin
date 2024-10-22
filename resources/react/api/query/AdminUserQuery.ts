@@ -3,7 +3,7 @@ import {useMutation, useQuery, useQueryClient} from "react-query";
 import * as api from "@/react/api/api/AdminUserApi";
 import {toast} from "react-toastify";
 import {useSetRecoilState} from "recoil";
-import {IsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
 
 const useGetAllAdminUser = () => {
 	return useQuery(['adminUsers'], ()=>api.getAll())
@@ -14,7 +14,7 @@ const useGetAdminUser = (id: number) => {
 }
 
 const useAdminUserCreate = () => {
-	const setIsLoading  = useSetRecoilState(IsLoadingStates)
+	const setIsLoading  = useSetRecoilState(AdminIsLoadingStates)
 	const navigate = useNavigate()
 	return useMutation(api.create, {
 		onSuccess: () => {
@@ -30,7 +30,7 @@ const useAdminUserCreate = () => {
 }
 
 const useAdminUserUpdate = () => {
-	const setIsLoading  = useSetRecoilState(IsLoadingStates)
+	const setIsLoading  = useSetRecoilState(AdminIsLoadingStates)
 	const queryClient = useQueryClient()
 	return useMutation(api.update, {
 		onSuccess: (data) => {

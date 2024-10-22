@@ -7,10 +7,10 @@ import {ModalBody, ModalTitle} from "@adminLayouts/Modal";
 import {useForm} from "react-hook-form";
 import {useDeleteData} from "@/react/api/query/NoticeQuery";
 import {useSetRecoilState} from "recoil";
-import {IsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
 
 const DeleteButton: React.FC<NoticeDataType> = ({noticeData}) => {
-	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const {handleSubmit} = useForm({defaultValues:{
 			id: noticeData.id

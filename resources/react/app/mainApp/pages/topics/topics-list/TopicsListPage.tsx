@@ -1,19 +1,28 @@
-import React from 'react';
-import {TopicsData} from "@/react/app/mainApp/_dummyData/TopicsData";
+import React, {ReactNode} from 'react';
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
-import {PageTitle} from "@mainElements/title";
-import {ListBox} from "@mainFeatures/topics/components";
+import {useGetAll} from "@/react/api/query/NoticeQuery";
+import PageLoader from "@mainLayouts/Loader/PageLoader/PageLoader";
+import {CanNotGetData} from "@mainLayouts/error";
+import TopicsListContents from "@mainFeatures/topics/contents/TopicsListContents";
 
 const TopicsListPage = () => {
-	const topicsData = [] = TopicsData
-    return (
-       <MainLayout>
-		   <PageTitle en={'TOPICS'} jp={'お知らせ'}/>
-		   {topicsData.map(topics => (
-			   <ListBox data={topics} key={topics.id}/>
-		   ))}
-	   </MainLayout>
-    );
+	const {data: topicsData, isLoading} = useGetAll()
+
+	let contents: ReactNode
+	if (isLoading){
+		contents = <PageLoader/>
+	}else if (!topicsData){
+		contents = <CanNotGetData/>
+	}else{
+		contents = <TopicsListContents topicsData={topicsData}/>
+	}
+
+
+	return (
+		<MainLayout>
+			{contents}
+		</MainLayout>
+	);
 };
 
 export default TopicsListPage;

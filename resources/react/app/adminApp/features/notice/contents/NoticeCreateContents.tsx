@@ -7,11 +7,11 @@ import {useForm} from "react-hook-form";
 import MainButton from "@adminElements/button/MainButton/MainButton";
 import {useCreateData} from "@/react/api/query/NoticeQuery";
 import {useSetRecoilState} from "recoil";
-import {IsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
 
 const NoticeCreateContents = () => {
 	const {register, handleSubmit, formState:{errors}} = useForm()
-	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
 	const create = useCreateData()
 
 	const onSubmit = (data: any) => {

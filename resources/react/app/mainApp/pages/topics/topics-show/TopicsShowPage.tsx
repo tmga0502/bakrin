@@ -1,13 +1,27 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import MainLayout from "@mainLayouts//MainLayout/MainLayout";
-import {PageTitle} from "@mainElements/title";
-import {ShowBox} from "@mainFeatures/topics/components";
+import {useParams} from "react-router-dom";
+import {useGetData} from "@/react/api/query/NoticeQuery";
+import PageLoader from "@mainLayouts/Loader/PageLoader/PageLoader";
+import {CanNotGetData} from "@mainLayouts/error";
+import TopicsShowContents from "@mainFeatures/topics/contents/TopicsShowContents";
 
 const TopicsShowPage = () => {
+	const params = useParams();
+	const {data: topicData, isLoading} = useGetData(params.uuid)
+
+	let contents: ReactNode;
+	if (isLoading){
+		contents = <PageLoader/>
+	}else if (!topicData){
+		contents = <CanNotGetData/>
+	}else{
+		contents = <TopicsShowContents topicData={topicData}/>
+	}
+
 	return (
 		<MainLayout>
-			<PageTitle en={'TOPICS'} jp={'〇〇についてのおしらせ'}/>
-			<ShowBox/>
+			{contents}
 		</MainLayout>
 	);
 };

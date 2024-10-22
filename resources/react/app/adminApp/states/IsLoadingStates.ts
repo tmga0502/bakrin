@@ -1,6 +1,6 @@
 import {atom} from "recoil";
 
-export const IsLoadingStates = atom<boolean>({
-	key: 'IsLoadingStates',
+export const AdminIsLoadingStates = atom<boolean>({
+	key: 'AdminIsLoadingStates',
 	default: false,
 })

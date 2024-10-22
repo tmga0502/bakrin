@@ -116,7 +116,7 @@ const Router = () => {
 				{/*/!*  その他  *!/*/}
 				<Route path="/contact" element={<GuardRoute component={<ContactPage />} /> } />{/* お問い合わせ */}
 				<Route path="/info" element={<GuardRoute component={<TopicsListPage />} /> } />{/* お知らせ一覧 */}
-				<Route path="/info/:infoId" element={<GuardRoute component={<TopicsShowPage />} />} />{/* お知らせ詳細 */}
+				<Route path="/info/:uuid" element={<GuardRoute component={<TopicsShowPage />} />} />{/* お知らせ詳細 */}
 			</Routes>
 		</BrowserRouter>
 	);

@@ -3,7 +3,7 @@ import {useMutation, useQuery} from "react-query";
 import * as api from "@/react/api/api/AuthAdminApi";
 import {toast} from "react-toastify";
 import {useResetRecoilState, useSetRecoilState} from "recoil";
-import {IsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
 import {IsAuthDataStates, IsAuthStates} from "@/react/app/adminApp/states/AuthStates";
 
 const usAuthAdminCheck = () => {
@@ -30,7 +30,7 @@ const usAuthAdminCheck = () => {
 
 const useAdminLogin = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthStates)
-    const setIsLoading  = useSetRecoilState(IsLoadingStates)
+    const setIsLoading  = useSetRecoilState(AdminIsLoadingStates)
 	const setProducerData = useSetRecoilState(IsAuthDataStates);
     const navigate = useNavigate()
     return useMutation(api.adminLogin, {
@@ -48,7 +48,7 @@ const useAdminLogin = () => {
 
 const useAdminLogout = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthStates)
-    const setIsLoading = useSetRecoilState(IsLoadingStates)
+    const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
     const navigate = useNavigate()
     return useMutation(api.adminLogout, {
         onSuccess: () => {
