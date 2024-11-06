@@ -22,9 +22,9 @@ class AdminUser extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'loginId',
+		'role',
+        'login_id',
         'password',
-		'authority',
     ];
 
     /**

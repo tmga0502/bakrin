@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('item_varieties', function (Blueprint $table) {
             $table->id();
-            $table->string('categoryId')->comment('カテゴリーID');
+            $table->bigInteger('item_category_id')->comment('アイテムカテゴリーID');
             $table->string('name')->comment('種目名【表示名】');
             $table->string('hiragana')->comment('ひらがな');
             $table->string('katakana')->comment('カタカナ');

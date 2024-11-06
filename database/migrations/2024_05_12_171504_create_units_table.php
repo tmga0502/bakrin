@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->comment('名前');
 			$table->softDeletes();
             $table->timestamps();
         });

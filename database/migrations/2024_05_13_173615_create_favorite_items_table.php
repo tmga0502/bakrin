@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('favorite_items', function (Blueprint $table) {
             $table->id();
-            $table->string('myUuid')->comment('自分のuuid')->index();
-            $table->string('itemUuid')->comment('アイテムのuuid')->index();
+            $table->bigInteger('user_id')->comment('ユーザーID')->index();
+            $table->bigInteger('item_id')->comment('アイテムID')->index();
 			$table->softDeletes();
             $table->timestamps();
         });

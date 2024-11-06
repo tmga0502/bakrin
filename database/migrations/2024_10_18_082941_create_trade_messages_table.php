@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('trade_messages', function (Blueprint $table) {
             $table->id();
-			$table->integer('tradeId')->comment('TradeのID')->index();
-			$table->string('senderUuid')->comment('発信者のuuid')->index();
+			$table->bigInteger('trade_id')->comment('交換ID')->index();
+			$table->bigInteger('user_id')->comment('ユーザーID')->index();
 			$table->text('message')->comment('メッセージ');
 			$table->datetime('read_at')->nullable()->default(null)->comment('開封日時');
 			$table->softDeletes();

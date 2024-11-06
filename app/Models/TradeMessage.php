@@ -11,14 +11,14 @@ class TradeMessage extends Model
 	use SoftDeletes;
 
 	protected $fillable = [
-		'tradeId',
-		'senderUuid',
+		'trade_id',
+		'user_id',
 		'message',
 		'read_at',
 	];
 
 	public function sender(): HasOne
 	{
-		return $this->hasOne(Producer::class, 'uuid', 'senderUuid');
+		return $this->hasOne(User::class, 'uuid', 'senderUuid');
 	}
 }

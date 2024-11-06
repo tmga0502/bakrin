@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorite_producers', function (Blueprint $table) {
+        Schema::create('favorite_users', function (Blueprint $table) {
             $table->id();
-            $table->string('myUuid')->comment('自分のuuid')->index();
-            $table->string('producerUuid')->comment('相手のuuid')->index();
+            $table->bigInteger('favorite_by_user_id')->comment('お気に入りしたユーザーID')->index();
+            $table->bigInteger('favorite_user_id')->comment('お気に入りされたユーザーID')->index();
 			$table->softDeletes();
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favorite_producers');
+        Schema::dropIfExists('favorite_users');
     }
 };

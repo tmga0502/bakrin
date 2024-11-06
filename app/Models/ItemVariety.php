@@ -15,7 +15,7 @@ class ItemVariety extends Model
 	use SoftDeletes;
 
 	protected $fillable = [
-		'categoryId',
+		'item_category_id',
 		'name',
 		'hiragana',
 		'katakana',

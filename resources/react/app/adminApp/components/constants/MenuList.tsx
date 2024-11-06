@@ -4,7 +4,7 @@ import { MdDashboard } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import { IoSettingsSharp } from "react-icons/io5";
 
-export const Menu: MenuType[] = [
+export const Menu: Array<MenuType> = [
 	{
 		icon: <MdDashboard />,
 		title: 'Dashboard',

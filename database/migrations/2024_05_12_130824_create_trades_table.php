@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
 			$table->string('uuid')->comment('UUID');
             $table->integer('status')->default(0)->comment('0:申請中, 1:トレード中, 2:トレード完了, 3;拒否')->index();
-            $table->string('senderUuid')->comment('申請者（自分）のuuid')->index();
-            $table->string('rejectReason')->nullable()->default(null)->comment('取引拒否理由');
+            $table->string('reject_reason')->nullable()->default(null)->comment('取引拒否理由');
 			$table->softDeletes();
             $table->timestamps();
         });

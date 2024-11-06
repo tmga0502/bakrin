@@ -10,6 +10,9 @@ class Plan extends Model
 	use SoftDeletes;
 
     protected $fillable = [
-      'name',
+      	'name',
+		'display_name',
+		'badge_color',
+		'badge_text_color',
     ];
 }

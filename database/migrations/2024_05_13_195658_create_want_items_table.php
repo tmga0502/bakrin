@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('want_items', function (Blueprint $table) {
             $table->id();
-            $table->string('myUuid')->comment('自分のuuid')->index();
-            $table->string('itemVarietyId')->comment('種目のID')->index();
+            $table->bigInteger('user_id')->comment('ユーザーID')->index();
+            $table->bigInteger('item_variety_id')->comment('アイテム種目のID')->index();
 			$table->softDeletes();
             $table->timestamps();
         });

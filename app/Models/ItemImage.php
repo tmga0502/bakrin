@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ItemImage extends Model
 {
     protected $fillable = [
-        'itemId',
-        'path',
+        'item_id',
+        'image_path',
     ];
 }

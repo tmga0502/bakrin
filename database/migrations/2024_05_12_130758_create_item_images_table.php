@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('item_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('itemId')->comment('itemId');
-            $table->string('path');
+            $table->bigInteger('item_id')->comment('アイテムID');
+            $table->string('image_path')->comment('画像パス');
 			$table->softDeletes();
             $table->timestamps();
         });

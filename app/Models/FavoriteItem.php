@@ -17,8 +17,8 @@ class FavoriteItem extends Model
 	use SoftDeletes;
 
     protected $fillable =[
-        'myUuid',
-        'itemUuid',
+        'user_id',
+        'item_id',
     ];
 
 	public function item(): BelongsTo

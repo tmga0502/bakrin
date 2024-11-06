@@ -19,18 +19,17 @@ class Trade extends Model
     protected $fillable = [
 		'uuid',
         'status',
-        'senderUuid',
-        'rejectReason',
+        'reject_reason',
     ];
 
 	public function senderProducer(): HasOne
 	{
-		return $this->hasOne(Producer::class, 'uuid', 'senderUuid');
+		return $this->hasOne(User::class, 'uuid', 'senderUuid');
 	}
 
-	public function tradeProducers(): HasMany
+	public function tradeMembers(): HasMany
 	{
-		return $this->hasMany(TradeProducer::class, 'tradeUuid', 'uuid');
+		return $this->hasMany(TradeMember::class, 'tradeUuid', 'uuid');
 	}
 
 	public function messages(): HasMany

@@ -16,13 +16,13 @@ class WantItem extends Model
 	use SoftDeletes;
 
 	protected $fillable = [
-		'myUuid',
-		'itemVarietyId',
+		'user_id',
+		'item_variety_id',
 	];
 
-	public function producer(): HasOne
+	public function user(): HasOne
 	{
-		return $this->hasOne(Producer::class, 'uuid', 'myUuid');
+		return $this->hasOne(User::class, 'uuid', 'myUuid');
 	}
 
 	public function itemVariety(): HasOne

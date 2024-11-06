@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Package\Item\UseCase\GetMyItems\GetMyItemsUseCaseInterface;
 
 class ItemsController extends Controller
 {
 
-    public function getMyItems(): JsonResponse
+    public function getMyItems(GetMyItemsUseCaseInterface $interactor): JsonResponse
     {
 		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->orderBy('created_at', 'DESC')->get();
 		return response()->json($items);
+//		return $interactor->handle();
     }
 
     public function getNewArrival(): JsonResponse

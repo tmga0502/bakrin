@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-			$table->string('producerUuid')->comment('UUID');
+			$table->bigInteger('user_id')->comment('ユーザーID');
 			$table->string('action')->comment('行動');
 			$table->text('description')->nullable()->default(null)->comment('詳細');
             $table->timestamps();

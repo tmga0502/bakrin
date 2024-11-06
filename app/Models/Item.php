@@ -25,22 +25,22 @@ class Item extends Model
 
     protected $fillable = [
         'uuid',
-        'producerUuid',
+        'user_id',
+        'item_category_id',
+        'item_variety_id',
         'name',
-        'categoryId',
-        'varietyId',
         'count',
-        'unitId',
-        'guideCount',
-        'guideUnitId',
-        'planId',
+        'unit_id',
+        'guide_count',
+		'guide_unit_id',
+        'plan_id',
         'description',
-        'shippingStart',
-        'shippingStartPart',
-        'shippingEnd',
-        'shippingEndPart',
+        'shipping_start',
+        'shipping_start_part',
+        'shipping_end',
+		'shipping_end_part',
         'status',
-		'thumbnail',
+		'thumbnail_path',
     ];
 
     public function favoriteItems(): HasMany
@@ -63,9 +63,9 @@ class Item extends Model
         return $this->belongsTo(Plan::class, 'planId', 'id');
     }
 
-    public function producer(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Producer::class, 'producerUuid', 'uuid');
+        return $this->belongsTo(User::class, 'producerUuid', 'uuid');
     }
 
     public function variety(): BelongsTo

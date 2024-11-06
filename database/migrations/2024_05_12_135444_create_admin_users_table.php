@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('admin_users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('名前');
-            $table->integer('authority')->default(0)->comment('閲覧権限');
-            $table->string('loginId')->comment('ログインID');
+            $table->integer('role')->default(0)->comment('閲覧権限');
+            $table->string('login_id')->comment('ログインID');
             $table->string('password')->comment('パスワード');
 			$table->softDeletes();
             $table->timestamps();
