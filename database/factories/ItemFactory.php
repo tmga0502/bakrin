@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Item;
 use App\Models\ItemVariety;
-use App\Models\Producer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Random\RandomException;
@@ -24,10 +24,10 @@ class ItemFactory extends Factory
      */
     public function definition(): array
     {
-        $producer = Producer::inRandomOrder()->first();
+        $user = User::inRandomOrder()->first();
         $categoryId = random_int(1, 4);
         $variety = ItemVariety::inRandomOrder()->first();
-        $obj = ItemVariety::where('categoryId', $categoryId)->inRandomOrder()->first();
+        $obj = ItemVariety::where('item_category_id', $categoryId)->inRandomOrder()->first();
         $name = $obj->name;
 
         $partArray = ['上旬', '中旬', '下旬'];
@@ -35,23 +35,23 @@ class ItemFactory extends Factory
         $imgRandomInt = random_int(1, 25);
         return [
             'uuid' => (string) Str::uuid(),
-            'producerUuid' => $producer->uuid,
-            'varietyId' => $variety->id,
+            'user_id' => $user->id,
+            'item_category_id' => $categoryId,
+            'item_variety_id' => $variety->id,
             'name' => $name,
-            'categoryId' => $categoryId,
             'count' => random_int(5, 100),
-            'unitId' => random_int(1, 10),
-            'guideCount' => random_int(5, 100),
-            'guideUnitId' => random_int(1, 10),
-            'planId' => random_int(1, 3),
+            'unit_id' => random_int(1, 10),
+            'guide_count' => random_int(5, 100),
+            'guide_unit_id' => random_int(1, 10),
+            'plan_id' => random_int(1, 3),
             'description' => $this->faker->realText,
-            'shippingStart' => random_int(1, 12),
-            'shippingStartPart' => $partArray[array_rand($partArray)],
-            'shippingEnd' => random_int(1, 12),
-            'shippingEndPart' => $partArray[array_rand($partArray)],
+            'shipping_start' => random_int(1, 12),
+            'shipping_start_part' => $partArray[array_rand($partArray)],
+            'shipping_end' => random_int(1, 12),
+            'shipping_end_part' => $partArray[array_rand($partArray)],
             'status' => random_int(0, 1),
 //            'thumbnail' => 'https://picsum.photos/400/200/?random=' . $imgRandomInt,
-            'thumbnail' => url('dummyImages/' . $imgRandomInt . '.jpg'),
+            'thumbnail_path' => url('dummyImages/' . $imgRandomInt . '.jpg'),
             'created_at' => $now,
             'updated_at' => $now,
         ];

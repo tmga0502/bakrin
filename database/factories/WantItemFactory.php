@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\ItemVariety;
-use App\Models\Producer;
+use App\Models\User;
 use App\Models\WantItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,11 +20,11 @@ class WantItemFactory extends Factory
      */
     public function definition(): array
     {
-        $producer = Producer::inRandomOrder()->first();
+        $producer = User::inRandomOrder()->first();
         $variety = ItemVariety::inRandomOrder()->first();
         return [
-            'myUuid' => $producer->uuid,
-            'itemVarietyId' => $variety->id,
+            'user_id' => $producer->id,
+            'item_variety_id' => $variety->id,
         ];
     }
 }

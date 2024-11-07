@@ -2,7 +2,7 @@ import {PlanType} from "@/react/types/PlanType";
 import {ItemImageType} from "@/react/types/ItemImageType";
 import {ItemCategoryType} from "@/react/types/ItemCategoryType";
 import {UnitType} from "@/react/types/UnitType";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 import {VarietyType} from "@/react/types/VarietyType";
 
 export type ItemType = {
@@ -33,5 +33,5 @@ export type ItemType = {
     unit             : UnitType,
     guide_unit       : UnitType,
     images           : ItemImageType[],
-    producer         : ProducerType,
+    producer         : UserType,
 }

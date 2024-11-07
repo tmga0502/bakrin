@@ -1,5 +1,5 @@
 import {TradeProducerType} from "@/react/types/TradeProducerType";
-import {MessageType} from "@/react/types/MessageType";
+import {TalkRoomMessageType} from "@/react/types/TalkRoomMessageType";
 
 export type TradeType = {
     id                    : number,
@@ -10,5 +10,5 @@ export type TradeType = {
 	created_at            : string,
 	updated_at            : string,
 	trade_producers       : TradeProducerType[],
-	messages              : MessageType[],
+	messages              : TalkRoomMessageType[],
 }

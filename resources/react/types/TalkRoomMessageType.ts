@@ -1,6 +1,6 @@
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
-export type MessageType = {
+export type TalkRoomMessageType = {
     map(arg0: (messageGroup: any, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
     id            :number,
 	messageGroupId: number,
@@ -8,6 +8,6 @@ export type MessageType = {
 	receiverUuid  : string,
 	message       : string,
 	read_at       : string | undefined,
-	sender        : ProducerType,
-	receiver      : ProducerType,
+	sender        : UserType,
+	receiver      : UserType,
 }

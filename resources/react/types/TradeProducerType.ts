@@ -1,5 +1,5 @@
 import {ItemType} from "@/react/types/ItemType";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 export type TradeProducerType = {
     id                    : number,
@@ -17,5 +17,5 @@ export type TradeProducerType = {
 	address               : string,
     receiptCheck          : boolean,
 	item                  : ItemType,
-	producer              : ProducerType,
+	producer              : UserType,
 }

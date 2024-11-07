@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {SearchProducerNameStates, SearchProducerPrefectureStates, SearchProducerResultStates} from "@/react/app/mainApp/states/SearchProducerStates";
 import axios from "axios";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 import {FormGroup, FormLabel} from "@mainLayouts/form";
 import Input from "@mainElements/form/InputField/Input";
 import SelectBox from "@mainElements/form/SelectBox/SelectBox";
@@ -20,7 +20,7 @@ const ProducerSearchForm: React.FC = () => {
 	const onSubmit = async (data: any) => {
 		setSearchProducerName(data.producer)
 		setSearchProducerPrefecture(data.address)
-		const response = await axios.post<ProducerType[]>(`/api/producers/searchProducer`, data);
+		const response = await axios.post<UserType[]>(`/api/producers/searchProducer`, data);
 		setSearchProducerResult(response.data)
 	}
 

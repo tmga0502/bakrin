@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static inRandomOrder()
+ * @method static where(string $string, int $categoryId)
  */
 class ItemVariety extends Model
 {

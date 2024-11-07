@@ -1,7 +1,7 @@
 import React from 'react';
 import ProducerSearchForm from "../components/ProducerSearchForm/ProducerSearchForm";
 import GridBox from "@mainLayouts/GridBox/GridBox";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 import {ProducerPanelForList} from "@mainFeatures/producer/components";
 import {useRecoilValue} from "recoil";
 import {SearchProducerResultStates} from "@/react/app/mainApp/states/SearchProducerStates";
@@ -13,7 +13,7 @@ const SearchProducerContents = () => {
 		<>
 			<ProducerSearchForm/>
 			<GridBox>
-				{searchProducerResult.map((item: ProducerType) => (
+				{searchProducerResult.map((item: UserType) => (
 					<ProducerPanelForList data={item} key={item.id}/>
 				))}
 			</GridBox>

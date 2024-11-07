@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 const getAuthCheck = async () => {
     const { data } = await axios.get('/api/authProducerCheck');
@@ -7,12 +7,12 @@ const getAuthCheck = async () => {
 }
 
 const login =  async ({email, password }:{email: string, password: string }) => {
-    const { data } = await axios.post<ProducerType>('/api/producerLogin', {email, password })
+    const { data } = await axios.post<UserType>('/api/producerLogin', {email, password })
     return data
 }
 
 const logout =  async () => {
-    const { data } = await axios.post<ProducerType>('/api/producerLogout' )
+    const { data } = await axios.post<UserType>('/api/producerLogout' )
     return data
 }
 

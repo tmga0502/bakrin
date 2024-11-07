@@ -2,19 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\FavoriteProducer;
+use App\Models\TalkRoom;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class FavoriteProducerSeeder extends Seeder
+class TalkRoomSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('favorite_producers')->truncate();
+		DB::table('talk_rooms')->truncate();
 
-        FavoriteProducer::factory()->count(300)->create();
+		TalkRoom::factory()->count(50)->create();
     }
 }

@@ -1,6 +1,6 @@
 import {ItemType} from "@/react/types/ItemType";
 
-export type ProducerType = {
+export type UserType = {
     id                 : number,
     uuid               : string,
     organizationName   : string,
@@ -18,5 +18,5 @@ export type ProducerType = {
     paymentMethod      : number,
 	pr                 : string,
 	items              : ItemType[],
-	favorite_producers : ProducerType[],
+	favorite_producers : UserType[],
 }

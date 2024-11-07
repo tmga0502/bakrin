@@ -5,6 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static inRandomOrder()
+ * @method static whereNotIn(string $string, array $array)
+ * @method static find(mixed $randomId)
+ * @method static where(string $string, mixed $senderUuid)
+ * @method static whereNot(string $string, $id)
+ */
 class User extends Model
 {
     use HasFactory;

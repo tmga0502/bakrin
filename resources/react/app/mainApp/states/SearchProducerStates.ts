@@ -1,5 +1,5 @@
 import {atom} from 'recoil'
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 const SearchProducerNameStates = atom<string>({
 	key: 'SearchProducerNameStates',
@@ -11,7 +11,7 @@ const SearchProducerPrefectureStates = atom<string>({
 	default: '',
 })
 
-const SearchProducerResultStates = atom<ProducerType[]>({
+const SearchProducerResultStates = atom<UserType[]>({
 	key: 'SearchProducerResultStates',
 	default: [],
 })

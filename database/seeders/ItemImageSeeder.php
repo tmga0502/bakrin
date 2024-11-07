@@ -28,8 +28,8 @@ class ItemImageSeeder extends Seeder
                 for($i=0; $i < $imagesCount; $i++){
                     $imgRandomInt = random_int(1, 4000);
                     $insertArray[] = [
-                        'itemId' => $item->id,
-                        'path' => 'https://picsum.photos/400/200/?random=' . $imgRandomInt,
+                        'item_id' => $item->id,
+                        'image_path' => 'https://picsum.photos/400/200/?random=' . $imgRandomInt,
                         'created_at' => $now,
                         'updated_at' => $now
                     ];

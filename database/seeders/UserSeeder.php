@@ -2,20 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\MessageRoom;
-use App\Models\Producer;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MessageRoomSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-		DB::table('message_rooms')->truncate();
+        DB::table('users')->truncate();
 
-		MessageRoom::factory()->count(50)->create();
+        User::factory()->count(100)->create();
     }
 }

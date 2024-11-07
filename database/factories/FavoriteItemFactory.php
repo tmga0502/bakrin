@@ -4,11 +4,11 @@ namespace Database\Factories;
 
 use App\Models\FavoriteItem;
 use App\Models\Item;
-use App\Models\Producer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FavoriteItem>
+ * @extends Factory<FavoriteItem>
  */
 class FavoriteItemFactory extends Factory
 {
@@ -20,13 +20,13 @@ class FavoriteItemFactory extends Factory
      */
     public function definition(): array
     {
-        $producer = Producer::inRandomOrder()->first();
-        $item = Item::whereNotIn('producerUuid', [$producer->uuid])->inRandomOrder()->first();
-        $favorite = FavoriteItem::where('myUuid', $producer->uuid)->where('itemUuid', $item->uuid)->exists();
+        $producer = User::inRandomOrder()->first();
+        $item = Item::whereNotIn('user_id', [$producer->id])->inRandomOrder()->first();
+        $favorite = FavoriteItem::where('user_id', $producer->id)->where('item_id', $item->id)->exists();
         if(!$favorite){
             return [
-                'myUuid' => $producer->uuid,
-                'itemUuid' => $item->uuid,
+                'user_id' => $producer->id,
+                'item_id' => $item->id,
             ];
         }
 		return [];

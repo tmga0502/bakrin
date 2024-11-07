@@ -2,19 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Producer;
+use App\Models\FavoriteUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProducerSeeder extends Seeder
+class FavoriteUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('producers')->truncate();
+        DB::table('favorite_users')->truncate();
 
-        Producer::factory()->count(100)->create();
+        FavoriteUser::factory()->count(300)->create();
     }
 }

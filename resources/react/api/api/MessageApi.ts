@@ -1,5 +1,5 @@
 import axios from "axios";
-import {MessageType} from "@/react/types/MessageType";
+import {TalkRoomMessageType} from "@/react/types/TalkRoomMessageType";
 import {MessageGroupType} from "@/react/types/MessageGroupType";
 
 const getMessageList = async () => {
@@ -8,7 +8,7 @@ const getMessageList = async () => {
 }
 
 const getMessages = async (uuid: string) => {
-	const{ data } = await axios.get<MessageType[]>(`/api/message/getMessages?uuid=${uuid}`);
+	const{ data } = await axios.get<TalkRoomMessageType[]>(`/api/message/getMessages?uuid=${uuid}`);
 	return data;
 }
 

@@ -1,5 +1,5 @@
 import {ItemType} from "@/react/types/ItemType";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 import {TradeType} from "@/react/types/TradeType";
 import {ItemCategoryType} from "@/react/types/ItemCategoryType";
 import { WantItemType } from "@/react/types/WantItemType";
@@ -9,7 +9,7 @@ export type ItemsDataType = {
 }
 
 export type ProducersDataType = {
-	producersData: ProducerType[]
+	producersData: UserType[]
 }
 
 export type CardTitleType = {

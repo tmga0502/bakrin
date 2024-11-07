@@ -1,6 +1,6 @@
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 export type ProducerListType = {
-	producerList: ProducerType[],
+	producerList: UserType[],
 	slice?      : number,
 }

@@ -21,7 +21,7 @@ class AdminUserSeeder extends Seeder
         DB::table('admin_users')->insert([
             [
                 'name' => '山村拓弥',
-                'loginId' => 'tmga0502',
+                'login_id' => 'tmga0502',
                 'password' => Hash::make('a12345'),
                 'created_at' => $now,
                 'updated_at' => $now

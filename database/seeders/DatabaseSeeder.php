@@ -13,19 +13,20 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(class: [
             AdminUserSeeder::class,
-            ProducerSeeder::class,
+            UserSeeder::class,
             PlanSeeder::class,
             UnitSeeder::class,
             ItemCategorySeeder::class,
             ItemVarietySeeder::class,
             ItemSeeder::class,
             ItemImageSeeder::class,
-            TradeSeeder::class,
-			TradeProducerSeeder::class,
-            MessageRoomSeeder::class,
-            MessageSeeder::class,
+//            TradeSeeder::class,
+//			TradeProducerSeeder::class,
+            TalkRoomSeeder::class,
+            TalkRoomMemberSeeder::class,
+            TalkRoomMessageSeeder::class,
             FavoriteItemSeeder::class,
-            FavoriteProducerSeeder::class,
+            FavoriteUserSeeder::class,
             WantItemSeeder::class,
         ]);
     }

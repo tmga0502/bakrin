@@ -1,5 +1,5 @@
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 export type PrType = {
-	data: ProducerType
+	data: UserType
 }

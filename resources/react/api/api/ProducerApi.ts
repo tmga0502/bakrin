@@ -1,18 +1,18 @@
 import axios from "axios";
-import {ProducerType} from "@/react/types/ProducerType";
+import {UserType} from "@/react/types/UserType";
 
 const getPopularProducers = async () => {
-    const{ data } = await axios.get<ProducerType[]>('/api/producers/getPopularProducers');
+    const{ data } = await axios.get<UserType[]>('/api/producers/getPopularProducers');
     return data;
 }
 
 const getFavoriteProducers = async () => {
-    const{ data } = await axios.get<ProducerType[]>('/api/producers/getFavoriteProducers');
+    const{ data } = await axios.get<UserType[]>('/api/producers/getFavoriteProducers');
     return data;
 }
 
 const getProducer = async (producerUuid: string) => {
-	const{ data } = await axios.get<ProducerType>(`/api/producers/getProducer/${producerUuid}`);
+	const{ data } = await axios.get<UserType>(`/api/producers/getProducer/${producerUuid}`);
 	return data;
 }
 

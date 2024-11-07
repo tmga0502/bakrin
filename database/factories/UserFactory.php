@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Producer;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -11,11 +11,11 @@ use Random\RandomException;
 
 
 /**
- * @extends Factory<Producer>
+ * @extends Factory<User>
  */
-class ProducerFactory extends Factory
+class UserFactory extends Factory
 {
-	protected $model = Producer::class;
+	protected $model = User::class;
 
 	/**
 	 * Define the model's default state.
@@ -37,19 +37,20 @@ class ProducerFactory extends Factory
 		$imgRandomInt = random_int(1, 4000);
 		return [
 			'uuid'             => (string)Str::uuid(),
-			'organizationName' => $this->faker->company,
-			'presidentName'    => $this->faker->name,
-			'postalCode'       => $this->faker->postcode,
+			'referral_code'    => '',
+			'password'         => Hash::make('a12345'),
+			'organization_name'=> $this->faker->company,
+			'president_name'   => $this->faker->name,
+			'postal_code'      => $this->faker->postcode,
 			'address1'         => $prefecturesArray[array_rand($prefecturesArray)],
 			'address2'         => $this->faker->city,
 			'address3'         => $this->faker->streetName,
 			'address4'         => $address4Array[array_rand($address4Array)],
-			'tel'              => $this->faker->phoneNumber,
+			'phone_number'     => $this->faker->phoneNumber,
 			'email'            => $this->faker->email,
-			'imgPath'          => 'https://picsum.photos/200/300/?random=' . $imgRandomInt,
-			'password'         => Hash::make('a12345'),
-			'paymentMethod'    => random_int(0, 1),
 			'pr'               => $this->faker->realText,
+			'payment_method'   => random_int(0, 1),
+			'thumbnail_path'   => 'https://picsum.photos/200/300/?random=' . $imgRandomInt,
 			'created_at'       => $now,
 			'updated_at'       => $now,
 		];
