@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @method static inRandomOrder()
@@ -11,9 +13,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static find(mixed $randomId)
  * @method static where(string $string, mixed $senderUuid)
  * @method static whereNot(string $string, $id)
+ * @method static select(string $string, \Illuminate\Contracts\Database\Query\Expression $raw)
  */
-class User extends Model
+class User extends Authenticatable
 {
+	use HasApiTokens, Notifiable;
     use HasFactory;
 
 	protected $fillable = [
@@ -37,4 +41,19 @@ class User extends Model
 	protected $hidden = [
 		'password',
 	];
+
+	public function items()
+	{
+		return $this->hasMany(Item::class, 'user_id', 'id');
+	}
+
+	public function favorite_users()
+	{
+		return $this->hasMany(FavoriteUser::class, 'favorite_user_id', 'id');
+	}
+
+	public function favorite_by_users()
+	{
+		return $this->hasMany(FavoriteUser::class, 'favorite_by_user_id', 'id');
+	}
 }

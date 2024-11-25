@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useParams} from "react-router-dom";
 import {useGetMessages} from "@/react/api/query/MessageQuery";
-import {useGetProducer} from "@/react/api/query/ProducerQuery";
+import {useGetUser} from "@/react/api/query/UserQuery";
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
 import {TalkRoomMessageType} from "@/react/types/TalkRoomMessageType";
 import {UserType} from "@/react/types/UserType";
@@ -11,8 +11,8 @@ import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const MessageShowPage = () => {
 	const params = useParams()
-	const {data: MessagesData = []} = useGetMessages(params.producerUuid as string)
-	const {data: PartnerProducer = {} as UserType} = useGetProducer(params.producerUuid)
+	const {data: MessagesData = []} = useGetMessages(params.userUuid as string)
+	const {data: PartnerUser = {} as UserType} = useGetUser(params.userUuid)
 
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const messageDataCount = MessagesData ? MessagesData.length : 0
@@ -25,10 +25,10 @@ const MessageShowPage = () => {
 		<MainLayout>
 			<MessageBoxWrapper>
 				<MessageContainer>
-					<MessageHeader name={PartnerProducer?.organizationName}/>
+					<MessageHeader name={PartnerUser?.organizationName}/>
 					<MessageViewer>
 						{MessagesData?.map((message: TalkRoomMessageType, index: number) => {
-							const layout = params.producerUuid === message.senderUuid ? 'receiver' : 'sender';
+							const layout = params.userUuid === message.senderUuid ? 'receiver' : 'sender';
 							const ref = index === messageDataCount - 1 ? messagesEndRef : null
 							return (
 								<MessageBlock imgPath={createImageUrl(message.sender.imgPath)} name={message.sender.organizationName} text={message.message} layout={layout} ref={ref} key={message.id}/>

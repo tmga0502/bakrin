@@ -1,12 +1,12 @@
 import {atom} from "recoil";
-import {VarietyType} from "@/react/types/VarietyType";
+import {ItemVarietyType} from "@/react/types/ItemVarietyType";
 
 export const FormCategoryStates = atom<string | number>({
 	key: 'formCategoryStates',
 	default: ''
 })
 
-export const FormVarietiesStates = atom<Array<VarietyType>>({
+export const FormVarietiesStates = atom<Array<ItemVarietyType>>({
 	key: 'formVarietiesStates',
 	default: []
 })

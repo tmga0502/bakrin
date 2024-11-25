@@ -2,7 +2,7 @@ export type ListPanelType = {
 	link: string,
 	thumbnail: string,
 	itemName: string,
-	producerName: string,
+	userName: string,
 	date: string,
 	status?: number,
 }

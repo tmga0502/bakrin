@@ -1,8 +1,7 @@
-import {VarietyType} from "@/react/types/VarietyType";
+import {ItemVarietyType} from "@/react/types/ItemVarietyType";
 
 export type ItemCategoryType = {
-    [x: string]: any;
     id  :number,
     name: string,
-	varieties: VarietyType[]
+	varieties: ItemVarietyType[]
 }

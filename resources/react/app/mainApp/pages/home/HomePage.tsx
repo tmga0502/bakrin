@@ -1,10 +1,10 @@
 import React from 'react';
 import {useGetNewArrivalItems, useGetWantItems , useGetFavoriteItems, useGetSeasonItems} from "@/react/api/query/ItemQuery";
-import {useGetPopularProducers} from "@/react/api/query/ProducerQuery";
+import {useGetPopularUsers} from "@/react/api/query/UserQuery";
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import {SectionTitle} from "@mainElements/title";
 import {ItemList} from "@mainFeatures/item/components";
-import {ProducerList} from "@mainFeatures/producer/components";
+import {UserList} from "@mainFeatures/user/components";
 import {SectionStyle} from "@mainFeatures/home/styles";
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
 	const { data: wantItems = [] } = useGetWantItems();//欲しいものリスト
 	const { data: seasonItems = [] } = useGetSeasonItems();//旬のアイテム
 	const { data: favoriteItems = [] } = useGetFavoriteItems();//マイリスト(お気に入り登録済みリスト)
-	const { data: popularProducers = [] } = useGetPopularProducers();//人気のユーザー
+	const { data: popularUsers = [] } = useGetPopularUsers();//人気のユーザー
 
     return (
 		<MainLayout>
@@ -38,7 +38,7 @@ const HomePage = () => {
 
 			<div css={SectionStyle}>
 				<SectionTitle title={'注目の生産者'} moreLink={'/producers/featured'}/>
-				<ProducerList producerList={popularProducers} slice={6}/>
+				<UserList usersData={popularUsers} slice={6}/>
 			</div>
 		</MainLayout>
 

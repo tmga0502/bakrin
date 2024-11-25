@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FavoriteItem;
-use App\Models\Producer;
+use App\Models\Item;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +18,10 @@ class FavoriteItemsController extends Controller
 
     public function register(Request $req): JsonResponse
     {
+		$item = Item::where('uuid', $req->itemUuid)->first();
         $favoriteItem = new FavoriteItem([
-           'itemUuid' => $req->itemUuid,
-           'myUuid' => Auth::user()->uuid,
+           'item_id' => $item->id,
+           'user_id' => Auth::user()->id,
         ]);
         $favoriteItem->save();
         return response()->json([], status:200);
@@ -28,7 +29,8 @@ class FavoriteItemsController extends Controller
 
     public function deregister(Request $req): JsonResponse
     {
-        $favoriteItem = FavoriteItem::where('itemUuid',  $req->itemUuid)->where('myUuid', Auth::user()->uuid)->first();
+		$item = Item::where('uuid', $req->itemUuid)->first();
+        $favoriteItem = FavoriteItem::where('item_id',  $item->id)->where('user_id', Auth::user()->id)->first();
         $favoriteItem->delete();
         return response()->json([], status:200);
     }

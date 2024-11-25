@@ -1,6 +1,6 @@
 import {ItemType} from "@/react/types/ItemType";
 import {ItemCategoryType} from "@/react/types/ItemCategoryType";
-import {VarietyType} from "@/react/types/VarietyType";
+import {ItemVarietyType} from "@/react/types/ItemVarietyType";
 import {UnitType} from "@/react/types/UnitType";
 import {PlanType} from "@/react/types/PlanType";
 
@@ -18,7 +18,7 @@ export type ImageDataType = {
 
 export type NewPagePropsType = {
 	categoriesData : ItemCategoryType[],
-	varietiesData: VarietyType[],
+	varietiesData: ItemVarietyType[],
 	unitData     : UnitType[],
 	planData     : PlanType[],
 }
@@ -26,7 +26,7 @@ export type NewPagePropsType = {
 export type EditPagePropsType = {
 	itemData       : ItemType,
 	categoriesData : ItemCategoryType[],
-	varietiesData  : VarietyType[],
+	varietiesData  : ItemVarietyType[],
 	unitData       : UnitType[],
 	planData       : PlanType[],
 }

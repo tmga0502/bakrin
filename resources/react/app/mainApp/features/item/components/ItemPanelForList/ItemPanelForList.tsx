@@ -6,14 +6,13 @@ import ItemPlanRibbon from "@mainElements/budge/ItemPlanRibbon/ItemPlanRibbon";
 import {ItemDataType} from "@mainFeatures/item/types";
 
 const ItemPanelForList: React.FC<ItemDataType> = ({itemData}) => {
-	const {uuid, thumbnail, name} = itemData;
-
+	const {uuid, thumbnail_path, name} = itemData;
 	return (
 		<Link to={'/items/'+uuid}>
 			<div css={Wrapper}>
 				<ItemPlanRibbon plan={itemData.plan}/>
 				<LazyLoadImage
-					src={thumbnail}
+					src={thumbnail_path}
 					css={ImageStyle}
 					alt={name}
 				/>

@@ -15,7 +15,7 @@ class FavoriteUser extends Model
 	use SoftDeletes;
 
 	protected $fillable =[
-		'favorite_by-user_id',
+		'favorite_by_user_id',
 		'favorite_user_id',
 	];
 }

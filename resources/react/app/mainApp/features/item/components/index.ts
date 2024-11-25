@@ -7,7 +7,7 @@ import LinkToSendMessageButton from '@mainFeatures/item/components/LinkToSendMes
 import LinkToSendRequestButton from '@mainFeatures/item/components/LinkToSendRequestButton/LinkToSendRequestButton'
 import MyItemList from '@mainFeatures/item/components/MyItemList/MyItemList'
 import PrevButton from '@mainFeatures/item/components/PrevButton/PrevButton'
-import ProducerPanel from "@mainFeatures/item/components/ProducerPanel/ProducerPanel";
+import UserPanel from "@mainFeatures/item/components/UserPanel/UserPanel";
 import RequestButton from "@mainFeatures/item/components/RequestButton/RequestButton";
 
 export{
@@ -20,6 +20,6 @@ export{
 	LinkToSendRequestButton,
 	MyItemList,
 	PrevButton,
-	ProducerPanel,
+	UserPanel,
 	RequestButton,
 }

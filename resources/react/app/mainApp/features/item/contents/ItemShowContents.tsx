@@ -1,13 +1,13 @@
 import React from 'react';
 import {ShowButtonBox, ShowButtonGroup, ShowContentsBox, ShowWrapper} from "@mainFeatures/item/styles";
-import {ItemDescription, ItemFavoriteButton, ItemImageSlider, LinkToSendMessageButton, LinkToSendRequestButton, ProducerPanel} from "@mainFeatures/item/components";
+import {ItemDescription, ItemFavoriteButton, ItemImageSlider, LinkToSendMessageButton, LinkToSendRequestButton, UserPanel} from "@mainFeatures/item/components";
 import {ItemDataType} from "@mainFeatures/item/types";
 
 const ItemShowConItemShowContents:React.FC<ItemDataType> = ({itemData}) => {
 	return (
 		<div css={ShowWrapper}>
 			<div css={ShowContentsBox}>
-				<ItemImageSlider thumbnail={itemData.thumbnail} images={itemData.images}/>
+				<ItemImageSlider thumbnail={itemData.thumbnail_path} images={itemData.images}/>
 			</div>
 			<div css={ShowContentsBox}>
 				<ItemDescription itemData={itemData}/>
@@ -22,7 +22,7 @@ const ItemShowConItemShowContents:React.FC<ItemDataType> = ({itemData}) => {
 						<ItemFavoriteButton itemData={itemData}/>
 					</div>
 				</div>
-				<ProducerPanel itemData={itemData}/>
+				<UserPanel itemData={itemData}/>
 			</div>
 		</div>
 	);

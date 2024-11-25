@@ -1,7 +1,7 @@
 export type ItemImageType = {
     id         : number,
-    itemId     : number,
-    path       : string,
+    item_id    : number,
+    image_path : string,
     created_at : string,
     updated_at : string,
 }

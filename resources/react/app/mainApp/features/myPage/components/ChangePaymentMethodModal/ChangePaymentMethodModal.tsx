@@ -3,18 +3,18 @@ import {RadioWrapper} from './ChangePaymentMethodModal.styles'
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import Radio from "@mainElements/form/Radio/Radio";
 import {useRecoilValue, useSetRecoilState} from "recoil";
-import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
+import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 import {useForm} from "react-hook-form";
-import {useProducerUpdate} from "@/react/api/query/ProducerQuery";
+import {useUserUpdate} from "@/react/api/query/UserQuery";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 
 const ChangePaymentMethodModal: React.FC = () => {
-	const producerData = useRecoilValue(IsAuthProducerDataStates)
+	const producerData = useRecoilValue(IsAuthUserDataStates)
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
 	const {handleSubmit, register} = useForm()
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const update = useProducerUpdate(setIsModalOpen)
+	const update = useUserUpdate(setIsModalOpen)
 
 	const handleModal = () => {
 		setIsModalOpen(!isModalOpen);

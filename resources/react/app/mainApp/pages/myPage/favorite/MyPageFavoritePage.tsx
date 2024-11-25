@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useGetFavoriteItems} from "@/react/api/query/ItemQuery";
-import {useGetFavoriteProducers} from "@/react/api/query/ProducerQuery";
+import {useGetFavoriteUsers} from "@/react/api/query/UserQuery";
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import {PageTitle} from "@mainElements/title";
 import Tab from "@mainLayouts/tab/Tab/Tab";
@@ -8,7 +8,7 @@ import {ItemList, ProducerList} from "@mainFeatures/myPage/components";
 
 const MyPageFavoritePage = () => {
 	const { data: ItemData = [] } = useGetFavoriteItems()
-	const { data: ProducerData = []} = useGetFavoriteProducers()
+	const { data: ProducerData = []} = useGetFavoriteUsers()
 
 	const [viewMode, setViewMode] = useState('アイテム')
 	const tabMenu = ['アイテム', '生産者']

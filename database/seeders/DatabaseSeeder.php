@@ -12,22 +12,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(class: [
-            AdminUserSeeder::class,
-            UserSeeder::class,
-            PlanSeeder::class,
-            UnitSeeder::class,
-            ItemCategorySeeder::class,
-            ItemVarietySeeder::class,
-            ItemSeeder::class,
-            ItemImageSeeder::class,
-//            TradeSeeder::class,
-//			TradeProducerSeeder::class,
-            TalkRoomSeeder::class,
-            TalkRoomMemberSeeder::class,
-            TalkRoomMessageSeeder::class,
-            FavoriteItemSeeder::class,
+//            AdminUserSeeder::class,
+//            UserSeeder::class,
+//            PlanSeeder::class,
+//            UnitSeeder::class,
+//            ItemCategorySeeder::class,
+//            ItemVarietySeeder::class,
+//            ItemSeeder::class,
+//            ItemImageSeeder::class,
+////            TradeSeeder::class,
+////			TradeProducerSeeder::class,
+//            TalkRoomSeeder::class,
+//            TalkRoomMemberSeeder::class,
+//            TalkRoomMessageSeeder::class,
+//            FavoriteItemSeeder::class,
             FavoriteUserSeeder::class,
-            WantItemSeeder::class,
+//            WantItemSeeder::class,
         ]);
     }
 }

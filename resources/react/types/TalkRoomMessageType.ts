@@ -1,13 +1,13 @@
 import {UserType} from "@/react/types/UserType";
+import {TalkRoomType} from "@/react/types/TalkRoomType";
 
 export type TalkRoomMessageType = {
-    map(arg0: (messageGroup: any, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
     id            :number,
-	messageGroupId: number,
-    senderUuid    : string,
-	receiverUuid  : string,
+	talk_room_id  : number,
+    user_id       : number,
 	message       : string,
-	read_at       : string | undefined,
-	sender        : UserType,
-	receiver      : UserType,
+	created_at   : string,
+	updated_at   : string,
+	talkRoom     : TalkRoomType,
+	user         : UserType,
 }

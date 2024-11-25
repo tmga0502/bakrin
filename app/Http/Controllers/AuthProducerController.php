@@ -12,8 +12,8 @@ class AuthProducerController extends Controller
 
     public function authCheck(Request $req): JsonResponse
     {
-		if(Auth::guard('producers')->user()){
-			return response()->json(Auth::guard('producers')->user()->load(['items.plan', 'items.unit']));
+		if(Auth::guard('users')->user()){
+			return response()->json(Auth::guard('users')->user()->load(['items.plan', 'items.unit']));
 		}
 		return response()->json(false);
     }
@@ -24,7 +24,7 @@ class AuthProducerController extends Controller
             $req->session()->regenerate();
 			//ログ
 			$log = new Log([
-				'producerUuid' => Auth()->user()->uuid,
+				'user_id' => Auth()->user()->id,
 				'action' => 'Login'
 			]);
 			$log->save();

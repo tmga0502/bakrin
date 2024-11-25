@@ -19,24 +19,23 @@ class ItemsController extends Controller
 
     public function getMyItems(GetMyItemsUseCaseInterface $interactor): JsonResponse
     {
-		$items = Item::with('plan')->where('producerUuid', Auth::user()->uuid)->orderBy('created_at', 'DESC')->get();
+		$items = Item::with('plan')->where('user_id', Auth::user()->uuid)->orderBy('created_at', 'DESC')->get();
 		return response()->json($items);
-//		return $interactor->handle();
     }
 
     public function getNewArrival(): JsonResponse
     {
-        $items = Item::with('plan')->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->orderBy('created_at', 'DESC')->take(50)->get();
+        $items = Item::with('plan')->whereNotIn('user_id', [Auth::user()->uuid])->where('status', 0)->orderBy('created_at', 'DESC')->take(50)->get();
         return response()->json($items);
     }
 
 
     public function getWantItems(): JsonResponse
     {
-        $userUuid = Auth::user()->uuid;
-        $items = Item::with(['wantItems', 'plan'])->whereHas('wantItems', function($q) use($userUuid){
-            $q->where('myUuid', $userUuid);
-        })->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
+        $userId = Auth::user()->id;
+        $items = Item::with(['wantItems', 'plan'])->whereHas('wantItems', function($q) use($userId){
+            $q->where('user_id', $userId);
+        })->whereNotIn('user_id', [Auth::user()->id])->where('status', 0)->get();
         return response()->json($items);
     }
 
@@ -45,25 +44,25 @@ class ItemsController extends Controller
     {
         $nowMonth = (int)Carbon::now()->format('n');
         $items =Item::with('plan')->where(function ($query) use ($nowMonth) {
-                $query->where('shippingStart', '<=', $nowMonth)
-                    ->where('shippingEnd', '>=', $nowMonth)
+                $query->where('shipping_start', '<=', $nowMonth)
+                    ->where('shipping_end', '>=', $nowMonth)
                     ->orWhere(function ($query) use ($nowMonth) {
-                        $query->where('shippingStart', '>', 'shippingEnd')->where(function ($query) use ($nowMonth) {
-                                $query->where('shippingStart', '<=', $nowMonth)->orWhere('shippingEnd', '>=', $nowMonth);
+                        $query->where('shipping_start', '>', 'shipping_end')->where(function ($query) use ($nowMonth) {
+                                $query->where('shipping_start', '<=', $nowMonth)->orWhere('shipping_end', '>=', $nowMonth);
                         });
                     });
-                })->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
+                })->whereNotIn('user_id', [Auth::user()->id])->where('status', 0)->get();
         return response()->json($items);
     }
 
     public function getFavoriteItems(Request $req): JsonResponse
     {
-        $userUuid = Auth::user()->uuid;
-        $itemQuery = Item::with(['favoriteItems', 'plan'])->whereHas('favoriteItems', function($q) use($userUuid){
-            $q->where('myUuid', $userUuid);
+        $userId = Auth::user()->id;
+        $itemQuery = Item::with(['favoriteItems', 'plan'])->whereHas('favoriteItems', function($q) use($userId){
+            $q->where('user_id', $userId);
         });
         if($itemQuery->exists()){
-            $items = $itemQuery->whereNotIn('producerUuid', [Auth::user()->uuid])->where('status', 0)->get();
+            $items = $itemQuery->whereNotIn('user_id', [Auth::user()->id])->where('status', 0)->get();
         }else{
             $items = [];
         }
@@ -73,7 +72,7 @@ class ItemsController extends Controller
 
     public function getItem($itemUuid): JsonResponse
     {
-        $item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
+        $item = Item::with(['plan', 'user', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
 		return response()->json($item);
 	}
 
@@ -81,7 +80,7 @@ class ItemsController extends Controller
 	{
 		$authUser = Auth::user();
 		$item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
-		if($item->producerUuid === $authUser->uuid){
+		if($item->user_id === $authUser->uuid){
 			return response()->json($item);
 		}
 
@@ -92,7 +91,7 @@ class ItemsController extends Controller
 	{
 		$result = DB::transaction(function () use ($req) {
 			$insertArray = $req->all();
-			$insertArray['producerUuid'] = Auth()->user()->uuid;
+			$insertArray['user_id'] = Auth()->user()->uuid;
 			$insertArray['uuid'] = (string) Str::uuid();
 
 			if(isset($req->thumbnail[0])){
@@ -104,7 +103,7 @@ class ItemsController extends Controller
 
 			//ログ
 			$log = new Log([
-				'producerUuid' => Auth()->user()->uuid,
+				'user_id' => Auth()->user()->uuid,
 				'action' => 'item create',
 				'description' =>  'id:' . $item->id . ' create'
 			]);
@@ -135,7 +134,7 @@ class ItemsController extends Controller
 
 			//ログ
 			$log = new Log([
-				'producerUuid' => Auth()->user()->uuid,
+				'user_id' => Auth()->user()->uuid,
 				'action' => 'item update',
 				'description' => 'id:' . $item->id . ' update'
 			]);
@@ -150,7 +149,7 @@ class ItemsController extends Controller
 	{
 		$uuid = $req->itemUuid;
 		$item = Item::where('uuid', $uuid)->first();
-		if($item->producerUuid === Auth()->user()->uuid){
+		if($item->user_id === Auth()->user()->uuid){
 			$item->delete();
 			return response()->json(true, 200);
 		}

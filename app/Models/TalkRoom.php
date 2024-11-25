@@ -19,4 +19,9 @@ class TalkRoom extends Model
 		return $this->hasMany(TalkRoomMember::class, 'talk_room_id', 'id');
 	}
 
+	public function messages()
+	{
+		return $this->hasMany(TalkRoomMessage::class, 'talk_room_id', 'id');
+	}
+
 }

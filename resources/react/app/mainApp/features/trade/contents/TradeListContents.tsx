@@ -5,10 +5,10 @@ import {createImageUrl, formatDate} from "@/react/app/mainApp/functions/formatte
 import {TradeListPageType} from "@mainFeatures/trade/types";
 import Tab from "@mainLayouts/tab/Tab/Tab";
 import {useRecoilValue} from "recoil";
-import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
+import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 
 const TradeListContents:React.FC<TradeListPageType> = ({ongoingTradesData, pendingTradesData}) => {
-	const authProducerData = useRecoilValue(IsAuthProducerDataStates)
+	const authUserData = useRecoilValue(IsAuthUserDataStates)
 	const [viewMode, setViewMode] = useState('進行中')
 	const tabMenu = ['進行中', '申請中']
 
@@ -19,13 +19,13 @@ const TradeListContents:React.FC<TradeListPageType> = ({ongoingTradesData, pendi
 			<PageTitle en={'TRADE'} jp={'取引一覧'}/>
 			<Tab mode={viewMode} setMode={setViewMode} tabMenu={tabMenu}/>
 			{data.map((list)=>{
-				const partnerProducer = list.trade_producers.filter(tradeProducer=>tradeProducer.producer.uuid !== authProducerData.uuid)[0]
+				const partnerUser = list.trade_users.filter(tradeUser=>tradeUser.user.uuid !== authUserData.uuid)[0]
 				return(
 					<ListPanel
 						link={list.uuid}
-						itemName={partnerProducer.item.name}
-						producerName={partnerProducer.producer.organizationName}
-						thumbnail={createImageUrl(partnerProducer.item.thumbnail)}
+						itemName={partnerUser.item.name}
+						userName={partnerUser.user.organizationName}
+						thumbnail={createImageUrl(partnerUser.item.thumbnail)}
 						date={formatDate(list.created_at)}
 						key={list.id}
 					/>

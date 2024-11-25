@@ -8,7 +8,7 @@ const ItemRequestFormContents: React.FC<ItemDataType> = ({itemData}) => {
 	return (
 		<div css={ShowWrapper}>
 			<div css={ShowContentsBox}>
-				<ItemImageSlider thumbnail={itemData.thumbnail} images={itemData.images}/>
+				<ItemImageSlider thumbnail={itemData.thumbnail_path} images={itemData.images}/>
 			</div>
 			<div css={ShowContentsBox}>
 				<ItemDescription itemData={itemData}/>

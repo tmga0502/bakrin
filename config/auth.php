@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'producers',
+        'guard' => 'users',
         'passwords' => 'users',
     ],
 
@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'producers' => [
+        'users' => [
             'driver' => 'session',
-            'provider' => 'producers',
+            'provider' => 'users',
         ],
         'admins' => [
             'driver' => 'session',
@@ -64,9 +64,9 @@ return [
     */
 
     'providers' => [
-        'producers' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Producer::class,
+            'model' => App\Models\User::class,
         ],
 
         'admins' => [

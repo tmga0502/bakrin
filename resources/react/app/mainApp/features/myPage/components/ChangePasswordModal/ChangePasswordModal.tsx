@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useForm} from "react-hook-form";
 import MainButton from "@mainElements/button/MainButton/MainButton";
-import {useChangePassword} from "@/react/api/query/ProducerQuery";
+import {useChangePassword} from "@/react/api/query/UserQuery";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import Input from "@mainElements/form/InputField/Input";
 import {useSetRecoilState} from "recoil";

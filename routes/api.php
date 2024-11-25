@@ -5,18 +5,17 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
-use App\Http\Controllers\FavoriteProducersController;
+use App\Http\Controllers\FavoriteUsersController;
 use App\Http\Controllers\ItemImageController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NoticesController;
 use App\Http\Controllers\PlansController;
-use App\Http\Controllers\ProducersController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VarietiesController;
 use App\Http\Controllers\WantItemsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +29,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('producerLogin', [AuthProducerController::class, 'login']);
-Route::post('producerLogout', [AuthProducerController::class, 'logout']);
+Route::post('userLogin', [AuthProducerController::class, 'login']);
+Route::post('userLogout', [AuthProducerController::class, 'logout']);
 Route::get('authProducerCheck', [AuthProducerController::class, 'authCheck']);
 
 Route::group(['middleware'=> 'auth:sanctum'], function() {
@@ -78,13 +77,13 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
     });
 
     //生産者関連
-    Route::group(['prefix' => 'producers'], function () {
-        Route::get('getProducer', [ProducersController::class, 'getOwn']);
-        Route::get('getProducer/{producerUuid}', [ProducersController::class, 'getProducer']);
-        Route::get('/getPopularProducers', [ProducersController::class, 'getPopularProducers']);//人気の生産者
-        Route::get('/getFavoriteProducers', [ProducersController::class, 'getFavoriteProducers']);//お気に入り登録済みの生産者
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('getUser', [UsersController::class, 'getOwn']);
+        Route::get('getUser/{userId}', [UsersController::class, 'getUser']);
+        Route::get('/getPopularUsers', [UsersController::class, 'getPopularUsers']);//人気の生産者
+        Route::get('/getFavoriteUsers', [UsersController::class, 'getFavoriteUsers']);//お気に入り登録済みの生産者
 
-        Route::post('/searchProducer', [ProducersController::class, 'searchProducer']);//生産者検索
+        Route::post('/searchUser', [UsersController::class, 'searchUser']);//生産者検索
     });
 
     //お気に入り【アイテム】
@@ -94,9 +93,9 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::post('/deregister', [FavoriteItemsController::class, 'deregister']);
     });
 	//お気に入り【ユーザー】
-	Route::group(['prefix' => 'favoriteProducer'], function () {
-		Route::post('/register', [FavoriteProducersController::class, 'register']);
-		Route::post('/deregister', [FavoriteProducersController::class, 'deregister']);
+	Route::group(['prefix' => 'favoriteUser'], function () {
+		Route::post('/register', [FavoriteUsersController::class, 'register']);
+		Route::post('/deregister', [FavoriteUsersController::class, 'deregister']);
 	});
 
 	//メッセージ
@@ -128,8 +127,8 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 
     //ログインユーザー情報
     Route::get('/getUser', [AuthProducerController::class, 'getUser']);
-    Route::post('user/changePassword', [ProducersController::class, 'changePassword']);
-    Route::post('user/update', [ProducersController::class, 'update']);
+    Route::post('user/changePassword', [UsersController::class, 'changePassword']);
+    Route::post('user/update', [UsersController::class, 'update']);
 
 	//お知らせ
 	Route::group(['prefix' => 'notice'], function () {

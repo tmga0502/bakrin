@@ -1,9 +1,5 @@
-type WantItemType = {
-	id           : number,
-    myUuid       : number,
-	itemVarietyId: number,
-}
-
-export {
-    WantItemType,
+export type WantItemType = {
+	id              :number,
+    user_id         :number,
+	item_variety_id :number,
 }

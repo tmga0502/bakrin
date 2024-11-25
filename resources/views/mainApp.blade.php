@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
     {{-- react に変更があったとき自動で --}}
 {{--    @viteReactRefresh--}}
-    @vite(['resources/scss/app.scss', 'resources/react/app/mainApp/index.tsx'])
+    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/react/app/mainApp/index.tsx'])
 
 </head>
 

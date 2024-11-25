@@ -2,6 +2,7 @@ import {css} from "@emotion/react";
 import {theme} from "@/react/app/mainApp/styles/Theme";
 
 const Wrapper = css`
+	display: flex;
 	width: 100%;
 	height: 40px;
 	border-radius: 8px;

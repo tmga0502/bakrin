@@ -4,28 +4,28 @@ import {LuArrowRightLeft} from "react-icons/lu";
 import ImageBox from "@mainFeatures/trade/components/ImageBox/ImageBox";
 import {tradeRequestType} from "@mainFeatures/trade/types";
 import {useRecoilValue} from "recoil";
-import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
+import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const TradeImageBox: React.FC<tradeRequestType> = ({tradeRequestData}) => {
-	const authProducer = useRecoilValue(IsAuthProducerDataStates)
-	const senderProducer = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid !== authProducer.uuid)[0]
-	const recipientProducer = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid === authProducer.uuid)[0]
+	const authUser = useRecoilValue(IsAuthUserDataStates)
+	const senderUser = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid !== authUser.uuid)[0]
+	const recipientUser = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid === authUser.uuid)[0]
 
 	return (
 		<div css={ImageBoxWrapper}>
 			<ImageBox
-				imgSrc={createImageUrl(senderProducer.item.thumbnail)}
-				name={senderProducer.item.name}
-				planName={senderProducer.item.plan.name}
-				shippingTime={`${String(senderProducer.item.shippingStart)}月${senderProducer.item.shippingStartPart}`}
+				imgSrc={createImageUrl(senderUser.item.thumbnail)}
+				name={senderUser.item.name}
+				planName={senderUser.item.plan.name}
+				shippingTime={`${String(senderUser.item.shippingStart)}月${senderUser.item.shippingStartPart}`}
 				user={true}/>
 			<LuArrowRightLeft css={ArrowStyle}/>
 			<ImageBox
-				imgSrc={createImageUrl(recipientProducer.item.thumbnail)}
-				name={recipientProducer.item.name}
-				planName={recipientProducer.item.plan.name}
-				shippingTime={`${String(recipientProducer.item.shippingStart)}月${recipientProducer.item.shippingStartPart}`}
+				imgSrc={createImageUrl(recipientUser.item.thumbnail)}
+				name={recipientUser.item.name}
+				planName={recipientUser.item.plan.name}
+				shippingTime={`${String(recipientUser.item.shippingStart)}月${recipientUser.item.shippingStartPart}`}
 				user={false}/>
 		</div>
 	);

@@ -1,8 +1,8 @@
 import axios from "axios";
-import {VarietyType} from "@/react/types/VarietyType";
+import {ItemVarietyType} from "@/react/types/ItemVarietyType";
 
 const getVarieties = async () => {
-    const{ data } = await axios.get<VarietyType[]>('/api/varieties/getVarieties');
+    const{ data } = await axios.get<ItemVarietyType[]>('/api/varieties/getVarieties');
     return data;
 }
 

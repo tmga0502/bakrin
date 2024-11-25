@@ -1,6 +1,7 @@
 import React from 'react';
 import {ItemImageSliderType} from "./ItemImageSlider.type";
 import ImageGallery from "react-image-gallery";
+// import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => {
 	const imgs = [
@@ -12,8 +13,8 @@ const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => 
 	if(images !== undefined) {
 		images.forEach((img) => {
 			imgs.push({
-				original: img.path,
-				thumbnail: img.path,
+				original: img.image_path,
+				thumbnail: img.image_path,
 			})
 		})
 	}
@@ -23,7 +24,7 @@ const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => 
 			items={imgs}
 			showNav={false}
 			autoPlay={true}
-			showFullscreenButton={true}
+			showFullscreenButton={false}
 			useBrowserFullscreen={false}
 			showPlayButton={false}
 			slideInterval={6000}

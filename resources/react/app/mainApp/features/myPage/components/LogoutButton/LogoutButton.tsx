@@ -1,7 +1,7 @@
 import React from 'react';
 import {LogoutButtonType} from "./LogoutButton.type";
 import {LogoutButtonStyle} from "./LogoutButton.styles";
-import {useLogout} from "@/react/api/query/AuthProducerQuery";
+import {useLogout} from "@/react/api/query/AuthUserQuery";
 import TopListPanel from "@mainFeatures/myPage/components/TopListPanel/TopListPanel";
 
 const LogoutButton: React.FC<LogoutButtonType> = ({}) => {

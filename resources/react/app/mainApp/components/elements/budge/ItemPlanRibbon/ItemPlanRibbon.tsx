@@ -4,8 +4,8 @@ import {BudgeDefaultStyle} from './ItemPlanRibbon.styles'
 
 const ItemPlanRibbon: React.FC<ItemPlanRibbonType> = ({plan}) => {
 	return (
-		<div css={BudgeDefaultStyle(plan.color, plan.textColor)} >
-			{plan && plan.displayName}
+		<div css={BudgeDefaultStyle(plan.badge_color, plan.badge_text_color)} >
+			{plan && plan.display_name}
 		</div>
 	);
 };

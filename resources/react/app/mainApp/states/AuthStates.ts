@@ -1,13 +1,13 @@
 import {atom} from 'recoil'
 import {UserType} from "@/react/types/UserType";
 
-export const IsAuthProducerStates = atom<boolean | undefined>({
-    key: 'IsAuthProducerStates',
+export const IsAuthUserStates = atom<boolean | undefined>({
+    key: 'IsAuthUserStates',
     default: false
 })
 
-export const IsAuthProducerDataStates = atom<UserType>({
-    key: 'IsAuthProducerDataStates',
+export const IsAuthUserDataStates = atom<UserType>({
+    key: 'IsAuthUserDataStates',
     default:  {
 		id: 0,
 		uuid: '',

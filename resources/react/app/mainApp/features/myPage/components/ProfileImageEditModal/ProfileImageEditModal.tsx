@@ -5,12 +5,12 @@ import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {FileField} from "@mainElements/form";
 import {ButtonWrapper} from "@mainFeatures/myItem/components/AddImageModal/AddImageModal.styles";
 import {useForm} from "react-hook-form";
-import {useProducerUpdate} from "@/react/api/query/ProducerQuery";
+import {useUserUpdate} from "@/react/api/query/UserQuery";
 
 const ProfileImageEditModal = () => {
 	const {handleSubmit, register, formState:{errors}} = useForm()
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const update = useProducerUpdate(setIsModalOpen)
+	const update = useUserUpdate(setIsModalOpen)
 
 	const handleModalState = () => {
 		setIsModalOpen(!isModalOpen);

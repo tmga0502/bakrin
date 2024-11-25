@@ -45,46 +45,46 @@ class Item extends Model
 
     public function favoriteItems(): HasMany
     {
-        return $this->hasMany(FavoriteItem::class, 'itemUuid', 'uuid');
+        return $this->hasMany(FavoriteItem::class, 'item_id', 'id');
     }
 
     public function wantItems(): BelongsTo
     {
-        return $this->belongsTo(WantItem::class, 'varietyId', 'itemVarietyId');
+        return $this->belongsTo(WantItem::class, 'item_variety_id', 'item_variety_id');
     }
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ItemCategory::class, 'categoryId', 'id');
+        return $this->belongsTo(ItemCategory::class, 'item_category_id', 'id');
     }
 
     public function plan(): BelongsTo
     {
-        return $this->belongsTo(Plan::class, 'planId', 'id');
+        return $this->belongsTo(Plan::class, 'plan_id', 'id');
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'producerUuid', 'uuid');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function variety(): BelongsTo
     {
-        return $this->belongsTo(ItemVariety::class, 'varietyId', 'id');
+        return $this->belongsTo(ItemVariety::class, 'item_variety_id', 'id');
     }
 
     public function unit(): BelongsTo
     {
-        return $this->belongsTo(Unit::class, 'unitId', 'id');
+        return $this->belongsTo(Unit::class, 'unit_id', 'id');
     }
 
     public function guideUnit(): BelongsTo
     {
-        return $this->belongsTo(Unit::class, 'guideUnitId', 'id');
+        return $this->belongsTo(Unit::class, 'guide_unit_id', 'id');
     }
 
     public function images(): HasMany
     {
-        return $this->hasMany(ItemImage::class, 'itemId', 'id');
+        return $this->hasMany(ItemImage::class, 'item_id', 'id');
     }
 }

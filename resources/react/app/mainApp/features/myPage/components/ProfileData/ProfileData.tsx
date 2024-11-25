@@ -2,52 +2,52 @@ import React from 'react';
 import {Wrapper, TextStyle, DataBody, DataBox, DataTitle, ImageBox, ImageStyle, Flex} from './ProfileData.styles';
 import {createImageUrl, createPhoneNumber, createPostalCode} from "@/react/app/mainApp/functions/formatter";
 import {useRecoilValue} from "recoil";
-import {IsAuthProducerDataStates} from "@/react/app/mainApp/states/AuthStates";
+import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 import NoImage from '@/react/assets/images/noImage.png'
 import ProfileImageEditModal from "@mainFeatures/myPage/components/ProfileImageEditModal/ProfileImageEditModal";
 import {ChangePasswordModal} from "@mainFeatures/myPage/components";
 import ChangePaymentMethodModal from "../ChangePaymentMethodModal/ChangePaymentMethodModal";
 
 const ProfileData: React.FC = () => {
-	const producerData = useRecoilValue(IsAuthProducerDataStates);
-	const image = producerData.imgPath === null ? NoImage : createImageUrl(producerData.imgPath);
-	const paymentMethod = producerData.paymentMethod === 0 ? '銀行振込' : 'クレジットカード';
+	const userData = useRecoilValue(IsAuthUserDataStates);
+	const image = userData.imgPath === null ? NoImage : createImageUrl(userData.imgPath);
+	const paymentMethod = userData.paymentMethod === 0 ? '銀行振込' : 'クレジットカード';
 
 	return (
 		<div css={Wrapper}>
 			<div css={DataBox}>
 				<div css={ImageBox}>
-					<img src={image} css={ImageStyle} alt={'producer image'}/>
+					<img src={image} css={ImageStyle} alt={'user image'}/>
 				</div>
 				<ProfileImageEditModal/>
 			</div>
 			<div css={DataBox}>
 				<label css={DataTitle}>法人名・団体名</label>
-				<p css={DataBody}>{producerData.organizationName}</p>
+				<p css={DataBody}>{userData.organizationName}</p>
 			</div>
 
 			<div css={DataBox}>
 				<label css={DataTitle}>代表者名</label>
-				<p css={DataBody}>{producerData.presidentName}</p>
+				<p css={DataBody}>{userData.presidentName}</p>
 			</div>
 
 			<div css={DataBox}>
 				<label css={DataTitle}>住所</label>
 				<p css={DataBody}>
 					<>
-						{createPostalCode(producerData.postalCode)}<br/>
-						{`${producerData.address1}${producerData.address2}${producerData.address3}${producerData.address4}`}
+						{createPostalCode(userData.postalCode)}<br/>
+						{`${userData.address1}${userData.address2}${userData.address3}${userData.address4}`}
 					</>
 				</p>
 			</div>
 
 			<div css={DataBox}>
 				<label css={DataTitle}>電話番号</label>
-				<p css={DataBody}>{createPhoneNumber(producerData.tel)}</p>
+				<p css={DataBody}>{createPhoneNumber(userData.tel)}</p>
 			</div>
 			<div css={DataBox}>
 				<label css={DataTitle}>メールアドレス</label>
-				<p css={DataBody}>{producerData.email}</p>
+				<p css={DataBody}>{userData.email}</p>
 			</div>
 
 			<p css={TextStyle}>※上記情報に変更があった場合は、お問い合わせよりご連絡ください</p>

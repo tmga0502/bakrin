@@ -3,7 +3,7 @@ import {useGetMessageLists} from "@/react/api/query/MessageQuery";
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
 import {PageTitle} from "@mainElements/title";
 import ContainerMd from "@/react/app/mainApp/components/layouts/container/ContainerMd/ContainerMd";
-import {MessageGroupType} from "@/react/types/MessageGroupType";
+import {TalkRoomType} from "@/react/types/TalkRoomType";
 import {ListCard} from "@mainFeatures/message/components";
 
 const MessageListPage = () => {
@@ -13,7 +13,7 @@ const MessageListPage = () => {
 		<MainLayout>
 			<PageTitle en={'MESSAGE'} jp={'メッセージ一覧'}/>
 			<ContainerMd>
-				{messageLists.map((room: MessageGroupType, index: number) => (
+				{messageLists.map((room: TalkRoomType, index: number) => (
 					<ListCard room={room} key={index}/>
 				))}
 			</ContainerMd>
