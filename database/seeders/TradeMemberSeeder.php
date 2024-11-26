@@ -17,7 +17,7 @@ class TradeMemberSeeder extends Seeder
 	 */
     public function run(): void
     {
-		DB::table('trade_producers')->truncate();
+		DB::table('trade_members')->truncate();
 
 		$faker = Faker::create();
 
@@ -26,7 +26,7 @@ class TradeMemberSeeder extends Seeder
 			$me = User::inRandomOrder()->first();
 			$partner = User::whereNot('id', $me->id)->inRandomOrder()->first();
 			$myItem = Item::where('user_id', $me->id)->inRandomOrder()->first();
-			$partnerItem = Item::where('user_Id', $partner->id)->inRandomOrder()->first();
+			$partnerItem = Item::where('user_id', $partner->id)->inRandomOrder()->first();
 			switch($trade->status){
 				case 0:
 				case 3:

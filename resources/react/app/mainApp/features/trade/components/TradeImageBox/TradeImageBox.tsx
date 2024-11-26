@@ -9,23 +9,23 @@ import {createImageUrl} from "@/react/app/mainApp/functions/formatter";
 
 const TradeImageBox: React.FC<tradeRequestType> = ({tradeRequestData}) => {
 	const authUser = useRecoilValue(IsAuthUserDataStates)
-	const senderUser = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid !== authUser.uuid)[0]
-	const recipientUser = tradeRequestData.trade_producers.filter(producer=>producer.producer.uuid === authUser.uuid)[0]
+	const senderUser = tradeRequestData.trade_members.filter(user=>user.user.id !== authUser.id)[0]
+	const recipientUser = tradeRequestData.trade_members.filter(user=>user.user.id === authUser.id)[0]
 
 	return (
 		<div css={ImageBoxWrapper}>
 			<ImageBox
-				imgSrc={createImageUrl(senderUser.item.thumbnail)}
+				imgSrc={createImageUrl(senderUser.item.thumbnail_path)}
 				name={senderUser.item.name}
 				planName={senderUser.item.plan.name}
-				shippingTime={`${String(senderUser.item.shippingStart)}月${senderUser.item.shippingStartPart}`}
+				shippingTime={`${String(senderUser.item.shipping_start)}月${senderUser.item.shipping_start_part}`}
 				user={true}/>
 			<LuArrowRightLeft css={ArrowStyle}/>
 			<ImageBox
-				imgSrc={createImageUrl(recipientUser.item.thumbnail)}
+				imgSrc={createImageUrl(recipientUser.item.thumbnail_path)}
 				name={recipientUser.item.name}
 				planName={recipientUser.item.plan.name}
-				shippingTime={`${String(recipientUser.item.shippingStart)}月${recipientUser.item.shippingStartPart}`}
+				shippingTime={`${String(recipientUser.item.shipping_start)}月${recipientUser.item.shipping_start_part}`}
 				user={false}/>
 		</div>
 	);

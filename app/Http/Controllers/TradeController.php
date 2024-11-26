@@ -6,7 +6,7 @@ use App\Mail\RequestTrade;
 use App\Mail\TradePermission;
 use App\Models\Item;
 use App\Models\Trade;
-use App\Models\TradeProducer;
+use App\Models\TradeMember;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +21,10 @@ class TradeController extends Controller
     public function getTradeRequests(): JsonResponse
 	{
 		$user = Auth()->user();
-		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+		$trades = Trade::with(['tradeMembers.item', 'tradeMembers.user'])
 			->where('status', 0)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('type', 'recipient')->where('producerUuid', $user->uuid);
+			->whereHas('tradeMembers', function ($q) use ($user) {
+				$q->where('applicant_flag', false)->where('user_id', $user->id);
 			})
 			->get();
 		return response()->json($trades, 200);
@@ -34,7 +34,7 @@ class TradeController extends Controller
 	//取引詳細
 	public function getTrade($tradeUuid): JsonResponse
 	{
-		$trade = Trade::with(['tradeProducers.item.plan', 'tradeProducers.producer', 'messages.sender'])->where('uuid', $tradeUuid)->first();
+		$trade = Trade::with(['tradeMembers.item.plan', 'tradeMembers.user', 'messages.sender'])->where('uuid', $tradeUuid)->first();
 		return response()->json($trade, 200);
 	}
 
@@ -42,10 +42,10 @@ class TradeController extends Controller
 	public function getPendingTrades(): JsonResponse
 	{
 		$user = Auth()->user();
-		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+		$trades = Trade::with(['tradeMembers.item', 'tradeMembers.user'])
 			->where('status', 0)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('type', 'sender')->where('producerUuid', $user->uuid);
+			->whereHas('tradeMembers', function ($q) use ($user) {
+				$q->where('applicant_flag', false)->where('user_id', $user->id);
 			})
 			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
@@ -55,10 +55,10 @@ class TradeController extends Controller
 	public function getOngoingTrades(): JsonResponse
 	{
 		$user = Auth()->user();
-		$trades = Trade::with(['tradeProducers.item', 'tradeProducers.producer'])
+		$trades = Trade::with(['tradeMembers.item', 'tradeMembers.user'])
 			->where('status', 1)
-			->whereHas('tradeProducers', function ($q) use ($user) {
-				$q->where('producerUuid', $user->uuid);
+			->whereHas('tradeMembers', function ($q) use ($user) {
+				$q->where('user_id', $user->id);
 			})
 			->orderBy('updated_at', 'DESC')->get();
 		return response()->json($trades, 200);
@@ -122,12 +122,20 @@ class TradeController extends Controller
 	public function requestPermission(Request $req): JsonResponse
 	{
 		$trade = DB::transaction(function() use($req) {
-			$trade = Trade::with(['senderProducer'])->find($req->tradeId);
+			$trade = Trade::with(['tradeMembers.user'])->find($req->tradeId);
 			$trade->fill(['status' => 1])->save();
 
 			//申請者にメール送信
-			$sender = $trade->senderProducer;
-			Mail::to(['email' => $sender->email])->send(new TradePermission($sender));
+			$sender = null;
+			foreach ($trade->tradeMembers as $tradMember) {
+				if(!$tradMember->applicant_flag){
+					$sender = $tradMember->user;
+					break;
+				}
+			}
+			if($sender !== null){
+				Mail::to(['email' => $sender->email])->send(new TradePermission($sender));
+			}
 
 			return $trade;
 		});

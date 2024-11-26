@@ -20,13 +20,13 @@ class DatabaseSeeder extends Seeder
 //            ItemVarietySeeder::class,
 //            ItemSeeder::class,
 //            ItemImageSeeder::class,
-////            TradeSeeder::class,
-////			TradeProducerSeeder::class,
+            TradeSeeder::class,
+			TradeMemberSeeder::class,
 //            TalkRoomSeeder::class,
 //            TalkRoomMemberSeeder::class,
 //            TalkRoomMessageSeeder::class,
 //            FavoriteItemSeeder::class,
-            FavoriteUserSeeder::class,
+//            FavoriteUserSeeder::class,
 //            WantItemSeeder::class,
         ]);
     }

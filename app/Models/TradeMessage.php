@@ -19,6 +19,6 @@ class TradeMessage extends Model
 
 	public function sender(): HasOne
 	{
-		return $this->hasOne(User::class, 'uuid', 'senderUuid');
+		return $this->hasOne(User::class, 'id', 'user_id');
 	}
 }

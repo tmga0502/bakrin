@@ -19,13 +19,13 @@ const TradeListContents:React.FC<TradeListPageType> = ({ongoingTradesData, pendi
 			<PageTitle en={'TRADE'} jp={'取引一覧'}/>
 			<Tab mode={viewMode} setMode={setViewMode} tabMenu={tabMenu}/>
 			{data.map((list)=>{
-				const partnerUser = list.trade_users.filter(tradeUser=>tradeUser.user.uuid !== authUserData.uuid)[0]
+				const partnerUser = list.trade_members.filter(tradeUser=>tradeUser.user.id !== authUserData.id)[0]
 				return(
 					<ListPanel
 						link={list.uuid}
 						itemName={partnerUser.item.name}
-						userName={partnerUser.user.organizationName}
-						thumbnail={createImageUrl(partnerUser.item.thumbnail)}
+						userName={partnerUser.user.organization_name}
+						thumbnail={createImageUrl(partnerUser.item.thumbnail_path)}
 						date={formatDate(list.created_at)}
 						key={list.id}
 					/>

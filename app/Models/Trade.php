@@ -29,11 +29,11 @@ class Trade extends Model
 
 	public function tradeMembers(): HasMany
 	{
-		return $this->hasMany(TradeMember::class, 'tradeUuid', 'uuid');
+		return $this->hasMany(TradeMember::class, 'trade_id', 'id');
 	}
 
 	public function messages(): HasMany
 	{
-		return $this->hasMany(TradeMessage::class, 'tradeId', 'id');
+		return $this->hasMany(TradeMessage::class, 'trade_id', 'id');
 	}
 }

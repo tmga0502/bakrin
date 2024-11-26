@@ -13,13 +13,14 @@ const ReceiveRequestListPage = () => {
 	  <MainLayout>
 		  <PageTitle en={'RECEIVE REQUEST'} jp={'申請依頼'}/>
 		  {tradeRequestsData.map((list:TradeType)=>{
-			  const partnerProducer = list.trade_producers.filter(producer=>producer.type === 'sender')[0]
+			  console.log(tradeRequestsData)
+			  const partnerProducer = list.trade_members.filter(user=>user.applicant_flag)[0]
 			  return(
 				  <ListPanel
 					  link={list.uuid}
 					  itemName={partnerProducer.item.name}
-					  producerName={partnerProducer.producer.organizationName}
-					  thumbnail={partnerProducer.item.thumbnail}
+					  userName={partnerProducer.user.organization_name}
+					  thumbnail={partnerProducer.item.thumbnail_path}
 					  date={formatDate(list.created_at)}
 					  key={list.id}
 				  />

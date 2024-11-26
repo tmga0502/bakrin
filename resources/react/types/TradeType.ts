@@ -8,6 +8,6 @@ export type TradeType = {
     rejected_reason       : string | null, //取引拒否理由
 	created_at            : string,
 	updated_at            : string,
-	tradeMembers          : TradeMemberType[],
+	trade_members         : TradeMemberType[],
 	messages              : TradeMessageType[],
 }
