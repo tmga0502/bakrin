@@ -21,10 +21,11 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 
 	const handleCategoryChange = (e: any) => {
 		const value = e.target.value
+		console.log(varietiesData)
 		if(value === ''){
 			setFormVarietiesStates([])
 		}{
-			const varietyArray = varietiesData.filter(item => item.categoryId === value)
+			const varietyArray = varietiesData.filter(item => item.item_category_id === Number(value))
 			setFormVarietiesStates(varietyArray)
 			setValue('varietyId', '')
 		}
@@ -41,19 +42,19 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<FormGroup>
 				<FormLabel text={'カテゴリー'} htmlFor={'category'}/>
-				<SelectBox optionObj={categoriesData} addBlankOption={true} {...register('categoryId', {required: '選択してください'})} onChange={(e: any)=> {
+				<SelectBox optionObj={categoriesData} addBlankOption={true} {...register('item_category_id', {required: '選択してください'})} onChange={(e: any)=> {
 					handleCategoryChange(e)
 				}}/>
-				{errors.categoryId && (
-					<ErrorMessage msg={errors.categoryId.message as string}/>
+				{errors.item_category_id && (
+					<ErrorMessage msg={errors.item_category_id.message as string}/>
 				)}
 			</FormGroup>
 
 			<FormGroup>
 				<FormLabel text={'種類'} htmlFor={'variety'}/>
-				<SelectBox optionObj={formVarietiesStates} addBlankOption={true} {...register('varietyId', {required: '選択してください'})}/>
-				{errors.varietyId && (
-					<ErrorMessage msg={errors.varietyId.message as string}/>
+				<SelectBox optionObj={formVarietiesStates} addBlankOption={true} {...register('item_variety_id', {required: '選択してください'})}/>
+				{errors.item_variety_id && (
+					<ErrorMessage msg={errors.item_variety_id.message as string}/>
 				)}
 			</FormGroup>
 
@@ -75,29 +76,29 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 				</FormGroup>
 				<FormGroup>
 					<FormLabel text={'単位'} htmlFor={'unit'}/>
-					<SelectBox optionObj={unitData} {...register('unitId')}/>
+					<SelectBox optionObj={unitData} {...register('unit_id')}/>
 				</FormGroup>
 			</div>
 
 			<div css={Flex}>
 				<FormGroup>
-					<FormLabel text={'目安数量'} htmlFor={'guideCount'}/>
-					<Input id={'guideCount'} type={'number'} {...register('guideCount', {required: '入力してください'})}/>
-					{errors.guideCount && (
-						<ErrorMessage msg={errors.guideCount.message as string}/>
+					<FormLabel text={'目安数量'} htmlFor={'guide_count'}/>
+					<Input id={'guide_count'} type={'number'} {...register('guide_count', {required: '入力してください'})}/>
+					{errors.guide_count && (
+						<ErrorMessage msg={errors.guide_count.message as string}/>
 					)}
 				</FormGroup>
 				<FormGroup>
-					<FormLabel text={'目安単位'} htmlFor={'guideUnit'}/>
-					<SelectBox optionObj={unitData} {...register('guideUnitId')}/>
+					<FormLabel text={'目安単位'} htmlFor={'guide_unit'}/>
+					<SelectBox optionObj={unitData} {...register('guide_unit_id')}/>
 				</FormGroup>
 			</div>
 
 			<FormGroup>
 				<FormLabel text={'プラン'} htmlFor={'plan'}/>
-				<SelectBox optionObj={planData} addBlankOption={true} {...register('planId', {required: '選択してください'})}/>
-				{errors.planId && (
-					<ErrorMessage msg={errors.planId.message as string}/>
+				<SelectBox optionObj={planData} addBlankOption={true} {...register('plan_id', {required: '選択してください'})}/>
+				{errors.plan_id && (
+					<ErrorMessage msg={errors.plan_id.message as string}/>
 				)}
 			</FormGroup>
 
@@ -109,11 +110,11 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 			<FormGroup>
 				<FormLabel text={'発送可能日'} htmlFor={''}/>
 				<div css={MonthFlex}>
-					<SelectBox optionObj={Month} {...register('shippingStart')}/>
-					<SelectBox optionObj={MonthPart} {...register('shippingStartPart')}/>
+					<SelectBox optionObj={Month} {...register('shipping_start')}/>
+					<SelectBox optionObj={MonthPart} {...register('shipping_start_part')}/>
 					<span>から</span>
-					<SelectBox optionObj={Month} {...register('shippingEnd')}/>
-					<SelectBox optionObj={MonthPart} {...register('shippingEndPart')}/>
+					<SelectBox optionObj={Month} {...register('shipping_end')}/>
+					<SelectBox optionObj={MonthPart} {...register('shipping_end_part')}/>
 				</div>
 			</FormGroup>
 

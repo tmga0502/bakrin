@@ -12,7 +12,7 @@ export type ItemType = {
     id                  :number,
     uuid                :string,
     user_id             :string,
-    item_category_if    :number,
+    item_category_id    :number,
     item_variety_id     :number,
     name                :string,
     count               :number,

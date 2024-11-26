@@ -10,8 +10,8 @@ import ChangePaymentMethodModal from "../ChangePaymentMethodModal/ChangePaymentM
 
 const ProfileData: React.FC = () => {
 	const userData = useRecoilValue(IsAuthUserDataStates);
-	const image = userData.imgPath === null ? NoImage : createImageUrl(userData.imgPath);
-	const paymentMethod = userData.paymentMethod === 0 ? '銀行振込' : 'クレジットカード';
+	const image = userData.thumbnail_path === null ? NoImage : createImageUrl(userData.thumbnail_path);
+	const paymentMethod = userData.payment_method === 0 ? '銀行振込' : 'クレジットカード';
 
 	return (
 		<div css={Wrapper}>
@@ -23,19 +23,19 @@ const ProfileData: React.FC = () => {
 			</div>
 			<div css={DataBox}>
 				<label css={DataTitle}>法人名・団体名</label>
-				<p css={DataBody}>{userData.organizationName}</p>
+				<p css={DataBody}>{userData.organization_name}</p>
 			</div>
 
 			<div css={DataBox}>
 				<label css={DataTitle}>代表者名</label>
-				<p css={DataBody}>{userData.presidentName}</p>
+				<p css={DataBody}>{userData.president_name}</p>
 			</div>
 
 			<div css={DataBox}>
 				<label css={DataTitle}>住所</label>
 				<p css={DataBody}>
 					<>
-						{createPostalCode(userData.postalCode)}<br/>
+						{createPostalCode(userData.postal_code)}<br/>
 						{`${userData.address1}${userData.address2}${userData.address3}${userData.address4}`}
 					</>
 				</p>
@@ -43,7 +43,7 @@ const ProfileData: React.FC = () => {
 
 			<div css={DataBox}>
 				<label css={DataTitle}>電話番号</label>
-				<p css={DataBody}>{createPhoneNumber(userData.tel)}</p>
+				<p css={DataBody}>{createPhoneNumber(userData.phone_number)}</p>
 			</div>
 			<div css={DataBox}>
 				<label css={DataTitle}>メールアドレス</label>

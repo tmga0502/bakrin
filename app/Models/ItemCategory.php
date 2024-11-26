@@ -16,6 +16,6 @@ class ItemCategory extends Model
 
 	public function varieties(): HasMany
 	{
-		return $this->hasMany(ItemVariety::class, 'categoryId', 'id');
+		return $this->hasMany(ItemVariety::class, 'item_category_id', 'id');
 	}
 }

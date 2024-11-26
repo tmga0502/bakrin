@@ -10,20 +10,20 @@ class WantItemsController extends Controller
 {
     public function getAll(): JsonResponse
 	{
-		$authProducer = Auth()->user();
-		$wantItems = WantItem::with('itemVariety')->where('myUuid', $authProducer->uuid)->get();
+		$authUser = Auth()->user();
+		$wantItems = WantItem::with('itemVariety')->where('user_id', $authUser->id)->get();
 
 		return response()->json($wantItems, 200);
 	}
 
 	public function create(Request $req): void
 	{
-		$authProducer = Auth()->user();
-		$wantItemCheck = WantItem::where('myUuid', $authProducer->uuid)->where('itemVarietyId', $req->aid)->exists();
+		$authUser = Auth()->user();
+		$wantItemCheck = WantItem::where('user_id', $authUser->id)->where('item_variety_id', $req->id)->exists();
 		if(!$wantItemCheck){
 			$wantItem = new WantItem([
-				'myUuid' => $authProducer->uuid,
-				'itemVarietyId' => $req->id,
+				'user_id' => $authUser->id,
+				'item_variety_id' => $req->id,
 			]);
 			$wantItem->save();
 		}
@@ -31,8 +31,8 @@ class WantItemsController extends Controller
 
 	public function remove(Request $req): void
 	{
-		$authProducer = Auth()->user();
-		$sql = WantItem::where('myUuid', $authProducer->uuid)->where('itemVarietyId', $req->id);
+		$authUser = Auth()->user();
+		$sql = WantItem::where('user_id', $authUser->id)->where('item_variety_id', $req->id);
 		$wantItemCheck = $sql->exists();
 		if($wantItemCheck){
 			$wantItem = $sql->first();

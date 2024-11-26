@@ -11,7 +11,7 @@ const ListCard: React.FC<ItemDataType> = ({itemData}) => {
 			<div css={Wrapper}>
 				<div css={ItemBox}>
 					<div css={ImageBox}>
-						<img src={createImageUrl(itemData.thumbnail)} css={ImageStyle} alt={`${itemData.name} image`}/>
+						<img src={createImageUrl(itemData.thumbnail_path)} css={ImageStyle} alt={`${itemData.name} image`}/>
 					</div>
 					<div css={TextBox}>
 						<ItemPlanBadge plan={itemData.plan}/>

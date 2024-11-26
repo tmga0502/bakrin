@@ -6,7 +6,7 @@ import {AddressBox, ImageBox, ImageStyle, InfoBox, Wrapper} from './UserPanelFor
 
 const UserPanelForList: FC<userPanelForListType> = ({data}) => {
 	return(
-		<Link to={'/producers/'+data.uuid}>
+		<Link to={'/producers/'+data.id}>
 			<div css={Wrapper}>
 				<div css={ImageBox}>
 					<LazyLoadImage

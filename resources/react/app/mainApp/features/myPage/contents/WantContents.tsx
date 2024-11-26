@@ -26,7 +26,7 @@ const WantContents: React.FC<WantDataType> = ({wantItemsData, categoriesData}) =
 
 					<div css={VarietyLists}>
 						{category.varieties.map(variety => {
-							const isChecked = wantItemsData.some(item => Number(item.itemVarietyId) === variety.id); // yourArray は最初の配列
+							const isChecked = wantItemsData.some(item => Number(item.item_variety_id) === variety.id); // yourArray は最初の配列
 							return (
 								<FormGroup key={variety.id}>
 									<CheckBox

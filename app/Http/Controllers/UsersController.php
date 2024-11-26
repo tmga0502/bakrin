@@ -44,17 +44,16 @@ class UsersController extends Controller
 
     public function getFavoriteUsers(Request $req): JsonResponse
     {
-        $user = Auth::user();
-        $userUuid = $user->uuid;
-        $producerQuery = User::with('favoriteUsers')->whereHas('favoriteUsers', function($q) use($userUuid){
-            $q->where('myUuid', $userUuid);
+        $user_id = Auth::user()->id;
+		$users = [];
+        $userQuery = User::with('favorite_users')->whereHas('favorite_users', function($q) use($user_id){
+            $q->where('favorite_user_id', $user_id);
         });
-        if($producerQuery->exists()){
-            $producers = $producerQuery->get();
-        }else{
-            $producers = [];
+        if($userQuery->exists()){
+            $users = $userQuery->get();
         }
-        return response()->json($producers);
+		dd($users);
+        return response()->json($users);
     }
 
 	public function searchUser(Request $req): JsonResponse
@@ -82,7 +81,7 @@ class UsersController extends Controller
 
 			//ログ
 			$log = new Log([
-				'producerUuid' => Auth()->user()->uuid,
+				'user_id' => $user->id,
 				'action' => 'change password',
 			]);
 			$log->save();
@@ -94,30 +93,30 @@ class UsersController extends Controller
 	public function update(Request $req): JsonResponse
 	{
 		$producer = DB::transaction(function() use($req) {
-			$producer = User::find(Auth()->user()->id);
+			$user = User::find(Auth()->user()->id);
 			$insertArray = $req->all();
 
 			if(isset($req->img[0])){
 				//既存ファイル削除
-				$pathName = str_replace('storage/', '', $producer->imgPath);
+				$pathName = str_replace('storage/', '', $user->thumbnail_path);
 				Storage::disk('public')->delete($pathName);
 				//新たに登録
-				$imageService = new ImageService($req->img[0], 'producerImage');
-				$insertArray['imgPath'] = $imageService->save();
+				$imageService = new ImageService($req->img[0], 'userImage');
+				$insertArray['thumbnail_path'] = $imageService->save();
 			}else{
-				$insertArray['imgPath'] = $producer->imgPath;
+				$insertArray['thumbnail_path'] = $user->thumbnail_path;
 			}
 
-			$producer->fill($insertArray)->save();
+			$user->fill($insertArray)->save();
 
 			//ログ
 			$log = new Log([
-				'producerUuid' => Auth()->user()->uuid,
+				'user_id' => $user->id,
 				'action' => 'profile update'
 			]);
 			$log->save();
 
-			return $producer;
+			return $user;
 		});
 
 		return response()->json($producer, 200);

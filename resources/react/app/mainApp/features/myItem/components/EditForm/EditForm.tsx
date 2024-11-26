@@ -24,7 +24,7 @@ const EditForm: React.FC<EditPagePropsType> = (props) => {
 		if(value === ''){
 			setFormVarietiesStates([])
 		}{
-			const varietyArray = varietiesData.filter(item => item.categoryId === value)
+			const varietyArray = varietiesData.filter(item => item.item_category_id === Number(value))
 			setFormVarietiesStates(varietyArray)
 			setValue('varietyId', 0)
 		}
@@ -35,13 +35,12 @@ const EditForm: React.FC<EditPagePropsType> = (props) => {
 		setIsLoading(true)
 		update.mutate(data);
 	}
-console.log(itemData)
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<input type={'hidden'} value={itemData.id} {...register('id')}/>
 			<FormGroup>
 				<FormLabel text={'カテゴリー'} htmlFor={'category'}/>
-				<SelectBox optionObj={categoriesData} addBlankOption={true} defaultValue={itemData.categoryId} {...register('categoryId', {required: '選択してください'})} onChange={(e: any)=> {
+				<SelectBox optionObj={categoriesData} addBlankOption={true} defaultValue={itemData.item_category_id} {...register('categoryId', {required: '選択してください'})} onChange={(e: any)=> {
 					handleCategoryChange(e)
 				}}/>
 				{errors.categoryId && (
@@ -51,7 +50,7 @@ console.log(itemData)
 
 			<FormGroup>
 				<FormLabel text={'種類'} htmlFor={'variety'}/>
-				<SelectBox optionObj={formVarietiesStates} addBlankOption={true} defaultValue={itemData.varietyId} {...register('varietyId', {required: '選択してください'})}/>
+				<SelectBox optionObj={formVarietiesStates} addBlankOption={true} defaultValue={itemData.item_variety_id} {...register('varietyId', {required: '選択してください'})}/>
 				{errors.varietyId && (
 					<ErrorMessage msg={errors.varietyId.message as string}/>
 				)}
@@ -75,27 +74,27 @@ console.log(itemData)
 				</FormGroup>
 				<FormGroup>
 					<FormLabel text={'単位'} htmlFor={'unit'}/>
-					<SelectBox optionObj={unitData} defaultValue={itemData.unitId} {...register('unitId')}/>
+					<SelectBox optionObj={unitData} defaultValue={itemData.unit_id} {...register('unitId')}/>
 				</FormGroup>
 			</div>
 
 			<div css={Flex}>
 				<FormGroup>
 					<FormLabel text={'目安数量'} htmlFor={'guideCount'}/>
-					<Input id={'guideCount'} type={'number'} defaultValue={itemData.guideCount} {...register('guideCount', {required: '入力してください'})}/>
+					<Input id={'guideCount'} type={'number'} defaultValue={itemData.guide_count} {...register('guideCount', {required: '入力してください'})}/>
 					{errors.guideCount && (
 						<ErrorMessage msg={errors.guideCount.message as string}/>
 					)}
 				</FormGroup>
 				<FormGroup>
 					<FormLabel text={'目安単位'} htmlFor={'guideUnit'}/>
-					<SelectBox optionObj={unitData} defaultValue={itemData.guideUnitId} {...register('guideUnitId')}/>
+					<SelectBox optionObj={unitData} defaultValue={itemData.guide_unit_id} {...register('guideUnitId')}/>
 				</FormGroup>
 			</div>
 
 			<FormGroup>
 				<FormLabel text={'プラン'} htmlFor={'plan'}/>
-				<SelectBox optionObj={planData} addBlankOption={true} defaultValue={itemData.planId} {...register('planId', {required: '選択してください'})}/>
+				<SelectBox optionObj={planData} addBlankOption={true} defaultValue={itemData.plan_id} {...register('planId', {required: '選択してください'})}/>
 				{errors.planId && (
 					<ErrorMessage msg={errors.planId.message as string}/>
 				)}
@@ -109,11 +108,11 @@ console.log(itemData)
 			<FormGroup>
 				<FormLabel text={'発送可能日'} htmlFor={''}/>
 				<div css={MonthFlex}>
-					<SelectBox optionObj={Month} defaultValue={itemData.shippingStart} {...register('shippingStart')}/>
-					<SelectBox optionObj={MonthPart} defaultValue={itemData.shippingStartPart} {...register('shippingStartPart')}/>
+					<SelectBox optionObj={Month} defaultValue={itemData.shipping_start} {...register('shippingStart')}/>
+					<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_start_part} {...register('shippingStartPart')}/>
 					<span>から</span>
-					<SelectBox optionObj={Month} defaultValue={itemData.shippingEnd} {...register('shippingEnd')}/>
-					<SelectBox optionObj={MonthPart} defaultValue={itemData.shippingEndPart} {...register('shippingEndPart')}/>
+					<SelectBox optionObj={Month} defaultValue={itemData.shipping_end} {...register('shippingEnd')}/>
+					<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_end_part} {...register('shippingEndPart')}/>
 				</div>
 			</FormGroup>
 

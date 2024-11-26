@@ -9,9 +9,9 @@ console.log(itemData);
 		<div>
 			<div css={ItemName}>{itemData.name}</div>
 			<div css={DescriptionWrapper}>
-				<p css={DescriptionItem}>
+				<div css={DescriptionItem}>
 					<ItemPlanBadge plan={itemData.plan}/>
-				</p>
+				</div>
 				<p css={DescriptionItem}>{`${itemData.category.name} / ${itemData.variety.name}`}</p>
 				<p css={DescriptionItem}>{`数量：${itemData.count}${itemData.unit.name}`}</p>
 				<p css={DescriptionItem}>{`数量：${itemData.count}${itemData.unit.name}`}</p>

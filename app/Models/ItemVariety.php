@@ -25,6 +25,6 @@ class ItemVariety extends Model
 
 	public function category(): BelongsTo
 	{
-		return $this->belongsTo(ItemCategory::class, 'categoryId', 'id');
+		return $this->belongsTo(ItemCategory::class, 'item_category_id', 'id');
 	}
 }

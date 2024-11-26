@@ -4,6 +4,8 @@ import GridBox from "@mainLayouts/GridBox/GridBox";
 import {UserPanelForList} from "@mainFeatures/user/components";
 
 const UserList: React.FC<UserListType> = ({usersData, slice}) => {
+	// console.log(usersData)
+	// console.log(slice)
 	const List = slice === undefined ? usersData : usersData.slice(0, slice)
 	return (
 		<GridBox>

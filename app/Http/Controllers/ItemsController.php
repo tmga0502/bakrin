@@ -19,7 +19,7 @@ class ItemsController extends Controller
 
     public function getMyItems(GetMyItemsUseCaseInterface $interactor): JsonResponse
     {
-		$items = Item::with('plan')->where('user_id', Auth::user()->uuid)->orderBy('created_at', 'DESC')->get();
+		$items = Item::with('plan')->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 		return response()->json($items);
     }
 
@@ -79,8 +79,8 @@ class ItemsController extends Controller
 	public function getMyItem($itemUuid): JsonResponse
 	{
 		$authUser = Auth::user();
-		$item = Item::with(['plan', 'producer', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
-		if($item->user_id === $authUser->uuid){
+		$item = Item::with(['plan', 'user', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
+		if($item->user_id === $authUser->id){
 			return response()->json($item);
 		}
 
@@ -91,19 +91,19 @@ class ItemsController extends Controller
 	{
 		$result = DB::transaction(function () use ($req) {
 			$insertArray = $req->all();
-			$insertArray['user_id'] = Auth()->user()->uuid;
+			$insertArray['user_id'] = Auth()->user()->id;
 			$insertArray['uuid'] = (string) Str::uuid();
 
 			if(isset($req->thumbnail[0])){
 				$imageService = new ImageService($req->thumbnail[0], 'itemsThumbnail');
-				$insertArray['thumbnail'] = $imageService->save();
+				$insertArray['thumbnail_path'] = $imageService->save();
 			}
 			$item = new Item($insertArray);
 			$item->save();
 
 			//ログ
 			$log = new Log([
-				'user_id' => Auth()->user()->uuid,
+				'user_id' => Auth()->user()->id,
 				'action' => 'item create',
 				'description' =>  'id:' . $item->id . ' create'
 			]);
@@ -122,19 +122,19 @@ class ItemsController extends Controller
 			$insertArray = $req->all();
 			if(isset($req->thumbnail[0])){
 				//既存ファイル削除
-				$pathName = str_replace('storage/', '', $item->thumbnail);
+				$pathName = str_replace('storage/', '', $item->thumbnail_path);
 				Storage::disk('public')->delete($pathName);
 				//新たに登録
 				$imageService = new ImageService($req->thumbnail[0], 'itemsThumbnail');
-				$insertArray['thumbnail'] = $imageService->save();
+				$insertArray['thumbnail_path'] = $imageService->save();
 			}else{
-				$insertArray['thumbnail'] = $item->thumbnail;
+				$insertArray['thumbnail_path'] = $item->thumbnail_path;
 			}
 			$item->fill($insertArray)->save();
 
 			//ログ
 			$log = new Log([
-				'user_id' => Auth()->user()->uuid,
+				'user_id' => Auth()->user()->id,
 				'action' => 'item update',
 				'description' => 'id:' . $item->id . ' update'
 			]);
@@ -149,7 +149,7 @@ class ItemsController extends Controller
 	{
 		$uuid = $req->itemUuid;
 		$item = Item::where('uuid', $uuid)->first();
-		if($item->user_id === Auth()->user()->uuid){
+		if($item->user_id === Auth()->user()->id){
 			$item->delete();
 			return response()->json(true, 200);
 		}

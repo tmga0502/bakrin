@@ -34,7 +34,7 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 				</Tr>
 				<Tr>
 					<Td text={'目安数量'} heading={true}/>
-					<Td text={itemData.guideCount + itemData.guide_unit.name} heading={false}/>
+					<Td text={itemData.guide_count + itemData.guide_unit.name} heading={false}/>
 				</Tr>
 				<Tr>
 					<Td text={'プラン'} heading={true}/>
@@ -53,7 +53,7 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 				</Tr>
 				<Tr>
 					<Td text={'発送可能日'} heading={true}/>
-					<Td text={`${itemData.shippingStart}月${itemData.shippingStartPart}から${itemData.shippingEnd}月${itemData.shippingEndPart}`} heading={false}/>
+					<Td text={`${itemData.shipping_start}月${itemData.shipping_start_part}から${itemData.shipping_end}月${itemData.shipping_end_part}`} heading={false}/>
 				</Tr>
 				<Tr>
 					<Td text={'ステータス'} heading={true}/>
@@ -61,14 +61,14 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 				</Tr>
 				<Tr>
 					<Td text={'サムネイル'} heading={true}/>
-					<Td text={<img src={createImageUrl(itemData.thumbnail)} css={ImageStyle} alt={'thumbnail'}/>} heading={false}/>
+					<Td text={<img src={createImageUrl(itemData.thumbnail_path)} css={ImageStyle} alt={'thumbnail'}/>} heading={false}/>
 				</Tr>
 				{itemData.images.map((image: any, index: number) => (
 					<Tr key={image.id}>
 						<Td text={`画像${index+1}`} heading={true}/>
 						<Td text={
 							<div css={ImageWrapper} >
-								<img src={createImageUrl(image.path)} css={ImageStyle} alt={`image${index + 1}`}/>
+								<img src={createImageUrl(image.image_path)} css={ImageStyle} alt={`image${index + 1}`}/>
 								<ImageDeleteModal imageId={image.id}/>
 							</div>
 						} heading={false}/>

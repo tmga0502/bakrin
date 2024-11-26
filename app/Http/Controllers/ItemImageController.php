@@ -19,8 +19,8 @@ class ItemImageController extends Controller
 			$imageService = new ImageService($req->img[0], 'items');
 			$pathName = $imageService->save();
 			$insertArray = [
-				'itemId' => $req->itemId,
-				'path'=>$pathName,
+				'item_id' => $req->itemId,
+				'image_path'=>$pathName,
 			];
 
 			$itemImage = new ItemImage($insertArray);
