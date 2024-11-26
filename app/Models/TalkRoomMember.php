@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method create(array $array)
  * @method static where(string $string, mixed $id)
+ * @method insert(array[] $membersArray)
  */
 class TalkRoomMember extends Model
 {

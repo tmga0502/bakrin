@@ -55,7 +55,7 @@ class TradeController extends Controller
 	public function getOngoingTrades(): JsonResponse
 	{
 		$user = Auth()->user();
-		$trades = Trade::with(['tradeMembers.item', 'tradeMembers.user'])
+		$trades = Trade::with(['tradeMembers.item', 'tradeMembers.user', 'messages.sender'])
 			->where('status', 1)
 			->whereHas('tradeMembers', function ($q) use ($user) {
 				$q->where('user_id', $user->id);

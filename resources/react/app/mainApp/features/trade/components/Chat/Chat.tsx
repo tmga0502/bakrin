@@ -9,19 +9,19 @@ const Chat: React.FC<tradeRequestType> = ({tradeRequestData}) => {
 	const authUser = useRecoilValue(IsAuthUserDataStates)
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const messageDataCount = tradeRequestData.messages ? tradeRequestData.messages.length : 0
-	const partnerUser = tradeRequestData.trade_producers.filter(producer => producer.producerUuid !== authUser.uuid)[0]
+	const partnerUser = tradeRequestData.trade_members.filter(user => user.id !== authUser.id)[0]
 	console.log(tradeRequestData.messages)
 	return (
 		<MessageBoxWrapper>
 			<MessageContainer>
-				<MessageHeader name={partnerUser.producer.organizationName}/>
+				<MessageHeader name={partnerUser.user.organization_name}/>
 				<MessageViewer>
 					<></>
 					{tradeRequestData.messages?.map((message, index: number) => {
-						const layout = authUser.uuid === message.senderUuid ? 'sender' : 'receiver';
+						const layout = authUser.id === message.user_id ? 'sender' : 'receiver';
 						const ref = index === messageDataCount - 1 ? messagesEndRef : null
 						return (
-							<MessageBlock imgPath={createImageUrl(message.sender.imgPath)} name={message.sender.organizationName} text={message.message} layout={layout} ref={ref} key={message.id}/>
+							<MessageBlock imgPath={createImageUrl(message.sender.thumbnail_path)} name={message.sender.organization_name} text={message.message} layout={layout} ref={ref} key={message.id}/>
 						)
 					})}
 				</MessageViewer>

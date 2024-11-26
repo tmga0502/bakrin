@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('talk_rooms', function (Blueprint $table) {
             $table->id();
+			$table->string('uuid')->comment('uuid');
 			$table->string('name')->nullable()->default(null)->comment('ルーム名');
 			$table->boolean('is_group')->default(false)->comment('true:1on1, false:group');
             $table->timestamps();

@@ -24,7 +24,7 @@ const MessageForm: React.FC<MessageFormType> = ({}) => {
 		if (textareaRef.current) {
 			const message = textareaRef.current.value; // 手動で textarea の値を取得
 			const formData = {
-				partnerUuid: params.producerUuid,
+				partnerUuid: params.partnerUuid,
 				message: message,
 			}
 			send.mutate(formData)

@@ -110,7 +110,7 @@ const Router = () => {
 				{/*/!*  メッセージ  *!/*/}
 				<Route path="message">
 					<Route index={true} element={<GuardRoute component={<MessageListPage />} />}/>
-					<Route path=":producerUuid" element={<GuardRoute component={<MessageShowPage />} />}/>
+					<Route path=":partnerUuid" element={<GuardRoute component={<MessageShowPage />} />}/>
 				</Route>
 
 				{/*/!*  その他  *!/*/}

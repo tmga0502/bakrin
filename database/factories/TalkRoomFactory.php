@@ -25,6 +25,7 @@ class TalkRoomFactory extends Factory
 
 		return [
 			'name' => '',
+			'uuid' => Str::uuid(),
 			'is_group' => false,
 			'created_at' => $now,
 			'updated_at' => $now,

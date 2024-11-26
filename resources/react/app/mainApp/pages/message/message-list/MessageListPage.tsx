@@ -8,7 +8,6 @@ import {ListCard} from "@mainFeatures/message/components";
 
 const MessageListPage = () => {
 	const {data: messageLists = []} = useGetMessageLists()
-
 	return (
 		<MainLayout>
 			<PageTitle en={'MESSAGE'} jp={'メッセージ一覧'}/>

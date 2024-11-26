@@ -29,7 +29,7 @@ class TalkRoomMessageSeeder extends Seeder
 				$readAt = 100 - $i === 1  ? null : $date;
 				TalkRoomMessage::factory()
 					->withId($room->id)
-					->withUserId($sender->id)
+					->withUserId($sender->user_id)
 					->withDate($date)
 //					->withReadAt($readAt)
 					->create();

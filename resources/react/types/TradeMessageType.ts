@@ -7,5 +7,5 @@ export type TradeMessageType = {
     user_id             :number,
 	message             :string,
 	trade               :TradeType,
-	user                :UserType,
+	sender              :UserType,
 }
