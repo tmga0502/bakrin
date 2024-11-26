@@ -27,13 +27,13 @@ const TradeHistoryContents: React.FC<HistoryListType> = ({tradeList}) => {
 			<ContainerMd>
 				<TradeHistorySearch/>
 				{ListArray.map((list)=>{
-					const partnerUser = list.trade_producers.filter(tradeUser=>tradeUser.producer.uuid !== authUserData.uuid)[0]
+					const partnerUser = list.trade_members.filter(tradeUser=>tradeUser.user.id !== authUserData.id)[0]
 					return(
 						<ListPanel
 							link={`/trade/${list.uuid}`}
 							itemName={partnerUser.item.name}
-							producerName={partnerUser.producer.organizationName}
-							thumbnail={createImageUrl(partnerUser.item.thumbnail)}
+							userName={partnerUser.user.organization_name}
+							thumbnail={createImageUrl(partnerUser.item.thumbnail_path)}
 							date={formatDate(list.created_at)}
 							key={list.id}
 						/>
