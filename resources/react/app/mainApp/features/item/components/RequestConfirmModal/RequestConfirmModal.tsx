@@ -6,7 +6,6 @@ import {MyItemFormRequestStates} from "@mainFeatures/item/states";
 import {useForm} from "react-hook-form";
 import {useRequestTrade} from "@/react/api/query/TradeQuery";
 import {ItemDataType} from "@mainFeatures/item/types";
-import {ButtonBox} from "@mainFeatures/item/components/RequestConfirmModal/RequestConfirmModal.styles";
 
 const RequestConfirmModal: React.FC<ItemDataType> = ({itemData}) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +24,6 @@ const RequestConfirmModal: React.FC<ItemDataType> = ({itemData}) => {
 		setValue('recipientItemId', itemData.id);
 		request.mutate(getValues())
 	}
-console.log(myItemState)
 
 	return (
 		<>
@@ -38,7 +36,7 @@ console.log(myItemState)
 						<p>【{myItemState?.name}】</p>
 						<p>こちらを交換に出して申請しますか？</p>
 						<form onSubmit={handleSubmit(onSubmit)}>
-							<div css={ButtonBox}>
+							<div className={'flex justify-between items-center gap-6 py-4'}>
 								<MainButton text={'キャンセル'} color={'dark'} type={'button'} width={'full'} size={'sm'} onClick={() => {
 									setIsModalOpen(false)
 								}}/>

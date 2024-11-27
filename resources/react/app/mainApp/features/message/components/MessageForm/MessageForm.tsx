@@ -1,12 +1,10 @@
 import React, {useRef} from 'react';
-import {MessageFormType} from "./MessageForm.type";
-import {ButtonWrapper, TextAreaStyle, Wrapper} from './MessageForm.styles';
 import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useSendMessage} from "@/react/api/query/MessageQuery";
 import MainButton from "@/react/app/mainApp/components/elements/button/MainButton/MainButton";
 
-const MessageForm: React.FC<MessageFormType> = ({}) => {
+const MessageForm: React.FC = () => {
 	const params = useParams();
 	const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 	const {handleSubmit} = useForm()
@@ -34,14 +32,14 @@ const MessageForm: React.FC<MessageFormType> = ({}) => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<div css={Wrapper}>
+			<div className={'flex shrink-0 gap-6 p-2 bg-default rounded-b-md'}>
 				<textarea
 					ref={textareaRef}
-					css={TextAreaStyle}
+					className={'messageTextAreaStyle'}
 					onChange={handleInput}
 				>
 				</textarea>
-				<div css={ButtonWrapper}>
+				<div className={'flex items-center whitespace-nowrap'}>
 					<MainButton text={'送信'} color={'info'} type={'submit'}/>
 				</div>
 			</div>

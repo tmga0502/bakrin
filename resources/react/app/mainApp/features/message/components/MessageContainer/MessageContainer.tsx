@@ -1,10 +1,8 @@
-import React from 'react';
-import {MessageContainerType} from "./MessageContainer.type";
-import {Wrapper} from './MessageContainer.styles';
+import React, { ReactNode } from "react";
 
-const MessageContainer: React.FC<MessageContainerType> = ({children}) => {
+const MessageContainer: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'flex flex-col h-full max-h-[calc(100vh_-_268px)]'}>
 			{children}
 		</div>
 	);

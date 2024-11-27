@@ -1,10 +1,8 @@
-import React from 'react';
-import {MessageViewerType} from "./MessageViewer.type";
-import {Wrapper} from './MessageViewer.styles';
+import React, {ReactNode} from 'react';
 
-const MessageViewer: React.FC<MessageViewerType> = ({children}) => {
+const MessageViewer: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'w-full min-h-[400px] max-h-full flex-1 bg-white border-bakGray overflow-y-scroll p-4'}>
 			{children}
 		</div>
 	);

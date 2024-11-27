@@ -3,7 +3,6 @@ import {ItemDataType} from "@mainFeatures/item/types";
 import ItemPlanBadge from "@mainElements/budge/ItemPlanBadge/ItemPlanBadge";
 
 const ItemDescription: React.FC<ItemDataType> = ({itemData}) => {
-console.log(itemData);
 	return (
 		<div>
 			<div className={'text-2xl'}>{itemData.name}</div>

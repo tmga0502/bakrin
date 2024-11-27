@@ -1,10 +1,8 @@
-import React from 'react';
-import {MessageBoxWrapperType} from "./MessageBoxWrapper.type";
-import {Wrapper} from './MessageBoxWrapper.styles';
+import React, {ReactNode} from 'react';
 
-const MessageBoxWrapper: React.FC<MessageBoxWrapperType> = ({children}) => {
+const MessageBoxWrapper: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'max-w-[800px] h-full max-h-full mt-10 mx-auto'}>
 			{children}
 		</div>
 	);

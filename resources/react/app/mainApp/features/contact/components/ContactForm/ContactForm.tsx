@@ -1,12 +1,10 @@
 import React from 'react';
-import {ContactFormType} from "./ContactForm.type";
 import {useForm} from "react-hook-form";
 import {FormGroup} from "@mainLayouts/form";
 import {TextArea} from "@mainElements/form";
-import {Caution} from "./ContactForm.styles";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 
-const ContactForm: React.FC<ContactFormType> = ({}) => {
+const ContactForm: React.FC = () => {
 	const {register, handleSubmit} = useForm()
 
 	const onSubmit = (data: any) => {
@@ -19,7 +17,7 @@ const ContactForm: React.FC<ContactFormType> = ({}) => {
 				<TextArea rows={15} {...register('body')}/>
 			</FormGroup>
 
-			<p css={Caution}>※お問い合わせに対する回答は、ご登録いただいていますメールアドレスへ返信させていただきます。</p>
+			<p className={'text-xs mb-6'}>※お問い合わせに対する回答は、ご登録いただいていますメールアドレスへ返信させていただきます。</p>
 			<MainButton text={'送信'} color={'mainGreen'} type={'submit'} width={'half'}/>
 		</form>
 	);

@@ -1,10 +1,12 @@
-import React from "react";
-import { ModalBodyType } from "./ModalBody.type";
-import {Wrapper} from './ModalBody.styles'
+import React, {ReactNode} from "react";
+
+type ModalBodyType = {
+	children: ReactNode
+}
 
 const ModalBody: React.FC<ModalBodyType> = ({children}) => {
 	return(
-		<div css={Wrapper}>{children}</div>
+		<div className={'p-4'}>{children}</div>
 	)
 }
 

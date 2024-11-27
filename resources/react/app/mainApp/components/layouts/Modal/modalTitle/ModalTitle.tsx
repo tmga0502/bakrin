@@ -1,11 +1,15 @@
 import React from "react";
-import { ModalTitleType } from "./ModalTitle.type";
-import {Wrapper} from './ModalTitle.styles'
+
+type ModalTitleType = {
+	title    : string,
+}
 
 const ModalTitle: React.FC<ModalTitleType> = ({title}) => {
 	return(
 		<div>
-			<div css={Wrapper}>{title}</div>
+			<div className={'p-4 border-b border-b-lightGray bg-mainGreen text-white rounded-t-md'}>
+				{title}
+			</div>
 		</div>
 	)
 }

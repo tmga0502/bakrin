@@ -1,11 +1,9 @@
 import React from 'react';
-import {MessageHeaderType} from "./MessageHeader.type";
-import {Wrapper, TextStyle} from './MessageHeader.styles';
 
-const MessageHeader: React.FC<MessageHeaderType> = ({name}) => {
+const MessageHeader: React.FC<{name: string}> = ({name}) => {
 	return (
-		<div css={Wrapper}>
-			<p css={TextStyle}>{name}</p>
+		<div className={'flex shadow-none gap-6 p-2 bg-default rounded-t-md'}>
+			<p className={'text-white'}>{name}</p>
 		</div>
 	);
 };

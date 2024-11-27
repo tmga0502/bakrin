@@ -1,5 +1,4 @@
 import React from 'react';
-import {Container, RadioBox, Title} from './MyItemList.styles';
 import {ItemType} from "@/react/types/ItemType";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
@@ -17,13 +16,13 @@ const MyItemList: React.FC = () => {
 	}
 
 	return (
-		<div css={Container}>
-			<p css={Title}>【交換に出すアイテムを選択してください】</p>
-			<div>
+		<div className={'px-8 mb-12'}>
+			<p className={'font-bold mb-6'}>【交換に出すアイテムを選択してください】</p>
+			<div className={'my-8'}>
 				{userData?.items.map((item: ItemType) => {
 					if(item.status === 1){
 						return (
-							<div css={RadioBox} key={item.id}>
+							<div className={'flex items-center gap-3 mb-4'} key={item.id}>
 								<Radio
 									text={
 										<>

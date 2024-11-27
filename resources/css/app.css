@@ -53,12 +53,59 @@ button:focus-visible, a:focus-visible{
     @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-sm border focus:ring-mainGreen focus:ring-2 focus-visible:outline-0
 }
 
-.radioStyle{
-    @apply w-4 h-4 bg-gray-100 border-gray-300 focus:ring-0 focus:outline-0 focus-visible:outline-0
+.messageTextAreaStyle{
+	width: 100%;
+	height: 40px;
+	min-height: 24px;
+	max-height: 208px;
+	padding: 8px;
+	background-color: #FFFFFF;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	resize: none;
+	line-height: 20px;
+	overflow: auto;
+	resize: none;
+}
+.messageTextAreaStyle:focus{
+	border:2px solid #00BF63
+}
+.messageTextAreaStyle:focus-visible{
+	outline: none;
 }
 
-.radioAccent{
-    accent-color: green
+.radioStyle{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	position: relative;
+	cursor: pointer;
+}
+.radioStyle::before, .radioStyle::after{
+	border-radius: 50%;
+	content: '';
+}
+.radioStyle::before{
+	width: 18px;
+	height: 18px;
+	border: 2px solid #dddddd;
+	box-sizing: border-box;
+}
+.radioStyle::after{
+	position: absolute;
+	top: 50%;
+	left: 9px;
+	transform: translate(-50%, -50%);
+	width: 9px;
+	height: 9px;
+	background-color: #dddddd;
+}
+.radioStyle:has(:checked)::after{
+	background-color: #00BF63;
+	animation: anim-radio-2 .3s linear;
+}
+.radioStyle > input[type="radio"]{
+	display: none;
 }
 
 .tdStyle{
