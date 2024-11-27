@@ -1,7 +1,6 @@
 import React from 'react';
 import {ItemImageSliderType} from "./ItemImageSlider.type";
 import ImageGallery from "react-image-gallery";
-// import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ItemImageSlider: React.FC<ItemImageSliderType> = ({thumbnail, images}) => {
 	const imgs = [

@@ -1,5 +1,4 @@
 import React from 'react';
-import {ItemName, DescriptionWrapper, DescriptionItem, ColorRed} from './ItemDescription.styles';
 import {ItemDataType} from "@mainFeatures/item/types";
 import ItemPlanBadge from "@mainElements/budge/ItemPlanBadge/ItemPlanBadge";
 
@@ -7,17 +6,17 @@ const ItemDescription: React.FC<ItemDataType> = ({itemData}) => {
 console.log(itemData);
 	return (
 		<div>
-			<div css={ItemName}>{itemData.name}</div>
-			<div css={DescriptionWrapper}>
-				<div css={DescriptionItem}>
+			<div className={'text-2xl'}>{itemData.name}</div>
+			<div className={'p-8'}>
+				<div className={'mb-4 leading-8'}>
 					<ItemPlanBadge plan={itemData.plan}/>
 				</div>
-				<p css={DescriptionItem}>{`${itemData.category.name} / ${itemData.variety.name}`}</p>
-				<p css={DescriptionItem}>{`数量：${itemData.count}${itemData.unit.name}`}</p>
-				<p css={DescriptionItem}>{`数量：${itemData.count}${itemData.unit.name}`}</p>
-				<p css={[DescriptionItem, ColorRed]}>{`数量目安：${itemData.guide_count}${itemData.guide_unit.name}`}</p>
+				<p className={'mb-4 leading-8'}>{`${itemData.category.name} / ${itemData.variety.name}`}</p>
+				<p className={'mb-4 leading-8'}>{`数量：${itemData.count}${itemData.unit.name}`}</p>
+				<p className={'mb-4 leading-8'}>{`数量：${itemData.count}${itemData.unit.name}`}</p>
+				<p className={'mb-4 leading-8, text-danger'}>{`数量目安：${itemData.guide_count}${itemData.guide_unit.name}`}</p>
 
-				<div css={DescriptionItem}>
+				<div className={'mb-4 leading-8'}>
 					{itemData.description}
 				</div>
 

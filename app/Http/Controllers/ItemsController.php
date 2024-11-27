@@ -73,6 +73,9 @@ class ItemsController extends Controller
     public function getItem($itemUuid): JsonResponse
     {
         $item = Item::with(['plan', 'user', 'category', 'variety', 'unit', 'guideUnit', 'images', 'favoriteItems'])->where('uuid', $itemUuid)->first();
+		if($item === null){
+			return response()->json([], 404);
+		}
 		return response()->json($item);
 	}
 

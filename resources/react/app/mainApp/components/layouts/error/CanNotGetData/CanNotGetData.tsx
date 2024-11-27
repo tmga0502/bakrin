@@ -6,7 +6,7 @@ const CanNotGetData: React.FC = () => {
 		<div className={'w-full h-full flex items-center'}>
 			<div className={'mx-auto'}>
 				<div className={'text-center text-danger text-5xl'}>
-					<BiError/>
+					<BiError style={{marginLeft:'auto', marginRight:'auto'}}/>
 				</div>
 				<p className={'text-danger text-md'}>
 					データ取得に<br className={'md:hidden'}/>失敗しました

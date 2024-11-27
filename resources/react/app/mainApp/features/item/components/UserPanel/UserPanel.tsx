@@ -1,19 +1,18 @@
 import React from 'react';
-import {AddressStyle, ImageBox, ImageStyle, Wrapper} from './UserPanel.styles';
 import {Link} from "react-router-dom";
 import {ItemDataType} from "@mainFeatures/item/types";
 
 const UserPanel: React.FC<ItemDataType> = ({itemData}) => {
 	return (
 		<Link to={`/producers/${itemData.user_id}`}>
-			<div css={Wrapper}>
-				<div css={ImageBox}>
+			<div className={'p-4 border-2 border-lightGray rounded-md bg-white flex items-center gap-6 hover:opacity-80'}>
+				<div className={'w-[64px] h-[64px]'}>
 					<img src={itemData.user.thumbnail_path}
-						 css={ImageStyle}
+						 className={'w-full h-full object-cover rounded-full'}
 						 alt={itemData.user.organization_name}/>
 				</div>
-				<div css="">
-					<p css={AddressStyle}>{itemData.user.address1 + itemData.user.address2}</p>
+				<div>
+					<p className={'text-xs mb-2'}>{itemData.user.address1 + itemData.user.address2}</p>
 					<p>{itemData.user.organization_name}</p>
 				</div>
 			</div>

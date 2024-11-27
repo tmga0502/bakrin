@@ -8,11 +8,3 @@ export type MainButtonType = {
 	onClick?: any,
 	disabled? : boolean,
 }
-
-export type ButtonPropsType = {
-	color: 'mainGreen' | 'mainYellow' | 'danger' | 'info' | 'success' | 'dark' | 'default',
-	size : 'sm' | 'md' | 'lg' ,
-	width : 'full' | 'half' | '',
-	align : 'left' | 'center' | 'right',
-	disabled : boolean,
-}

@@ -8,14 +8,16 @@ import ItemShowContents from "@mainFeatures/item/contents/ItemShowContents";
 
 const ItemShowPage = () => {
 	const params = useParams()
-	const { data: itemData, isLoading} = useGetItem(params.itemUuid);
+	const { data: itemData, isLoading, isError, isSuccess} = useGetItem(params.itemUuid);
 
 	let contents: ReactNode
 	if (isLoading){
 		contents = <ContentsLoader/>
-	}else if (!itemData){
+	}
+	if (isError){
 		contents = <CanNotGetData/>
-	}else{
+	}
+	if(isSuccess){
 		contents = <ItemShowContents itemData={itemData}/>
 	}
 

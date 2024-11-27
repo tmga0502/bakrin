@@ -19,6 +19,7 @@ export default {
             success:     '#22c55e',
             info:        '#38bdf8',
             danger:      '#dc2626',
+	        pink:        '#EA599C',
             warning:     '#fbbf24',
             default:     '#737373',
             lightGray:   '#d6d6d6',

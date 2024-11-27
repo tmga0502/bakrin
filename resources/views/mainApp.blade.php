@@ -10,7 +10,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
+	<link rel="stylesheet" href="{{ url('assets/css/reset.css') }}">
     {{-- react に変更があったとき自動で --}}
 {{--    @viteReactRefresh--}}
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/react/app/mainApp/index.tsx'])

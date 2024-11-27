@@ -4,5 +4,6 @@ export type FavoriteButtonType = {
 	type : 'button' | 'submit',
 	size? : 'sm' | 'md' | 'lg' ,
 	width? : 'full' | 'half',
+	align?: 'left' | 'center' | 'right',
 	onClick?: any,
 }
