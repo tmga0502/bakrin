@@ -1,10 +1,12 @@
 import React from 'react';
-import {ErrorMessageType} from "./ErrorMessage.type";
-import {TextStyle} from './ErrorMessage.styles';
+
+type ErrorMessageType = {
+	msg: string,
+}
 
 const ErrorMessage: React.FC<ErrorMessageType> = ({msg}) => {
 	return (
-		<p css={TextStyle}>{msg}</p>
+		<p className={'text-xs text-danger mt-2'}>{msg}</p>
 	);
 };
 

@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactLoading from "react-loading";
-import {Wrapper} from './ContentsLoader.styles'
-import {theme} from "@/react/app/mainApp/styles/Theme";
 
 const ContentsLoader = () => {
     return (
-		<div css={Wrapper}>
+		<div className={'flex justify-center items-center w-full h-full z-[99999] opacity-50 bg-white'}>
 			<div>
 				<ReactLoading
 					type="bars"
-					color={theme.color.mainGreen}
+					color="#00BF63"
 					height="100px"
 					width="100px"
 				/>

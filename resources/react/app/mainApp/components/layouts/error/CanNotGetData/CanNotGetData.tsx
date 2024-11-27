@@ -1,16 +1,15 @@
 import React from 'react';
-import {MessageBox, Wrapper, IconStyle, MessageStyle, BrStyle} from './CanNotGetData.styles';
 import { BiError } from "react-icons/bi";
 
 const CanNotGetData: React.FC = () => {
 	return (
-		<div css={Wrapper}>
-			<div css={MessageBox}>
-				<div css={IconStyle}>
+		<div className={'w-full h-full flex items-center'}>
+			<div className={'mx-auto'}>
+				<div className={'text-center text-danger text-5xl'}>
 					<BiError/>
 				</div>
-				<p css={MessageStyle}>
-					データ取得に<br css={BrStyle}/>失敗しました
+				<p className={'text-danger text-md'}>
+					データ取得に<br className={'md:hidden'}/>失敗しました
 				</p>
 			</div>
 		</div>
