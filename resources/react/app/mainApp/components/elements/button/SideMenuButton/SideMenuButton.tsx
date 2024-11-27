@@ -1,14 +1,17 @@
 import React from 'react';
-import {SideMenuButtonType} from "./SideMenuButton.type";
-import {Box, IconBox, TextBox} from "./SideMenuButton.styles";
+
+type SideMenuButtonType = {
+	icon: React.ReactNode,
+	title: string,
+}
 
 const SideMenuButton: React.FC<SideMenuButtonType> = ({icon, title}) => {
 	return (
-		<div css={Box}>
-			<div css={IconBox}>
+		<div className={'w-full h-[60px] bg-bakDark p-2 hover:opacity-80'}>
+			<div className={'text-white text-center h-1/2 leading-8 flex justify-center items-center'}>
 				{icon}
 			</div>
-			<div css={TextBox}>
+			<div className={'text-white text-center h-1/2 leading-7'}>
 				{title}
 			</div>
 		</div>

@@ -1,10 +1,14 @@
 import React from 'react';
-import {FormLabelType} from "./FormLabel.type";
-import {FormLabelStyle} from "./FormLabel.styles";
 
-const FormLabel = ({text, htmlFor}: FormLabelType) => {
+type FormLabelType = {
+	text   : string,
+	htmlFor: string,
+}
+
+
+const FormLabel:React.FC<FormLabelType>= ({text, htmlFor}) => {
 	return (
-		<label css={FormLabelStyle} htmlFor={htmlFor}>
+		<label className={'inline-block text-xs font-bold mb-1'} htmlFor={htmlFor}>
 			{text}
 		</label>
 	);

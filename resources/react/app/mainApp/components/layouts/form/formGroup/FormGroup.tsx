@@ -1,10 +1,8 @@
-import React from 'react';
-import {FormGroupType} from "./FormGroup.type";
-import {Container} from "./FormGroup.styles";
+import React, {ReactNode} from 'react';
 
-const FormGroup = ({children}: FormGroupType) => {
+const FormGroup:React.FC<{ children: ReactNode }> = ({children}) => {
 	return (
-		<div css={Container}>{children}</div>
+		<div className={'mb-6'}>{children}</div>
 	);
 };
 

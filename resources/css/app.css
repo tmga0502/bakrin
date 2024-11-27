@@ -22,42 +22,19 @@ button:focus-visible, a:focus-visible{
 }
 
 .inputStyle {
-	margin-top:0;
+	margin-top: 0;
 	padding: 4px 8px;
 	display: block;
 	width: 100%;
-	border: 1px solid #757575;
+	border: 1px solid #dcdcdc;
 	border-radius: 4px;
-	font-size: 16px;
-    /*@apply*/
-    /*focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent*/
-    /*focus-visible:outline-0*/
-    /*/*disabled:opacity-50 disabled:pointer-events-none*/
-    /*no-spin*/
+	font-size: 14px;
 
-	/*outline: none;*/
-	/*border: none;*/
-	/*border0-bottom: solid 1px #757575;*/
-	/*fontSize: '14px';*/
-
-	/*':focus':{*/
-	/*	borderBottom: `3px solid ${vars.color.mainGreen}`*/
-	/*},*/
-
-/*'::-webkit-inner-spin-button':{*/
-/*	WebkitAppearance: 'none',*/
-/*	margin: 0,*/
-/*	MozAppearance:'textfield',*/
-/*},*/
-/*'::-webkit-outer-spin-button':{*/
-/*	WebkitAppearance: 'none',*/
-/*	margin: 0,*/
-/*	MozAppearance:'textfield',*/
-/*}*/
+	outline: none;
 }
+
 .inputStyle:focus{
-	/*outline: 0;*/
-	box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+	border: 1px solid #00BF63;
 	border-radius: 4px;
 }
 
