@@ -1,11 +1,10 @@
 import React from 'react';
-import {Box} from './ShowBox.styles';
-import {TopicType} from "@mainFeatures/topics/types/type";
 import {formatBr} from "@/react/app/mainApp/functions/formatter"
+import {NoticeType} from "@/react/types/NoticeType";
 
-const ShowBox: React.FC<TopicType> = ({topicData}) => {
+const ShowBox: React.FC<{topicData: NoticeType}> = ({topicData}) => {
 	return (
-		<div css={Box}>
+		<div className={'mt-10'}>
 			{formatBr(topicData.body)}
 		</div>
 	);

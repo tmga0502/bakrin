@@ -8,7 +8,7 @@ import TopicsShowContents from "@mainFeatures/topics/contents/TopicsShowContents
 
 const TopicsShowPage = () => {
 	const params = useParams();
-	const {data: topicData, isLoading} = useGetData(params.uuid)
+	const {data: topicData, isLoading} = useGetData(params.uuid as string)
 
 	let contents: ReactNode;
 	if (isLoading){

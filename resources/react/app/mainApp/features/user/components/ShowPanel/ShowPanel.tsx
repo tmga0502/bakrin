@@ -1,20 +1,17 @@
 import React, {useState} from 'react';
-import {ShowPanelType} from "./ShowPanel.type";
-import {AddressStyle, ButtonBox, ImageBox, ImageStyle, NameStyle, ProfileBox, Wrapper} from './ShowPanel.styles';
 import {useDeregisterFavoriteUser, useRegisterFavoriteUser} from "@/react/api/query/FavoriteUserQuery";
 import {useRecoilValue} from "recoil";
 import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 import FavoriteButton from "@mainElements/button/FavoriteButton/FavoriteButton";
+import {UserType} from "@/react/types/UserType";
 
-const ShowPanel: React.FC<ShowPanelType> = ({data}) => {
+const ShowPanel: React.FC<{data: UserType}> = ({data}) => {
 	const userData = useRecoilValue(IsAuthUserDataStates)
 	const [favoriteStatus, setFavoriteStatus] = useState(
 		data.favorite_users.some((user:any) => user.favorite_by_user_id === userData.id)
 	)
 	const favoriteRegister = useRegisterFavoriteUser();
 	const favoriteDeregister = useDeregisterFavoriteUser();
-
-	console.log(data)
 
 	const handleFavorite = () => {
 		if (favoriteStatus){
@@ -26,17 +23,17 @@ const ShowPanel: React.FC<ShowPanelType> = ({data}) => {
 	}
 
 	return (
-		<div css={Wrapper}>
-			<div css={ProfileBox}>
-				<div css={ImageBox}>
-					<img src={data.thumbnail_path} css={ImageStyle} alt="farmerImg"/>
+		<div className={'p-4 border-2 border-bakGray md:flex md:items-center md:justify-between'}>
+			<div className={'flex items-center gap-4'}>
+				<div className={'w-16 h-16'}>
+					<img src={data.thumbnail_path} className={'w-full h-full object-cover rounded-full'} alt="farmerImg"/>
 				</div>
 				<div>
-					<p css={AddressStyle}>{`${data.address1}${data.address2}`}</p>
-					<p css={NameStyle}>{data.organization_name}</p>
+					<p className={'tex-xs mb-2'}>{`${data.address1}${data.address2}`}</p>
+					<p className={'text-md'}>{data.organization_name}</p>
 				</div>
 			</div>
-			<div css={ButtonBox}>
+			<div className={'text-center mt-4 md:w-[66%] md:text-right md:mt-0'}>
 				{favoriteStatus ? (
 					<FavoriteButton value={'登録解除'} status={true} type={'button'} onClick={handleFavorite}/>
 				) : (

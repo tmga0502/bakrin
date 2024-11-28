@@ -1,12 +1,11 @@
 import React from 'react';
-import {PrType} from "./Pr.type";
-import {Wrapper, Title} from './Pr.styles';
+import {UserType} from "@/react/types/UserType";
 
-const Pr: React.FC<PrType> = ({data}) => {
+const Pr: React.FC<{data: UserType}> = ({data}) => {
 	return (
 		<>
-			<div css={Wrapper}>
-				<p css={Title}>自己紹介</p>
+			<div className={'mb-8 px-4 py-8 border-b border-b-bakGray'}>
+				<p className={'font-bold mb-3'}>自己紹介</p>
 				{data.pr}
 			</div>
 		</>
