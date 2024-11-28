@@ -1,11 +1,11 @@
 import React from 'react';
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
-import SearchProducerContents from "@mainFeatures/search/contents/SearchProducerContents";
+import SearchProducerContext from "@mainFeatures/search/context/SearchProducerContext";
 
 const SearchUserPage = () => {
 	return (
 		<MainLayout>
-			<SearchProducerContents/>
+			<SearchProducerContext/>
 		</MainLayout>
 	);
 };

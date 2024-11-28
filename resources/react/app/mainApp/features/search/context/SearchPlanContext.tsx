@@ -6,7 +6,7 @@ import {PlanPropsType} from "@mainFeatures/search/types";
 import {useRecoilValue} from "recoil";
 import {SearchPlanResultStates} from "@/react/app/mainApp/states/SearchPlanStates";
 
-const SearchPlanContents: React.FC<PlanPropsType> = ({planDatas}) => {
+const SearchPlanContext: React.FC<PlanPropsType> = ({planDatas}) => {
 	const searchPlanResult = useRecoilValue(SearchPlanResultStates);
 
 	return (
@@ -21,4 +21,4 @@ const SearchPlanContents: React.FC<PlanPropsType> = ({planDatas}) => {
 	);
 };
 
-export default SearchPlanContents;
+export default SearchPlanContext;

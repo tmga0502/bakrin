@@ -6,7 +6,7 @@ import {ItemPanelForList} from "@mainFeatures/item/components";
 import {useRecoilValue} from "recoil";
 import {SearchCategoryResultStates} from "@/react/app/mainApp/states/SearchCategoryStates";
 
-const SearchItemCategoryContents:React.FC<ItemCateGoryPropsType> = ({categoryDatas}) => {
+const SearchItemCategoryContext:React.FC<ItemCateGoryPropsType> = ({categoryDatas}) => {
 	const searchCategoryResultStates = useRecoilValue(SearchCategoryResultStates)
 	return (
 		<>
@@ -21,4 +21,4 @@ const SearchItemCategoryContents:React.FC<ItemCateGoryPropsType> = ({categoryDat
 	);
 };
 
-export default SearchItemCategoryContents;
+export default SearchItemCategoryContext;

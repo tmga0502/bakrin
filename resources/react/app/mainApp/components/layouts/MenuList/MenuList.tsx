@@ -2,7 +2,17 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { Menu } from './constants';
 import { MenuType } from './constants/index.type';
-import {MenuListTv} from "@mainLayouts/MenuList/MenuList.tv";
+import {tv} from "tailwind-variants";
+
+const MenuListTv = tv({
+	base: 'flex items-center px-2 py-3',
+	variants:{
+		color:{
+			white: 'bg-white',
+			gray: 'bg-bakGray border-b border-b-white',
+		}
+	}
+})
 
 const MenuList = () => {
 	return (

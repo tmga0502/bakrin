@@ -3,7 +3,7 @@ import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
 import {CanNotGetData} from "@mainLayouts/error";
-import SearchItemCategoryContents from "@mainFeatures/search/contents/SearchItemCategoryContents";
+import SearchItemCategoryContext from "@mainFeatures/search/context/SearchItemCategoryContext";
 
 const SearchItemCategoryPage = () => {
 	const {data: categoryData, isLoading} = useGetCategories();
@@ -14,7 +14,7 @@ const SearchItemCategoryPage = () => {
 	}else if (!categoryData){
 		contents = <CanNotGetData/>
 	}else{
-		contents = 	<SearchItemCategoryContents categoryDatas={categoryData}/>
+		contents = 	<SearchItemCategoryContext categoryDatas={categoryData}/>
 	}
 
 	return (

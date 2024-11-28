@@ -4,7 +4,6 @@ import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {Input} from "@mainElements/form";
 import {useForm} from "react-hook-form";
-import {contentsTittle} from "@mainFeatures/trade/components/RejectButton/RejectButton.styles";
 import {useSetRecoilState} from "recoil";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
@@ -30,7 +29,7 @@ const RejectButton: React.FC = () => {
 				<Modal onClick={()=>{setIsModalOpen(false)}}>
 					<ModalTitle title={'申請を拒否'}/>
 					<ModalBody>
-						<p css={contentsTittle}>申請を拒否する場合は理由をお答えください</p>
+						<p className={'mb-6'}>申請を拒否する場合は理由をお答えください</p>
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<FormGroup>
 								<FormLabel text={'拒否理由'} htmlFor={'reason'}/>

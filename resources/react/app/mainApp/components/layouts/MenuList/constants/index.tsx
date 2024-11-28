@@ -1,8 +1,26 @@
 import React from "react";
-import {FaRegCircle} from "react-icons/fa";
+import {FaRegCircle, FaSearch} from "react-icons/fa";
 import { MenuType } from "./index.type";
 
 const Menu: MenuType[] = [
+	{
+		icon: <FaSearch />,
+		title: 'プランから探す',
+		link: '/searchPlan',
+		bg: 'gray'
+	},
+	{
+		icon: <FaSearch />,
+		title: 'カテゴリーから探す',
+		link: '/searchItemCategory',
+		bg: 'gray'
+	},
+	{
+		icon: <FaSearch />,
+		title: '生産者から探す',
+		link: '/searchUser',
+		bg: 'gray'
+	},
 	{
 		icon: <FaRegCircle />,
 		title: '申請依頼',

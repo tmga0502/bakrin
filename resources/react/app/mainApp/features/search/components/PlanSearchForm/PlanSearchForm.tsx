@@ -1,5 +1,4 @@
 import React from 'react';
-import {ButtonBox, CheckBoxWrapper, Wrapper} from './PlanSearchForm.styles';
 import {PlanType} from "@/react/types/PlanType";
 import axios from "axios";
 import {ItemType} from "@/react/types/ItemType";
@@ -22,7 +21,6 @@ const PlanSearchForm: React.FC<PlanPropsType> = ({planDatas}) => {
 		}else{
 			setSearchPlanList(data.plan)
 		}
-		console.log(data)
 		const response = await axios.post<ItemType[]>(`/api/items/searchPlan`, data);
 		setSearchPlanResult(response.data)
 	}
@@ -33,16 +31,16 @@ const PlanSearchForm: React.FC<PlanPropsType> = ({planDatas}) => {
 		setSearchPlanResult([])
 	}
 	return (
-		<div css={Wrapper}>
+		<div className={'w-full bg-white px-4 py-2 mb-8'}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div css={CheckBoxWrapper}>
+				<div className={'flex items-center gap-5 lg:mb-0'}>
 					{planDatas.map((plan: PlanType) => (
 						<FormGroup key={plan.id}>
 							<CheckBox text={plan.name} value={plan.id} {...register('plan')}/>
 						</FormGroup>
 					))}
 				</div>
-				<div css={ButtonBox}>
+				<div className={'w-[70%] flex gap-4 justify-end mt-1 mx-auto text-center sm:w-1/2 sm:ml-auto md:w-[30%]'}>
 					<MainButton text={'検索'} color={'mainGreen'} type={'submit'} size={'sm'} width={'full'}/>
 					<MainButton text={'リセット'} color={'default'} type={'button'} size={'sm'} width={'full'} onClick={handleReset}/>
 				</div>

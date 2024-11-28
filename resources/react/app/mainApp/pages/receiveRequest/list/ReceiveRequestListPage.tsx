@@ -13,7 +13,6 @@ const ReceiveRequestListPage = () => {
 	  <MainLayout>
 		  <PageTitle en={'RECEIVE REQUEST'} jp={'申請依頼'}/>
 		  {tradeRequestsData.map((list:TradeType)=>{
-			  console.log(tradeRequestsData)
 			  const partnerProducer = list.trade_members.filter(user=>user.applicant_flag)[0]
 			  return(
 				  <ListPanel

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Wrapper} from './ItemCategorySearchForm.styles';
 import SelectBox from "@mainElements/form/SelectBox/SelectBox";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {SearchCategoryResultStates, SearchCategoryStates} from "@/react/app/mainApp/states/SearchCategoryStates";
@@ -19,7 +18,7 @@ const ItemCategorySearchForm: React.FC<ItemCateGoryPropsType> = ({categoryDatas}
 	}
 
 	return (
-		<div css={Wrapper}>
+		<div className={'w-full bg-white px-4 py-2 mb-8'}>
 			<SelectBox optionObj={categoryDatas} defaultValue={searchCategoryStates} onChange={onSubmit}/>
 		</div>
 	);

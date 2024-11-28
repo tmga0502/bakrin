@@ -3,7 +3,7 @@ import {useGetPlans} from "@/react/api/query/PlanQuery";
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
 import {CanNotGetData} from "@mainLayouts/error";
-import SearchPlanContents from "@mainFeatures/search/contents/SearchPlanContents";
+import SearchPlanContext from "@mainFeatures/search/context/SearchPlanContext";
 
 const SearchPlanPage = () => {
 	const {data: planData, isLoading} = useGetPlans();
@@ -14,7 +14,7 @@ const SearchPlanPage = () => {
 	}else if (!planData){
 		contents = <CanNotGetData/>
 	}else{
-		contents = 	<SearchPlanContents planDatas={planData}/>
+		contents = 	<SearchPlanContext planDatas={planData}/>
 	}
 
 	return (

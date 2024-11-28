@@ -1,9 +1,9 @@
 import ItemCategorySearchForm from '@mainFeatures/search/components/ItemCategorySearchForm/ItemCategorySearchForm'
 import PlanSearchForm from '@mainFeatures/search/components/PlanSearchForm/PlanSearchForm'
-import ProducerSearchForm from '@mainFeatures/search/components/ProducerSearchForm/ProducerSearchForm'
+import UserSearchForm from '@mainFeatures/search/components/UserSearchForm/UserSearchForm'
 
 export{
 	ItemCategorySearchForm,
 	PlanSearchForm,
-	ProducerSearchForm,
+	UserSearchForm,
 }
