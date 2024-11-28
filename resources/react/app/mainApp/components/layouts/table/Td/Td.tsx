@@ -1,10 +1,23 @@
-import React from 'react';
-import {TdType} from "./Td.type";
-import {Style} from './Td.styles';
+import React, {ReactNode} from 'react';
+import {tv} from "tailwind-variants";
+
+type TdType = {
+	text   : string | ReactNode,
+	heading: boolean,
+}
+
+const TdTv = tv({
+	base: 'px-2 py-1',
+	variants:{
+		heading:{
+			true : 'w-0 whitespace-nowrap bg-default text-white',
+		}
+	}
+})
 
 const Td: React.FC<TdType> = ({text, heading}) => {
 	return (
-		<td css={Style(heading)}>{text}</td>
+		<td className={TdTv({heading:heading})}>{text}</td>
 	);
 };
 

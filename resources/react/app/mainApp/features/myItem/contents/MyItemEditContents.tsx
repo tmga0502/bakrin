@@ -10,7 +10,7 @@ const MyItemEditContents: React.FC<EditPagePropsType> = (props) => {
 	const [components, setComponents] = useState(<ContentsLoader/>)
 
 	useEffect(()=>{
-		const varietyArray = props.varietiesData.filter(item => String(item.categoryId) === String(props.itemData.categoryId))
+		const varietyArray = props.varietiesData.filter(item => String(item.item_category_id) === String(props.itemData.item_category_id))
 		setFormVarietiesStates(varietyArray)
 		setComponents(<EditForm {...props}/>)
 	},[])

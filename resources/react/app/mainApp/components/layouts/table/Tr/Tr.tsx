@@ -1,10 +1,8 @@
-import React from 'react';
-import {TrType} from "./Tr.type";
-import {Style} from './Tr.styles';
+import React, {ReactNode} from 'react';
 
-const Tr: React.FC<TrType> = ({children}) => {
+const Tr: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<tr css={Style}>
+		<tr className={'border border-bakGray'}>
 			{children}
 		</tr>
 	);

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {ButtonBox} from './ItemDataDeleteModal.styles';
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {useForm} from "react-hook-form";
@@ -18,14 +17,14 @@ const ItemDataDeleteModal: React.FC<{uuid: string}> = ({uuid}) => {
 
 	return (
 		<>
-			<div className={'block w-full mb-6'}>
+			<div className={'block w-full mb-6 sm:mb-0'}>
 				<MainButton text={'削除'} width={'full'} color={'danger'} type={'button'} onClick={() => {setIsOpen(!isOpen)}}/>
 			</div>
 			{isOpen && (
 				<Modal onClick={()=>setIsOpen(false)}>
 					<ModalTitle title={'このデータを削除しますか？'}/>
 					<ModalBody>
-						<div css={ButtonBox}>
+						<div className={'flex justify-between items-center gap-6 py-6'}>
 							<MainButton text={'キャンセル'} color={'dark'} type={'button'} width={'full'} size={'sm'} onClick={() => {
 								setIsOpen(false)
 							}}/>

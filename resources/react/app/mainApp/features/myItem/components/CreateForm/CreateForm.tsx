@@ -1,5 +1,4 @@
 import React from 'react';
-import {ButtonBox, CautionStyle, Flex, MonthFlex, RadioGroup} from './CreateForm.styles';
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {FileField, Input, Radio, SelectBox, TextArea} from "@mainElements/form";
 import {Month, MonthPart} from "@/react/_constants/Date";
@@ -21,7 +20,6 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 
 	const handleCategoryChange = (e: any) => {
 		const value = e.target.value
-		console.log(varietiesData)
 		if(value === ''){
 			setFormVarietiesStates([])
 		}{
@@ -66,32 +64,40 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 				)}
 			</FormGroup>
 
-			<div css={Flex}>
-				<FormGroup>
-					<FormLabel text={'数量'} htmlFor={'count'}/>
-					<Input id={'count'} type={'number'} {...register('count', {required: '入力してください'})}/>
-					{errors.count && (
-						<ErrorMessage msg={errors.count.message as string}/>
-					)}
-				</FormGroup>
-				<FormGroup>
-					<FormLabel text={'単位'} htmlFor={'unit'}/>
-					<SelectBox optionObj={unitData} {...register('unit_id')}/>
-				</FormGroup>
+			<div className={'flex items-center gap-2'}>
+				<div className={'w-4/5'}>
+					<FormGroup>
+						<FormLabel text={'数量'} htmlFor={'count'}/>
+						<Input id={'count'} type={'number'} {...register('count', {required: '入力してください'})}/>
+						{errors.count && (
+							<ErrorMessage msg={errors.count.message as string}/>
+						)}
+					</FormGroup>
+				</div>
+				<div className={'w-1/5'}>
+					<FormGroup>
+						<FormLabel text={'単位'} htmlFor={'unit'}/>
+						<SelectBox optionObj={unitData} {...register('unit_id')}/>
+					</FormGroup>
+				</div>
 			</div>
 
-			<div css={Flex}>
-				<FormGroup>
-					<FormLabel text={'目安数量'} htmlFor={'guide_count'}/>
-					<Input id={'guide_count'} type={'number'} {...register('guide_count', {required: '入力してください'})}/>
-					{errors.guide_count && (
-						<ErrorMessage msg={errors.guide_count.message as string}/>
-					)}
-				</FormGroup>
-				<FormGroup>
-					<FormLabel text={'目安単位'} htmlFor={'guide_unit'}/>
-					<SelectBox optionObj={unitData} {...register('guide_unit_id')}/>
-				</FormGroup>
+			<div className={'flex items-center gap-2'}>
+				<div className={'w-4/5'}>
+					<FormGroup>
+						<FormLabel text={'目安数量'} htmlFor={'guide_count'}/>
+						<Input id={'guide_count'} type={'number'} {...register('guide_count', {required: '入力してください'})}/>
+						{errors.guide_count && (
+							<ErrorMessage msg={errors.guide_count.message as string}/>
+						)}
+					</FormGroup>
+				</div>
+				<div className={'w-1/5'}>
+					<FormGroup>
+						<FormLabel text={'目安単位'} htmlFor={'guide_unit'}/>
+						<SelectBox optionObj={unitData} {...register('guide_unit_id')}/>
+					</FormGroup>
+				</div>
 			</div>
 
 			<FormGroup>
@@ -109,18 +115,26 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 
 			<FormGroup>
 				<FormLabel text={'発送可能日'} htmlFor={''}/>
-				<div css={MonthFlex}>
-					<SelectBox optionObj={Month} {...register('shipping_start')}/>
-					<SelectBox optionObj={MonthPart} {...register('shipping_start_part')}/>
-					<span>から</span>
-					<SelectBox optionObj={Month} {...register('shipping_end')}/>
-					<SelectBox optionObj={MonthPart} {...register('shipping_end_part')}/>
-				</div>
+				<div className={'sm:flex sm:items-center sm:gap-2 sm:mb-0'}>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={Month} {...register('shipping_start')}/>
+					</div>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={MonthPart} {...register('shipping_start_part')}/>
+					</div>
+					<span className={'block whitespace-nowrap mb-2 sm:mb-0'}>から</span>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={Month} {...register('shipping_end')}/>
+					</div>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={MonthPart} {...register('shipping_end_part')}/>
+					</div>
+					</div>
 			</FormGroup>
 
 			<FormGroup>
 				<FormLabel text={'公開設定'} htmlFor={''}/>
-				<div css={RadioGroup}>
+				<div className={'flex gap-6 items-center'}>
 					<Radio text={'公開'} value={1} {...register('status')} defaultChecked={true}/>
 					<Radio text={'非公開'} value={0} {...register('status')}/>
 				</div>
@@ -134,11 +148,11 @@ const CreateForm: React.FC<NewPagePropsType> = (props) => {
 				)}
 			</FormGroup>
 
-			<p css={CautionStyle}>
-				<span>※【その他に画像を登録する場合】<br/></span>
+			<p className={'text-xs font-bold'}>
+				<span className={'text-danger'}>※【その他に画像を登録する場合】<br/></span>
 				一度このアイテムを登録後、アイテム詳細ページより追加してください。
 			</p>
-			<div css={ButtonBox}>
+			<div className={'text-center mt-6'}>
 				<MainButton text={'登録'} color={'info'} type={'submit'} align={'center'} width={'half'}></MainButton>
 			</div>
 

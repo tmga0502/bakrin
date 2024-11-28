@@ -1,5 +1,4 @@
 import React from 'react';
-import {ButtonBox, CautionStyle, Flex, MonthFlex, RadioGroup} from './EditForm.styles';
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {FileField, Input, Radio, SelectBox, TextArea} from "@mainElements/form";
 import {Month, MonthPart} from "@/react/_constants/Date";
@@ -64,32 +63,40 @@ const EditForm: React.FC<EditPagePropsType> = (props) => {
 				)}
 			</FormGroup>
 
-			<div css={Flex}>
-				<FormGroup>
-					<FormLabel text={'数量'} htmlFor={'count'}/>
-					<Input id={'count'} type={'number'} defaultValue={itemData.count} {...register('count', {required: '入力してください'})}/>
-					{errors.count && (
-						<ErrorMessage msg={errors.count.message as string}/>
-					)}
-				</FormGroup>
-				<FormGroup>
-					<FormLabel text={'単位'} htmlFor={'unit'}/>
-					<SelectBox optionObj={unitData} defaultValue={itemData.unit_id} {...register('unitId')}/>
-				</FormGroup>
+			<div className={'flex items-center gap-2'}>
+				<div className={'w-4/5'}>
+					<FormGroup>
+						<FormLabel text={'数量'} htmlFor={'count'}/>
+						<Input id={'count'} type={'number'} defaultValue={itemData.count} {...register('count', {required: '入力してください'})}/>
+						{errors.count && (
+							<ErrorMessage msg={errors.count.message as string}/>
+						)}
+					</FormGroup>
+				</div>
+				<div className={'w-1/5'}>
+					<FormGroup>
+						<FormLabel text={'単位'} htmlFor={'unit'}/>
+						<SelectBox optionObj={unitData} defaultValue={itemData.unit_id} {...register('unitId')}/>
+					</FormGroup>
+				</div>
 			</div>
 
-			<div css={Flex}>
-				<FormGroup>
-					<FormLabel text={'目安数量'} htmlFor={'guideCount'}/>
-					<Input id={'guideCount'} type={'number'} defaultValue={itemData.guide_count} {...register('guideCount', {required: '入力してください'})}/>
-					{errors.guideCount && (
-						<ErrorMessage msg={errors.guideCount.message as string}/>
-					)}
-				</FormGroup>
-				<FormGroup>
-					<FormLabel text={'目安単位'} htmlFor={'guideUnit'}/>
-					<SelectBox optionObj={unitData} defaultValue={itemData.guide_unit_id} {...register('guideUnitId')}/>
-				</FormGroup>
+			<div className={'flex items-center gap-2'}>
+				<div className={'w-4/5'}>
+					<FormGroup>
+						<FormLabel text={'目安数量'} htmlFor={'guideCount'}/>
+						<Input id={'guideCount'} type={'number'} defaultValue={itemData.guide_count} {...register('guideCount', {required: '入力してください'})}/>
+						{errors.guideCount && (
+							<ErrorMessage msg={errors.guideCount.message as string}/>
+						)}
+					</FormGroup>
+				</div>
+				<div className={'w-1/5'}>
+					<FormGroup>
+						<FormLabel text={'目安単位'} htmlFor={'guideUnit'}/>
+						<SelectBox optionObj={unitData} defaultValue={itemData.guide_unit_id} {...register('guideUnitId')}/>
+					</FormGroup>
+				</div>
 			</div>
 
 			<FormGroup>
@@ -107,18 +114,26 @@ const EditForm: React.FC<EditPagePropsType> = (props) => {
 
 			<FormGroup>
 				<FormLabel text={'発送可能日'} htmlFor={''}/>
-				<div css={MonthFlex}>
-					<SelectBox optionObj={Month} defaultValue={itemData.shipping_start} {...register('shippingStart')}/>
-					<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_start_part} {...register('shippingStartPart')}/>
-					<span>から</span>
-					<SelectBox optionObj={Month} defaultValue={itemData.shipping_end} {...register('shippingEnd')}/>
-					<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_end_part} {...register('shippingEndPart')}/>
+				<div className={'sm:flex sm:items-center sm:gap-2 sm:mb-0'}>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={Month} defaultValue={itemData.shipping_start} {...register('shippingStart')}/>
+					</div>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_start_part} {...register('shippingStartPart')}/>
+					</div>
+					<span className={'block whitespace-nowrap mb-2 sm:mb-0'}>から</span>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={Month} defaultValue={itemData.shipping_end} {...register('shippingEnd')}/>
+					</div>
+					<div className={'mb-2 sm:mb-0'}>
+						<SelectBox optionObj={MonthPart} defaultValue={itemData.shipping_end_part} {...register('shippingEndPart')}/>
+					</div>
 				</div>
 			</FormGroup>
 
 			<FormGroup>
 				<FormLabel text={'公開設定'} htmlFor={''}/>
-				<div css={RadioGroup}>
+				<div className={'flex gap-6 items-center'}>
 					<Radio text={'公開'} value={1} {...register('status')} defaultChecked={itemData.status === 1}/>
 					<Radio text={'非公開'} value={0} {...register('status')} defaultChecked={itemData.status === 0}/>
 				</div>
@@ -129,11 +144,11 @@ const EditForm: React.FC<EditPagePropsType> = (props) => {
 				<FileField id={'thumbnail'} {...register('thumbnail')}/>
 			</FormGroup>
 
-			<p css={CautionStyle}>
-				<span>※【サムネイル画像を更新しない場合】<br/></span>
+			<p className={'text-xs font-bold'}>
+				<span className={'text-danger'}>※【サムネイル画像を更新しない場合】<br/></span>
 				上の「ファイルを選択」では何も選択せずに、以下の更新ボタンを押して情報の更新をしてください。
 			</p>
-			<div css={ButtonBox}>
+			<div className={'text-center mt-6'}>
 				<MainButton text={'登録'} color={'info'} type={'submit'} align={'center'} width={'half'}></MainButton>
 			</div>
 

@@ -3,7 +3,6 @@ import MainButton from "@mainElements/button/MainButton/MainButton";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {FileField} from "@mainElements/form";
-import {ButtonWrapper} from "@mainFeatures/myItem/components/AddImageModal/AddImageModal.styles";
 import {useForm} from "react-hook-form";
 import {useUserUpdate} from "@/react/api/query/UserQuery";
 
@@ -36,7 +35,7 @@ const ProfileImageEditModal = () => {
 									<ErrorMessage msg={errors.img.message as string}/>
 								)}
 							</FormGroup>
-							<div css={ButtonWrapper}>
+							<div className={'mt-8 text-center'}>
 								<MainButton text={'変更'} color={'info'} type={'submit'} width={'half'}/>
 							</div>
 						</form>

@@ -1,10 +1,8 @@
-import React from 'react';
-import {TableType} from "./Table.type";
-import {Style} from './Table.styles';
+import React, {ReactNode} from 'react';
 
-const Table: React.FC<TableType> = ({children}) => {
+const Table: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<table css={Style}>
+		<table className={'w-full border-collapse'}>
 			{children}
 		</table>
 	);

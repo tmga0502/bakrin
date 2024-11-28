@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import {AddImageModalType} from "./AddImageModal.type";
-import {ButtonWrapper, Wrapper} from './AddImageModal.styles'
 import {useForm} from "react-hook-form";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import {ErrorMessage, FormGroup, FormLabel} from "@mainLayouts/form";
 import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {FileField} from "@mainElements/form";
 import {useCreateImage} from "@/react/api/query/ItemImageQuery";
+import {ItemType} from "@/react/types/ItemType";
 
-const AddImageModal: React.FC<AddImageModalType> = ({itemData}) => {
+const AddImageModal: React.FC<{itemData: ItemType}> = ({itemData}) => {
 	const { register, handleSubmit, formState:{errors}} = useForm({defaultValues:{
 			itemId: itemData.id,
 			img: []
@@ -22,7 +21,7 @@ const AddImageModal: React.FC<AddImageModalType> = ({itemData}) => {
 
 	return (
 		<>
-			<div css={Wrapper}>
+			<div className={'w-full'}>
 				<MainButton text={'画像追加'} width={'full'} color={'info'} type={'button'} onClick={() => {setIsOpen(!isOpen)}}/>
 			</div>
 			{isOpen && (
@@ -37,7 +36,7 @@ const AddImageModal: React.FC<AddImageModalType> = ({itemData}) => {
 									<ErrorMessage msg={errors.img.message as string}/>
 								)}
 							</FormGroup>
-							<div css={ButtonWrapper}>
+							<div className={'mt-8 text-center'}>
 								<MainButton text={'追加'} color={'info'} type={'submit'} width={'half'}/>
 							</div>
 						</form>

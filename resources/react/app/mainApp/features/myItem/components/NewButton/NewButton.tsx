@@ -1,13 +1,11 @@
 import React from 'react';
-import {NewButtonType} from "./NewButton.type";
-import {LinkBox, Wrapper} from './NewButton.styles';
 import {Link} from "react-router-dom";
 import MainButton from "@mainElements/button/MainButton/MainButton";
 
-const NewButton: React.FC<NewButtonType> = ({}) => {
+const NewButton: React.FC = () => {
 	return (
-		<div css={Wrapper}>
-			<Link to={'new'} css={LinkBox}>
+		<div className={'text-right mb-4'}>
+			<Link to={'new'} className={'inline-block'}>
 				<MainButton text={'新規登録'} color={'danger'} type={'button'} size={'sm'}/>
 			</Link>
 		</div>

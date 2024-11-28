@@ -1,7 +1,6 @@
-import React from 'react';
-import {TbodyType} from "./Tbody.type";
+import React, {ReactNode} from 'react';
 
-const Tbody: React.FC<TbodyType> = ({children}) => {
+const Tbody: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
 		<tbody>
 			{children}

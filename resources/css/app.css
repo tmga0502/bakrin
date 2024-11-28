@@ -34,7 +34,7 @@ button:focus-visible, a:focus-visible{
 }
 
 .inputStyle:focus{
-	border: 1px solid #00BF63;
+	border: 2px solid #00BF63;
 	border-radius: 4px;
 }
 
@@ -45,12 +45,83 @@ button:focus-visible, a:focus-visible{
     focus-visible:outline-0
 }
 
+.fileStyle{
+	outline: none;
+	margin-top: 0;
+	padding: 4px 8px;
+	width: 100%;
+	background-color: #FFFFFF;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+}
+.fileStyle:focus{
+	border:2px solid #00BF63
+}
+.fileStyle:focus-visible{
+	outline: none;
+}
+.fileStyle::file-selector-button{
+	background-color: #00BF63;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 8px;
+	padding: 4px 8px;
+	margin-right: 16px;
+	font-size: 12px;
+}
+.fileStyle::file-selector-button:hover{
+	cursor: pointer;
+}
+
 .selectBoxStyle{
-    @apply p-1 border rounded-md text-sm  focus:border-b-2 focus:border-mainGreen focus-visible:outline-0 block w-full
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	width: 100%;
+}
+.selectBoxStyle::after{
+	position: absolute;
+	right: 8px;
+	width: 10px;
+	height: 7px;
+	background-color: #535353;
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	content: '';
+	pointer-events: none;
+}
+.selectBoxStyle > select{
+	outline: none;
+	margin-top: 0;
+	padding: 4px 8px;
+	width: 100%;
+	background-color: #FFFFFF;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	appearance: none;
+	padding: 4px calc(8px + 26px) 4px 8px;
+	cursor: pointer;
+}
+.selectBoxStyle:focus{
+	border:2px solid #00BF63
+}
+.selectBoxStyle:focus-visible{
+	outline: none;
 }
 
 .textAreaStyle{
-    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-sm border focus:ring-mainGreen focus:ring-2 focus-visible:outline-0
+	outline: none;
+	margin-top: 0;
+	padding: 4px 8px;
+	width: 100%;
+	background-color: #FFFFFF;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+}
+.textAreaStyle:focus{
+	border:2px solid #00BF63
+}
+.textAreaStyle:focus-visible{
+	outline: none;
 }
 
 .messageTextAreaStyle{

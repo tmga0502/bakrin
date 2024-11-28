@@ -1,5 +1,4 @@
 import React from 'react';
-import {ImageStyle, ImageWrapper} from './ShowDataTable.styles';
 import {Table, Tbody, Td, Tr} from "@mainLayouts/table";
 import {Budge} from "@mainElements/budge";
 import ItemPlanBadge from "@mainElements/budge/ItemPlanBadge/ItemPlanBadge";
@@ -61,14 +60,14 @@ const ShowDataTable: React.FC<ItemDataType> = ({itemData}) => {
 				</Tr>
 				<Tr>
 					<Td text={'サムネイル'} heading={true}/>
-					<Td text={<img src={createImageUrl(itemData.thumbnail_path)} css={ImageStyle} alt={'thumbnail'}/>} heading={false}/>
+					<Td text={<img src={createImageUrl(itemData.thumbnail_path)} className={'w-1/2'} alt={'thumbnail'}/>} heading={false}/>
 				</Tr>
 				{itemData.images.map((image: any, index: number) => (
 					<Tr key={image.id}>
 						<Td text={`画像${index+1}`} heading={true}/>
 						<Td text={
-							<div css={ImageWrapper} >
-								<img src={createImageUrl(image.image_path)} css={ImageStyle} alt={`image${index + 1}`}/>
+							<div className={'flex items-center justify-around'} >
+								<img src={createImageUrl(image.image_path)} className={'w-1/2'} alt={`image${index + 1}`}/>
 								<ImageDeleteModal imageId={image.id}/>
 							</div>
 						} heading={false}/>

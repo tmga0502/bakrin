@@ -1,11 +1,16 @@
 import React, {forwardRef} from 'react';
-import {SelectBoxType} from "./SelectBox.type";
-import {SelectStyle} from "./SelectBox.styles";
+
+type SelectBoxType = React.SelectHTMLAttributes<HTMLSelectElement> & {
+	optionObj: any,
+	addBlankOption?: boolean,
+	defaultValue?: any,
+	onChange? : any,
+}
 
 const SelectBox = forwardRef<HTMLSelectElement, SelectBoxType>(({ optionObj, addBlankOption = false, defaultValue, onChange, ...props }, ref) => {
 	return (
 		<div>
-			<label css={SelectStyle}>
+			<label className={'selectBoxStyle'}>
 				<select ref={ref} defaultValue={defaultValue} {...props} onChange={onChange}>
 					{addBlankOption && (
 						<option value={''} >-- 選択してください --</option>
