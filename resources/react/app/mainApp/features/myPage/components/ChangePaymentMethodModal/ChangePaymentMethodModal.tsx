@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {RadioWrapper} from './ChangePaymentMethodModal.styles'
 import MainButton from "@mainElements/button/MainButton/MainButton";
 import Radio from "@mainElements/form/Radio/Radio";
 import {useRecoilValue, useSetRecoilState} from "recoil";
@@ -34,9 +33,9 @@ const ChangePaymentMethodModal: React.FC = () => {
 					<ModalTitle title={'支払い方法変更'}/>
 					<ModalBody>
 						<form onSubmit={handleSubmit(onSubmit)}>
-							<div css={RadioWrapper}>
-								<Radio text={'銀行振込'} value={0} defaultChecked={producerData.paymentMethod === 0} {...register('paymentMethod')}/>
-								<Radio text={'クレジットカード'} value={1} defaultChecked={producerData.paymentMethod === 1} {...register('paymentMethod')}/>
+							<div className={'flex items-center gap-8 mb-8'}>
+								<Radio text={'銀行振込'} value={0} defaultChecked={producerData.payment_method === 0} {...register('paymentMethod')}/>
+								<Radio text={'クレジットカード'} value={1} defaultChecked={producerData.payment_method === 1} {...register('paymentMethod')}/>
 							</div>
 
 							<MainButton text={'変更'} color={'mainGreen'} width={'half'} type={'submit'}/>

@@ -52,7 +52,6 @@ class UsersController extends Controller
         if($userQuery->exists()){
             $users = $userQuery->get();
         }
-		dd($users);
         return response()->json($users);
     }
 

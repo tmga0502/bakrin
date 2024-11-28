@@ -11,7 +11,7 @@ import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 import {TradeType} from "@/react/types/TradeType";
 import TradeHistorySearch from "@mainFeatures/myPage/components/TradeHistorySearch/TradeHistorySearch";
 
-const TradeHistoryContents: React.FC<HistoryListType> = ({tradeList}) => {
+const MyPageTradeHistoryContext: React.FC<HistoryListType> = ({tradeList}) => {
 	const authUserData = useRecoilValue(IsAuthUserDataStates)
 	const ViewMonth = useRecoilValue(TradeHistoryDateStats)
 	const ListArray: TradeType[] = [];
@@ -44,4 +44,4 @@ const TradeHistoryContents: React.FC<HistoryListType> = ({tradeList}) => {
 	);
 };
 
-export default TradeHistoryContents;
+export default MyPageTradeHistoryContext;

@@ -1,25 +1,25 @@
 import React, {ReactNode} from 'react';
 import MainLayout from "@mainLayouts/MainLayout/MainLayout";
 import {useGetCompletedTrades} from "@/react/api/query/TradeQuery";
-import TradeHistoryContents from "@mainFeatures/myPage/contents/TradeHistoryContents";
+import MyPageTradeHistoryContext from "@mainFeatures/myPage/context/MyPageTradeHistoryContext";
 import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
 import {CanNotGetData} from "@mainLayouts/error";
 
 const MyPageTradeHistoryPage = () => {
 	const {data, isLoading} = useGetCompletedTrades()
 
-	let contents: ReactNode
+	let context: ReactNode
 	if (isLoading){
-		contents = <ContentsLoader/>
+		context = <ContentsLoader/>
 	}else if(!data){
-		contents = <CanNotGetData/>
+		context = <CanNotGetData/>
 	}else{
-		contents = <TradeHistoryContents tradeList={data}/>
+		context = <MyPageTradeHistoryContext tradeList={data}/>
 	}
 
 	return (
 		<MainLayout>
-			{contents}
+			{context}
 		</MainLayout>
 	);
 };

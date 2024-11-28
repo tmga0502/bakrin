@@ -179,6 +179,41 @@ button:focus-visible, a:focus-visible{
 	display: none;
 }
 
+.checkBoxStyle{
+	display: flex;
+	align-items: center;
+	gap: 0 .5em;
+	position: relative;
+	cursor: pointer;
+}
+.checkBoxStyle::before, .checkBoxStyle:has(:checked)::after{
+	content: '';
+}
+.checkBoxStyle::before{
+	width: 17px;
+	height: 17px;
+	border-radius: 4px;
+	background-color: #dddddd;
+}
+.checkBoxStyle:has(:checked)::before{
+	background-color: #00BF63;
+}
+.checkBoxStyle:has(:checked)::after{
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	transform: rotate(45deg);
+	width: 4px;
+	height: 8px;
+	border: solid #FFFFFF;
+	border-width: 0 2px 2px 0;
+}
+.checkBoxStyle > input[type="checkbox"]{
+	display: none;
+}
+
+
+
 .tdStyle{
     @apply whitespace-nowrap px-4 py-2 border
 }

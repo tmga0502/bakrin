@@ -1,11 +1,10 @@
 import React from 'react';
 import {WantDataType} from "@mainFeatures/myPage/types";
-import { CategoryContainer, CategoryTitle, VarietyLists } from '../styles';
 import {FormGroup} from "@mainLayouts/form";
 import CheckBox from "@mainElements/form/CheckBox/CheckBox";
 import {useCreateWantItem, useRemoveWantItem} from "@/react/api/query/WantItemQuery";
 
-const WantContents: React.FC<WantDataType> = ({wantItemsData, categoriesData}) => {
+const MyPageWantContext: React.FC<WantDataType> = ({wantItemsData, categoriesData}) => {
 	const create = useCreateWantItem();
 	const remove = useRemoveWantItem();
 	const handleCheck = (e: any, varietyId: number) => {
@@ -19,12 +18,12 @@ const WantContents: React.FC<WantDataType> = ({wantItemsData, categoriesData}) =
 	return (
 		<div>
 			{categoriesData.map(category => (
-				<div css={CategoryContainer} key={category.id}>
-					<div css={CategoryTitle}>
+				<div className={'mb-6'} key={category.id}>
+					<div className={'border border-bakGray rounded-md bg-bakGray p-1'}>
 						{category.name}
 					</div>
 
-					<div css={VarietyLists}>
+					<div className={'grid grid-cols-1 py-4 sm:grid-cols-2 lg:grid-cols-3'}>
 						{category.varieties.map(variety => {
 							const isChecked = wantItemsData.some(item => Number(item.item_variety_id) === variety.id); // yourArray は最初の配列
 							return (
@@ -43,4 +42,4 @@ const WantContents: React.FC<WantDataType> = ({wantItemsData, categoriesData}) =
 	);
 };
 
-export default WantContents;
+export default MyPageWantContext;

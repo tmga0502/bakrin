@@ -4,24 +4,24 @@ import {useGetAllWantItems} from "@/react/api/query/WantItemQuery";
 import {useGetCategories} from "@/react/api/query/CategoryQuery";
 import ContentsLoader from "@mainLayouts/Loader/ContentsLoader/ContentsLoader";
 import {CanNotGetData} from "@mainLayouts/error";
-import WantContents from "@mainFeatures/myPage/contents/WantContents";
+import MyPageWantContext from "@mainFeatures/myPage/context/MyPageWantContext";
 
 const MyPageWantPage = () => {
 	const {data: wantItemsData, isLoading: wantItemsLoading} = useGetAllWantItems()
 	const {data: categoriesData, isLoading: categoriesLoading} = useGetCategories();
 
-	let contents: ReactNode
+	let context: ReactNode
 	if (wantItemsLoading || categoriesLoading) {
-		contents = <ContentsLoader/>
+		context = <ContentsLoader/>
 	}else if (!wantItemsData || !categoriesData) {
-		contents = <CanNotGetData/>
+		context = <CanNotGetData/>
 	}else{
-		contents = <WantContents wantItemsData={wantItemsData} categoriesData={categoriesData}/>
+		context = <MyPageWantContext wantItemsData={wantItemsData} categoriesData={categoriesData}/>
 	}
 
 	return (
 		<MainLayout>
-			{contents}
+			{context}
 		</MainLayout>
 	);
 };
