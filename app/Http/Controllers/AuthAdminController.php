@@ -20,7 +20,7 @@ class AuthAdminController extends Controller
 
 	public function login(Request $req): JsonResponse
 	{
-		if(Auth::guard('admins')->attempt(['loginId' => $req->loginId, 'password' => $req->password])) {
+		if(Auth::guard('admins')->attempt(['login_id' => $req->login_id, 'password' => $req->password])) {
 			$req->session()->regenerate();
 			return response()->json(Auth::guard('admins')->user(), 200);
 		}

@@ -17,7 +17,7 @@ const SettingListUserPage = () => {
 		contents = <PageLoader/>
 	}else if (!data){
 		contents = <CanNotGetData/>
-	}else if (authUserData.authority === 1){
+	}else if (authUserData.role === 1){
 		contents = <AuthorisedError/>
 	}else{
 		contents = <SettingListUserContents usersData={data}/>

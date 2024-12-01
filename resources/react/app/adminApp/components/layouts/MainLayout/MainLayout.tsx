@@ -1,12 +1,11 @@
 import React, {ReactNode} from 'react';
 import Sidebar from "@adminLayouts/Sidebar/Sidebar";
-import {Wrapper, Contents} from "@adminLayouts/MainLayout/MainLayout.styles";
 
 const MainLayout:React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'flex'}>
 			<Sidebar/>
-			<div css={Contents}>
+			<div className={'w-full p-4'}>
 				{children}
 			</div>
 		</div>

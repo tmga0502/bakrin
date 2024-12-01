@@ -1,10 +1,8 @@
 import React from 'react';
-import {MainTitleType} from "./MainTitle.type";
-import {Wrapper} from './MainTitle.styles';
 
-const MainTitle: React.FC<MainTitleType> = ({title}) => {
+const MainTitle: React.FC<{title: string}> = ({title}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'text-xl px-4 py-2 border-b border-b-bakGray mb-6'}>
 			{title}
 		</div>
 	);

@@ -6,8 +6,8 @@ const getAdminAuthCheck = async () => {
     return data
 }
 
-const adminLogin =  async ({loginId, password }:{loginId: string, password: string }) => {
-    const { data } = await axios.post<AdminUserType>('/api/admin/login', {loginId, password })
+const adminLogin =  async ({login_id, password }:{login_id: string, password: string }) => {
+    const { data } = await axios.post<AdminUserType>('/api/admin/login', {login_id, password })
     return data
 }
 

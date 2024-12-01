@@ -1,12 +1,13 @@
-import React, {forwardRef} from 'react';
-import {CheckBoxType} from "./CheckBox.type";
-import {Wrapper, CheckStyle} from './CheckBox.styles';
+import React, {forwardRef, ReactNode} from 'react';
+
+type CheckBoxType = React.InputHTMLAttributes<HTMLInputElement> & {
+	text: string | ReactNode,
+}
 
 const CheckBox = forwardRef<HTMLInputElement, CheckBoxType>(({ text, ...props }, ref) => {
-
 	return (
-		<label css={Wrapper}>
-			<input type={'checkbox'} css={CheckStyle} ref={ref} {...props} />
+		<label className={'checkBoxStyle'}>
+			<input type={'checkbox'} ref={ref} {...props} />
 			{text}
 		</label>
 	);

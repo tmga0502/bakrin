@@ -1,10 +1,10 @@
 import React, {forwardRef} from 'react';
-import {FileFieldType} from "./FileField.type";
-import {FileInputStyle} from './FileField.styles';
+
+type FileFieldType =  React.InputHTMLAttributes<HTMLInputElement>
 
 const FileField = forwardRef<HTMLInputElement, FileFieldType>((props, ref) => {
 	return (
-		<input type={'file'} css={FileInputStyle} ref={ref} {...props} />
+		<input type={'file'} className={'fileStyle'} ref={ref} {...props} />
 	);
 });
 

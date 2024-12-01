@@ -1,10 +1,8 @@
-import React from 'react';
-import {ContainerMdType} from "./ContainerMd.type";
-import {ContainerStyle} from './ContainerMd.styles';
+import React, {ReactNode} from 'react';
 
-const ContainerMd: React.FC<ContainerMdType> = ({children}) => {
+const ContainerMd: React.FC<{children: ReactNode}> = ({children}) => {
 	return (
-		<div css={ContainerStyle}>
+		<div className={'max-w-[800px] mx-auto'}>
 			{children}
 		</div>
 	);

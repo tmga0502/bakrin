@@ -1,7 +1,7 @@
-import Input from "@/react/app/adminApp/components/elements/form/InputField/Input";
-import FileField from "./FileField/FileField";
+import Input from './InputField/Input'
+import FileField from './FileField/FileField'
 import Radio from "./Radio/Radio";
-import SelectBox from "@/react/app/adminApp/components/elements/form/SelectBox/SelectBox";
+import SelectBox from "./SelectBox/SelectBox";
 import TextArea from "./TextArea/TextArea";
 
 export {

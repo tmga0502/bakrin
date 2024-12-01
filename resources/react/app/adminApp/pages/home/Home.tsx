@@ -1,11 +1,11 @@
 import React from 'react';
 import MainLayout from "@adminLayouts/MainLayout/MainLayout";
-import HomeContents from "@/react/app/adminApp/features/home/contents/HomeContents";
+import HomeContext from "@adminFeatures/home/context/HomeContext";
 
 const Home = () => {
 	return (
 		<MainLayout>
-			<HomeContents/>
+			<HomeContext/>
 		</MainLayout>
 	);
 };

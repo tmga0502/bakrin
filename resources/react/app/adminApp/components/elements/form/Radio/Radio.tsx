@@ -1,12 +1,14 @@
-import React, {forwardRef} from 'react';
-import {RadioType} from "./Radio.type";
-import {Wrapper, RadioStyle} from './Radio.styles';
+import React, {forwardRef, ReactNode} from 'react';
+
+type RadioType = React.InputHTMLAttributes<HTMLInputElement> & {
+	text: string | ReactNode,
+}
 
 const Radio = forwardRef<HTMLInputElement, RadioType>(({ text, ...props }, ref) => {
 
 	return (
-		<label css={Wrapper}>
-			<input type={'radio'} css={RadioStyle} ref={ref} {...props} />
+		<label className={'radioStyle'}>
+			<input type={'radio'} ref={ref} {...props} />
 			{text}
 		</label>
 	);

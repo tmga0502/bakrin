@@ -1,13 +1,12 @@
 import React from 'react';
 import MainButton from "@adminElements/button/MainButton/MainButton";
 import {Link} from "react-router-dom";
-import {Wrapper} from '@adminFeatures/notice/components/CreateButton/CreateButton.styles'
 
 const CreateButton = () => {
 	return (
-		<div css={Wrapper}>
+		<div className={'flex w-full justify-end mb-6'}>
 			<Link to={'/admin/notice/new'}>
-				<MainButton text={'新規作成'} color={'info'} type={'button'} size={'sm'}/>
+				<MainButton text={'新規作成'} color={'default'} type={'button'} size={'sm'}/>
 			</Link>
 		</div>
 	);

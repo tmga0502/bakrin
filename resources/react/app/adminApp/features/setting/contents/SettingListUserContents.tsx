@@ -5,7 +5,6 @@ import ContainerSm from "@adminLayouts/container/ContainerSm/ContainerSm";
 import UserListCard from "@adminFeatures/setting/components/UserListCard/UserListCard";
 
 const SettingListUserContents: React.FC<UsersType> = ({usersData}) => {
-	console.log(usersData)
 	return (
 		<div>
 			<MainTitle title={'ユーザー一覧'}/>

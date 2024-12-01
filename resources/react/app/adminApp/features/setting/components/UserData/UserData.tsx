@@ -1,5 +1,4 @@
 import React from 'react';
-import {RadioBox} from './UserData.styles';
 import {UserType} from "@adminFeatures/setting/types/type";
 import {useForm} from "react-hook-form";
 import { useAdminUserUpdate} from "@/react/api/query/AdminUserQuery";
@@ -13,7 +12,7 @@ const UserData: React.FC<UserType> = ({userData}) => {
 		defaultValues:{
 			id: userData.id,
 			name: userData.name,
-			authority: userData.authority
+			role: userData.role
 		}
 	})
 	const update = useAdminUserUpdate()
@@ -34,16 +33,16 @@ const UserData: React.FC<UserType> = ({userData}) => {
 
 			<FormGroup>
 				<FormLabel text={'ログインID'} htmlFor={'loginId'}/>
-				<Input id={'loginId'} defaultValue={userData.loginId} readOnly={true}/>
+				<Input id={'loginId'} defaultValue={userData.login_id} readOnly={true}/>
 			</FormGroup>
 
 			<FormGroup>
-				<FormLabel text={'閲覧権限'} htmlFor={'authority'}/>
-				<div css={RadioBox}>
-					<Radio text={'マスター権限'} value={0} defaultChecked={userData.authority === 0} {...register('authority')}/>
+				<FormLabel text={'閲覧権限'} htmlFor={'role'}/>
+				<div className={'my-3'}>
+					<Radio text={'マスター権限'} value={0} defaultChecked={userData.role === 0} {...register('role')}/>
 				</div>
-				<div css={RadioBox}>
-					<Radio text={'一般権限'} value={1} defaultChecked={userData.authority === 1} {...register('authority')}/>
+				<div className={'my-3'}>
+					<Radio text={'一般権限'} value={1} defaultChecked={userData.role === 1} {...register('role')}/>
 				</div>
 			</FormGroup>
 

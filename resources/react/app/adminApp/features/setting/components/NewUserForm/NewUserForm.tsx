@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {PasswordWrapper, RadioBox} from './NewUserForm.styles';
 import {useForm} from "react-hook-form";
 import {FormGroup, FormLabel} from "@adminLayouts/form";
 import {Input, Radio} from "@adminElements/form";
 import {ErrorMessage} from "@mainLayouts/form";
-import IconButton from "@adminElements/button/IconButton/IconButton";
 import MainButton from "@adminElements/button/MainButton/MainButton";
 import { useAdminUserCreate } from '@/react/api/query/AdminUserQuery';
+import IconButton from "@mainElements/button/IconButton/IconButton";
 
 const NewUserForm: React.FC = () => {
 	const [passwordType, setPasswordType] = useState<'password' | 'text'>('password')
@@ -48,8 +47,10 @@ const NewUserForm: React.FC = () => {
 
 			<FormGroup>
 				<FormLabel text={'パスワード'} htmlFor={'password'}/>
-				<div css={PasswordWrapper}>
-					<Input id={'password'} type={passwordType} {...register('password', {required: '入力してください'})}/>
+				<div className={'flex gap-2'}>
+					<div className={'w-[calc(100%_-_28px)]'}>
+						<Input id={'password'} type={passwordType} {...register('password', {required: '入力してください'})}/>
+					</div>
 					<IconButton icon={passwordIconType} color={'dark'} size={'sm'} onClick={()=>{handlePasswordType()}}/>
 				</div>
 				{errors.password && (
@@ -59,10 +60,10 @@ const NewUserForm: React.FC = () => {
 
 			<FormGroup>
 				<FormLabel text={'閲覧権限'} htmlFor={'authority'}/>
-				<div css={RadioBox}>
+				<div className={'my-3'}>
 					<Radio text={'マスター権限'} value={0} {...register('authority')}/>
 				</div>
-				<div css={RadioBox}>
+				<div className={'my-3'}>
 					<Radio text={'一般権限'} value={1} defaultChecked={true} {...register('authority')}/>
 				</div>
 			</FormGroup>

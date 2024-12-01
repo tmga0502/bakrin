@@ -1,10 +1,10 @@
 import React, {forwardRef} from 'react';
-import {InputFieldType} from "./InputField.type";
-import {InputStyle} from "./InputField.styles";
+
+type InputFieldType = React.InputHTMLAttributes<HTMLInputElement>
 
 const Input = forwardRef<HTMLInputElement, InputFieldType>((props, ref) => {
 	return (
-		<input css={InputStyle} ref={ref} {...props} />
+		<input className={'inputStyle'} ref={ref} {...props} />
 	);
 });
 

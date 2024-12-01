@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import {ButtonWrapper} from './DeleteButton.styles';
-import {NoticeDataType} from "@adminFeatures/notice/types/type";
 import MainButton from "@adminElements/button/MainButton/MainButton";
-import {Modal} from "@mainLayouts/Modal";
-import {ModalBody, ModalTitle} from "@adminLayouts/Modal";
+import {Modal, ModalBody, ModalTitle} from "@mainLayouts/Modal";
 import {useForm} from "react-hook-form";
 import {useDeleteData} from "@/react/api/query/NoticeQuery";
 import {useSetRecoilState} from "recoil";
 import {AdminIsLoadingStates} from "@/react/app/adminApp/states/IsLoadingStates";
+import {NoticeType} from "@/react/types/NoticeType";
 
-const DeleteButton: React.FC<NoticeDataType> = ({noticeData}) => {
+const DeleteButton: React.FC<{noticeData: NoticeType}> = ({noticeData}) => {
 	const setIsLoading = useSetRecoilState(AdminIsLoadingStates)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const {handleSubmit} = useForm({defaultValues:{
@@ -30,7 +28,7 @@ const DeleteButton: React.FC<NoticeDataType> = ({noticeData}) => {
 				<Modal onClick={()=>{setIsModalOpen(false)}}>
 					<ModalTitle title={'このデータを削除しますか？'}/>
 					<ModalBody>
-						<div css={ButtonWrapper}>
+						<div className={'flex justify-center gap-12'}>
 							<span>
 								<MainButton text={'戻る'} color={'default'} type={'button'} onClick={()=>{setIsModalOpen(false)}}/>
 							</span>

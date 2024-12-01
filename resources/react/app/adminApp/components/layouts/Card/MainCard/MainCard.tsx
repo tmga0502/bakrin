@@ -1,14 +1,17 @@
-import React from 'react';
-import {MainCardType} from "./MainCard.type";
-import {Wrapper, TitleStyle, ContentsStyle} from './MainCard.styles';
+import React, {ReactNode} from 'react';
+
+type MainCardType = {
+	children: ReactNode,
+	title?  : string,
+}
 
 const MainCard: React.FC<MainCardType> = ({children, title}) => {
 	return (
-		<div css={Wrapper}>
+		<div className={'border border-bakGray rounded-md shadow-md'}>
 			{title !== undefined && (
-				<div css={TitleStyle}>{title}</div>
+				<div className={'bg-bakDark text-white rounded-t-md px-4 py-2'}>{title}</div>
 			)}
-			<div css={ContentsStyle}>
+			<div className={'p-4'}>
 				{children}
 			</div>
 		</div>
