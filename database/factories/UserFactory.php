@@ -35,9 +35,10 @@ class UserFactory extends Factory
 		$address4Array = [$this->faker->secondaryAddress, ''];
 		$now = $this->faker->dateTimeBetween('-3 month', '-1 day');
 		$imgRandomInt = random_int(1, 4000);
+		$referral_code = 'u' . Str::random(5);//seederでは重複は考慮しない
 		return [
 			'uuid'             => (string)Str::uuid(),
-			'referral_code'    => '',
+			'referral_code'    => $referral_code,
 			'password'         => Hash::make('a12345'),
 			'organization_name'=> $this->faker->company,
 			'president_name'   => $this->faker->name,
@@ -47,7 +48,7 @@ class UserFactory extends Factory
 			'address3'         => $this->faker->streetName,
 			'address4'         => $address4Array[array_rand($address4Array)],
 			'phone_number'     => $this->faker->phoneNumber,
-			'email'            => $this->faker->email,
+			'email'            => $this->faker->safeEmail,
 			'pr'               => $this->faker->realText,
 			'payment_method'   => random_int(0, 1),
 			'thumbnail_path'   => 'https://picsum.photos/200/300/?random=' . $imgRandomInt,

@@ -11,6 +11,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NoticesController;
 use App\Http\Controllers\PlansController;
+use App\Http\Controllers\ReferralCodeController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UsersController;
@@ -32,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('userLogin', [AuthProducerController::class, 'login']);
 Route::post('userLogout', [AuthProducerController::class, 'logout']);
 Route::get('authProducerCheck', [AuthProducerController::class, 'authCheck']);
+Route::get('referral_code/check/{referral_code}', [ReferralCodeController::class, 'check']);
 
 Route::group(['middleware'=> 'auth:sanctum'], function() {
     //アイテム関連

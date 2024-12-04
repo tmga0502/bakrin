@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(class: [
 //            AdminUserSeeder::class,
-//            UserSeeder::class,
+            UserSeeder::class,
 //            PlanSeeder::class,
 //            UnitSeeder::class,
 //            ItemCategorySeeder::class,
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 //			TradeMemberSeeder::class,
 //            TalkRoomSeeder::class,
 //            TalkRoomMemberSeeder::class,
-            TalkRoomMessageSeeder::class,
+//            TalkRoomMessageSeeder::class,
 //            FavoriteItemSeeder::class,
 //            FavoriteUserSeeder::class,
 //            WantItemSeeder::class,

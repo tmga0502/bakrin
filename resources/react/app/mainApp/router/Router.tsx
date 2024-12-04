@@ -36,6 +36,7 @@ import MyItemNewPage from "@/react/app/mainApp/pages/myItem/myItem-new/MyItemNew
 import MyItemEditPage from "@/react/app/mainApp/pages/myItem/myItem-edit/MyItemEditPage";
 import MyItemShowPage from "@/react/app/mainApp/pages/myItem/myItem-show/MyItemShowPage";
 import MyPageWantPage from "@/react/app/mainApp/pages/myPage/want/MyPageWantPage";
+import RegisterPage from "@/react/app/mainApp/pages/register/RegisterPage";
 
 const Router = () => {
 
@@ -50,6 +51,7 @@ const Router = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/login" element={  <Login /> } />
+				<Route path="/register/:referralCode" element={  <RegisterPage /> } />
 
 				{/* TOPページ */}
 				<Route path={'/'} element={  <GuardRoute component={<HomePage />} /> } />

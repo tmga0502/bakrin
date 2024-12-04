@@ -4,10 +4,11 @@ import {tv} from "tailwind-variants";
 type BudgeType = {
 	color: 'mainGreen' | 'mainYellow' | 'danger' | 'info' | 'success',
 	value: string | ReactNode | null,
+	size?: 'sm' | 'md' | 'lg'
 }
 
 const BudgeTv = tv({
-	base: 'px-2 py-1 inline rounded-md mr-2 text-xs text-white',
+	base: 'inline rounded-md mr-2 text-xs text-white',
 	variants: {
 		color: {
 			mainGreen: 'bg-mainGreen ',
@@ -15,13 +16,18 @@ const BudgeTv = tv({
 			danger: 'bg-danger',
 			info: 'bg-info',
 			success: 'bg-success'
+		},
+		size: {
+			sm: 'px-1 py-1 text-xs',
+			md: 'px-2 py-1 text-xs',
+			lg: 'px-3 py-2 text-md',
 		}
 	}
 })
 
-const Budge: FC<BudgeType> = ({color, value}) => {
+const Budge: FC<BudgeType> = ({color, value, size = 'md'}) => {
   return (
-    <div className={BudgeTv({color: color})}>
+    <div className={BudgeTv({color: color, size:size})}>
       {value}
     </div>
   );

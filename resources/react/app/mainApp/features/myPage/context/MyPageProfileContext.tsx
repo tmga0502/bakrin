@@ -60,6 +60,10 @@ const MyPageProfileContext: React.FC = () => {
 				</div>
 			</MyPageProfileDataBox>
 
+			<MyPageProfileDataBox title={'紹介コード'}>
+				{userData.referral_code}
+			</MyPageProfileDataBox>
+
 		</div>
 	);
 };
