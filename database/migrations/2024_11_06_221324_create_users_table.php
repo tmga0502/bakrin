@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
 			$table->string('uuid')->comment('UUID');
 			$table->string('referral_code')->comment('紹介コード');
+			$table->string('introducer_code')->comment('紹介者のコード');
+			$table->integer('status')->default(0)->comment('登録状況 0:仮登録済, 1:本登録済');
 			$table->string('password')->comment('パスワード');
 			$table->string('organization_name')->comment('法人名等');
 			$table->string('president_name')->comment('代表者名');

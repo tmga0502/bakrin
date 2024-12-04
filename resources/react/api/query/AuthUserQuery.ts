@@ -28,6 +28,28 @@ const usAuthUserCheck = () => {
 	})
 }
 
+const useRegister = () => {
+	const setIsLoading  = useSetRecoilState(IsLoadingStates)
+	const navigate = useNavigate()
+	return useMutation(api.register, {
+		onSuccess: (data: any) => {
+			setIsLoading(false);
+			navigate('/register_completed')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('登録できませんでした。画面更新後、再度必要情報を入力の上ご登録ください。')
+		}
+	})
+}
+
+const useCompleteRegistration = (userUuid: string) => {
+	return useQuery({
+		queryKey: ['registration'],
+		queryFn: ()=>api.getCompleteRegistration(userUuid),
+	})
+}
+
 const useLogin = () => {
 	const setIsAuth   = useSetRecoilState(IsAuthUserStates)
     const setIsLoading  = useSetRecoilState(IsLoadingStates)
@@ -64,6 +86,8 @@ const useLogout = () => {
 
 export {
 	usAuthUserCheck,
+	useRegister,
+	useCompleteRegistration,
     useLogin,
     useLogout,
 }

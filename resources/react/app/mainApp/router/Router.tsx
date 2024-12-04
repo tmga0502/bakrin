@@ -36,7 +36,9 @@ import MyItemNewPage from "@/react/app/mainApp/pages/myItem/myItem-new/MyItemNew
 import MyItemEditPage from "@/react/app/mainApp/pages/myItem/myItem-edit/MyItemEditPage";
 import MyItemShowPage from "@/react/app/mainApp/pages/myItem/myItem-show/MyItemShowPage";
 import MyPageWantPage from "@/react/app/mainApp/pages/myPage/want/MyPageWantPage";
-import RegisterPage from "@/react/app/mainApp/pages/register/RegisterPage";
+import RegisterPage from "@/react/app/mainApp/pages/register/main/RegisterPage";
+import RegisterTemporaryCompletedPage from "@/react/app/mainApp/pages/register/temporaryCompleted/RegisterTemporaryCompletedPage";
+import RegisterCompletedPage from "@/react/app/mainApp/pages/register/completed/RegisterCompletedPage";
 
 const Router = () => {
 
@@ -51,7 +53,11 @@ const Router = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/login" element={  <Login /> } />
+
+				{/*新規登録ページ*/}
 				<Route path="/register/:referralCode" element={  <RegisterPage /> } />
+				<Route path="/register_completed/" element={  <RegisterTemporaryCompletedPage /> } />
+				<Route path="/register_completed/:userUuid" element={  <RegisterCompletedPage /> } />
 
 				{/* TOPページ */}
 				<Route path={'/'} element={  <GuardRoute component={<HomePage />} /> } />

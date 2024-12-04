@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('userRegister', [AuthProducerController::class, 'register']);
+Route::get('userCompleteRegistration/{user_uuid}', [AuthProducerController::class, 'completeRegister']);
 Route::post('userLogin', [AuthProducerController::class, 'login']);
 Route::post('userLogout', [AuthProducerController::class, 'logout']);
 Route::get('authProducerCheck', [AuthProducerController::class, 'authCheck']);

@@ -23,6 +23,8 @@ class User extends Authenticatable
 	protected $fillable = [
 		'uuid',
 		'referral_code',
+		'introducer_code',
+		'status',
 		'password',
 		'organization_name',
 		'president_name',

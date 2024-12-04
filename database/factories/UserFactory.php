@@ -39,6 +39,8 @@ class UserFactory extends Factory
 		return [
 			'uuid'             => (string)Str::uuid(),
 			'referral_code'    => $referral_code,
+			'introducer_code'  => 'NYalmcode0312',
+			'status'           => 1,
 			'password'         => Hash::make('a12345'),
 			'organization_name'=> $this->faker->company,
 			'president_name'   => $this->faker->name,

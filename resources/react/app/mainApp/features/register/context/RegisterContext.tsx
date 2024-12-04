@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,10 +8,13 @@ import MainButton from "@mainElements/button/MainButton/MainButton";
 import ContainerSm from "@mainLayouts/container/ContainerSm/ContainerSm";
 import {Budge} from "@mainElements/budge";
 import Logo from "@/images/logo.png"
+import { useRegister } from '@/react/api/query/AuthUserQuery';
 
 const RegisterContext:React.FC<{referralCode: string}> = ({referralCode}) => {
-	// const login = useLogin()
+	const userRegister = useRegister()
 	const { register, handleSubmit, setValue, getValues, formState:{errors}} = useForm();
+	const [passwordButtonText, setPasswordButtonText] = useState('表示')
+	const [passwordInputType, setPasswordInputType] = useState('password')
 	setValue('referral_code', referralCode)
 
 	const handleSearchAddress = async (zipcode: string) => {
@@ -24,9 +27,18 @@ const RegisterContext:React.FC<{referralCode: string}> = ({referralCode}) => {
 		}
 	};
 
+	const handleDisplayPassword = () => {
+		if(passwordButtonText === '表示'){
+			setPasswordButtonText('非表示')
+			setPasswordInputType('text')
+		}else{
+			setPasswordButtonText('表示')
+			setPasswordInputType('password')
+		}
+	}
+
 	const onSubmit = (data:any) => {
-		console.log(data)
-		// login.mutate(data)
+		userRegister.mutate(data)
 	}
 
 	return (
@@ -66,7 +78,7 @@ const RegisterContext:React.FC<{referralCode: string}> = ({referralCode}) => {
 						<div className={'w-4/5'}>
 							<Input type={'text'} id={'postal_code'} {...register('postal_code', {required: '入力してください'})}/>
 						</div>
-						<MainButton text={'検索'} color={'default'} type={'button'} onClick={()=>{handleSearchAddress(getValues("postal_code"))}}/>
+						<MainButton text={'検索'} color={'default'} type={'button'} size={'sm'} onClick={()=>{handleSearchAddress(getValues("postal_code"))}}/>
 					</div>
 					<ErrorMessage msg={errors.postal_code?.message as string}/>
 				</FormGroup>
@@ -119,6 +131,20 @@ const RegisterContext:React.FC<{referralCode: string}> = ({referralCode}) => {
 					</div>
 					<Input type={'email'} id={'email'} {...register('email', {required: '入力してください'})}/>
 					<ErrorMessage msg={errors.email?.message as string}/>
+				</FormGroup>
+
+				<FormGroup>
+					<div className={'mb-1'}>
+						<Budge color={'danger'} value={'必須'} size={'sm'}/>
+						<FormLabel text={'パスワード'} htmlFor={'password'}/>
+					</div>
+					<div className={'flex items-center gap-2'}>
+						<div className={'w-4/5'}>
+							<Input type={passwordInputType} id={'password'} {...register('password', {required: '入力してください'})}/>
+						</div>
+						<MainButton text={passwordButtonText} color={'default'} type={'button'} size={'sm'} onClick={handleDisplayPassword}/>
+					</div>
+					<ErrorMessage msg={errors.postal_code?.message as string}/>
 				</FormGroup>
 
 
