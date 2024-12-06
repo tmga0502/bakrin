@@ -7,6 +7,7 @@ import ProfileImageEditModal from "@mainFeatures/myPage/components/ProfileImageE
 import {ChangePasswordModal} from "@mainFeatures/myPage/components";
 import ChangePaymentMethodModal from "../components/ChangePaymentMethodModal/ChangePaymentMethodModal";
 import MyPageProfileDataBox from "@mainFeatures/myPage/components/ProfileDataBox/MyPageProfileDataBox";
+import ReferralQrCode from "@mainFeatures/myPage/components/ReferralQrCode";
 
 const MyPageProfileContext: React.FC = () => {
 	const userData = useRecoilValue(IsAuthUserDataStates);
@@ -63,6 +64,8 @@ const MyPageProfileContext: React.FC = () => {
 			<MyPageProfileDataBox title={'紹介コード'}>
 				{userData.referral_code}
 			</MyPageProfileDataBox>
+
+			<ReferralQrCode/>
 
 		</div>
 	);
