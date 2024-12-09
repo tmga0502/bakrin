@@ -106,6 +106,25 @@ const useRequestReject = (setIsModalOpen:any) => {
 	})
 }
 
+const useUpdateShippingId = () => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	return useMutation(api.updateShippingId, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: (data) => {
+			setIsLoading(false)
+			queryClient.invalidateQueries(['trade', data.uuid])
+			toast.success('届け先住所を登録しました。')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('エラーが発生しました。')
+		}
+	})
+}
+
 export {
 	useGetTradeRequests,
 	useGetOngoingTrades,
@@ -115,4 +134,5 @@ export {
 	useRequestTrade,
 	useRequestPermission,
 	useRequestReject,
+	useUpdateShippingId,
 }

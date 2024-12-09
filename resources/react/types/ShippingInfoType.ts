@@ -8,6 +8,7 @@ export type ShippingInfoType = {
 	address2      :string,
 	address3      :string,
 	address4      :string,
+	name          :string,
 	phone_number  :string,
 	user          :UserType,
 }

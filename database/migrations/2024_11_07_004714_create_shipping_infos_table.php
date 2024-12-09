@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('shipping_infos', function (Blueprint $table) {
             $table->id();
 			$table->bigInteger('user_id')->comment('ユーザーID');
-			$table->date('postal_code')->comment('郵便番号');
-			$table->date('address1')->comment('都道府県');
-			$table->date('address2')->comment('市区町村');
-			$table->date('address3')->comment('番地以下');
-			$table->date('address4')->nullable()->default(null)->comment('建物名等');
-			$table->date('phone_number')->comment('電話番号');
+			$table->string('postal_code')->comment('郵便番号');
+			$table->string('address1')->comment('都道府県');
+			$table->string('address2')->comment('市区町村');
+			$table->string('address3')->comment('番地以下');
+			$table->string('address4')->nullable()->default(null)->comment('建物名等');
+			$table->string('name')->comment('宛名');
+			$table->string('phone_number')->comment('電話番号');
             $table->timestamps();
         });
     }

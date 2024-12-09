@@ -1,6 +1,7 @@
 import {ItemType} from "@/react/types/ItemType";
 import {UserType} from "@/react/types/UserType";
 import {TradeType} from "@/react/types/TradeType";
+import {ShippingInfoType} from "@/react/types/ShippingInfoType";
 
 export type TradeMemberType = {
     id                  :number,
@@ -15,4 +16,5 @@ export type TradeMemberType = {
 	trade               :TradeType,
 	item                :ItemType,
 	user                :UserType,
+	shipping_info       :ShippingInfoType,
 }

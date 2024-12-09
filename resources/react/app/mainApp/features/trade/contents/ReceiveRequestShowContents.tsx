@@ -13,7 +13,7 @@ const ReceiveRequestShowContents: React.FC<tradeRequestType> = ({tradeRequestDat
 				<TradeImageBox tradeRequestData={tradeRequestData}/>
 				<div className={'flex items-center gap-12 justify-center max-w-[80%] mx-auto'}>
 					<PermissionButton tradeId={tradeRequestData.id}/>
-					<RejectButton/>
+					<RejectButton tradeId={tradeRequestData.id}/>
 				</div>
 			</ContainerMd>
 		</>

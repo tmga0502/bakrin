@@ -16,6 +16,7 @@ class ShippingInfo extends Model
 		'address2',
 		'address3',
 		'address4',
+		'name',
 		'phone_number',
 	];
 }

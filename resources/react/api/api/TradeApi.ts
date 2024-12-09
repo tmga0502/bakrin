@@ -41,6 +41,11 @@ const requestReject = async (formData: any) => {
 	return data;
 }
 
+const updateShippingId = async (formData: any) => {
+	const{ data } = await axios.post<TradeType>('/api/trade/updateShippingId', formData);
+	return data;
+}
+
 export{
 	getTradeRequests,
 	getOngoingTrades,
@@ -50,4 +55,5 @@ export{
 	requestTrade,
 	requestPermission,
 	requestReject,
+	updateShippingId,
 }

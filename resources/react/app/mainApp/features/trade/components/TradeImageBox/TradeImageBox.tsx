@@ -12,7 +12,7 @@ const TradeImageBox: React.FC<tradeRequestType> = ({tradeRequestData}) => {
 	const recipientUser = tradeRequestData.trade_members.filter(user=>user.user.id === authUser.id)[0]
 
 	return (
-		<div className={'mb-16 sm:flex sm:gap-12 sm:justify-between sm:items-center'}>
+		<div className={'mb-4 flex gap-12 justify-between items-center'}>
 			<ImageBox
 				imgSrc={createImageUrl(senderUser.item.thumbnail_path)}
 				name={senderUser.item.name}

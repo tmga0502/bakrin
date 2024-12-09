@@ -58,4 +58,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(FavoriteUser::class, 'favorite_by_user_id', 'id');
 	}
+
+	public function shipping_info()
+	{
+		return $this->hasMany(ShippingInfo::class, 'user_id', 'id');
+	}
 }

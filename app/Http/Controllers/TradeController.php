@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\RequestTrade;
 use App\Mail\TradePermission;
+use App\Mail\TradeRejected;
 use App\Models\Item;
 use App\Models\Trade;
 use App\Models\TradeMember;
@@ -12,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Throwable;
 
 class TradeController extends Controller
 {
@@ -34,7 +34,7 @@ class TradeController extends Controller
 	//取引詳細
 	public function getTrade($tradeUuid): JsonResponse
 	{
-		$trade = Trade::with(['tradeMembers.item.plan', 'tradeMembers.user', 'messages.sender'])->where('uuid', $tradeUuid)->first();
+		$trade = Trade::with(['tradeMembers.item.plan', 'tradeMembers.shipping_info', 'tradeMembers.user.shipping_info', 'messages.sender'])->where('uuid', $tradeUuid)->first();
 		return response()->json($trade, 200);
 	}
 
@@ -143,7 +143,35 @@ class TradeController extends Controller
 
 	public function requestReject(Request $req): JsonResponse
 	{
-		dd($req->all());
+		DB::transaction(function() use($req) {
+			$trade = Trade::with('tradeMembers.user')->find($req->trade_id);
+//			$trade->fill(['status' => 3, 'reason' => $req->reason])->save();
+
+			//相手にメール
+			//相手(申請者)の判定
+			foreach($trade->tradeMembers as $member){
+				$applicant_user = null;
+				$recipient_user = null;
+				if($member->applicant_flag === true){
+					$applicant_user = $member->user;
+				}else{
+					$recipient_user = $member->user;
+				}
+				//メール送信
+				if($applicant_user!==null && $recipient_user!==null){
+					Mail::to(['email' => $applicant_user->email])->send(new TradeRejected($applicant_user, $recipient_user, $trade));
+				}
+			}
+		});
+		return response()->json(true);
+	}
+
+	public function updateShippingId(Request $req): JsonResponse
+	{
+		$trade_member = TradeMember::with('trade')->find($req->tradeMemberId);
+		$trade_member->fill(['shipping_info_id' => $req->shipping_info_id])->save();
+
+		return response()->json($trade_member->trade);
 	}
 
 }

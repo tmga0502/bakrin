@@ -11,7 +11,7 @@ const MyPageProfileDataBox: React.FC<MyPageProfileDataBoxType> = ({title, childr
 			<label className={'flex items-center text-xs font-bold mb-2 before:contents-[""] before:w-2 before:border-t-[14px] before:border-t-mainGreen before:mr-2'}>
 				{title}
 			</label>
-			<p className={'pb-1 pl-4'}>{children}</p>
+			<span className={'pb-1 pl-4'}>{children}</span>
 		</div>
 	);
 };

@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static find(mixed $tradeMemberId)
+ */
 class TradeMember extends Model
 {
     use HasFactory;
@@ -20,6 +23,10 @@ class TradeMember extends Model
 		'receipt_check'
 	];
 
+	protected $casts = [
+		'applicant_flag' => 'boolean'
+	];
+
 	public function trade()
 	{
 		return $this->belongsTo(Trade::class, 'trade_id', 'id');
@@ -33,5 +40,10 @@ class TradeMember extends Model
 	public function item()
 	{
 		return $this->belongsTo(Item::class, 'item_id', 'id');
+	}
+
+	public function shipping_info()
+	{
+		return $this->hasOne(ShippingInfo::class, 'id', 'shipping_info_id');
 	}
 }

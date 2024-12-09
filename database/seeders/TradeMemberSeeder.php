@@ -63,7 +63,7 @@ class TradeMemberSeeder extends Seeder
 				'user_id' => $partner->id,
 				'item_id' => $partnerItem->id,
 				'shipping_date' => $partnerShippingDate,
-				'shipping_slip_path' => $partnerShippingDate,
+				'shipping_slip_path' => '',
 				'receipt_check' => $partnerReceiptCheck,
 			];
 

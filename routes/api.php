@@ -12,6 +12,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NoticesController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\ReferralCodeController;
+use App\Http\Controllers\ShippingInfoController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UsersController;
@@ -90,6 +91,10 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
         Route::post('/searchUser', [UsersController::class, 'searchUser']);//生産者検索
     });
 
+	Route::group(['prefix' => 'shipping_info'], function () {
+        Route::post('/create', [ShippingInfoController::class, 'create']);//届け先登録
+	});
+
     //お気に入り【アイテム】
     Route::group(['prefix' => 'favoriteItem'], function () {
         Route::get('/getState/{itemUuid}', [FavoriteItemsController::class, 'getState']);
@@ -120,6 +125,7 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::post('/requestTrade', [TradeController::class, 'requestTrade']);//取引申請
 		Route::post('/requestPermission', [TradeController::class, 'requestPermission']);//取引申請を承認
 		Route::post('/requestReject', [TradeController::class, 'requestReject']);//取引申請を拒否
+		Route::post('/updateShippingId', [TradeController::class, 'updateShippingId']);//取引申請を拒否
 	});
 
 	//欲しいもの

@@ -20,7 +20,7 @@ class AuthProducerController extends Controller
     public function authCheck(Request $req): JsonResponse
     {
 		if(Auth::guard('users')->user()){
-			return response()->json(Auth::guard('users')->user()->load(['items.plan', 'items.unit']));
+			return response()->json(Auth::guard('users')->user()->load(['items.plan', 'items.unit', 'shipping_info']));
 		}
 		return response()->json(false);
     }
@@ -83,7 +83,7 @@ class AuthProducerController extends Controller
 				'action' => 'Login'
 			]);
 			$log->save();
-            return response()->json(Auth::user()->load(['items.plan', 'items.unit']));
+            return response()->json(Auth::user()->load(['items.plan', 'items.unit', 'shipping_info']));
         }
 
         return response()->json([], 401);

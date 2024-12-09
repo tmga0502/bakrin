@@ -6,11 +6,18 @@ import {Input} from "@mainElements/form";
 import {useForm} from "react-hook-form";
 import {useSetRecoilState} from "recoil";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
+import {useRequestReject} from "@/react/api/query/TradeQuery";
 
-const RejectButton: React.FC = () => {
-	const {register, handleSubmit, formState:{errors}} = useForm()
+const RejectButton: React.FC<{tradeId:number}> = ({tradeId})  => {
+	const {register, handleSubmit, formState:{errors}} = useForm({
+		defaultValues:{
+			'trade_id': tradeId,
+			'reason'  : '',
+		}
+	})
 	const [isModalOpen, setIsModalOpen] = React.useState(false);
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const reject = useRequestReject(setIsModalOpen);
 
 	const handleModalDisplay = () => {
 		setIsModalOpen(!isModalOpen);
@@ -18,7 +25,7 @@ const RejectButton: React.FC = () => {
 
 	const onSubmit =(data: any) => {
 		setIsLoading(true)
-		console.log(data)
+		reject.mutate(data)
 	}
 
 	return (

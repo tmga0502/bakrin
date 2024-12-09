@@ -12,7 +12,7 @@ const ImageBox: React.FC<ImageBoxType> = (props) => {
 	const {user, imgSrc, name, planName, shippingTime} = props
 	const userName = user ? '相手のアイテム' : '自分のアイテム'
 	return (
-		<div className={'bg-white border border-bakGray rounded-md w-[80%] mx-auto mb-6 sm:mb-0'}>
+		<div className={'bg-white border border-bakGray rounded-md w-[80%] mx-auto mb-6 sm:mb-0 text-xs sm:text-sm'}>
 			<p className={'text-center rounded-t-md'}>{userName}</p>
 			<div className={'relative overflow-hidden before:contents-[""] before:block before:pt-[100%]'}>
 				<img className={'absolute top-0 left-0 w-full h-full object-cover'} src={imgSrc} alt={name}/>
@@ -20,7 +20,7 @@ const ImageBox: React.FC<ImageBoxType> = (props) => {
 			<div className={'p-4'}>
 				<p className={'mb-2 font-bold text-center'}>【{planName}】</p>
 				<p className={'mb-2'}>{name}</p>
-				<p className={'mb-2'}>発送時期：{shippingTime}</p>
+				<p className={'mb-2'}>発送：{shippingTime}</p>
 			</div>
 		</div>
 	);
