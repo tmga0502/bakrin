@@ -34,14 +34,16 @@ const TradeShowContents: React.FC<tradeRequestType> = ({tradeRequestData}) => {
 					)}
 				</div>
 
-				<div className={'py-2'}>
-					<p className={'mb-1 font-bold'}>【自分の送り先】</p>
-					<p className={'leading-6'}>{createPostalCode(recipientUser.shipping_info.postal_code)}</p>
-					<p className={'leading-6'}>{recipientUser.shipping_info.address1}{recipientUser.shipping_info.address2}{recipientUser.shipping_info.address3}</p>
-					<p className={'leading-6'}>{recipientUser.shipping_info.address4}</p>
-					<p className={'leading-8'}>{recipientUser.shipping_info.name}</p>
-					<p className={'leading-8'}>{createPhoneNumber(recipientUser.shipping_info.phone_number)}</p>
-				</div>
+				{recipientUser.shipping_info_id !== null && (
+					<div className={'py-2'}>
+						<p className={'mb-1 font-bold'}>【自分の送り先】</p>
+						<p className={'leading-6'}>{createPostalCode(recipientUser.shipping_info.postal_code)}</p>
+						<p className={'leading-6'}>{recipientUser.shipping_info.address1}{recipientUser.shipping_info.address2}{recipientUser.shipping_info.address3}</p>
+						<p className={'leading-6'}>{recipientUser.shipping_info.address4}</p>
+						<p className={'leading-8'}>{recipientUser.shipping_info.name}</p>
+						<p className={'leading-8'}>{createPhoneNumber(recipientUser.shipping_info.phone_number)}</p>
+					</div>
+				)}
 
 				{(tradeRequestData.status === 1 || tradeRequestData.status === 2) && (
 					<Chat tradeRequestData={tradeRequestData}/>
