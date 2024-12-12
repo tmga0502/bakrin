@@ -46,6 +46,21 @@ const updateShippingId = async (formData: any) => {
 	return data;
 }
 
+const shippingComplete = async (formData: any) => {
+	const config = {
+		headers: {
+			'content-type': 'multipart/form-data'
+		}
+	}
+	const{ data } = await axios.post<TradeType>('/api/trade/shippingComplete', formData, config);
+	return data;
+}
+
+const receiptComplete = async (formData: any) => {
+	const{ data } = await axios.post<TradeType>('/api/trade/receiptComplete', formData);
+	return data;
+}
+
 export{
 	getTradeRequests,
 	getOngoingTrades,
@@ -56,4 +71,6 @@ export{
 	requestPermission,
 	requestReject,
 	updateShippingId,
+	shippingComplete,
+	receiptComplete,
 }

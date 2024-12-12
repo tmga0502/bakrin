@@ -10,7 +10,6 @@ const Chat: React.FC<tradeRequestType> = ({tradeRequestData}) => {
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const messageDataCount = tradeRequestData.messages ? tradeRequestData.messages.length : 0
 	const partnerUser = tradeRequestData.trade_members.filter(user => user.id !== authUser.id)[0]
-	console.log(tradeRequestData.messages)
 	return (
 		<MessageBoxWrapper>
 			<MessageContainer>

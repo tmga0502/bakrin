@@ -5,7 +5,7 @@ import Tab from "@mainLayouts/tab/Tab/Tab";
 import ShippingInfoCreateForm from "@mainFeatures/trade/components/shippingInfoCreateForm/ShippingInfoCreateForm";
 import ShippingInfoList from "@mainFeatures/trade/components/shippingInfoList/ShippingInfoList";
 
-const ShippingInfoSelectModal: React.FC<{recipientUser: TradeMemberType}> = ({recipientUser}) => {
+const ShippingInfoSelectModal: React.FC<{myData: TradeMemberType}> = ({myData}) => {
 	const [mode, setMode] = useState<'登録済みから選択'| '新規登録'>('登録済みから選択')
 	const tabMenu = ['登録済みから選択', '新規登録']
 	return (
@@ -20,7 +20,7 @@ const ShippingInfoSelectModal: React.FC<{recipientUser: TradeMemberType}> = ({re
 				{mode === '新規登録' ? (
 					<ShippingInfoCreateForm setMode={setMode}/>
 				):(
-					<ShippingInfoList recipientUser={recipientUser}/>
+					<ShippingInfoList myData={myData}/>
 				)}
 			</ModalBody>
 		</Modal>

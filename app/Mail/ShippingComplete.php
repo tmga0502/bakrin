@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class TradeRejected extends Mailable
+class ShippingComplete extends Mailable
 {
 	use Queueable, SerializesModels;
 
@@ -21,13 +21,13 @@ class TradeRejected extends Mailable
 	}
 
 
-	public function build(): TradeRejected
+	public function build(): ShippingComplete
 	{
 		$from = config('mail.from');
 		return $this
 			->from($from['address'], $from['name']) // 送信元
-			->subject('申請していた交換が拒否されました') // メールタイトル
-			->view('email.tradeRejected')// 平メール本文のテンプレート
+			->subject('アイテムが発送されました') // メールタイトル
+			->view('email.shippingComplete')// 平メール本文のテンプレート
 			->with([
 				'user' => $this->applicant_user,
 				'reason' => $this->trade->reason,

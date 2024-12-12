@@ -26,7 +26,7 @@ const useGetCompletedTrades = () => {
 	})
 }
 
-//完了した取引
+//進行中の取引
 const useGetOngoingTrades = () => {
 	return useQuery('ongoingTrades', ()=>api.getOngoingTrades(),{
 		suspense: true,
@@ -125,6 +125,48 @@ const useUpdateShippingId = () => {
 	})
 }
 
+//発送完了処理
+const useShippingComplete = (setIsModalOpen:any) => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	return useMutation(api.shippingComplete, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: (data) => {
+			setIsLoading(false)
+			queryClient.invalidateQueries(['trade', data.uuid])
+			setIsModalOpen(false)
+			toast.success('発送完了の手続きを行いました。')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('エラーが発生しました。')
+		}
+	})
+}
+
+//荷物の受取完了処理
+const useReceiptComplete = (setIsModalOpen:any) => {
+	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const queryClient = useQueryClient()
+	return useMutation(api.receiptComplete, {
+		onMutate: () => {
+			setIsLoading(true);
+		},
+		onSuccess: (data) => {
+			setIsLoading(false)
+			queryClient.invalidateQueries(['trade', data.uuid])
+			setIsModalOpen(false)
+			toast.success('受取完了の手続きを行いました。')
+		},
+		onError: () => {
+			setIsLoading(false)
+			toast.error('エラーが発生しました。')
+		}
+	})
+}
+
 export {
 	useGetTradeRequests,
 	useGetOngoingTrades,
@@ -135,4 +177,6 @@ export {
 	useRequestPermission,
 	useRequestReject,
 	useUpdateShippingId,
+	useShippingComplete,
+	useReceiptComplete,
 }

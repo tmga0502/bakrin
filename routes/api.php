@@ -125,7 +125,9 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::post('/requestTrade', [TradeController::class, 'requestTrade']);//取引申請
 		Route::post('/requestPermission', [TradeController::class, 'requestPermission']);//取引申請を承認
 		Route::post('/requestReject', [TradeController::class, 'requestReject']);//取引申請を拒否
-		Route::post('/updateShippingId', [TradeController::class, 'updateShippingId']);//取引申請を拒否
+		Route::post('/updateShippingId', [TradeController::class, 'updateShippingId']);//発送先の登録
+		Route::post('/shippingComplete', [TradeController::class, 'shippingComplete']);//発送完了処理
+		Route::post('/receiptComplete', [TradeController::class, 'receiptComplete']);//受取完了処理
 	});
 
 	//欲しいもの

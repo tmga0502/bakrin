@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RequestTrade;
+use App\Mail\ShippingComplete;
 use App\Mail\TradePermission;
 use App\Mail\TradeRejected;
 use App\Models\Item;
 use App\Models\Trade;
 use App\Models\TradeMember;
+use App\Service\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class TradeController extends Controller
@@ -170,6 +173,47 @@ class TradeController extends Controller
 	{
 		$trade_member = TradeMember::with('trade')->find($req->tradeMemberId);
 		$trade_member->fill(['shipping_info_id' => $req->shipping_info_id])->save();
+
+		return response()->json($trade_member->trade);
+	}
+
+	//発送完了処理
+	public function shippingComplete(Request $req): JsonResponse
+	{
+		$me = TradeMember::with('trade')->find($req->my_user_id);
+		DB::transaction(function() use($me, $req) {
+			$partner = TradeMember::with(['trade', 'user'])->find($req->partner_user_id);
+
+			$insertArray = [
+				'shipping_date' => $req->shipping_date,
+			];
+
+			if(isset($req->shipping_slip[0])){
+				$imageService = new ImageService($req->shipping_slip[0], 'shipping_slip');
+				$insertArray['shipping_slip_path'] = $imageService->save();
+			}else{
+				$insertArray['shipping_slip_path'] = $me->shipping_slip_path;
+			}
+
+			$me->fill($insertArray)->save();
+
+			//$partnerにメール送信
+			Mail::to(['email' => $partner->user->email])->send(new ShippingComplete($me, $partner, $me->trade));
+
+			//$meのshipping_dateと$partnerのshipping_dateが共に!nullならば、tradeのstatusを2にする
+			if($me->shipping_date !== null && $partner->shipping_date !== null){
+				$me->trade->fill(['status' => 2])->save();
+			}
+		});
+
+		return response()->json($me->trade);
+	}
+
+	//荷物の受け取り完了処理
+	public function receiptComplete(Request $req): JsonResponse
+	{
+		$trade_member = TradeMember::with('trade')->find($req->trade_member_id);
+		$trade_member->fill(['receipt_check' => true])->save();
 
 		return response()->json($trade_member->trade);
 	}

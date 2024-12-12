@@ -8,11 +8,11 @@ import MainButton from "@mainElements/button/MainButton/MainButton";
 import {ErrorMessage} from "@mainLayouts/form";
 import { useUpdateShippingId } from '@/react/api/query/TradeQuery';
 
-const ShippingInfoList: React.FC<{recipientUser: TradeMemberType}> = ({recipientUser}) => {
+const ShippingInfoList: React.FC<{myData: TradeMemberType}> = ({myData}) => {
 	const authUser = useRecoilValue(IsAuthUserDataStates)
 	const {setValue, register, handleSubmit, formState:{errors}} = useForm()
 	const update = useUpdateShippingId();
-	setValue('tradeMemberId', recipientUser.id)
+	setValue('tradeMemberId', myData.id)
 
 	const onSubmit = (data:any) => {
 		update.mutate(data)

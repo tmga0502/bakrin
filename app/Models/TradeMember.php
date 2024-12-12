@@ -24,7 +24,8 @@ class TradeMember extends Model
 	];
 
 	protected $casts = [
-		'applicant_flag' => 'boolean'
+		'applicant_flag' => 'boolean',
+		'receipt_check' => 'boolean',
 	];
 
 	public function trade()
