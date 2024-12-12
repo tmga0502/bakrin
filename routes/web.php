@@ -24,10 +24,20 @@ Route::get('/admin/{any}', function () {
 	return view('adminApp');
 })->where('any', '.*');
 
-// Producer routes
+
+// Agent routes
+Route::get('/agent', function () {
+	return view('agentApp');
+});
+Route::get('/agent/{any}', function () {
+	return view('agentApp');
+})->where('any', '.*');
+
+
+// User routes
 Route::get('/{any}', function () {
 	return view('mainApp');
-})->where('any', '^(?!admin).*$');
+})->where('any', '^(?!admin|agent).*$');
 
 // Fallback route for other paths
 Route::fallback(function () {
