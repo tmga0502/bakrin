@@ -16,10 +16,10 @@ return new class extends Migration
 					  $table->string('uuid')->comment('UUID');
 					  $table->string('referral_code')->comment('紹介コード');
 					  $table->string('name')->comment('名前');
-				  	$table->string('login_id')->comment('ログインID');
-					  $table->string('password')->comment('パスワード');
-					  $table->string('phone_number')->nullable()->default(null)->comment('電話番号');
 					  $table->string('email')->comment('メールアドレス');
+					  $table->string('password')->comment('パスワード');
+					  $table->integer('status')->default(0)->comment('登録状況 0:仮登録済, 1:本登録済');
+					  $table->string('phone_number')->nullable()->default(null)->comment('電話番号');
 					  $table->string('postal_code')->nullable()->default(null)->comment('郵便番号');
 					  $table->string('address1')->nullable()->default(null)->comment('都道府県');
 					  $table->string('address2')->nullable()->default(null)->comment('市区町村');

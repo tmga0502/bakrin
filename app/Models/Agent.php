@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, string $code)
+ * @method static inRandomOrder()
+ */
 class Agent extends Model
 {
     use HasFactory;
@@ -13,7 +17,6 @@ class Agent extends Model
 		'uuid',
 		'referral_code',
 		'name',
-		'login_id',
 		'password',
 		'phone_number',
 		'email',

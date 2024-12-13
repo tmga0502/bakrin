@@ -20,7 +20,6 @@ export const IsAuthDataStates = atom<AgentUserType>({
 		address4           :'',
 		phone_number       :'',
 		email              :'',
-		login_id           :'',
 		password           :'',
 		bank_name          :'',
 		bank_name_type	   :'',
@@ -30,6 +29,6 @@ export const IsAuthDataStates = atom<AgentUserType>({
 		branch_code        :'',
 		bank_type          :'',
 		bank_number        :'',
-		bank_account_name  :'',
+		bank_account       :'',
 	},
 })

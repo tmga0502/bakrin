@@ -10,7 +10,6 @@ export type AgentUserType = {
 	address4           :string,
 	phone_number       :string,
 	email              :string,
-	login_id           :string,
 	password           :string,
 	bank_name          :string,
 	bank_name_type	   :string,
