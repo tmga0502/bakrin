@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\AuthAgentController;
 use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
@@ -168,4 +169,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('login', [AuthAdminController::class, 'login']);
 	Route::post('logout', [AuthAdminController::class, 'logout']);
 	Route::get('authCheck', [AuthAdminController::class, 'authCheck']);
+});
+
+
+//代理店用
+Route::group(['prefix' => 'agent'], function () {
+	Route::post('login', [AuthAgentController::class, 'login']);
+	Route::post('logout', [AuthAgentController::class, 'logout']);
+	Route::get('authCheck', [AuthAgentController::class, 'authCheck']);
 });

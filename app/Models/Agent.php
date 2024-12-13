@@ -10,8 +10,11 @@ class Agent extends Model
     use HasFactory;
 
 	protected $fillable = [
+		'uuid',
 		'referral_code',
 		'name',
+		'login_id',
+		'password',
 		'phone_number',
 		'email',
 		'postal_code',

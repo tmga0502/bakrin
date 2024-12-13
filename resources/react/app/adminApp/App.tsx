@@ -6,9 +6,6 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {QueryClient, QueryClientProvider} from "react-query";
 import {RecoilRoot} from "recoil";
-import {theme} from "@/react/app/adminApp/styles/Theme";
-import {Global, ThemeProvider} from "@emotion/react";
-import {globalStyle} from "@/react/app/adminApp/styles/Global";
 import PageLoader from "@mainLayouts/Loader/PageLoader/PageLoader";
 
 const App: React.FC = () => {
@@ -31,11 +28,8 @@ const App: React.FC = () => {
 				<Suspense fallback={<PageLoader/>}>
 					<IsLoadingProvider>
 						<AuthProvider>
-							<ThemeProvider theme={theme}>
-								<Global styles={globalStyle}/>
-								<Router/>
-								<ToastContainer hideProgressBar={true}/>
-							</ThemeProvider>
+							<Router/>
+							<ToastContainer hideProgressBar={true}/>
 						</AuthProvider>
 					</IsLoadingProvider>
 				</Suspense>
