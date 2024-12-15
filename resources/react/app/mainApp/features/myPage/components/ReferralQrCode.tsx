@@ -5,10 +5,13 @@ import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 
 const ReferralQrCode = () => {
 	const userData = useRecoilValue(IsAuthUserDataStates);
+	const location = window.location.origin;
+	const linkUrl = `${location}/register_completed/${userData.referral_code}`
+	console.log(userData)
 	return (
 		<div className={'mt-4'}>
 			<QRCodeCanvas
-				value={'https://www.google.com'}
+				value={linkUrl}
 				size={128}
 				bgColor={"#00BF63"}
 				fgColor={"#FFFFFF"}
