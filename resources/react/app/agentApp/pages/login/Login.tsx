@@ -1,19 +1,21 @@
 import React from 'react';
-import {useLogin} from "@/react/api/query/AuthUserQuery";
+import {useAgentLogin} from "@/react/api/query/AuthAgentQuery";
 import {useForm} from "react-hook-form";
 import loginImage from "@/images/loginImage.jpg";
 import logo from "@/images/logo.png";
 import {FormGroup, FormLabel} from "@mainLayouts/form";
 import Input from "../../../mainApp/components/elements/form/InputField/Input";
 import MainButton from "@mainElements/button/MainButton/MainButton";
+import {Link} from "react-router-dom";
 
 const Login = () => {
-	const login = useLogin()
+	const login = useAgentLogin()
 	const { register, handleSubmit} = useForm();
 
 	const onSubmit = (data:any) => {
 		login.mutate(data)
 	}
+
 
 	return (
 		<div className={'relative h-screen bg-mainGreen'}>
@@ -40,6 +42,10 @@ const Login = () => {
 							<MainButton text={'ログイン'} color={'mainGreen'} type={'submit'} />
 						</div>
 					</form>
+
+					<Link to={'/agent/register'}>
+						<p className={'text-right mt-12 text-xs underline hover:text-bakGray'}>新規登録はこちら</p>
+					</Link>
 				</div>
 			</div>
 		</div>

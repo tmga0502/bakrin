@@ -177,4 +177,7 @@ Route::group(['prefix' => 'agent'], function () {
 	Route::post('login', [AuthAgentController::class, 'login']);
 	Route::post('logout', [AuthAgentController::class, 'logout']);
 	Route::get('authCheck', [AuthAgentController::class, 'authCheck']);
+
+	Route::post('agentRegister', [AuthAgentController::class, 'register']);
+	Route::get('agentCompleteRegistration/{agent_uuid}', [AuthAgentController::class, 'completeRegister']);
 });

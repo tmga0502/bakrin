@@ -144,7 +144,7 @@ const RegisterContext:React.FC<{referralCode: string}> = ({referralCode}) => {
 						</div>
 						<MainButton text={passwordButtonText} color={'default'} type={'button'} size={'sm'} onClick={handleDisplayPassword}/>
 					</div>
-					<ErrorMessage msg={errors.postal_code?.message as string}/>
+					<ErrorMessage msg={errors.password?.message as string}/>
 				</FormGroup>
 
 

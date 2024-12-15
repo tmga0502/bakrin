@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react'
-import {usAuthAdminCheck} from "@/react/api/query/AuthAdminQuery";
+import {usAuthAgentCheck} from "@/react/api/query/AuthAgentQuery";
 
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-	usAuthAdminCheck()
+	usAuthAgentCheck()
 
 	return(
 		<>{children}</>

@@ -4,20 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @method static where(string $string, string $code)
  * @method static inRandomOrder()
  */
-class Agent extends Model
+class Agent extends Authenticatable
 {
     use HasFactory;
+	use HasApiTokens, Notifiable;
 
 	protected $fillable = [
 		'uuid',
 		'referral_code',
 		'name',
 		'password',
+		'status',
 		'phone_number',
 		'email',
 		'postal_code',

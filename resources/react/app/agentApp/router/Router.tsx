@@ -2,27 +2,28 @@ import React, {ReactElement} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Login from "@/react/app/agentApp/pages/login/Login";
 import {useRecoilValue} from "recoil";
-import {IsAuthUserStates} from "@/react/app/mainApp/states/AuthStates";
-import HomePage from "@/react/app/mainApp/pages/home/HomePage";
-import RegisterPage from "@/react/app/mainApp/pages/register/main/RegisterPage";
-import RegisterTemporaryCompletedPage from "@/react/app/mainApp/pages/register/temporaryCompleted/RegisterTemporaryCompletedPage";
-import RegisterCompletedPage from "@/react/app/mainApp/pages/register/completed/RegisterCompletedPage";
+import RegisterPage from "@/react/app/agentApp/pages/register/RegisterPage";
+import Home from "@/react/app/agentApp/pages/home/HomePage";
+import {IsAuthStates} from "@/react/app/agentApp/states/AuthStates";
+import RegisterCompletedPage from "@/react/app/agentApp/pages/register/completed/RegisterCompletedPage";
 
 const Router = () => {
 
-	// const isAuth = useRecoilValue(IsAuthUserStates);
-	//
-	// const GuardRoute = (props : {component: ReactElement}) => {
-	// 	if(!isAuth) return<Navigate to="/login" />
-	// 	return <>{ props.component }</>
-	// }
+	const isAuth = useRecoilValue(IsAuthStates);
 
+	const GuardRoute = (props : {component: ReactElement}) => {
+		if(!isAuth) return<Navigate to="/agent/login" />
+		return <>{ props.component }</>
+	}
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/agent">
 					<Route path="login" element={  <Login /> } />
+					<Route path="register" element={  <RegisterPage /> } />
+					<Route path="register_completed/:agentUuid" element={  <RegisterCompletedPage /> } />
 
+					<Route index={true} element={  <GuardRoute component={ <Home />} /> } />
 					{/*新規登録ページ*/}
 					{/*<Route path="/register/:referralCode" element={  <RegisterPage /> } />*/}
 					{/*<Route path="/register_completed/" element={  <RegisterTemporaryCompletedPage /> } />*/}
