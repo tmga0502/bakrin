@@ -1,24 +1,24 @@
 import React from "react";
 import { MenuType } from "./types/type";
 import { MdDashboard } from "react-icons/md";
-import { IoIosNotifications } from "react-icons/io";
-import { IoSettingsSharp } from "react-icons/io5";
+import { GrMoney } from "react-icons/gr";
+import { FaRegUser } from "react-icons/fa";
 
 export const Menu: Array<MenuType> = [
 	{
 		icon: <MdDashboard />,
 		title: 'Dashboard',
-		link: '/admin',
+		link: '/agent',
 	},
 	{
-		icon: <IoIosNotifications />,
-		title: 'お知らせ',
-		link: '/admin/notice',
+		icon: <GrMoney />,
+		title: '出金依頼',
+		link: '/agent/withdraw_request',
 	},
 	{
-		icon: <IoSettingsSharp />,
-		title: '設定',
-		link: '/admin/setting',
+		icon: <FaRegUser />,
+		title: 'マイページ',
+		link: '/agent/my_page',
 	},
 
 ]
