@@ -246,10 +246,23 @@ class TradeController extends Controller
 	//荷物の受け取り完了処理
 	public function receiptComplete(Request $req): JsonResponse
 	{
-		$trade_member = TradeMember::with('trade')->find($req->trade_member_id);
-		$trade_member->fill(['receipt_check' => true])->save();
+		$trade = DB::transaction(function() use($req) {
+			$trade_member = TradeMember::with('trade')->find($req->trade_member_id);
+			$trade_member->fill(['receipt_check' => true])->save();
 
-		return response()->json($trade_member->trade);
+			//双方の受取が完了していれば、tradeのstatusを2にする
+			$check = [];
+			$trade = Trade::with('tradeMembers')->find($trade_member->trade_id);
+			foreach ($trade->tradeMembers as $member) {
+				$check[] = $member->receipt_check;
+			}
+			if (count(array_filter($check)) === count($check)) {
+				$trade->fill(['status' => 2])->save();
+			}
+			return $trade;
+		});
+
+		return response()->json($trade);
 	}
 
 }
