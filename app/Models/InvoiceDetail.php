@@ -17,4 +17,5 @@ class InvoiceDetail extends Model
 		'introducer_code',
 		'discount_reason',
 	];
+
 }

@@ -38,6 +38,7 @@ class User extends Authenticatable
 		'pr',
 		'payment_method',
 		'thumbnail_path',
+		'have_discount_ticket_count',
 	];
 
 	protected $hidden = [

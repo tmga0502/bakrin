@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             FavoriteItemSeeder::class,
             FavoriteUserSeeder::class,
             WantItemSeeder::class,
+			InvoiceSeeder::class,
+			InvoiceDetailSeeder::class,
         ]);
     }
 }

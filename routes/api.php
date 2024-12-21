@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthProducerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavoriteItemsController;
 use App\Http\Controllers\FavoriteUsersController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemImageController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\MessageController;
@@ -137,6 +138,11 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::get('/getAll', [WantItemsController::class, 'getAll']);
 		Route::post('/create', [WantItemsController::class, 'create']);
 		Route::post('/remove', [WantItemsController::class, 'remove']);
+	});
+
+	//請求書
+	Route::group(['prefix' => 'invoice'], function () {
+		Route::get('/getInvoice/{month}', [InvoiceController::class, 'getInvoice']);
 	});
 
     //ログインユーザー情報

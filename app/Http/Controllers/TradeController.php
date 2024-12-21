@@ -10,6 +10,7 @@ use App\Models\InvoiceDetail;
 use App\Models\Item;
 use App\Models\Trade;
 use App\Models\TradeMember;
+use App\Models\User;
 use App\Service\ImageService;
 use App\Service\InvoiceDetailService;
 use App\Service\InvoiceService;
@@ -136,6 +137,10 @@ class TradeController extends Controller
 				//申請許諾者（自分）が割引チケットを使用するならtradeMemberのuse_discount_ticketをtrueにする
 				if($tradeMember->user->id === Auth()->user()->id){
 					$tradeMember->fill(['use_discount_ticket' => $req->use_discount_ticket])->save();
+					if($req->use_discount_ticket){
+						$user = User::find(Auth()->user()->id);
+						$user->fill(['have_discount_ticket_count' => $user->have_discount_ticket_count - 1])->save();
+					}
 				}
 				//両trade_memberのuse_discount_ticketの状態を見て、trueであればuserのhave_discount_ticket_countを-1する
 				if($tradeMember->use_discount_ticket){
@@ -145,7 +150,6 @@ class TradeController extends Controller
 				$CREATE_INVOICE = new InvoiceService($tradeMember->user);
 				//Invoiceに今月のデータがあるか確認
 				$invoice_data = $CREATE_INVOICE->getInvoice();
-
 				//$invoice_dataがなければ作成する
 				if($invoice_data === null){
 					$invoice_data = $CREATE_INVOICE->createInvoice();
@@ -170,7 +174,8 @@ class TradeController extends Controller
 
 			return $trade;
 		});
-		return response()->json($trade, 200);
+		$user = User::find(Auth()->user()->id);
+		return response()->json($user, 200);
 	}
 
 	public function requestReject(Request $req): JsonResponse

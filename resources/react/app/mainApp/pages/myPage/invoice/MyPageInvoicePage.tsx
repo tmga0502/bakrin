@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import MainLayout from "@/react/app/mainApp/components/layouts/MainLayout/MainLayout";
-import {DateObject} from "@/react/app/mainApp/_dummyData/InvoiceData";
 import {PageTitle} from "@mainElements/title";
 import ContainerSm from "@mainLayouts/container/ContainerSm/ContainerSm";
-import {InvoiceList} from "@mainFeatures/myPage/components";
+import MyPageInvoiceContext from "@mainFeatures/myPage/context/MyPageInvoiceContext";
 
 const MyPageInvoicePage = () => {
+
+	let context: ReactNode
+	context = <MyPageInvoiceContext/>
 	return (
 		<MainLayout>
-			<PageTitle en={'Invoice'} jp={'請求書一覧'}/>
+			<PageTitle en={'Invoice'} jp={'請求書'}/>
 			<ContainerSm>
-				{DateObject.map((date: string, index: number) => (
-					<InvoiceList title={date} key={index}/>
-				))}
+				{context}
 			</ContainerSm>
 		</MainLayout>
 	);

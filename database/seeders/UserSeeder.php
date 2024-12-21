@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->truncate();
 
-        User::factory()->count(100)->create();
+        User::factory()->count(10)->create();
 
 		$users = User::all();
 		foreach($users as $user){

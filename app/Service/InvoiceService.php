@@ -17,7 +17,8 @@ class InvoiceService
 
 	public function getInvoice()
 	{
-		return Invoice::where('user_id', $this->user->id)->where('month', date('Y-m'))->first();
+		$month = Carbon::now()->lastOfMonth()->format('Y-m-d');
+		return Invoice::where('user_id', $this->user->id)->where('month', $month)->first();
 	}
 
 

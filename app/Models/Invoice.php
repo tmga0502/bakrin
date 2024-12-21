@@ -19,4 +19,9 @@ class Invoice extends Model
 		'payment_check',
 		'mail_send_check',
 	];
+
+	public function details()
+	{
+		return $this->hasMany(InvoiceDetail::class, 'invoice_id', 'id');
+	}
 }

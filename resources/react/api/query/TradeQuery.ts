@@ -4,6 +4,7 @@ import {useSetRecoilState} from "recoil";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 
 //申請を受けている取引
 const useGetTradeRequests = () => {
@@ -63,16 +64,19 @@ const useRequestTrade = (setIsModalOpen:any) => {
 
 const useRequestPermission = (setIsModalOpen:any) => {
 	const setIsLoading = useSetRecoilState(IsLoadingStates)
+	const setUserData = useSetRecoilState(IsAuthUserDataStates);
 	const queryClient = useQueryClient()
 	const navigate = useNavigate()
 	return useMutation(api.requestPermission, {
 		onMutate: () => {
 			setIsLoading(true);
 		},
-		onSuccess: () => {
+		onSuccess: (data: any) => {
+			console.log(data)
 			setIsLoading(false)
 			queryClient.invalidateQueries(['trades'])
 			toast.success('承認しました')
+			setUserData(data)
 			navigate(`/trade`)
 			setIsModalOpen(false)
 		},
