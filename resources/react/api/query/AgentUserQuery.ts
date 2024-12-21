@@ -29,13 +29,14 @@ const useAgentUserCreate = () => {
 	})
 }
 
-const useAgentUserUpdate = () => {
+const useAgentUserUpdate = (setIsModalOpen :any) => {
 	const setIsLoading  = useSetRecoilState(AgentIsLoadingStates)
 	const queryClient = useQueryClient()
 	return useMutation(api.update, {
 		onSuccess: (data) => {
-			queryClient.invalidateQueries(['adminUsers', 'adminUser', data.id])
+			queryClient.invalidateQueries(['authAgentUser'])
 			setIsLoading(false)
+			setIsModalOpen(false)
 			toast.success('更新しました')
 		},
 		onError: () => {

@@ -17,7 +17,7 @@ const create =  async (formData: AgentUserType) => {
 }
 
 const update =  async (formData: AgentUserType) => {
-	const { data } = await axios.post<AgentUserType>('/api/admin/update', formData )
+	const { data } = await axios.post<AgentUserType>('/api/agent/update', formData )
 	return data
 }
 

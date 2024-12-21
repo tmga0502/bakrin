@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @method static where(string $string, string $code)
  * @method static inRandomOrder()
+ * @method static find($id)
  */
 class Agent extends Authenticatable
 {

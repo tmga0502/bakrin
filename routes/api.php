@@ -170,8 +170,9 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 	});
 
 	//代理店用
-	Route::group(['prefix' => 'users'], function () {
+	Route::group(['prefix' => 'agent'], function () {
 		Route::get('/getReferralUsers', [AgentUserController::class, 'getReferralUsers']);//代理店（個人）に紐づいたユーザー一覧の取得
+		Route::post('/update', [AgentUserController::class, 'update']);//代理店（個人）に紐づいたユーザー一覧の取得
 	});
 
 });

@@ -17,7 +17,7 @@ const getUser = async (userId: string) => {
 }
 
 const getReferralUsers = async () => {
-	const{ data } = await axios.get<UserType[]>('/api/users/getReferralUsers');
+	const{ data } = await axios.get<UserType[]>('/api/agent/getReferralUsers');
 	return data;
 }
 

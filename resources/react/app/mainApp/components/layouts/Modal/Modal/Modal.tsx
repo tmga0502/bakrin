@@ -8,7 +8,7 @@ type ModalType = {
 }
 
 const ModalTv = tv({
-	'base': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white min-w-[300px] w-4/5 max-h-[80%] rounded-md text-left z-[100000]',
+	'base': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white min-w-[300px] w-4/5 max-h-[80%] rounded-md text-left z-[100000] overflow-y-scroll',
 	variants:{
 		size: {
 			md: 'max-w-[600px]',
