@@ -54,12 +54,12 @@ const MyPageProfileContext: React.FC = () => {
 				</div>
 			</MyPageProfileDataBox>
 
-			<MyPageProfileDataBox title={'支払い方法'}>
-				<div className={'flex justify-between'}>
-					<p>{paymentMethod}</p>
-					<ChangePaymentMethodModal/>
-				</div>
-			</MyPageProfileDataBox>
+			{/*<MyPageProfileDataBox title={'支払い方法'}>*/}
+			{/*	<div className={'flex justify-between'}>*/}
+			{/*		<p>{paymentMethod}</p>*/}
+			{/*		<ChangePaymentMethodModal/>*/}
+			{/*	</div>*/}
+			{/*</MyPageProfileDataBox>*/}
 
 			<MyPageProfileDataBox title={'紹介コード'}>
 				{userData.referral_code}
