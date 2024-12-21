@@ -3,6 +3,9 @@ import KvImage from '@/images/kv.png'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
 import MenuList from "@/react/app/mainApp/components/layouts/MenuList/MenuList";
+import {Link} from "react-router-dom";
+import {IoSettingsOutline} from "react-icons/io5";
+import {FaRegUser} from "react-icons/fa";
 
 const Header = () => {
 
@@ -25,6 +28,16 @@ const Header = () => {
 			{hamburgerState && (
 				<div className={'fixed w-[200px] h-full bg-white top-0 right-0 z-[9900]'}>
 					<ul className={'mt-[60px]'}>
+						<Link to={'/myitem'} className={'hover:opacity-80'}>
+							<li className={'flex items-center px-2 py-3 bg-white'}>
+								<IoSettingsOutline/><span className={'ml-2'}>{'管理ページ'}</span>
+							</li>
+						</Link>
+						<Link to={'/mypage'} className={'hover:opacity-80'}>
+							<li className={'flex items-center px-2 py-3 bg-white'}>
+								<FaRegUser/><span className={'ml-2'}>{'マイページ'}</span>
+							</li>
+						</Link>
 						<MenuList/>
 					</ul>
 				</div>
