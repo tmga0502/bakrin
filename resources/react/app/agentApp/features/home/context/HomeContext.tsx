@@ -8,9 +8,9 @@ const HomeContext: React.FC<{users: UserType[]}> = ({users}) => {
 		<div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
 			<ReferralCode/>
 			<UserList users={users}/>
-			・出金依頼中の金額
-			・当月の売上
-			・累計売上
+			{/*・出金依頼中の金額*/}
+			{/*・当月の売上*/}
+			{/*・累計売上*/}
 		</div>
 	);
 };

@@ -23,7 +23,7 @@ const Modal: React.FC<ModalType> = ({children, size = 'md', onClick}) => {
 	};
 
     return (
-        <div className={'w-screen h-screen bg-black fixed top-0 left-0 z-[99999] '} onClick={onClick}>
+        <div className={'w-screen h-screen bg-[rgba(117,117,117,0.79)] fixed top-0 left-0 z-[99999] '} onClick={onClick}>
             <div className={ModalTv({size: size})}　onClick={handleBoxClick}>
                 {children}
             </div>

@@ -8,7 +8,6 @@ import ErrorPage from "@/react/app/mainApp/pages/error/Error";
 const HomePage = () => {
 
 	const {data: users, isLoading, isError, isSuccess} = useGetReferralUsers();
-
 	let context: ReactNode
 	if(isLoading) context = <PageLoader/>
 	if (isError) context = <ErrorPage/>

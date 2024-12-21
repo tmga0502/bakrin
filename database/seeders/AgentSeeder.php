@@ -15,7 +15,7 @@ class AgentSeeder extends Seeder
     {
         DB::table('agents')->truncate();
 
-        Agent::factory()->count(100)->create();
+        Agent::factory()->count(5)->create();
 
     }
 }
