@@ -17,6 +17,13 @@ const useGetFavoriteUsers = () => {
 	})
 }
 
+//紹介者コードに紐づいたユーザーを取得（代理店ページで使用）
+const useGetReferralUsers = () => {
+	return useQuery('referralUsers', ()=>api.getReferralUsers(),{
+		suspense: true,
+	})
+}
+
 const useGetUser = (userId: any) => {
 	return useQuery(['user', userId], ()=>api.getUser(userId),{
 		suspense: true,
@@ -64,6 +71,7 @@ export {
     useGetPopularUsers,
     useGetFavoriteUsers,
 	useGetUser,
+	useGetReferralUsers,
 	useChangePassword,
 	useUserUpdate,
 }

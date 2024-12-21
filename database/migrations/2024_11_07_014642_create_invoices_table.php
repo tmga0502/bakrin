@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->bigInteger('user_id')->comment('ユーザーID');
 			$table->date('month')->nullable()->default(null)->comment('請求書発行日');
 			$table->boolean('payment_check')->default(false)->comment('支払いチェック true:支払済, false:未払');
+			$table->boolean('mail_send_check')->default(false)->comment('請求書メール送付チェック true:送信済, false:未送信');
             $table->timestamps();
         });
     }

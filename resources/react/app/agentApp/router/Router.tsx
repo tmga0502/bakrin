@@ -4,12 +4,12 @@ import Login from "@/react/app/agentApp/pages/login/Login";
 import {useRecoilValue} from "recoil";
 import RegisterPage from "@/react/app/agentApp/pages/register/RegisterPage";
 import Home from "@/react/app/agentApp/pages/home/HomePage";
-import {IsAuthStates} from "@/react/app/agentApp/states/AuthStates";
+import {IsAgentAuthStates} from "@/react/app/agentApp/states/AuthStates";
 import RegisterCompletedPage from "@/react/app/agentApp/pages/register/completed/RegisterCompletedPage";
 
 const Router = () => {
 
-	const isAuth = useRecoilValue(IsAuthStates);
+	const isAuth = useRecoilValue(IsAgentAuthStates);
 
 	const GuardRoute = (props : {component: ReactElement}) => {
 		if(!isAuth) return<Navigate to="/agent/login" />

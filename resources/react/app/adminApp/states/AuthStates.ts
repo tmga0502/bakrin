@@ -11,7 +11,7 @@ export const IsAuthDataStates = atom<AdminUserType>({
 	default:  {
 		id: 0,
 		name: '',
-		authority: 1,
-		loginId: '',
+		role: 0,
+		login_id: '',
 	},
 })

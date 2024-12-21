@@ -1,13 +1,13 @@
 import {atom} from "recoil";
 import {AgentUserType} from "@/react/types/AgentUserType";
 
-export const IsAuthStates = atom<boolean>({
-	key: 'AuthStates',
+export const IsAgentAuthStates = atom<boolean>({
+	key: 'AgentAuthStates',
 	default: false,
 })
 
-export const IsAuthDataStates = atom<AgentUserType>({
-	key: 'IsAuthDataStates',
+export const IsAgentAuthDataStates = atom<AgentUserType>({
+	key: 'IsAgentAuthDataStates',
 	default:  {
 		id                 :0,
 		uuid               :'',

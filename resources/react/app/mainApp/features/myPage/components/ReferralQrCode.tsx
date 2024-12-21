@@ -6,7 +6,7 @@ import {IsAuthUserDataStates} from "@/react/app/mainApp/states/AuthStates";
 const ReferralQrCode = () => {
 	const userData = useRecoilValue(IsAuthUserDataStates);
 	const location = window.location.origin;
-	const linkUrl = `${location}/register_completed/${userData.referral_code}`
+	const linkUrl = `${location}/register/${userData.referral_code}`
 	console.log(userData)
 	return (
 		<div className={'mt-4'}>

@@ -4,13 +4,13 @@ import * as api from "@/react/api/api/AuthAgentApi";
 import {toast} from "react-toastify";
 import {useResetRecoilState, useSetRecoilState} from "recoil";
 import {AgentIsLoadingStates} from "@/react/app/agentApp/states/IsLoadingStates";
-import {IsAuthDataStates, IsAuthStates} from "@/react/app/agentApp/states/AuthStates";
+import {IsAgentAuthDataStates, IsAgentAuthStates} from "@/react/app/agentApp/states/AuthStates";
 import {IsLoadingStates} from "@/react/app/mainApp/states/IsLoadingStates";
 
 const usAuthAgentCheck = () => {
-	const setIsAuth   = useSetRecoilState(IsAuthStates)
-	const setProducerData = useSetRecoilState(IsAuthDataStates);
-	const resetProducerState = useResetRecoilState(IsAuthDataStates);
+	const setIsAuth   = useSetRecoilState(IsAgentAuthStates)
+	const setProducerData = useSetRecoilState(IsAgentAuthDataStates);
+	const resetProducerState = useResetRecoilState(IsAgentAuthDataStates);
 	return useQuery('authAgentUser', () => api.getAgentAuthCheck(),{
 		suspense: true,
 		onSuccess: (data) => {
@@ -52,9 +52,9 @@ const useAgentCompleteRegistration = (userUuid: string) => {
 }
 
 const useAgentLogin = () => {
-	const setIsAuth   = useSetRecoilState(IsAuthStates)
+	const setIsAuth   = useSetRecoilState(IsAgentAuthStates)
     const setIsLoading  = useSetRecoilState(AgentIsLoadingStates)
-	const setProducerData = useSetRecoilState(IsAuthDataStates);
+	const setProducerData = useSetRecoilState(IsAgentAuthDataStates);
     const navigate = useNavigate()
     return useMutation(api.agentLogin, {
         onSuccess: (data) => {
@@ -70,7 +70,7 @@ const useAgentLogin = () => {
 }
 
 const useAgentLogout = () => {
-	const setIsAuth   = useSetRecoilState(IsAuthStates)
+	const setIsAuth   = useSetRecoilState(IsAgentAuthStates)
     const setIsLoading = useSetRecoilState(AgentIsLoadingStates)
     const navigate = useNavigate()
     return useMutation(api.agentLogout, {

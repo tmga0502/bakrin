@@ -13,6 +13,7 @@ export type TradeMemberType = {
 	shipping_date       :string,
 	shipping_slip_path  :string,
     receipt_check       :boolean,
+	use_discount_ticket :boolean,
 	trade               :TradeType,
 	item                :ItemType,
 	user                :UserType,

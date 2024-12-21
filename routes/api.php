@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AgentUserController;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthAgentController;
 use App\Http\Controllers\AuthProducerController;
@@ -160,6 +161,11 @@ Route::group(['middleware'=> 'auth:sanctum'], function() {
 		Route::get('getUser/{id}', [AdminUserController::class, 'getUser']);
 		Route::post('create', [AdminUserController::class, 'create']);
 		Route::post('update', [AdminUserController::class, 'update']);
+	});
+
+	//代理店用
+	Route::group(['prefix' => 'users'], function () {
+		Route::get('/getReferralUsers', [AgentUserController::class, 'getReferralUsers']);//代理店（個人）に紐づいたユーザー一覧の取得
 	});
 
 });

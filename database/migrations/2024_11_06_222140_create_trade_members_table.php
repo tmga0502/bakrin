@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->date('shipping_date')->nullable()->default(null)->comment('発送日');
 			$table->string('shipping_slip_path')->nullable()->default(null)->comment('発送伝票画像のパス');
 			$table->boolean('receipt_check')->default(false)->comment('受取チェック true:受取済, false:未受取');
+			$table->boolean('use_discount_ticket')->default(false)->comment('取引無料チケットの使用 true:使用, false:不使用');
             $table->timestamps();
         });
     }

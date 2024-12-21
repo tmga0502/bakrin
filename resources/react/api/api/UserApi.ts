@@ -16,6 +16,11 @@ const getUser = async (userId: string) => {
 	return data;
 }
 
+const getReferralUsers = async () => {
+	const{ data } = await axios.get<UserType[]>('/api/users/getReferralUsers');
+	return data;
+}
+
 const changePassword = async (formData: any) => {
 	const{ data } = await axios.post('/api/user/changePassword', formData);
 	return data;
@@ -35,6 +40,7 @@ export {
     getPopularUsers,
     getFavoriteUsers,
 	getUser,
+	getReferralUsers,
 	changePassword,
 	userUpdate,
 }

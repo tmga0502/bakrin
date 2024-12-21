@@ -120,5 +120,4 @@ class UsersController extends Controller
 
 		return response()->json($producer, 200);
 	}
-
 }

@@ -11,9 +11,10 @@ class InvoiceDetail extends Model
 
 	protected $fillable	= [
 		'invoice_id',
-		'trade_member_id',
+		'trade_id',
 		'amount',
 		'discount',
-		'referral_fee',
+		'introducer_code',
+		'discount_reason',
 	];
 }

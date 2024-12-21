@@ -6,10 +6,13 @@ use App\Mail\RequestTrade;
 use App\Mail\ShippingComplete;
 use App\Mail\TradePermission;
 use App\Mail\TradeRejected;
+use App\Models\InvoiceDetail;
 use App\Models\Item;
 use App\Models\Trade;
 use App\Models\TradeMember;
 use App\Service\ImageService;
+use App\Service\InvoiceDetailService;
+use App\Service\InvoiceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,6 +84,7 @@ class TradeController extends Controller
 	}
 
 
+	//取引申請
 	public function requestTrade(request $req): JsonResponse
 	{
 		DB::transaction(function() use($req) {
@@ -101,6 +105,7 @@ class TradeController extends Controller
 				'applicant_flag' => true,
 				'user_id' => $auth_user->id,
 				'item_id' => $sender_item->id,
+				'use_discount_ticket' => $req->use_discount_ticket,
 			]);
 			$trade_member_sender->save();
 
@@ -127,6 +132,30 @@ class TradeController extends Controller
 			$trade = Trade::with(['tradeMembers.user'])->find($req->tradeId);
 			$trade->fill(['status' => 1])->save();
 
+			foreach($trade->tradeMembers as $tradeMember){
+				//申請許諾者（自分）が割引チケットを使用するならtradeMemberのuse_discount_ticketをtrueにする
+				if($tradeMember->user->id === Auth()->user()->id){
+					$tradeMember->fill(['use_discount_ticket' => $req->use_discount_ticket])->save();
+				}
+				//両trade_memberのuse_discount_ticketの状態を見て、trueであればuserのhave_discount_ticket_countを-1する
+				if($tradeMember->use_discount_ticket){
+					$tradeMember->user->fill(['have_discount_ticket_count' => $tradeMember->user->have_discount_ticket_count - 1])->save();
+				}
+				//invoiceを作成する
+				$CREATE_INVOICE = new InvoiceService($tradeMember->user);
+				//Invoiceに今月のデータがあるか確認
+				$invoice_data = $CREATE_INVOICE->getInvoice();
+
+				//$invoice_dataがなければ作成する
+				if($invoice_data === null){
+					$invoice_data = $CREATE_INVOICE->createInvoice();
+				}
+				//$invoice_detailを作成する
+				$invoice_detail = new InvoiceDetailService($invoice_data, $trade, $tradeMember);
+				$invoice_detail->createInvoiceDetail();
+			}
+
+
 			//申請者にメール送信
 			$sender = null;
 			foreach ($trade->tradeMembers as $tradMember) {
@@ -148,7 +177,7 @@ class TradeController extends Controller
 	{
 		DB::transaction(function() use($req) {
 			$trade = Trade::with('tradeMembers.user')->find($req->trade_id);
-//			$trade->fill(['status' => 3, 'reason' => $req->reason])->save();
+			$trade->fill(['status' => 3, 'reason' => $req->reason])->save();
 
 			//相手にメール
 			//相手(申請者)の判定

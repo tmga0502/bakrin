@@ -30,6 +30,7 @@ return new class extends Migration
 			$table->text('pr')->nullable()->default(null)->comment('自己PR');
 			$table->integer('payment_method')->default(0)->comment('銀行振込');
 			$table->string('thumbnail_path')->nullable()->default(null)->comment('サムネイル画像パス');
+			$table->integer('have_discount_ticket_count')->default(0)->comment('割引チケット保有数');
             $table->timestamps();
         });
     }

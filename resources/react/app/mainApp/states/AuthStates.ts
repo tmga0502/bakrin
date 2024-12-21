@@ -26,6 +26,7 @@ export const IsAuthUserDataStates = atom<UserType>({
 		password: '',
 		payment_method: 0,
 		pr: '',
+		have_discount_ticket_count: 0,
 		items: [],
 		favorite_users: [],
 		shipping_info: [],

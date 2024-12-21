@@ -20,12 +20,14 @@ class TradeMember extends Model
 		'shipping_info_id',
 		'shipping_date',
 		'shipping_slip_path',
-		'receipt_check'
+		'receipt_check',
+		'use_discount_ticket',
 	];
 
 	protected $casts = [
-		'applicant_flag' => 'boolean',
-		'receipt_check' => 'boolean',
+		'applicant_flag'      => 'boolean',
+		'receipt_check'       => 'boolean',
+		'use_discount_ticket' => 'boolean',
 	];
 
 	public function trade()
