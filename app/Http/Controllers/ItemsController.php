@@ -164,7 +164,7 @@ class ItemsController extends Controller
 	public function searchPlan(Request $req): JsonResponse
 	{
 		if($req->plan !== false){
-			$items = Item::with('plan')->whereIn('planId', $req->plan)->where('status', 0)->get();
+			$items = Item::with('plan')->whereIn('plan_id', $req->plan)->where('status', 0)->get();
 		}else{
 			$items = [];
 		}
@@ -173,7 +173,7 @@ class ItemsController extends Controller
 
 	public function searchCategory(Request $req): JsonResponse
 	{
-		$items = Item::with('plan')->where('categoryId', $req->categoryId)->where('status', 0)->get();
+		$items = Item::with('plan')->where('item_category_id', $req->categoryId)->where('status', 0)->get();
 		return response()->json($items, 200);
 	}
 }

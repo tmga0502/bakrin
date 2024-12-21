@@ -19,7 +19,7 @@ const UserSearchForm: React.FC = () => {
 	const onSubmit = async (data: any) => {
 		setSearchUserName(data.producer)
 		setSearchUserPrefecture(data.address)
-		const response = await axios.post<UserType[]>(`/api/producers/searchUser`, data);
+		const response = await axios.post<UserType[]>(`/api/users/searchUser`, data);
 		setSearchUserResult(response.data)
 	}
 

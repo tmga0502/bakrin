@@ -15,6 +15,6 @@ class FavoriteUserSeeder extends Seeder
     {
         DB::table('favorite_users')->truncate();
 
-        FavoriteUser::factory()->count(300)->create();
+        FavoriteUser::factory()->count(10)->create();
     }
 }
